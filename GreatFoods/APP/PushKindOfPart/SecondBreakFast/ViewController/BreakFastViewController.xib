@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9046" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BreakFastViewController">
+            <connections>
+                <outlet property="tableView" destination="zFV-BL-YFc" id="PfG-an-Qfk"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zFV-BL-YFc">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="tcY-zT-zEz"/>
+                        <outlet property="delegate" destination="-1" id="IbY-RD-KeB"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="zFV-BL-YFc" secondAttribute="bottom" id="3lF-ai-XeP"/>
+                <constraint firstAttribute="trailing" secondItem="zFV-BL-YFc" secondAttribute="trailing" id="OFX-JH-aC0"/>
+                <constraint firstItem="zFV-BL-YFc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="w0A-lQ-X2I"/>
+                <constraint firstItem="zFV-BL-YFc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zVw-1W-VCf"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="zFV-BL-YFc"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="3lF-ai-XeP"/>
+                    <exclude reference="OFX-JH-aC0"/>
+                    <exclude reference="w0A-lQ-X2I"/>
+                    <exclude reference="zVw-1W-VCf"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="zFV-BL-YFc"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="3lF-ai-XeP"/>
+                    <include reference="OFX-JH-aC0"/>
+                    <include reference="w0A-lQ-X2I"/>
+                    <include reference="zVw-1W-VCf"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

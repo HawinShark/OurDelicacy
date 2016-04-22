@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DaydayCookDescription">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="RG5-yJ-Bwv" id="2Qj-Px-k7F"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleAspectFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RG5-yJ-Bwv">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                </webView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEP-oi-HVI">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="OBK-NX-cLi"/>
+                        <constraint firstAttribute="width" constant="50" id="cQG-fl-bhn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                    <state key="normal" title="Back">
+                        <color key="titleColor" red="0.98431372549999996" green="0.96470588239999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="OBK-NX-cLi"/>
+                            <exclude reference="cQG-fl-bhn"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="OBK-NX-cLi"/>
+                            <include reference="cQG-fl-bhn"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="Back:" destination="-1" eventType="touchUpInside" id="ycM-jw-4lc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="UEP-oi-HVI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="4LS-qV-ABG"/>
+                <constraint firstItem="UEP-oi-HVI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="53d-l6-y7X"/>
+                <constraint firstItem="RG5-yJ-Bwv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7hh-Ua-XdW"/>
+                <constraint firstAttribute="bottom" secondItem="RG5-yJ-Bwv" secondAttribute="bottom" id="9iM-wO-7IW"/>
+                <constraint firstItem="RG5-yJ-Bwv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="M1Z-TU-eRG"/>
+                <constraint firstAttribute="trailing" secondItem="RG5-yJ-Bwv" secondAttribute="trailing" id="mmN-3a-d14"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="RG5-yJ-Bwv"/>
+                    <exclude reference="UEP-oi-HVI"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="4LS-qV-ABG"/>
+                    <exclude reference="53d-l6-y7X"/>
+                    <exclude reference="7hh-Ua-XdW"/>
+                    <exclude reference="9iM-wO-7IW"/>
+                    <exclude reference="M1Z-TU-eRG"/>
+                    <exclude reference="mmN-3a-d14"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="RG5-yJ-Bwv"/>
+                    <include reference="UEP-oi-HVI"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="4LS-qV-ABG"/>
+                    <include reference="53d-l6-y7X"/>
+                    <include reference="7hh-Ua-XdW"/>
+                    <include reference="9iM-wO-7IW"/>
+                    <include reference="M1Z-TU-eRG"/>
+                    <include reference="mmN-3a-d14"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>
