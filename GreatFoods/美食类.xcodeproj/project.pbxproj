@@ -969,7 +969,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/natsuhirofumi/Desktop/GitHub/GreatFoods/GreatFoods/Tools/Prefix/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "/Users/lan/Desktop/B段团队项目/GreatFoods/Tools/Prefix/PrefixHeader.pch";
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -988,7 +988,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/natsuhirofumi/Desktop/GitHub/GreatFoods/GreatFoods/Tools/Prefix/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "/Users/lan/Desktop/B段团队项目/GreatFoods/Tools/Prefix/PrefixHeader.pch";
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
