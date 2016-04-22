@@ -59,7 +59,7 @@
         _textField.delegate = self;
         _textField.returnKeyType = UIReturnKeySearch;
         //为textField设置属性占位符
-        _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:0.335 alpha:1.000]}];
+        _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入关键字" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:0.335 alpha:1.000]}];
         [_bgView addSubview:_textField];
         
         //放大镜图标imageView
@@ -98,6 +98,9 @@
 -(void)getBlockFromOutSpace:(ReturnBlock)block{
     self.block = block;
 }
+-(void)getClickFromReturn:(ReturnClick)click{
+    self.click = click;
+}
 
 #pragma mark - UITextFieldDelegate
 
@@ -118,7 +121,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    self.block(textField.text);//传值
+    self.click(textField.text);
     
     //归位
     [_textField resignFirstResponder];

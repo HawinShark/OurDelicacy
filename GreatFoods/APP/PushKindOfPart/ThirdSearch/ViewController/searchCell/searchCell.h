@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SearchData;
 @interface searchCell : UITableViewCell
+
+/* model */
+@property (nonatomic, retain) SearchData *model;
 
 @end

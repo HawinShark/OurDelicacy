@@ -37,6 +37,7 @@
 
 @implementation DaydayCookDescription
 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     
@@ -52,12 +53,20 @@
     
 //    self.webView.delegate = self;
     
+    [self showHudInViewhint:@"拼命加载呢!.."];
     dispatch_async(dispatch_queue_create("discription", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
         
         [self getData];
     });
+    
     self.webView.scrollView.contentInset    = UIEdgeInsetsMake(screen_width + 100, 0, 0, 0);
+    
+    //去除webview底部黑条
+    self.webView.opaque = NO;
+    
+    self.webView.backgroundColor = RGB(245, 245, 245);
     self.webView.scrollView.backgroundColor = RGB(245, 245, 245);
+    
     [self buildImageAndLabel];
 
     
@@ -70,12 +79,6 @@
 
 
 
-//
-//-(void)viewDidLayoutSubviews{
-//    load = [[Loading alloc]initWithFrame:self.view.bounds];
-//    [self.view addSubview:load];
-//    [self.view bringSubviewToFront:load];
-//}
 
 
 
@@ -94,7 +97,7 @@
 }
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (!decelerate) {
-
+        
     }
 }
 
@@ -136,23 +139,28 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    
+                    [self.image sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
+                    
+                    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:model.loadContent]];
+                    [self.webView loadRequest:request];
+                    
+                });
                 
-                [self.image sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
                 self.titleName.text  = model.title;
                 self.makelabel.text  = model.maketime;
                 self.watchlabel.text = [NSString stringWithFormat:@"%.0f",model.clickCount];
                 
-                NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:model.loadContent]];
                 
                 [self.webView.scrollView setBounces:NO];
                 
                 //加载请求
-                [self.webView loadRequest:request];
                 //是否自动适应屏幕大小
                 [self.webView setScalesPageToFit:YES];
                 
                 
-                
+                [self showhide];
                 
             });
         }

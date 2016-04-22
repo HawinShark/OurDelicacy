@@ -187,7 +187,7 @@ NSUInteger cellcount = 0;//cell的个数
     [manager POST:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=0&type=0" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         //解析数据
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         
         NSArray *array = [responseObject objectForKey:@"list"];
         

@@ -8,39 +8,26 @@
 
 #import "SearchViewController.h"
 #import "CustomSearchBar.h"
-
+#import "SearchNextViewController.h"
+#import "WHC_NavigationController.h"
 @interface SearchViewController ()
-<UITableViewDataSource,UITableViewDelegate,UISearchControllerDelegate,UISearchResultsUpdating>
-
-@property(nonatomic,retain)UITableView *tableView;
-@property(nonatomic,retain)UISearchController *searchController;
-
-@property(nonatomic,retain)NSMutableArray *dataList;
-@property(nonatomic,retain)NSMutableArray *searchList;
-
+{
+    WHC_NavigationController *SearchNav;
+}
+@property(nonatomic,retain) SearchNextViewController *controller;
 
 @end
 
 @implementation SearchViewController
 
-#pragma mark- 懒加载搜索数据
--(NSMutableArray *)searchList{
-    if (!_searchList) {
-        _searchList = [NSMutableArray new];
-    }
-    return _searchList;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //
     
-    self.dataList   = [NSMutableArray new];
-
     
     [self buildCustomSearch];
     
-//    [self buildSearch];
 }
 
 
@@ -68,6 +55,18 @@
     [search getBlockFromOutSpace:^(NSString *str) {
         NSLog(@"%@",str);
     }];
+    
+    //当按下return
+    [search getClickFromReturn:^(NSString *str) {
+        
+        self.controller.name = str;
+        
+        //跳转
+        [self ModelToNext];
+        
+        
+    }];
+    
     [self.view addSubview:search];
 }
 
@@ -82,150 +81,30 @@
 
 
 
-#pragma mark- 创建搜索
 
--(void)buildSearch{
-    self.tableView            = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
-    self.tableView.delegate   = self;
-    self.tableView.dataSource = self;
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    self.tableView.rowHeight = 80;
-    self.tableView.bounces = NO;
-    self.tableView.alpha = 0;
-    
-#pragma mark- 创建搜索框
-    self.searchController                      = [[UISearchController alloc]initWithSearchResultsController:nil];
-    self.searchController.delegate             = self;
-    self.searchController.searchResultsUpdater = self;//代理
-    
-    //搜索时候背景变暗
-    self.searchController.dimsBackgroundDuringPresentation     = YES;
-    //搜索时模糊
-    self.searchController.obscuresBackgroundDuringPresentation = YES;
-    //隐藏导航栏
-    self.searchController.hidesNavigationBarDuringPresentation = NO;
-    
-    self.definesPresentationContext = YES;
-//    
-    self.searchController.searchBar.frame = CGRectMake(0, 0, screen_width, 44.0);;
-    self.searchController.searchBar.alpha = 0;
-    
-//    self.tableView.tableHeaderView = self.searchController.searchBar;
-    
-    [self.view addSubview:self.tableView];
-    [self.view addSubview:self.searchController.searchBar];
-}
-
-
-
-#pragma mark- 行数
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (self.searchController.active)
-    {
-        return self.searchList.count;
-    }else{
-        return self.dataList.count;
+- (void)ModelToNext{
+    if (IOS_VERSION >= 8.0) {
+        
+        _controller = [[SearchNextViewController alloc] init];
+        _controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        SearchNav = [[WHC_NavigationController alloc]initWithRootViewController:_controller];
+        _controller.providesPresentationContextTransitionStyle = YES;
+        _controller.definesPresentationContext = YES;
+        _controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:SearchNav animated:YES completion:nil];
+        
+    } else {
+        
+        _controller = [[SearchNextViewController alloc] init];
+        _controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        SearchNav = [[WHC_NavigationController alloc]initWithRootViewController:_controller];
+        self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self presentViewController:SearchNav animated:NO completion:nil];
+        self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     }
 }
 
 
-
-
-#pragma mark- tableviewCell
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *cellid      = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
-    
-    if (!cell)
-    {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
-    }
-    //
-    if (self.searchController.active)
-    {
-//        cell.textLabel.text = self.searchList[indexPath.row];
-    }else{
-//        cell.textLabel.text = self.dataList[indexPath.row];
-    }
-    
-    return cell;
-}
-
-
-
-
-
-
-
-#pragma mark- 更新数据
-
--(void)updateSearchResultsForSearchController:(UISearchController *)searchController
-{
-    NSLog(@"updateSearchResultsForSearchController");
-    
-    NSString *searchStr = self.searchController.searchBar.text;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@",searchStr];
-    if (self.searchList != nil) {
-        [self.searchList removeAllObjects];
-    }
-    
-    //过滤数据
-    self.searchList = [NSMutableArray arrayWithArray:[self.dataList filteredArrayUsingPredicate:predicate]];
-    [self.tableView reloadData];
-}
-
-
-
-
-
-
-
-
-#pragma mark - UISearchControllerDelegate代理
-
-//测试UISearchController的执行过程
-
-- (void)willPresentSearchController:(UISearchController *)searchController
-{
-    NSLog(@"willPresentSearchController");
-}
-
-- (void)didPresentSearchController:(UISearchController *)searchController
-{
-    NSLog(@"didPresentSearchController");
-}
-
-- (void)willDismissSearchController:(UISearchController *)searchController
-{
-    NSLog(@"willDismissSearchController");
-}
-
-- (void)didDismissSearchController:(UISearchController *)searchController
-{
-    NSLog(@"didDismissSearchController");
-}
-
-- (void)presentSearchController:(UISearchController *)searchController
-{
-    NSLog(@"presentSearchController");
-}
-
-
-
-
-
-
-#pragma mark- 移除视图
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    
-    if (self.searchController.active) {
-        self.searchController.active = NO;
-        [self.searchController.searchBar removeFromSuperview];
-    }
-}
 
 
 

@@ -30,6 +30,11 @@
 		F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8A21CC9D14900C3FF67 /* searchCell.m */; };
 		F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8A31CC9D14900C3FF67 /* searchCell.xib */; };
 		F54BE8BA1CCA4F9A00C3FF67 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8B91CCA4F9A00C3FF67 /* Timer.m */; };
+		F54BE8CA1CCA5F3C00C3FF67 /* NetandHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8C91CCA5F3C00C3FF67 /* NetandHUB.m */; };
+		F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8CD1CCA673000C3FF67 /* SearchNextViewController.m */; };
+		F54BE8D01CCA673000C3FF67 /* SearchNextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8CE1CCA673000C3FF67 /* SearchNextViewController.xib */; };
+		F54BE8D61CCA705A00C3FF67 /* SearchBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8D31CCA705A00C3FF67 /* SearchBase.m */; };
+		F54BE8D71CCA705A00C3FF67 /* SearchData.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8D51CCA705A00C3FF67 /* SearchData.m */; };
 		F5559CF91CC8AB8E00379BF0 /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5559CF71CC8AB8E00379BF0 /* TimerViewController.m */; };
 		F5559CFA1CC8AB8E00379BF0 /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5559CF81CC8AB8E00379BF0 /* TimerViewController.xib */; };
 		F5559CFE1CC8AB9D00379BF0 /* BreakFastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5559CFC1CC8AB9D00379BF0 /* BreakFastViewController.m */; };
@@ -118,6 +123,15 @@
 		F54BE8A31CC9D14900C3FF67 /* searchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchCell.xib; sourceTree = "<group>"; };
 		F54BE8B81CCA4F9A00C3FF67 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		F54BE8B91CCA4F9A00C3FF67 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		F54BE8C81CCA5F3C00C3FF67 /* NetandHUB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetandHUB.h; sourceTree = "<group>"; };
+		F54BE8C91CCA5F3C00C3FF67 /* NetandHUB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetandHUB.m; sourceTree = "<group>"; };
+		F54BE8CC1CCA673000C3FF67 /* SearchNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNextViewController.h; sourceTree = "<group>"; };
+		F54BE8CD1CCA673000C3FF67 /* SearchNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNextViewController.m; sourceTree = "<group>"; };
+		F54BE8CE1CCA673000C3FF67 /* SearchNextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchNextViewController.xib; sourceTree = "<group>"; };
+		F54BE8D21CCA705A00C3FF67 /* SearchBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBase.h; sourceTree = "<group>"; };
+		F54BE8D31CCA705A00C3FF67 /* SearchBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBase.m; sourceTree = "<group>"; };
+		F54BE8D41CCA705A00C3FF67 /* SearchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchData.h; sourceTree = "<group>"; };
+		F54BE8D51CCA705A00C3FF67 /* SearchData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchData.m; sourceTree = "<group>"; };
 		F5559CF61CC8AB8E00379BF0 /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerViewController.h; sourceTree = "<group>"; };
 		F5559CF71CC8AB8E00379BF0 /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerViewController.m; sourceTree = "<group>"; };
 		F5559CF81CC8AB8E00379BF0 /* TimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerViewController.xib; sourceTree = "<group>"; };
@@ -328,6 +342,36 @@
 			path = searchCell;
 			sourceTree = "<group>";
 		};
+		F54BE8C71CCA5F0700C3FF67 /* NetCheckAndHUB */ = {
+			isa = PBXGroup;
+			children = (
+				F54BE8C81CCA5F3C00C3FF67 /* NetandHUB.h */,
+				F54BE8C91CCA5F3C00C3FF67 /* NetandHUB.m */,
+			);
+			path = NetCheckAndHUB;
+			sourceTree = "<group>";
+		};
+		F54BE8CB1CCA670000C3FF67 /* SearchNext */ = {
+			isa = PBXGroup;
+			children = (
+				F54BE8CC1CCA673000C3FF67 /* SearchNextViewController.h */,
+				F54BE8CD1CCA673000C3FF67 /* SearchNextViewController.m */,
+				F54BE8CE1CCA673000C3FF67 /* SearchNextViewController.xib */,
+			);
+			path = SearchNext;
+			sourceTree = "<group>";
+		};
+		F54BE8D11CCA701900C3FF67 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F54BE8D21CCA705A00C3FF67 /* SearchBase.h */,
+				F54BE8D31CCA705A00C3FF67 /* SearchBase.m */,
+				F54BE8D41CCA705A00C3FF67 /* SearchData.h */,
+				F54BE8D51CCA705A00C3FF67 /* SearchData.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F5559D051CC8B4C200379BF0 /* CustomSearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +471,7 @@
 		F5B28A0B1CC4F87300ECF016 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F54BE8C71CCA5F0700C3FF67 /* NetCheckAndHUB */,
 				F5B28A261CC5253E00ECF016 /* Images.xcassets */,
 				F5D97C551CC7B3090034099A /* LoadingAnimation */,
 				F5B28A2E1CC52A6C00ECF016 /* ImageExtended */,
@@ -573,7 +618,9 @@
 		F5D97C4D1CC7AC2B0034099A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F54BE8D11CCA701900C3FF67 /* Model */,
 				F54BE8A01CC9D12C00C3FF67 /* searchCell */,
+				F54BE8CB1CCA670000C3FF67 /* SearchNext */,
 				F5D97C501CC7ACAB0034099A /* SearchViewController.h */,
 				F5D97C511CC7ACAB0034099A /* SearchViewController.m */,
 				F5D97C521CC7ACAB0034099A /* SearchViewController.xib */,
@@ -716,6 +763,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F54BE89F1CC9B65E00C3FF67 /* IndexThirdCell.xib in Resources */,
+				F54BE8D01CCA673000C3FF67 /* SearchNextViewController.xib in Resources */,
 				F5559CFA1CC8AB8E00379BF0 /* TimerViewController.xib in Resources */,
 				F5B289E51CC4F7B400ECF016 /* LaunchScreen.storyboard in Resources */,
 				F5559D041CC8ABB200379BF0 /* MineViewController.xib in Resources */,
@@ -806,8 +854,10 @@
 				F52BB8DD1CC65797000B8577 /* DayDescriptionBaseClass.m in Sources */,
 				F54BE8991CC9B64F00C3FF67 /* IndexSecondCell.m in Sources */,
 				F5B28A2C1CC525BB00ECF016 /* DDCollectCell.m in Sources */,
+				F54BE8D61CCA705A00C3FF67 /* SearchBase.m in Sources */,
 				F5B28A311CC52A9200ECF016 /* UIImage+Extended.m in Sources */,
 				F52BB8D61CC6564A000B8577 /* DaydayCookDescription.m in Sources */,
+				F54BE8D71CCA705A00C3FF67 /* SearchData.m in Sources */,
 				7513E4161CC8BA8A00E0DC97 /* PointView.m in Sources */,
 				F5B28A1F1CC5004F00ECF016 /* WHC_NavigationController.m in Sources */,
 				F52BB8D01CC61C03000B8577 /* DaydayCookData.m in Sources */,
@@ -832,7 +882,9 @@
 				F52BB8C81CC6115A000B8577 /* NETManager.m in Sources */,
 				F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */,
 				F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */,
+				F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */,
 				F5B289D71CC4F7B400ECF016 /* main.m in Sources */,
+				F54BE8CA1CCA5F3C00C3FF67 /* NetandHUB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,9 +1021,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/natsuhirofumi/Desktop/GitHub/GreatFoods/GreatFoods/Tools/Prefix/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -988,9 +1040,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/natsuhirofumi/Desktop/GitHub/GreatFoods/GreatFoods/Tools/Prefix/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,6 +8,7 @@
 
 #import "searchCell.h"
 
+#import "SearchData.h"
 @interface searchCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -24,8 +25,25 @@
 @implementation searchCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    //
+    
+    
+    self.contentView.backgroundColor = [UIColor clearColor];
 }
+
+
+- (void)setModel:(SearchData *)model
+{
+    self.title.text = model.name;
+    
+    self.watch.text = [NSString stringWithFormat:@"%0.f",model.clickCount];
+    self.maketime.text = model.maketime;
+    self.message.text = model.dataDescription;
+}
+
+
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

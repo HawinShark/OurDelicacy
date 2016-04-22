@@ -10,3 +10,6 @@
 
 #import "DayDescriptionData.h"
 #import "DayDescriptionBaseClass.h"
+
+#import "SearchData.h"
+#import "SearchBase.h"

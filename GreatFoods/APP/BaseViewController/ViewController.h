@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "DataModels.h"
-@interface ViewController : UIViewController
+
+#import "NetandHUB.h"
+
+@interface ViewController : NetandHUB
 {
     NSInteger RefreshCurrentPage;//DAYDAYCOOK下拉刷新第几页
 }
