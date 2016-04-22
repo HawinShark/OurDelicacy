@@ -50,7 +50,7 @@
     _LabelOne.text = one.name;
     
     [self.imagetwo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",two.imageid]]];
-    _LabelOne.text = two.name;
+    _LabelTwo.text = two.name;
     
     [self.imagethree sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",three.imageid]]];
     _LabelThree.text = three.name;
