@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BHInfiniteScrollView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JElasticPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -46,47 +51,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>033FB651969F6F40431D7C0E00195391</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4928295525F26C863B8B6C02FA3AF2B8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8F74D9EA91F4C43190670066BAC37D44</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>928353533005A4198EBDA5B700D37B64</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>94C83CF45269AE444E7BE5789F241211</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A3CB674BCE5816334EEDC5F0A6015924</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E55BD2A7D679D0B0A7412924CFB4B8E5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

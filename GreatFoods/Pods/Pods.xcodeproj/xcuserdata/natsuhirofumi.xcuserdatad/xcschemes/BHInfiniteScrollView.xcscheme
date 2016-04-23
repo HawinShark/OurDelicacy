@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7C01C986B7C02F9A781D301F'
-               BlueprintName = 'SDAutoLayout'
+               BlueprintIdentifier = '0B7FA3FA1E75295090EDB058'
+               BlueprintName = 'BHInfiniteScrollView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSDAutoLayout.a'>
+               BuildableName = 'libBHInfiniteScrollView.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
