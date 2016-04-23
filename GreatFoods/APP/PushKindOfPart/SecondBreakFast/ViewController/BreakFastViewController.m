@@ -205,14 +205,12 @@ NSUInteger cellcount = 0;//cell的个数
                 
             }
             
-            
             //第二种cell (一个大)
             else if (i % 12 == 3 | i % 12 == 4 | i % 12 == 5 | i % 12 == 11
                 ) {
                 
                 [second addObject:model];
             }
-            
             
             //第三种cell (五个)
             else{
@@ -232,6 +230,9 @@ NSUInteger cellcount = 0;//cell的个数
     
 }
 
+- (IBAction)returnButton:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 
 
