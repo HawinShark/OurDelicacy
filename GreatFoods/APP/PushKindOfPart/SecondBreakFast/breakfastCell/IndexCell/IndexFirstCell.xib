@@ -36,7 +36,7 @@
                             <constraint firstItem="ssw-tU-HSI" firstAttribute="width" secondItem="Btw-Kg-Jan" secondAttribute="width" id="jKB-iP-7Jm"/>
                         </constraints>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GYI-EY-qLd" userLabel="TransparencyImage View2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="夏浩文是猪" translatesAutoresizingMaskIntoConstraints="NO" id="GYI-EY-qLd" userLabel="TransparencyImage View2">
                         <rect key="frame" x="214" y="0.0" width="208" height="188"/>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,7 +48,7 @@
                         <color key="textColor" red="1" green="0.99880883949999999" blue="0.99323430150000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0ZH-X2-y9f" userLabel="TransparencyImage View1">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="夏浩文是猪" translatesAutoresizingMaskIntoConstraints="NO" id="0ZH-X2-y9f" userLabel="TransparencyImage View1">
                         <rect key="frame" x="0.0" y="0.0" width="209" height="188"/>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,5 +170,6 @@
     <resources>
         <image name="Star" width="200" height="200"/>
         <image name="zan" width="200" height="200"/>
+        <image name="夏浩文是猪" width="200" height="200"/>
     </resources>
 </document>

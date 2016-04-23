@@ -58,8 +58,8 @@
 - (void)awakeFromNib {
     //
     
-    _TransparencyView.alpha = 0.3;
-    _TransparencyViewTwo.alpha = 0.3;
+    _TransparencyView.alpha = 0.4;
+    _TransparencyViewTwo.alpha = 0.4;
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

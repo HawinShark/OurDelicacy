@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FA6C4821CCB0B8D002D46F9 /* DetailsPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C46F1CCB0B8D002D46F9 /* DetailsPageController.m */; };
+		3FA6C4831CCB0B8D002D46F9 /* DetailsPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C4701CCB0B8D002D46F9 /* DetailsPageController.xib */; };
+		3FA6C4841CCB0B8D002D46F9 /* HeadViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C4731CCB0B8D002D46F9 /* HeadViewModel.m */; };
+		3FA6C4851CCB0B8D002D46F9 /* MaterialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C4751CCB0B8D002D46F9 /* MaterialModel.m */; };
+		3FA6C4861CCB0B8D002D46F9 /* StepOneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C4771CCB0B8D002D46F9 /* StepOneModel.m */; };
+		3FA6C4871CCB0B8D002D46F9 /* HeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C47A1CCB0B8D002D46F9 /* HeadViewCell.m */; };
+		3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C47B1CCB0B8D002D46F9 /* HeadViewCell.xib */; };
+		3FA6C4891CCB0B8D002D46F9 /* MaterialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C47D1CCB0B8D002D46F9 /* MaterialCell.m */; };
+		3FA6C48A1CCB0B8D002D46F9 /* MaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C47E1CCB0B8D002D46F9 /* MaterialCell.xib */; };
+		3FA6C48B1CCB0B8D002D46F9 /* StepOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */; };
+		3FA6C48C1CCB0B8D002D46F9 /* StepOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C4811CCB0B8D002D46F9 /* StepOneCell.xib */; };
 		3FB117451CC9CFB600CA4AD4 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB117441CC9CFB600CA4AD4 /* List.m */; };
 		7513E4101CC8BA1500E0DC97 /* BigRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E40F1CC8BA1500E0DC97 /* BigRoundView.m */; };
 		7513E4131CC8BA3A00E0DC97 /* SmRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E4121CC8BA3A00E0DC97 /* SmRoundView.m */; };
@@ -81,6 +92,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FA6C46E1CCB0B8D002D46F9 /* DetailsPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsPageController.h; sourceTree = "<group>"; };
+		3FA6C46F1CCB0B8D002D46F9 /* DetailsPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsPageController.m; sourceTree = "<group>"; };
+		3FA6C4701CCB0B8D002D46F9 /* DetailsPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsPageController.xib; sourceTree = "<group>"; };
+		3FA6C4721CCB0B8D002D46F9 /* HeadViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadViewModel.h; sourceTree = "<group>"; };
+		3FA6C4731CCB0B8D002D46F9 /* HeadViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadViewModel.m; sourceTree = "<group>"; };
+		3FA6C4741CCB0B8D002D46F9 /* MaterialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialModel.h; sourceTree = "<group>"; };
+		3FA6C4751CCB0B8D002D46F9 /* MaterialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialModel.m; sourceTree = "<group>"; };
+		3FA6C4761CCB0B8D002D46F9 /* StepOneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepOneModel.h; sourceTree = "<group>"; };
+		3FA6C4771CCB0B8D002D46F9 /* StepOneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepOneModel.m; sourceTree = "<group>"; };
+		3FA6C4791CCB0B8D002D46F9 /* HeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadViewCell.h; sourceTree = "<group>"; };
+		3FA6C47A1CCB0B8D002D46F9 /* HeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadViewCell.m; sourceTree = "<group>"; };
+		3FA6C47B1CCB0B8D002D46F9 /* HeadViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadViewCell.xib; sourceTree = "<group>"; };
+		3FA6C47C1CCB0B8D002D46F9 /* MaterialCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialCell.h; sourceTree = "<group>"; };
+		3FA6C47D1CCB0B8D002D46F9 /* MaterialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialCell.m; sourceTree = "<group>"; };
+		3FA6C47E1CCB0B8D002D46F9 /* MaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialCell.xib; sourceTree = "<group>"; };
+		3FA6C47F1CCB0B8D002D46F9 /* StepOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepOneCell.h; sourceTree = "<group>"; };
+		3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepOneCell.m; sourceTree = "<group>"; };
+		3FA6C4811CCB0B8D002D46F9 /* StepOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepOneCell.xib; sourceTree = "<group>"; };
 		3FB117431CC9CFB600CA4AD4 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		3FB117441CC9CFB600CA4AD4 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
 		62FA1D13F8A65EDB1A6DC6B0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +236,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FA6C46B1CCB0B00002D46F9 /* BreakFastDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3FA6C4711CCB0B8D002D46F9 /* Model */,
+				3FA6C4781CCB0B8D002D46F9 /* View */,
+				3FA6C46D1CCB0B8D002D46F9 /* Controller */,
+			);
+			path = BreakFastDetails;
+			sourceTree = "<group>";
+		};
+		3FA6C46D1CCB0B8D002D46F9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3FA6C46E1CCB0B8D002D46F9 /* DetailsPageController.h */,
+				3FA6C46F1CCB0B8D002D46F9 /* DetailsPageController.m */,
+				3FA6C4701CCB0B8D002D46F9 /* DetailsPageController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3FA6C4711CCB0B8D002D46F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3FA6C4721CCB0B8D002D46F9 /* HeadViewModel.h */,
+				3FA6C4731CCB0B8D002D46F9 /* HeadViewModel.m */,
+				3FA6C4741CCB0B8D002D46F9 /* MaterialModel.h */,
+				3FA6C4751CCB0B8D002D46F9 /* MaterialModel.m */,
+				3FA6C4761CCB0B8D002D46F9 /* StepOneModel.h */,
+				3FA6C4771CCB0B8D002D46F9 /* StepOneModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3FA6C4781CCB0B8D002D46F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3FA6C4791CCB0B8D002D46F9 /* HeadViewCell.h */,
+				3FA6C47A1CCB0B8D002D46F9 /* HeadViewCell.m */,
+				3FA6C47B1CCB0B8D002D46F9 /* HeadViewCell.xib */,
+				3FA6C47C1CCB0B8D002D46F9 /* MaterialCell.h */,
+				3FA6C47D1CCB0B8D002D46F9 /* MaterialCell.m */,
+				3FA6C47E1CCB0B8D002D46F9 /* MaterialCell.xib */,
+				3FA6C47F1CCB0B8D002D46F9 /* StepOneCell.h */,
+				3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */,
+				3FA6C4811CCB0B8D002D46F9 /* StepOneCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3FD9F55F1CC9C29A0064990D /* BreakfastModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +670,7 @@
 				3FD9F55F1CC9C29A0064990D /* BreakfastModel */,
 				F54BE88C1CC9B07F00C3FF67 /* breakfastCell */,
 				F5D97C4B1CC7ABF00034099A /* ViewController */,
+				3FA6C46B1CCB0B00002D46F9 /* BreakFastDetails */,
 			);
 			path = SecondBreakFast;
 			sourceTree = "<group>";
@@ -762,12 +841,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA6C48A1CCB0B8D002D46F9 /* MaterialCell.xib in Resources */,
 				F54BE89F1CC9B65E00C3FF67 /* IndexThirdCell.xib in Resources */,
 				F54BE8D01CCA673000C3FF67 /* SearchNextViewController.xib in Resources */,
 				F5559CFA1CC8AB8E00379BF0 /* TimerViewController.xib in Resources */,
 				F5B289E51CC4F7B400ECF016 /* LaunchScreen.storyboard in Resources */,
 				F5559D041CC8ABB200379BF0 /* MineViewController.xib in Resources */,
+				3FA6C48C1CCB0B8D002D46F9 /* StepOneCell.xib in Resources */,
 				F5559CFF1CC8AB9D00379BF0 /* BreakFastViewController.xib in Resources */,
+				3FA6C4831CCB0B8D002D46F9 /* DetailsPageController.xib in Resources */,
 				F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */,
 				F5B28A2D1CC525BB00ECF016 /* DDCollectCell.xib in Resources */,
 				F5B28A271CC5253E00ECF016 /* Images.xcassets in Resources */,
@@ -775,6 +857,7 @@
 				F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */,
 				F52BB8C01CC5CB0F000B8577 /* DDPushList.xib in Resources */,
 				F5B28A331CC53B9300ECF016 /* Main.storyboard in Resources */,
+				3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */,
 				F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */,
 				F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */,
 				F54BE8951CC9B13700C3FF67 /* IndexFirstCell.xib in Resources */,
@@ -856,6 +939,8 @@
 				F5B28A2C1CC525BB00ECF016 /* DDCollectCell.m in Sources */,
 				F54BE8D61CCA705A00C3FF67 /* SearchBase.m in Sources */,
 				F5B28A311CC52A9200ECF016 /* UIImage+Extended.m in Sources */,
+				3FA6C4891CCB0B8D002D46F9 /* MaterialCell.m in Sources */,
+				3FA6C4861CCB0B8D002D46F9 /* StepOneModel.m in Sources */,
 				F52BB8D61CC6564A000B8577 /* DaydayCookDescription.m in Sources */,
 				F54BE8D71CCA705A00C3FF67 /* SearchData.m in Sources */,
 				7513E4161CC8BA8A00E0DC97 /* PointView.m in Sources */,
@@ -864,9 +949,11 @@
 				F5D97C531CC7ACAB0034099A /* SearchViewController.m in Sources */,
 				F5559D0A1CC8B4E300379BF0 /* CustomSearchBar.m in Sources */,
 				F5559D031CC8ABB200379BF0 /* MineViewController.m in Sources */,
+				3FA6C4851CCB0B8D002D46F9 /* MaterialModel.m in Sources */,
 				F5B28A171CC4FED100ECF016 /* DaydayHome.m in Sources */,
 				F5D97C581CC7B3840034099A /* Loading.m in Sources */,
 				3FB117451CC9CFB600CA4AD4 /* List.m in Sources */,
+				3FA6C48B1CCB0B8D002D46F9 /* StepOneCell.m in Sources */,
 				F54BE89E1CC9B65E00C3FF67 /* IndexThirdCell.m in Sources */,
 				F5559D0B1CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m in Sources */,
 				F5B28A0E1CC4F89300ECF016 /* ViewController.m in Sources */,
@@ -878,11 +965,14 @@
 				F52BB8DE1CC65797000B8577 /* DayDescriptionData.m in Sources */,
 				F54BE8BA1CCA4F9A00C3FF67 /* Timer.m in Sources */,
 				F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */,
+				3FA6C4871CCB0B8D002D46F9 /* HeadViewCell.m in Sources */,
+				3FA6C4841CCB0B8D002D46F9 /* HeadViewModel.m in Sources */,
 				F54BE8941CC9B13700C3FF67 /* IndexFirstCell.m in Sources */,
 				F52BB8C81CC6115A000B8577 /* NETManager.m in Sources */,
 				F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */,
 				F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */,
 				F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */,
+				3FA6C4821CCB0B8D002D46F9 /* DetailsPageController.m in Sources */,
 				F5B289D71CC4F7B400ECF016 /* main.m in Sources */,
 				F54BE8CA1CCA5F3C00C3FF67 /* NetandHUB.m in Sources */,
 			);
@@ -1022,7 +1112,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
-
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1042,7 +1131,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
-
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
