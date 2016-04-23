@@ -56,9 +56,16 @@
         NSLog(@"%@",str);
     }];
     
+    
+    
+    
     //当按下return
     [search getClickFromReturn:^(NSString *str) {
         
+        //
+        [self modal];
+        
+        str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
         self.controller.name = str;
         
         //跳转
@@ -79,15 +86,21 @@
 
 
 
+- (void)modal{
+    _controller = [[SearchNextViewController alloc] init];
+    _controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    SearchNav = [[WHC_NavigationController alloc]initWithRootViewController:_controller];
+}
+
+
+
 
 
 
 - (void)ModelToNext{
     if (IOS_VERSION >= 8.0) {
         
-        _controller = [[SearchNextViewController alloc] init];
-        _controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        SearchNav = [[WHC_NavigationController alloc]initWithRootViewController:_controller];
+        
         _controller.providesPresentationContextTransitionStyle = YES;
         _controller.definesPresentationContext = YES;
         _controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -95,9 +108,7 @@
         
     } else {
         
-        _controller = [[SearchNextViewController alloc] init];
-        _controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        SearchNav = [[WHC_NavigationController alloc]initWithRootViewController:_controller];
+        
         self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self presentViewController:SearchNav animated:NO completion:nil];
         self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;

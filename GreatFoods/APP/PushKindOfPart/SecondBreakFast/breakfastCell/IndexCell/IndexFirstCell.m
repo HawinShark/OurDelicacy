@@ -35,30 +35,36 @@
 
 -(void)getModel:(List *)one ModelTwo:(List *)two ModelThree:(List *)three
 {
-    [self.imageFirst sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",one.imageid]]];
-    _LabelFirst.text = one.name;
+    //优化
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        
+        [self.imageFirst sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",one.imageid]]];
+        [self.imageSecond sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",two.imageid]]];
+        [self.titleImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",three.imageid]]];
+        
+    });
     
-    [self.imageSecond sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",two.imageid]]];
-    _LabelSecond.text = two.name;
     
-    [self.titleImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",three.imageid]]];
+    
+    _LabelFirst.text    = one.name;
+    _LabelSecond.text   = two.name;
     self.titleName.text = three.name;
-    self.collect.text = three.collectCount;
-    self.zan.text = three.likeCount;
-    
-    
-    self.imageFirst.image = [UIImage RecompressedImageFromImage:self.imageFirst.image];
-    self.imageSecond.image = [UIImage RecompressedImageFromImage:self.imageSecond.image];
-    self.titleImage.image = [UIImage RecompressedImageFromImage:self.titleImage.image];
-    
+    self.collect.text   = three.collectCount;
+    self.zan.text       = three.likeCount;
 
+    
+    self.imageFirst  = [self MASK:self.imageFirst];
+    self.imageSecond = [self MASK:self.imageSecond];
+    self.titleImage  = [self MASK:self.titleImage];;
+    
     
 }
 
 - (void)awakeFromNib {
     //
     
-    _TransparencyView.alpha = 0.3;
+    _TransparencyView.alpha    = 0.3;
     _TransparencyViewTwo.alpha = 0.3;
 }
 
@@ -91,6 +97,17 @@
     // Configure the view for the selected state
 }
 
+
+
+
+
+- (UIImageView *)MASK:(UIImageView *)image{
+    image.clipsToBounds    = YES;
+    image.center           = self.contentView.center;
+    image.contentMode      = UIViewContentModeScaleAspectFill;
+    image.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    return image;
+}
 
 
 

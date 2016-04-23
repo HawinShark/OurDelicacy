@@ -25,16 +25,22 @@
 
 
 -(void)Get:(List *)model{
-    [self.image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
+    
+    
     self.title.text = model.name;
     
     
-    
-    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        
+        
+        [self.image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
+       
+    });
     
     
     //裁剪
-    self.image.image = [UIImage RecompressedImageFromImage:self.image.image];
+    self.image = [self MASK:self.image];
 
     
 }
@@ -51,6 +57,19 @@
 
 
 
+
+
+
+
+
+
+- (UIImageView *)MASK:(UIImageView *)image{
+    image.clipsToBounds    = YES;
+    image.center           = self.contentView.center;
+    image.contentMode      = UIViewContentModeScaleAspectFill;
+    image.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    return image;
+}
 
 
 @end
