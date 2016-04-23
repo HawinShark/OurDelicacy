@@ -11,9 +11,13 @@
 
 #import "SearchData.h"
 #import <AFNetworking.h>
-
+#import <MJRefreshBackNormalFooter.h>
 @interface SearchNextViewController ()
 <UITableViewDelegate,UITableViewDataSource>
+
+{
+    NSInteger refreshCount;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -27,11 +31,15 @@
 
 
 
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     self.title = self.name;
     
-    self.tableView.backgroundColor = [UIColor clearColor];
+    [self buildTransluent]; //半透明
+    
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Zapfino" size:15.0] forKey:NSFontAttributeName]];
     
@@ -44,20 +52,12 @@
 
 
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //
-    
-    if (IOS_VERSION >= 7) {
-        
-        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-    }
-    
-    
-    self.tableView.rowHeight = 170;
-    
-    [self buildTransluent];
-    
     
     /* 数据源 */
     [self showHudInViewhint:@"努力加载中.."];
@@ -67,13 +67,34 @@
         [self getdata];
     });
     
+    
+    if (IOS_VERSION >= 7) {
+        
+        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    }
+    
+    
+    self.tableView.rowHeight = 150;
+    
+    
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(Back)];
+    
+    //上拉刷新
+    __weak typeof(self)weakSelf = self;
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf getNewData];
+    }];
+    
 }
 
 
 - (void)Back{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+
 
 
 
@@ -92,13 +113,26 @@
 
 
 
+
+
+
+
+
+
+
 #pragma mark- tableview delegate
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //滑到中间
+    [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
 }
+
+
+
+
 
 
 
@@ -142,6 +176,8 @@
         [cell setModel:model];
     }
     
+    cell.contentView.backgroundColor = RGBA(0, 0, 0, 0);
+    
     return cell;
 }
 
@@ -166,11 +202,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
-    NSString *utf = [self.name stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
-    NSString *urlstr = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/search.do?name=%@&pageSize=20&currentPage=0",utf];
+    NSString *urlstr = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/search.do?name=%@&pageSize=20&currentPage=0&parentId=",self.name];
     
-    [manager POST:urlstr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *utf = [urlstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+
+    [manager POST:utf parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
 //        NSLog(@"%@",responseObject);
         
@@ -191,7 +228,7 @@
             });
         }
         else{
-            [self showHint:@"请求失败"];
+            [self showHint:responseObject[@"msg"]];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         
@@ -203,7 +240,42 @@
 
 - (void)getNewData
 {
+    refreshCount++;
     
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    
+    NSString *urlstr = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/search.do?name=%@&pageSize=20&currentPage=%ld&parentId=",self.name,refreshCount];
+    
+    NSString *utf = [urlstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
+    [manager POST:utf parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //        NSLog(@"%@",responseObject);
+        
+        if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
+            
+            NSArray *data = responseObject[@"data"];
+            
+            for (NSDictionary *dic in data) {
+                
+                SearchData *model = [SearchData modelObjectWithDictionary:dic];
+                [_dataSource addObject:model];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.tableView reloadData];
+                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+        else{
+            
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        
+        
+    } failure:nil];
 }
 
 
@@ -217,6 +289,8 @@
 
 - (void)buildTransluent
 {
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     UIView *alphaView = [[UIView alloc] initWithFrame:self.view.frame];
     UIView *baseView  = [[UIView alloc] initWithFrame:self.view.frame];
     
@@ -227,9 +301,6 @@
     
     [self.view addSubview:baseView];
     [self.view addSubview:alphaView];
-    
-    [self.view sendSubviewToBack:baseView];
-    [self.view sendSubviewToBack:alphaView];
     
 }
 

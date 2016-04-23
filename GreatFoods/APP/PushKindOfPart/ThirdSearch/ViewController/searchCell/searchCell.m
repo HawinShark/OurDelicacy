@@ -9,6 +9,7 @@
 #import "searchCell.h"
 
 #import "SearchData.h"
+#import <UIImageView+WebCache.h>
 @interface searchCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -28,12 +29,28 @@
     //
     
     
-    self.contentView.backgroundColor = [UIColor clearColor];
+    self.contentView.backgroundColor = RGBA(0, 0, 0, 0);
 }
 
 
 - (void)setModel:(SearchData *)model
 {
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+
+        NSString *img = [model.imageUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        [self.image sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:nil];
+    });
+    
+    self.image.clipsToBounds = YES;
+    self.image.center = self.contentView.center;
+    self.image.contentMode = UIViewContentModeScaleAspectFill;
+    self.image.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    
+    
+    
     self.title.text = model.name;
     
     self.watch.text = [NSString stringWithFormat:@"%0.f",model.clickCount];
