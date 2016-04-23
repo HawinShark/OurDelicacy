@@ -32,12 +32,8 @@
 		F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BB8D51CC6564A000B8577 /* DaydayCookDescription.xib */; };
 		F52BB8DD1CC65797000B8577 /* DayDescriptionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8DA1CC65797000B8577 /* DayDescriptionBaseClass.m */; };
 		F52BB8DE1CC65797000B8577 /* DayDescriptionData.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8DC1CC65797000B8577 /* DayDescriptionData.m */; };
-		F54BE8941CC9B13700C3FF67 /* IndexFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8921CC9B13700C3FF67 /* IndexFirstCell.m */; };
-		F54BE8951CC9B13700C3FF67 /* IndexFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8931CC9B13700C3FF67 /* IndexFirstCell.xib */; };
 		F54BE8991CC9B64F00C3FF67 /* IndexSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8971CC9B64F00C3FF67 /* IndexSecondCell.m */; };
 		F54BE89A1CC9B64F00C3FF67 /* IndexSecondCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8981CC9B64F00C3FF67 /* IndexSecondCell.xib */; };
-		F54BE89E1CC9B65E00C3FF67 /* IndexThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE89C1CC9B65E00C3FF67 /* IndexThirdCell.m */; };
-		F54BE89F1CC9B65E00C3FF67 /* IndexThirdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE89D1CC9B65E00C3FF67 /* IndexThirdCell.xib */; };
 		F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8A21CC9D14900C3FF67 /* searchCell.m */; };
 		F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8A31CC9D14900C3FF67 /* searchCell.xib */; };
 		F54BE8BA1CCA4F9A00C3FF67 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8B91CCA4F9A00C3FF67 /* Timer.m */; };
@@ -138,15 +134,9 @@
 		F52BB8DA1CC65797000B8577 /* DayDescriptionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayDescriptionBaseClass.m; sourceTree = "<group>"; };
 		F52BB8DB1CC65797000B8577 /* DayDescriptionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayDescriptionData.h; sourceTree = "<group>"; };
 		F52BB8DC1CC65797000B8577 /* DayDescriptionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayDescriptionData.m; sourceTree = "<group>"; };
-		F54BE8911CC9B13700C3FF67 /* IndexFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexFirstCell.h; sourceTree = "<group>"; };
-		F54BE8921CC9B13700C3FF67 /* IndexFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexFirstCell.m; sourceTree = "<group>"; };
-		F54BE8931CC9B13700C3FF67 /* IndexFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexFirstCell.xib; sourceTree = "<group>"; };
 		F54BE8961CC9B64F00C3FF67 /* IndexSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexSecondCell.h; sourceTree = "<group>"; };
 		F54BE8971CC9B64F00C3FF67 /* IndexSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexSecondCell.m; sourceTree = "<group>"; };
 		F54BE8981CC9B64F00C3FF67 /* IndexSecondCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexSecondCell.xib; sourceTree = "<group>"; };
-		F54BE89B1CC9B65E00C3FF67 /* IndexThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexThirdCell.h; sourceTree = "<group>"; };
-		F54BE89C1CC9B65E00C3FF67 /* IndexThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexThirdCell.m; sourceTree = "<group>"; };
-		F54BE89D1CC9B65E00C3FF67 /* IndexThirdCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexThirdCell.xib; sourceTree = "<group>"; };
 		F54BE8A11CC9D14900C3FF67 /* searchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchCell.h; sourceTree = "<group>"; };
 		F54BE8A21CC9D14900C3FF67 /* searchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchCell.m; sourceTree = "<group>"; };
 		F54BE8A31CC9D14900C3FF67 /* searchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchCell.xib; sourceTree = "<group>"; };
@@ -370,22 +360,10 @@
 			path = breakfastCell;
 			sourceTree = "<group>";
 		};
-		F54BE88D1CC9B0AA00C3FF67 /* IndexFirstCell */ = {
-			isa = PBXGroup;
-			children = (
-				F54BE8911CC9B13700C3FF67 /* IndexFirstCell.h */,
-				F54BE8921CC9B13700C3FF67 /* IndexFirstCell.m */,
-				F54BE8931CC9B13700C3FF67 /* IndexFirstCell.xib */,
-			);
-			name = IndexFirstCell;
-			sourceTree = "<group>";
-		};
 		F54BE88E1CC9B0D600C3FF67 /* IndexCell */ = {
 			isa = PBXGroup;
 			children = (
-				F54BE88D1CC9B0AA00C3FF67 /* IndexFirstCell */,
 				F54BE88F1CC9B0ED00C3FF67 /* IndexSecondCell */,
-				F54BE8901CC9B0FC00C3FF67 /* IndexThirdCell */,
 			);
 			path = IndexCell;
 			sourceTree = "<group>";
@@ -398,16 +376,6 @@
 				F54BE8981CC9B64F00C3FF67 /* IndexSecondCell.xib */,
 			);
 			name = IndexSecondCell;
-			sourceTree = "<group>";
-		};
-		F54BE8901CC9B0FC00C3FF67 /* IndexThirdCell */ = {
-			isa = PBXGroup;
-			children = (
-				F54BE89B1CC9B65E00C3FF67 /* IndexThirdCell.h */,
-				F54BE89C1CC9B65E00C3FF67 /* IndexThirdCell.m */,
-				F54BE89D1CC9B65E00C3FF67 /* IndexThirdCell.xib */,
-			);
-			name = IndexThirdCell;
 			sourceTree = "<group>";
 		};
 		F54BE8A01CC9D12C00C3FF67 /* searchCell */ = {
@@ -842,7 +810,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FA6C48A1CCB0B8D002D46F9 /* MaterialCell.xib in Resources */,
-				F54BE89F1CC9B65E00C3FF67 /* IndexThirdCell.xib in Resources */,
 				F54BE8D01CCA673000C3FF67 /* SearchNextViewController.xib in Resources */,
 				F5559CFA1CC8AB8E00379BF0 /* TimerViewController.xib in Resources */,
 				F5B289E51CC4F7B400ECF016 /* LaunchScreen.storyboard in Resources */,
@@ -860,7 +827,6 @@
 				3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */,
 				F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */,
 				F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */,
-				F54BE8951CC9B13700C3FF67 /* IndexFirstCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,7 +920,6 @@
 				F5D97C581CC7B3840034099A /* Loading.m in Sources */,
 				3FB117451CC9CFB600CA4AD4 /* List.m in Sources */,
 				3FA6C48B1CCB0B8D002D46F9 /* StepOneCell.m in Sources */,
-				F54BE89E1CC9B65E00C3FF67 /* IndexThirdCell.m in Sources */,
 				F5559D0B1CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m in Sources */,
 				F5B28A0E1CC4F89300ECF016 /* ViewController.m in Sources */,
 				F52BB8CF1CC61C03000B8577 /* DaydayCookBaseClass.m in Sources */,
@@ -967,7 +932,6 @@
 				F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */,
 				3FA6C4871CCB0B8D002D46F9 /* HeadViewCell.m in Sources */,
 				3FA6C4841CCB0B8D002D46F9 /* HeadViewModel.m in Sources */,
-				F54BE8941CC9B13700C3FF67 /* IndexFirstCell.m in Sources */,
 				F52BB8C81CC6115A000B8577 /* NETManager.m in Sources */,
 				F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */,
 				F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */,

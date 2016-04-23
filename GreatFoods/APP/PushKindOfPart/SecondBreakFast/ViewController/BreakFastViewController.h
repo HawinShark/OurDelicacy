@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BreakFastViewController : UIViewController
+#import "NetandHUB.h"
+@interface BreakFastViewController :NetandHUB
 
 
 

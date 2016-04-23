@@ -75,6 +75,7 @@
                     <include reference="zVw-1W-VCf"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="122" y="375"/>
         </view>
     </objects>
     <resources>

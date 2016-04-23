@@ -16,7 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 
-@property (weak, nonatomic) IBOutlet UILabel *title;
 
 @end
 
@@ -24,9 +23,9 @@
 @implementation IndexSecondCell
 
 
--(void)Get:(List *)model{
+-(void)Get:(List *)model
+{
     [self.image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
-    self.title.text = model.name;
     
     
     
