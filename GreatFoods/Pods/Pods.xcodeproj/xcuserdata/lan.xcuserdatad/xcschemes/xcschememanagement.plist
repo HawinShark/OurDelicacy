@@ -14,10 +14,25 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>SDAutoLayout.xcscheme</key>
 		<dict>
@@ -32,12 +47,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>033FB651969F6F40431D7C0E00195391</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1921DCCDC26E89C25105F3ACF4FCAA18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4928295525F26C863B8B6C02FA3AF2B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8997E5EC47DCABF4F2961CD50709AC4A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F74D9EA91F4C43190670066BAC37D44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +82,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9C554BEAC7EAB4F99C756896D08432D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A3CB674BCE5816334EEDC5F0A6015924</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3EC70350258EA13F5A0A9BD721F3B04</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E55BD2A7D679D0B0A7412924CFB4B8E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EC70CCD09ADDB6445D828ED20C0B370E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3A4A32569FB00D6AFA60CC12F0190AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

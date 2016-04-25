@@ -46,28 +46,35 @@
 -(void)Get:(List *)one two:(List *)two three:(List *)three four:(List *)four five:(List *)five
 {
     
-    [self.imageone sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",one.imageid]]];
-    _LabelOne.text = one.name;
+    //优化
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        
+        [self.imageone sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",one.imageid]]];
+        
+        [self.imagetwo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",two.imageid]]];
+        
+        [self.imagethree sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",three.imageid]]];
+        
+        [self.imagefour sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",four.imageid]]];
+        
+        [self.imagefive sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",five.imageid]]];
+        
+    });
     
-    [self.imagetwo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",two.imageid]]];
-    _LabelOne.text = two.name;
     
-    [self.imagethree sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",three.imageid]]];
+    _LabelOne.text   = one.name;
+    _LabelTwo.text   = two.name;
     _LabelThree.text = three.name;
-    
-    [self.imagefour sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",four.imageid]]];
-    _LabelFour.text = four.name;
-    
-    [self.imagefive sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",five.imageid]]];
-    self.title.text = five.name;
-    
+    _LabelFour.text  = four.name;
+    self.title.text  = five.name;
     
     //裁剪
-    self.imageone.image = [UIImage RecompressedImageFromImage:self.imageone.image];
-    self.imagetwo.image = [UIImage RecompressedImageFromImage:self.imagetwo.image];
-    self.imagethree.image = [UIImage RecompressedImageFromImage:self.imagethree.image];
-    self.imagefour.image = [UIImage RecompressedImageFromImage:self.imagefour.image];
-    self.imagefive.image = [UIImage RecompressedImageFromImage:self.imagefive.image];
+    self.imageone   = [self MASK:self.imageone];
+    self.imagetwo   = [self MASK:self.imagetwo];
+    self.imagethree = [self MASK:self.imagethree];
+    self.imagefour  = [self MASK:self.imagefour];
+    self.imagefive  = [self MASK:self.imagefive];
     
     
 }
@@ -76,10 +83,10 @@
 
 
 - (void)awakeFromNib {
-    _TransparencyOne.alpha = 0.3;
-    _TransparencyTwo.alpha = 0.3;
+    _TransparencyOne.alpha   = 0.3;
+    _TransparencyTwo.alpha   = 0.3;
     _TransparencyThree.alpha = 0.3;
-    _TransparencyFour.alpha = 0.3;
+    _TransparencyFour.alpha  = 0.3;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -87,5 +94,23 @@
 
     // Configure the view for the selected state
 }
+
+
+
+
+
+
+
+
+
+- (UIImageView *)MASK:(UIImageView *)image{
+    image.clipsToBounds    = YES;
+    image.center           = self.contentView.center;
+    image.contentMode      = UIViewContentModeScaleAspectFill;
+    image.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    return image;
+}
+
+
 
 @end

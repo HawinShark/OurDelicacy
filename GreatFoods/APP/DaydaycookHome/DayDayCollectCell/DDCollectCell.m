@@ -53,11 +53,14 @@ CGFloat maxAlpha = 0.4;
 
 -(void)getModel:(DaydayCookData *)model{
     //裁图
-    [self.BackGroundImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"background-1"]];
-    self.BackGroundImage.clipsToBounds = YES;
-    self.BackGroundImage.center = self.contentView.center;
-    self.BackGroundImage.contentMode = UIViewContentModeScaleAspectFill;
-    self.BackGroundImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        [self.BackGroundImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"background-1"]];
+        self.BackGroundImage.clipsToBounds = YES;
+        self.BackGroundImage.center = self.contentView.center;
+        self.BackGroundImage.contentMode = UIViewContentModeScaleAspectFill;
+        self.BackGroundImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    });
     
 //    self.BackGroundImage.image = [UIImage RecompressedImageFromImage:self.BackGroundImage.image];//此方法重绘吃内存,不能大量使用
     

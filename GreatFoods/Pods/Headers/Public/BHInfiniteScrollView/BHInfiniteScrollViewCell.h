@@ -1,0 +1,1 @@
+../../../BHInfiniteScrollView/BHInfiniteScrollView/BHInfiniteScrollView/Views/BHInfiniteScrollViewCell.h

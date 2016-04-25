@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetandHUB.h"
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController :NetandHUB
 
 @end

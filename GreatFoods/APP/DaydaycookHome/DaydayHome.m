@@ -85,6 +85,8 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
+#pragma mark- 获取数据源
+    [self showHudInViewhint:@"Loadding.."];
     [self DayDayCookHomeDataIFRefresh:NO];
     
     self.DaydayCollecionView.delegate = self;
@@ -164,6 +166,8 @@
     /*  */
 //    NSLog(@"%f = %lu",scrollView.contentOffset.y / 180,self.DDdataArray.count - 5 );
     if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 10 ) {
+        
+        [self showHudInViewhint:@"正在加载.."];
         #pragma mark- 异步请求数据
         dispatch_async(dispatch_queue_create("new", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
             
@@ -293,6 +297,9 @@
 
 -(void)DayDayCookHomeDataIFRefresh:(BOOL)isrefresh;
 {
+    if ([self isNetWork]) {
+        
+    
     if (isrefresh == YES) {
         RefreshCurrentPage++;//下拉刷新
     }
@@ -313,9 +320,14 @@
             /* 刷新*/
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.DaydayCollecionView reloadData];
+                [self showhide];//隐藏菊花
             });
         }
     } failure:nil];
+        
+    
+        //加载内..
+    }
 }
 
 

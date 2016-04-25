@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9046" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="422" height="604"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="422" height="603"/>
+                <rect key="frame" x="0.0" y="0.0" width="422" height="603.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleAspectFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="v6e-Xb-jiN">
@@ -19,64 +19,54 @@
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Btw-Kg-Jan">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="188"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Btw-Kg-Jan" secondAttribute="height" multiplier="1:0.9" id="vUw-YP-Yvz"/>
                                 </constraints>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ssw-tU-HSI">
                                 <rect key="frame" x="214" y="0.0" width="208" height="188"/>
-                                <animations/>
                             </imageView>
                         </subviews>
-                        <animations/>
                         <constraints>
                             <constraint firstItem="ssw-tU-HSI" firstAttribute="height" secondItem="Btw-Kg-Jan" secondAttribute="height" id="4GK-2E-JPz"/>
                             <constraint firstAttribute="bottom" secondItem="Btw-Kg-Jan" secondAttribute="bottom" id="aRT-VS-hAb"/>
                             <constraint firstItem="ssw-tU-HSI" firstAttribute="width" secondItem="Btw-Kg-Jan" secondAttribute="width" id="jKB-iP-7Jm"/>
                         </constraints>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GYI-EY-qLd" userLabel="TransparencyImage View2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="夏浩文是猪" translatesAutoresizingMaskIntoConstraints="NO" id="GYI-EY-qLd" userLabel="TransparencyImage View2">
                         <rect key="frame" x="214" y="0.0" width="208" height="188"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0i-e9-6Ck" userLabel="SecondLabel">
                         <rect key="frame" x="214" y="83" width="208" height="21"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="0.99880883949999999" blue="0.99323430150000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0ZH-X2-y9f" userLabel="TransparencyImage View1">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="夏浩文是猪" translatesAutoresizingMaskIntoConstraints="NO" id="0ZH-X2-y9f" userLabel="TransparencyImage View1">
                         <rect key="frame" x="0.0" y="0.0" width="209" height="188"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A2-GW-794" userLabel="FirstLabel">
                         <rect key="frame" x="0.0" y="83" width="209" height="21"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="0.99880883949999999" blue="0.99323430150000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VfK-S1-sbA">
                         <rect key="frame" x="0.0" y="193" width="422" height="307"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="VfK-S1-sbA" secondAttribute="height" multiplier="11:8" id="FDA-zu-1JB"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkN-2E-hED">
                         <rect key="frame" x="15" y="515" width="392" height="43"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                         <color key="textColor" red="0.44509214743333336" green="0.44509214743333336" blue="0.44509214743333336" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="xdD-xv-tVK">
                         <rect key="frame" x="15" y="568" width="25" height="25"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="CZM-YO-hDX"/>
                             <constraint firstAttribute="width" constant="25" id="a0n-OS-7jN"/>
@@ -84,27 +74,23 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmm-8O-nx6">
                         <rect key="frame" x="50" y="568" width="11" height="25"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zan" translatesAutoresizingMaskIntoConstraints="NO" id="obb-GF-yad">
                         <rect key="frame" x="96" y="568" width="25" height="25"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="obb-GF-yad" secondAttribute="height" multiplier="1:1" id="qMB-vH-tgs"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPx-lf-B6B">
                         <rect key="frame" x="131" y="568" width="11" height="25"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="nPx-lf-B6B" firstAttribute="leading" secondItem="obb-GF-yad" secondAttribute="trailing" constant="10" id="2A4-GU-sl8"/>
                     <constraint firstItem="ssw-tU-HSI" firstAttribute="width" secondItem="GYI-EY-qLd" secondAttribute="width" id="2ej-CE-utv"/>
@@ -151,7 +137,6 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="LabelFirst" destination="3A2-GW-794" id="WP0-n8-pZh"/>
                 <outlet property="LabelSecond" destination="o0i-e9-6Ck" id="1gB-pf-x2I"/>
@@ -170,5 +155,6 @@
     <resources>
         <image name="Star" width="200" height="200"/>
         <image name="zan" width="200" height="200"/>
+        <image name="夏浩文是猪" width="200" height="200"/>
     </resources>
 </document>
