@@ -16,4 +16,6 @@
 @property (nonatomic) IBInspectable CGFloat dragHeight;
 
 -(void)setStandardHeight:(CGFloat)standardHeight;
+
+@property(nonatomic,copy) void(^currentIndex)(NSInteger index);
 @end

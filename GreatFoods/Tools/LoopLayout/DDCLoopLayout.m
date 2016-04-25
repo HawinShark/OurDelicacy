@@ -109,6 +109,8 @@ static CGFloat const DDCViewLayoutDragHeight = 180.0f;
         //设置初始化后的cell的高 给standardheight
         CGFloat Height = self.standardHeight;
         
+        self.currentIndex([self currentFocusItemIndex]);//返回下标
+        
         if (indexpath.item == [self currentFocusItemIndex]) {
             //特定的cell -- >
             y = [self yOffset] - _standardHeight * [self nextItemPercentageOffset];

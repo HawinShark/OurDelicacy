@@ -30,6 +30,13 @@
 @property (nonatomic, retain) UIImageView *watchImage;
 /* watchLabel*/
 @property (nonatomic, retain) UILabel *watchlabel;
+/* imgUrl*/
+@property (nonatomic, retain) NSString *imgUrl;
+/* url*/
+@property (nonatomic, retain) NSString *url;
+
+/* makeTitle*/
+@property (nonatomic, retain) NSString *makeTitle;
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
@@ -38,20 +45,78 @@
 @implementation DaydayCookDescription
 
 
--(void)viewWillAppear:(BOOL)animated
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    UIToolbar *tool = [[UIToolbar alloc]initWithFrame:CGRectMake(0, screen_height -40, screen_width, 40)];
+    
+    [tool setBackgroundColor:[UIColor redColor]];
+    //收藏按钮
+    UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [collectBtn setFrame:CGRectMake(0, 0, screen_width/3, 40)];
+    [collectBtn setImage:[UIImage imageNamed:@"收藏.png"] forState:UIControlStateNormal];
+    [collectBtn setImage:[UIImage imageNamed:@"收藏(1).png"] forState:UIControlStateSelected];
+    [collectBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *collectItem = [[UIBarButtonItem alloc]initWithCustomView:collectBtn];
+    //字体改变按钮
+    UIButton *fontBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [fontBtn setFrame:CGRectMake(0, 0, screen_width/3, 40)];
+    [fontBtn setImage:[UIImage imageNamed:@"字体.png"] forState:UIControlStateNormal];
+    [fontBtn setImage:[UIImage imageNamed:@"字体放大.png"] forState:UIControlStateSelected];
+    [fontBtn addTarget:self action:@selector(fontBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *fontItem = [[UIBarButtonItem alloc]initWithCustomView:fontBtn];
+    
+    //分享
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareBtn setFrame:CGRectMake(0, 0, screen_width/3, 40)];
+    [shareBtn setImage:[UIImage imageNamed:@"分享.png"] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc]initWithCustomView:shareBtn];
+    NSArray *itemArr =[NSArray arrayWithObjects:collectItem,fontItem,shareItem, nil];
+    [tool setItems:itemArr];
+    
+    [self.view addSubview:tool];
+}
+-(void)shareBtnAction:(UIButton *)btn
 {
     
     
 }
+-(void)fontBtnAction:(UIButton *)btn
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (btn.selected == NO) {
+        
+        //改变wedView字体大小
+        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '150%'"];
+    }
+    
+    else{
+        
+        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '100%'"];
+        
+    }
+    btn.selected = !btn.selected;
 
+    
+}
+-(void)collectAction:(UIButton *)btn{
+    
+    
+    btn.selected = !btn.selected;
+   }
+
+
+    
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //
     self.navigationController.navigationBarHidden = YES;
 
-    
-//    self.webView.delegate = self;
+    [self.webView setScalesPageToFit:YES];
+
+    self.webView.delegate = self;
     
     [self showHudInViewhint:@"拼命加载呢!.."];
     dispatch_async(dispatch_queue_create("discription", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
@@ -59,7 +124,7 @@
         [self getData];
     });
     
-    self.webView.scrollView.contentInset    = UIEdgeInsetsMake(screen_width + 100, 0, 0, 0);
+    self.webView.scrollView.contentInset    = UIEdgeInsetsMake(screen_width + 100, 0, 36, 0);
     
     //去除webview底部黑条
     self.webView.opaque = NO;
@@ -69,12 +134,17 @@
     
     [self buildImageAndLabel];
 
-    
-    
+
 }
 
 
-
+-(void)forward{
+    
+//        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '150%'"];
+}
+-(void)back{
+    [self.webView goBack];
+}
 
 
 
@@ -127,6 +197,8 @@
 
 - (void)getData{
     NSString *url =[NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/details.do?id=%ld&username=&password=",(long)self.BookID];
+    self.url = url;
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     [manager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -149,6 +221,9 @@
                 });
                 
                 self.titleName.text  = model.title;
+                self.makeTitle = model.title;
+                self.imgUrl = model.imageUrl;
+                
                 self.makelabel.text  = model.maketime;
                 self.watchlabel.text = [NSString stringWithFormat:@"%.0f",model.clickCount];
                 
@@ -217,7 +292,7 @@
     [whiteBack setBackgroundColor:[UIColor whiteColor]];
     
     self.titleName.sd_layout.topSpaceToView(whiteBack,15)
-    .leftSpaceToView(whiteBack,10).widthRatioToView(whiteBack,.8).autoHeightRatio(0);
+    .leftSpaceToView(whiteBack,10).rightSpaceToView(whiteBack,10);
     self.titleName.textColor = RGB(255,129,141);
     self.titleName.font = [UIFont systemFontOfSize:20];
 //    self.titleName.font = [UIFont boldSystemFontOfSize:20];

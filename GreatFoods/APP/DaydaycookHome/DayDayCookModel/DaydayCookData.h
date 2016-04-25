@@ -30,7 +30,7 @@
 @property (nonatomic, assign) id loadContent;
 @property (nonatomic, strong) NSString *screeningId;
 @property (nonatomic, assign) id area;
-@property (nonatomic, assign) id indexUrl;
+@property (nonatomic, strong) NSString* indexUrl;
 @property (nonatomic, assign) id imageHeight;
 @property (nonatomic, assign) id parentCategoryId;
 @property (nonatomic, assign) id shareUrl;
@@ -47,6 +47,8 @@
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) id displayState;
+
+@property (nonatomic,retain)NSString *playPath;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

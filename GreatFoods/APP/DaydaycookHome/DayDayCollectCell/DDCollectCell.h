@@ -10,6 +10,10 @@
 @class DaydayCookData;
 @interface DDCollectCell : UICollectionViewCell
 
+
+/* 播放 */
+@property (nonatomic, assign) BOOL isPlay;
+
 @property (weak, nonatomic) IBOutlet UIImageView *BackGroundImage;
 
 -(void)getModel:(DaydayCookData *)model;

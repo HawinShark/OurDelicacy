@@ -41,7 +41,7 @@
     [[self viewController].navigationController pushViewController:mine animated:YES];
 }
 
-
+//从uiview中找到navigation
 - (UIViewController*)viewController {
     
     for (UIView* next = [self superview]; next; next = next.superview) {
