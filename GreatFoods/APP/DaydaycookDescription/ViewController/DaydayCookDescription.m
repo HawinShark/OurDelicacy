@@ -13,6 +13,8 @@
 #import <UIView+SDAutoLayout.h>
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
+#import "DataBase.h"
+#import "CollectModel.h"
 @interface DaydayCookDescription () <UIWebViewDelegate>
 {
     Loading *load;
@@ -38,6 +40,11 @@
 /* makeTitle*/
 @property (nonatomic, retain) NSString *makeTitle;
 
+/* makeTitle*/
+@property (nonatomic, retain) CollectModel *collectmodel;
+
+//是否已收藏
+@property(nonatomic,assign) BOOL isCollect;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -46,8 +53,16 @@
 
 
 
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+    [self initTollBar];
+    
+}
+
+//初始化toolBar
+-(void)initTollBar{
+    
     UIToolbar *tool = [[UIToolbar alloc]initWithFrame:CGRectMake(0, screen_height -40, screen_width, 40)];
     
     [tool setBackgroundColor:[UIColor redColor]];
@@ -55,7 +70,13 @@
     UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectBtn setFrame:CGRectMake(0, 0, screen_width/3, 40)];
     [collectBtn setImage:[UIImage imageNamed:@"收藏.png"] forState:UIControlStateNormal];
+    
     [collectBtn setImage:[UIImage imageNamed:@"收藏(1).png"] forState:UIControlStateSelected];
+    
+    NSLog(@"iscollect == %d",self.isCollect);
+    if (self.isCollect) {
+        collectBtn.selected =YES;
+    }
     [collectBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *collectItem = [[UIBarButtonItem alloc]initWithCustomView:collectBtn];
     //字体改变按钮
@@ -82,9 +103,9 @@
     
     
 }
--(void)fontBtnAction:(UIButton *)btn
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)fontBtnAction:(UIButton *)btn{
+    
+    
     if (btn.selected == NO) {
         
         //改变wedView字体大小
@@ -97,14 +118,31 @@
         
     }
     btn.selected = !btn.selected;
+    
 
+}
+
+-(void)collectAction:(UIButton *)btn{
+    if (btn.selected == NO) {
+        CollectModel *model = [CollectModel new];
+        model.makeTitle = self.makeTitle;
+        model.url = self.url;
+        model.imgUrl = self.imgUrl;
+
+        [[DataBase shareData]insertInfo:model];
+        
+    }
+    
+    else{
+        
+        [[DataBase shareData]deleteInfo:self.makeTitle];
+        
+    }
+    
+       btn.selected = !btn.selected;
+       
     
 }
--(void)collectAction:(UIButton *)btn{
-    
-    
-    btn.selected = !btn.selected;
-   }
 
 
     
@@ -133,7 +171,6 @@
     self.webView.scrollView.backgroundColor = RGB(245, 245, 245);
     
     [self buildImageAndLabel];
-
 
 }
 
@@ -210,6 +247,14 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
+                //判断是否已收藏
+                [[DataBase shareData]openFmdb];
+                NSMutableArray *infoArr  = [[DataBase shareData]queryMakeTitle];
+                for (NSString *title in infoArr) {
+                    if ([model.title isEqualToString:title]) {
+                        self.isCollect = YES;
+                    }
+                }
                 
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     

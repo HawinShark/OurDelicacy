@@ -78,7 +78,7 @@
 
     NSURLSessionDownloadTask * task = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         
-        NSLog(@"进度 = %lf",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
+//        NSLog(@"进度 = %lf",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
         
     }
  destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {

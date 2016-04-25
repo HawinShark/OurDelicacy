@@ -6,43 +6,73 @@
 	<dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BHInfiniteScrollView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>JElasticPullToRefresh.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SDAutoLayout.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1921DCCDC26E89C25105F3ACF4FCAA18</key>
+		<key>0222D3D921EAAC30C8C5972F56236B7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8997E5EC47DCABF4F2961CD50709AC4A</key>
+		<key>412AC2833BB8B0B5C2BAD22EF66A43B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44D7F7C689E7B58517129CB5C1BF845F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4B3F564DCFFD038515CC985100F67719</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,22 +92,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C554BEAC7EAB4F99C756896D08432D4</key>
+		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3EC70350258EA13F5A0A9BD721F3B04</key>
+		<key>D3B8BF0B1EDEA2CF792944BF8EDD906C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC70CCD09ADDB6445D828ED20C0B370E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F3A4A32569FB00D6AFA60CC12F0190AB</key>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

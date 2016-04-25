@@ -19,9 +19,7 @@
     // Drawing code
 }
 */
--(void)awakeFromNib{
 
-}
 
 - (IBAction)Time:(UIButton *)sender {
 
