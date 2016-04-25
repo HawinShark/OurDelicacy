@@ -70,7 +70,12 @@
     if (!_imageView) {
         _imageView = [[UIImageView alloc]initWithFrame:self.bounds];
         _imageView.layer.masksToBounds = YES;
+        
+        _imageView.center           = self.contentView.center;
+        _imageView.contentMode      = UIViewContentModeScaleAspectFill;
+        _imageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     }
+    
     return _imageView;
 }
 
@@ -78,5 +83,6 @@
     _contentMode = pageViewContentMode;
     self.imageView.contentMode = pageViewContentMode;
 }
+
 
 @end

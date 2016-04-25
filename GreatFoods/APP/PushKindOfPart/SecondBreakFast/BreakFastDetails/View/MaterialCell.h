@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MaterialModel.h"
 
 @interface MaterialCell : UITableViewCell
 
+@property(nonatomic,retain) NSArray *Materia;
+@property (weak, nonatomic) IBOutlet UILabel *materialLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constantheight;
+-(void)Material:(NSArray *)Material;
 
-@property(nonatomic,retain) NSArray *abc;
-
-//@property (nonatomic,copy) void (^reload)();
+-(void)MaterialString:(NSString *)materialstring;
 
 @end

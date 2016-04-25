@@ -18,12 +18,15 @@
 
 #import "UIImageView+WebCache.h"
 #import <AFNetworking.h>
+#import <UITableView+SDAutoTableViewCellHeight.h>
 @interface DetailsPageController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *array;
     NSMutableArray *array1;
     NSMutableArray *headViewArray;
     NSMutableArray *materialArray;
+    NSMutableArray *materislName;
+    NSMutableArray *materislNum;
     NSMutableArray *stepArray;
     NSMutableDictionary *dic;
 }
@@ -37,93 +40,107 @@
     
     [self.view setBackgroundColor:[UIColor orangeColor]];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
     array = [NSMutableArray new];
     array1 = [NSMutableArray new];
     headViewArray = [NSMutableArray new];
     materialArray = [NSMutableArray new];
+    materislName = [NSMutableArray new];
+    materislNum = [NSMutableArray new];
     stepArray = [NSMutableArray new];
     dic = [NSMutableDictionary new];
-
-    _returnButton.alpha = 0.2;
     
     self.detailsPageTableView.rowHeight = UITableViewAutomaticDimension;
     self.detailsPageTableView.estimatedRowHeight = 200;
     
     [self RequestsData];
     
+    _detailsPageTableView.delegate = self;
+    _detailsPageTableView.dataSource = self;
 }
 
-//网络请求
+
+#pragma mark- 网络请求
 -(void)RequestsData
 {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getRecipeListByIds.shtml?ids=%@",_DetailsId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    if ([self isNetWork]) {
         
+        [self showHudInViewhint:@"正在加载..."];
         
-        NSDictionary *dic1 = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        dic = [dic1 objectForKey:@"list"];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
-        //获取头视图数据
-        for (NSDictionary *dic2 in dic) {
-            HeadViewModel *model = [[HeadViewModel alloc]initWithdic:dic2];
-            [headViewArray addObject:model];
-        }
-        
-        //获取食材数据
-        for (NSDictionary *dic3 in dic) {
-            NSArray *arr = [dic3 objectForKey:@"materialList"];
+        [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getRecipeListByIds.shtml?ids=%@",_DetailsId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            for (NSDictionary *dic6 in arr) {
-                MaterialModel *model = [[MaterialModel alloc]initWithdic:dic6];
-                [materialArray addObject:model];
+            [self showhide];
+            
+            dic = [responseObject objectForKey:@"list"];
+            
+            //获取头视图数据
+            for (NSDictionary *dic2 in dic) {
+                HeadViewModel *model = [[HeadViewModel alloc]initWithdic:dic2];
+                [headViewArray addObject:model];
             }
-        }
-        //获取烹饪步骤数据
-        for (NSDictionary *dic4 in dic){
-            NSArray *arr = [dic4 objectForKey:@"stepList"];
             
-            for (NSDictionary *dic5 in arr){
+            //获取食材数据
+            for (NSDictionary *dic3 in dic) {
+                NSArray *arr = [dic3 objectForKey:@"materialList"];
                 
-                StepOneModel *model = [[StepOneModel alloc]initWithdic:dic5];
-                [stepArray addObject:model];
+                for (NSDictionary *dic6 in arr) {
+                    MaterialModel *model = [[MaterialModel alloc]initWithdic:dic6];
+                    [materialArray addObject:model];
+                    
+                }
             }
-        }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
+            //获取烹饪步骤数据
+            for (NSDictionary *dic4 in dic){
+                NSArray *arr = [dic4 objectForKey:@"stepList"];
+                
+                for (NSDictionary *dic5 in arr){
+                    
+                    StepOneModel *model = [[StepOneModel alloc]initWithdic:dic5];
+                    [stepArray addObject:model];
+                }
+            }
             
-            [_detailsPageTableView reloadData];
-        });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [_detailsPageTableView reloadData];
+            });
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self showHint:@"数据异常"];
+        }];
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }else {
+        [self showHint:@"网络异常请检测网络"];
         
-    }];
+    }
     
-//    [NetworkRequestManager requestWithType:POST urlString:[NSString stringWithFormat:@"http://42.121.253.143/public/getRecipeListByIds.shtml?ids=%@",_DetailsId] parDic:nil finish:^(NSData *data) {
-//        
-//    } error:^(NSError *error) {
-//        NSLog(@"错误");
-//    }];
 }
 
-//返回按钮点击方法
+
+#pragma mark- 返回按钮
 - (IBAction)returnButton:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return stepArray.count+2;
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *string = @"cell";
+    static NSString *string1 = @"cell1";
+    static NSString *string2 = @"cell2";
     
     if (indexPath.row == 0) {
         
-        HeadViewCell *cell = [tableView dequeueReusableCellWithIdentifier:string];
+        HeadViewCell *cell = [tableView dequeueReusableCellWithIdentifier:string1];
         
         if (cell == nil)
         {
@@ -143,17 +160,36 @@
     ////
     if (indexPath.row == 1) {
     
-        MaterialCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell2"];
+        MaterialCell *cell = [tableView dequeueReusableCellWithIdentifier:string2];
     
         if (cell == nil)
         {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"MaterialCell" owner:nil options:nil]lastObject];
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"MaterialCell" owner:nil options:nil]lastObject];
         }
         
         if (materialArray.count != 0) {
-            
-            [cell setAbc:materialArray];
-//            cell.reload();
+                        
+            for (int i = 0; i < materialArray.count; i++) {
+                MaterialModel *model = materialArray[i];
+                [materislName addObject:model.name];
+                [materislName addObject:@" "];
+                [materislName addObject:model.dosage];
+                
+                NSLog(@"materislName.count1 = %ld",materialArray.count);
+                NSLog(@"i1 = %d",i);
+                
+                if (i+1 == materialArray.count)
+                {
+                    [materislName addObject:@" 。"];
+                }else
+                {
+                    [materislName addObject:@" ,"];
+                }
+                NSLog(@"materislName.count2 = %ld",materialArray.count);
+                NSLog(@"i2 = %d",i);
+            }
+            NSString *str = [materislName componentsJoinedByString:@""];
+            [cell MaterialString:str];
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -168,6 +204,7 @@
         }
         
         if (stepArray.count != 0) {
+            
             StepOneModel *model = [stepArray objectAtIndex:indexPath.row - 2];
             NSString *string = [NSString stringWithFormat:@"%ld",model.ordernum];
             cell.stepLabel.text = string;
@@ -182,7 +219,10 @@
     return nil;
 }
 
-
+//第三步,执行协议方法
+-(void)ChuanZhi{
+    [self.delegate getArray:materialArray];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
