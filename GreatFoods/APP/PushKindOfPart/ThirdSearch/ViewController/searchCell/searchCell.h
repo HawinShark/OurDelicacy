@@ -14,4 +14,5 @@
 /* model */
 @property (nonatomic, retain) SearchData *model;
 
+
 @end

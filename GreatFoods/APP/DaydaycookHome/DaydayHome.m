@@ -11,18 +11,26 @@
 #import "DDCLoopLayout.h"
 #import "DDPushList.h"
 #import "DaydayCookDescription.h"
-#import "DDCLoopLayout.h"
 
 #import "TimerViewController.h"
 
 #import <AFNetworking.h>
 #import <UIView+SDAutoLayout.h>
 #import <UIScrollView+JElasticPullToRefresh.h>
+
+#import "FilmManager.h"
+
 @interface DaydayHome () <UICollectionViewDataSource,UICollectionViewDelegate>
 {
     DDPushList *PushListView;//导航菜单
     
     UIButton *backtoTop;
+    
+    DDCLoopLayout *layout;
+    DDCollectCell *currentTopCell;
+    
+    FilmManager *filmmanager;
+    NSInteger currentIndex;
 }
 @property (retain, nonatomic) UICollectionView *DaydayCollecionView;
 @property (weak, nonatomic) IBOutlet UIButton *ListButton;//推出按钮
@@ -76,8 +84,14 @@
      *
      *  collectionview
      */
+    layout = [[DDCLoopLayout alloc]init];
+    
+    [layout setCurrentIndex:^(NSInteger index) {
+        currentIndex = index;
+    }];//回调第一个
+    
     self.DaydayCollecionView = [[UICollectionView alloc]
-                                initWithFrame:self.view.frame collectionViewLayout:[DDCLoopLayout new]];
+                                initWithFrame:self.view.frame collectionViewLayout:layout];
     self.DaydayCollecionView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_DaydayCollecionView];
     
@@ -149,6 +163,7 @@
     DaydayCookData *model = self.DDdataArray[indexPath.item];
     VC.BookID = model.dataIdentifier;
     
+    
     [self.navigationController pushViewController:VC animated:YES];
 }
 
@@ -165,6 +180,7 @@
 -(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
     /*  */
 //    NSLog(@"%f = %lu",scrollView.contentOffset.y / 180,self.DDdataArray.count - 5 );
+    
     if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 10 ) {
         
         [self showHudInViewhint:@"正在加载.."];
@@ -174,6 +190,8 @@
             [self DayDayCookHomeDataIFRefresh:YES];
         });
     }//减速判定是否刷新页面
+    
+    
 }
 
 //按钮出现
@@ -200,9 +218,50 @@
             }];
         }
     }
+    
+    
+    //中断视频播放
+    if (scrollView.contentOffset.y / 180 > currentIndex) {
+        if (currentTopCell.isPlay == YES) {
+            [filmmanager.player.currentItem cancelPendingSeeks];
+            [filmmanager.player.currentItem.asset cancelLoading];
+            [[NSNotificationCenter defaultCenter] removeObserver:filmmanager
+                                                            name:AVPlayerItemDidPlayToEndTimeNotification
+                                                          object:filmmanager.player.currentItem];
+            
+            [filmmanager removeFromSuperview];
+        }
+    }
 }
 
 
+
+
+#pragma mark- 控制视频播放
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    
+    static NSInteger topCell ;
+    topCell = scrollView.contentOffset.y / 180;
+    
+//    NSLog(@"num = %ld", (long)topCell);
+    
+    if (currentIndex == topCell) {
+        
+        currentTopCell = (DDCollectCell *)[self.DaydayCollecionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:topCell inSection:0]];
+        DaydayCookData *model = self.DDdataArray[currentIndex];
+        if (model.indexUrl.length > 0) {
+            NSLog(@"有种子");
+            filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
+            [currentTopCell.contentView addSubview:filmmanager];
+            [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
+            
+            currentTopCell.isPlay = YES;
+        }
+        
+    }
+    
+}
 
 
 
@@ -399,12 +458,9 @@
 
 -(void) totop:(UIButton *)sender
 {
-//    if (sender.tag == 0) {
-//        [self.DaydayCollecionView setContentOffset:CGPointZero animated:NO]; //无动画
-//    }else{
     
-        [self.DaydayCollecionView setContentOffset:CGPointZero animated:YES]; //1有动画
-//    }
+    [self.DaydayCollecionView setContentOffset:CGPointZero animated:YES]; //1有动画
+
     //置顶后按钮消失
     [UIView animateWithDuration:.5 animations:^{
         backtoTop.alpha = 0;

@@ -68,6 +68,7 @@
 		F5B28A2D1CC525BB00ECF016 /* DDCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B28A2B1CC525BB00ECF016 /* DDCollectCell.xib */; };
 		F5B28A311CC52A9200ECF016 /* UIImage+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28A301CC52A9200ECF016 /* UIImage+Extended.m */; };
 		F5B28A331CC53B9300ECF016 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B28A321CC53B9300ECF016 /* Main.storyboard */; };
+		F5B9166F1CCB5CD7006BF7D3 /* FilmManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B9166E1CCB5CD7006BF7D3 /* FilmManager.m */; };
 		F5D97C531CC7ACAB0034099A /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D97C511CC7ACAB0034099A /* SearchViewController.m */; };
 		F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D97C521CC7ACAB0034099A /* SearchViewController.xib */; };
 		F5D97C581CC7B3840034099A /* Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D97C571CC7B3830034099A /* Loading.m */; };
@@ -200,6 +201,8 @@
 		F5B28A2F1CC52A9200ECF016 /* UIImage+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extended.h"; sourceTree = "<group>"; };
 		F5B28A301CC52A9200ECF016 /* UIImage+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extended.m"; sourceTree = "<group>"; };
 		F5B28A321CC53B9300ECF016 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F5B9166D1CCB5CD7006BF7D3 /* FilmManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmManager.h; sourceTree = "<group>"; };
+		F5B9166E1CCB5CD7006BF7D3 /* FilmManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmManager.m; sourceTree = "<group>"; };
 		F5D97C501CC7ACAB0034099A /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		F5D97C511CC7ACAB0034099A /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		F5D97C521CC7ACAB0034099A /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -533,6 +536,7 @@
 		F5B28A0B1CC4F87300ECF016 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F5B9166C1CCB5C18006BF7D3 /* FilmManager */,
 				F54BE8C71CCA5F0700C3FF67 /* NetCheckAndHUB */,
 				F5B28A261CC5253E00ECF016 /* Images.xcassets */,
 				F5D97C551CC7B3090034099A /* LoadingAnimation */,
@@ -609,6 +613,15 @@
 				F5B28A301CC52A9200ECF016 /* UIImage+Extended.m */,
 			);
 			path = ImageExtended;
+			sourceTree = "<group>";
+		};
+		F5B9166C1CCB5C18006BF7D3 /* FilmManager */ = {
+			isa = PBXGroup;
+			children = (
+				F5B9166D1CCB5CD7006BF7D3 /* FilmManager.h */,
+				F5B9166E1CCB5CD7006BF7D3 /* FilmManager.m */,
+			);
+			path = FilmManager;
 			sourceTree = "<group>";
 		};
 		F5D97C471CC7AB660034099A /* PushKindOfPart */ = {
@@ -955,6 +968,7 @@
 				3FA6C4871CCB0B8D002D46F9 /* HeadViewCell.m in Sources */,
 				3FA6C4841CCB0B8D002D46F9 /* HeadViewModel.m in Sources */,
 				F52BB8C81CC6115A000B8577 /* NETManager.m in Sources */,
+				F5B9166F1CCB5CD7006BF7D3 /* FilmManager.m in Sources */,
 				F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */,
 				F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */,
 				F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */,

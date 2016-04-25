@@ -124,7 +124,7 @@
         [self getData];
     });
     
-    self.webView.scrollView.contentInset    = UIEdgeInsetsMake(screen_width + 100, 0, 0, 0);
+    self.webView.scrollView.contentInset    = UIEdgeInsetsMake(screen_width + 100, 0, 36, 0);
     
     //去除webview底部黑条
     self.webView.opaque = NO;
@@ -292,7 +292,7 @@
     [whiteBack setBackgroundColor:[UIColor whiteColor]];
     
     self.titleName.sd_layout.topSpaceToView(whiteBack,15)
-    .leftSpaceToView(whiteBack,10).widthRatioToView(whiteBack,.8).autoHeightRatio(0);
+    .leftSpaceToView(whiteBack,10).rightSpaceToView(whiteBack,10);
     self.titleName.textColor = RGB(255,129,141);
     self.titleName.font = [UIFont systemFontOfSize:20];
 //    self.titleName.font = [UIFont boldSystemFontOfSize:20];
