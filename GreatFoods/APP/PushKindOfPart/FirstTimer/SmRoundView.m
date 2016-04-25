@@ -24,19 +24,12 @@ NSInteger count;
 }
 */
 
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-//    WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
-//    nav.panGesture.enabled = YES;
-    
-}
 
 
 
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
-    
     CGPoint point = [touch locationInView:self];
     for (UIButton *btn in _btnArray) {
         CGPoint p = [self convertPoint:point toView:btn];
@@ -54,7 +47,6 @@ NSInteger count;
 
 -(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
-    
     
     for (UIButton *btn in _btnArray) {
         CGPoint p = [self convertPoint:point toView:btn];

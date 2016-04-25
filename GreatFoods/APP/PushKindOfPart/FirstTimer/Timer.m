@@ -7,9 +7,9 @@
 //
 
 #import "Timer.h"
-
+#import <AVFoundation/AVFoundation.h>
 @interface Timer ()
-
+@property(nonatomic,retain)AVPlayer *audioPlayer;
 @end
 @implementation Timer
 +(instancetype)shareTimer
@@ -42,7 +42,7 @@
     dispatch_source_set_timer(timer1, DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
     dispatch_source_set_event_handler(timer1, ^{
         [self handleSmRoundTimerAction];
-        NSLog(@"timeCount  == %ld",self.timeCount);
+//        NSLog(@"timeCount  == %ld",self.timeCount);
         
     });
     

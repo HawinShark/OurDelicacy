@@ -26,13 +26,14 @@
 @property(nonatomic,strong)dispatch_source_t time1;
 @property(nonatomic,assign)NSInteger timeout;
 @property(nonatomic,assign)CGFloat progressCount;
-
-@property(nonatomic,retain)UIColor *color;
-@property(nonatomic,retain)UIButton *addMinBtn;
+@property(nonatomic,retain) UIColor *color;
+@property(nonatomic,retain) UIButton *addMinBtn;
 
 @end
 
 @implementation TimerViewController
+
+
 
 //开始计时
 - (IBAction)startAction:(id)sender {
@@ -60,10 +61,6 @@
     
     
 }
-
-
-
-
 #pragma mark - Time代理实现
 -(void)TimerActionWithRefreshUI{
     
@@ -110,7 +107,7 @@
             }
             [Timer shareTimer].timeCount -- ;
             
-            NSLog(@"~~~~%ld",[Timer shareTimer].timeCount % 60);
+//            NSLog(@"~~~~%ld",[Timer shareTimer].timeCount % 60);
         });
         
     }
@@ -128,32 +125,6 @@
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////暂停倒计时
-//-(void)stopTimer{
-//    
-//    dispatch_source_cancel(self.time1);
-//    self.time1 = nil;
-//    dispatch_source_cancel(self.time);
-//    self.time = nil;
-//    
-//    
-//}
 //取消按钮
 - (IBAction)cancelAction:(id)sender {
     if ([Timer shareTimer].smRoundTimer) {
@@ -199,16 +170,6 @@
     }
     return _addMinBtn;
 }
-
-
-
-
-
-
-
-
-
-
 
 -(void)startTimer{
     
@@ -284,19 +245,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //计时,隐藏控件
 -(void)action{
     
@@ -310,41 +258,14 @@
 
 
 
-
-
-
-
-
-
 -(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:YES];
+    [super viewDidAppear:animated];
     [self addMinBtn];
-    // [self.view addSubview:_addMinBtn];
-    //        [self.stopBtn setTitle:@"继续" forState:UIControlStateSelected];
-    //        self.smRoundView.minBlock = ^(NSInteger min){
-    //
-    //            self.countLabel.text = [NSString stringWithFormat:@"%ld",min];
-    //        };
-    //        _addMinBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.countLabel.bounds.size.width, self.countLabel.bounds.size.height)];
-    //        _addMinBtn.center = self.view.center;
-    //    //    button.backgroundColor = [UIColor redColor];
-    //        [_addMinBtn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
-    //        [self.view addSubview:_addMinBtn];
-    //
-    //    if ([Timer shareTimer].timeCount > 0) {
-    //        _progressCount = 60.0 - (CGFloat)([Timer shareTimer].timeCount %60) ;
-    //
-    //            [self TimerActionWithBigRound];
-    //        NSLog(@"%f",_progressCount);
-    //        NSLog(@"%ld",[Timer shareTimer].timeCount % 60);
-    //
-    //        self.smRoundView.minProgress =(CGFloat)[Timer shareTimer].timeCount /60 / 60;
-    //
-    //        [self action];
-    //
-    //
-    //
-    //     }
+
+
+
+    
+ 
     
     
     [self.stopBtn setTitle:@"继续" forState:UIControlStateSelected];
@@ -352,31 +273,27 @@
         
         self.countLabel.text = [NSString stringWithFormat:@"%ld",(long)min];
     };
-    //    UIButton * button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.countLabel.bounds.size.width, self.countLabel.bounds.size.height)];
-    //    button.center = self.view.center;
-    ////    button.backgroundColor = [UIColor redColor];
-    //    [button addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
-    //    [self.view addSubview:button];
-    //}
+   
 }
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
 
+
+
+
+}
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [Timer shareTimer].delegate = self;
-    
+   
     [self.stopBtn setTitle:@"继续" forState:UIControlStateSelected];
     self.smRoundView.minBlock = ^(NSInteger min){
         
         self.countLabel.text = [NSString stringWithFormat:@"%ld",min];
     };
-    //            _addMinBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.countLabel.bounds.size.width, self.countLabel.bounds.size.height)];
-    //            _addMinBtn.center = self.view.center;
-    //            _addMinBtn.backgroundColor = [UIColor redColor];
-    //            [_addMinBtn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
-    //            [self.view addSubview:_addMinBtn];
-    
-    
-    
+
 }
 
 
@@ -389,14 +306,6 @@
     }
     
 }
-
-
-
-
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

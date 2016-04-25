@@ -11,6 +11,9 @@
 		7513E4101CC8BA1500E0DC97 /* BigRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E40F1CC8BA1500E0DC97 /* BigRoundView.m */; };
 		7513E4131CC8BA3A00E0DC97 /* SmRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E4121CC8BA3A00E0DC97 /* SmRoundView.m */; };
 		7513E4161CC8BA8A00E0DC97 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E4151CC8BA8A00E0DC97 /* PointView.m */; };
+		7590480A1CCB495A00559B74 /* 暂停.png in Resources */ = {isa = PBXBuildFile; fileRef = 759048081CCB495A00559B74 /* 暂停.png */; };
+		7590480B1CCB495A00559B74 /* 暂停1.png in Resources */ = {isa = PBXBuildFile; fileRef = 759048091CCB495A00559B74 /* 暂停1.png */; };
+		7590480E1CCB4C6900559B74 /* songListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7590480D1CCB4C6900559B74 /* songListView.m */; };
 		9E0CB5236EE33452699E17B6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED34D67C062B50611E9D9154 /* libPods.a */; };
 		F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8BD1CC5CAFB000B8577 /* DDPushList.m */; };
 		F52BB8C01CC5CB0F000B8577 /* DDPushList.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BB8BF1CC5CB0F000B8577 /* DDPushList.xib */; };
@@ -85,6 +88,10 @@
 		7513E4121CC8BA3A00E0DC97 /* SmRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmRoundView.m; sourceTree = "<group>"; };
 		7513E4141CC8BA8A00E0DC97 /* PointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointView.h; sourceTree = "<group>"; };
 		7513E4151CC8BA8A00E0DC97 /* PointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointView.m; sourceTree = "<group>"; };
+		759048081CCB495A00559B74 /* 暂停.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "暂停.png"; sourceTree = "<group>"; };
+		759048091CCB495A00559B74 /* 暂停1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "暂停1.png"; sourceTree = "<group>"; };
+		7590480C1CCB4C6900559B74 /* songListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = songListView.h; sourceTree = "<group>"; };
+		7590480D1CCB4C6900559B74 /* songListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = songListView.m; sourceTree = "<group>"; };
 		9333AF356A4D342A18C9BA64 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ED34D67C062B50611E9D9154 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F52BB8BC1CC5CAFB000B8577 /* DDPushList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushList.h; sourceTree = "<group>"; };
@@ -200,6 +207,15 @@
 				3FB117441CC9CFB600CA4AD4 /* List.m */,
 			);
 			path = BreakfastModel;
+			sourceTree = "<group>";
+		};
+		759048031CCB482800559B74 /* cireatFoodIcon */ = {
+			isa = PBXGroup;
+			children = (
+				759048081CCB495A00559B74 /* 暂停.png */,
+				759048091CCB495A00559B74 /* 暂停1.png */,
+			);
+			path = cireatFoodIcon;
 			sourceTree = "<group>";
 		};
 		97B6E1F6B9B5147195431229 /* Pods */ = {
@@ -518,6 +534,7 @@
 		F5D97C481CC7ABAB0034099A /* FirstTimer */ = {
 			isa = PBXGroup;
 			children = (
+				759048031CCB482800559B74 /* cireatFoodIcon */,
 				F54BE8B81CCA4F9A00C3FF67 /* Timer.h */,
 				F54BE8B91CCA4F9A00C3FF67 /* Timer.m */,
 				F5D97C491CC7ABC30034099A /* ViewController */,
@@ -527,6 +544,8 @@
 				7513E4121CC8BA3A00E0DC97 /* SmRoundView.m */,
 				7513E4141CC8BA8A00E0DC97 /* PointView.h */,
 				7513E4151CC8BA8A00E0DC97 /* PointView.m */,
+				7590480C1CCB4C6900559B74 /* songListView.h */,
+				7590480D1CCB4C6900559B74 /* songListView.m */,
 			);
 			path = FirstTimer;
 			sourceTree = "<group>";
@@ -678,7 +697,7 @@
 				TargetAttributes = {
 					F5B289D11CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 5AWV6U89AL;
+						DevelopmentTeam = 364PR47FE6;
 					};
 					F5B289EA1CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -718,10 +737,12 @@
 				F54BE89F1CC9B65E00C3FF67 /* IndexThirdCell.xib in Resources */,
 				F5559CFA1CC8AB8E00379BF0 /* TimerViewController.xib in Resources */,
 				F5B289E51CC4F7B400ECF016 /* LaunchScreen.storyboard in Resources */,
+				7590480B1CCB495A00559B74 /* 暂停1.png in Resources */,
 				F5559D041CC8ABB200379BF0 /* MineViewController.xib in Resources */,
 				F5559CFF1CC8AB9D00379BF0 /* BreakFastViewController.xib in Resources */,
 				F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */,
 				F5B28A2D1CC525BB00ECF016 /* DDCollectCell.xib in Resources */,
+				7590480A1CCB495A00559B74 /* 暂停.png in Resources */,
 				F5B28A271CC5253E00ECF016 /* Images.xcassets in Resources */,
 				F54BE89A1CC9B64F00C3FF67 /* IndexSecondCell.xib in Resources */,
 				F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */,
@@ -823,6 +844,7 @@
 				F52BB8CF1CC61C03000B8577 /* DaydayCookBaseClass.m in Sources */,
 				F5B28A1B1CC4FF2B00ECF016 /* DDCLoopLayout.m in Sources */,
 				F5559CFE1CC8AB9D00379BF0 /* BreakFastViewController.m in Sources */,
+				7590480E1CCB4C6900559B74 /* songListView.m in Sources */,
 				7513E4131CC8BA3A00E0DC97 /* SmRoundView.m in Sources */,
 				F5559CF91CC8AB8E00379BF0 /* TimerViewController.m in Sources */,
 				F52BB8DE1CC65797000B8577 /* DayDescriptionData.m in Sources */,
@@ -969,7 +991,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/natsuhirofumi/Desktop/GitHub/GreatFoods/GreatFoods/Tools/Prefix/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/lynsea/Desktop/OurDelicacy/GreatFoods/Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -988,7 +1010,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/natsuhirofumi/Desktop/GitHub/GreatFoods/GreatFoods/Tools/Prefix/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/lynsea/Desktop/OurDelicacy/GreatFoods/Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
