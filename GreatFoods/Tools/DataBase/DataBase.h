@@ -16,5 +16,6 @@
 -(void) insertInfo:(CollectModel *)model;
 - (void) deleteInfo:(id)makeTitle;
 - (NSMutableArray *)queryMakeTitle;
+- (NSMutableArray *)queryCollectModel;
 
 @end

@@ -11,5 +11,5 @@
 @interface CollectModel : NSObject
 @property (nonatomic,copy) NSString *imgUrl;
 @property (nonatomic,copy) NSString *makeTitle;
-@property (nonatomic,copy) NSString *url;
+@property (nonatomic,assign) NSInteger bookId;
 @end

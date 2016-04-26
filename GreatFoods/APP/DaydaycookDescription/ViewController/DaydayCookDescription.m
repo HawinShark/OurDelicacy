@@ -34,8 +34,6 @@
 @property (nonatomic, retain) UILabel *watchlabel;
 /* imgUrl*/
 @property (nonatomic, retain) NSString *imgUrl;
-/* url*/
-@property (nonatomic, retain) NSString *url;
 
 /* makeTitle*/
 @property (nonatomic, retain) NSString *makeTitle;
@@ -133,7 +131,7 @@
     if (btn.selected == NO) {
         CollectModel *model = [CollectModel new];
         model.makeTitle = self.makeTitle;
-        model.url = self.url;
+        model.bookId = self.BookID;
         model.imgUrl = self.imgUrl;
 
         [[DataBase shareData]insertInfo:model];
@@ -244,7 +242,6 @@
 
 - (void)getData{
     NSString *url =[NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/details.do?id=%ld&username=&password=",(long)self.BookID];
-    self.url = url;
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];

@@ -7,6 +7,7 @@
 //
 
 #import "MineViewController.h"
+#import "MineCollectViewController.h"
 
 @interface MineViewController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -43,7 +44,19 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            MineCollectViewController *mineCollectVc = [[MineCollectViewController alloc]init];
+            [self.navigationController pushViewController:mineCollectVc animated:YES];
+        }
+    }
+    
+    
+    
+    
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return 2;

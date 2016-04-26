@@ -7,27 +7,77 @@
 //
 
 #import "MineCollectViewController.h"
-
-@interface MineCollectViewController ()
-
+#import "DataBase.h"
+#import "MineCollextCollectionViewCell.h"
+#import <UIImageView+WebCache.h>
+#import "CollectModel.h"
+#import "DaydayCookDescription.h"
+@interface MineCollectViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property(nonatomic,retain)NSMutableArray *collectArr;
 @end
 
 @implementation MineCollectViewController
-
-static NSString * const reuseIdentifier = @"Cell";
-
+static NSString *cellid = @"MineCollectcell";
+-(void)viewDidDisappear:(BOOL)animated{
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [[DataBase shareData]openFmdb];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.collectArr = [[DataBase shareData]queryCollectModel];
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.itemSize = CGSizeMake(screen_width/2,screen_width/2 );
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    self.collectionView.collectionViewLayout = layout;
+//    [self.collectionView registerClass:[MineCollextCollectionViewCell class] forCellWithReuseIdentifier:cellid];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"MineCollextCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellid];
+
+    self.collectionView.dataSource =self;
+    self.collectionView.delegate =self;
+    NSLog(@"array.count [==========%ld",self.collectArr.count);
+
+
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    // Do any additional setup after loading the view.
+    
+    
+    DaydayCookDescription *VC = [DaydayCookDescription new];
+    
+    CollectModel *model = self.collectArr[indexPath.item];
+    VC.BookID = model.bookId;
+    
+    
+    [self.navigationController pushViewController:VC animated:YES];
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    
+    
+
+    return [self.collectArr count];
 }
 
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+
+    MineCollextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellid forIndexPath:indexPath];
+//    [cell setBackgroundColor:[UIColor redColor]];
+    CollectModel *model = [self.collectArr objectAtIndex:indexPath.item] ;
+    
+    [cell getModel:model];
+    NSLog(@"~~~~~%ld",self.collectArr.count);
+    return cell;
+    
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -40,58 +90,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark <UICollectionViewDataSource>
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell
-    
-    return cell;
-}
-
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
 }
 */
 

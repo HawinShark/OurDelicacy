@@ -29,8 +29,10 @@
 		75BE67961CCDF08D002AFF5B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BE67951CCDF08D002AFF5B /* libsqlite3.tbd */; };
 		75BE67A91CCE1C48002AFF5B /* CollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BE67A61CCE1C48002AFF5B /* CollectModel.m */; };
 		75BE67AA1CCE1C48002AFF5B /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BE67A81CCE1C48002AFF5B /* DataBase.m */; };
-		75BE67B31CCE54D2002AFF5B /* MineCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BE67B11CCE54D2002AFF5B /* MineCollectViewController.m */; };
-		75BE67B41CCE54D2002AFF5B /* MineCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BE67B21CCE54D2002AFF5B /* MineCollectViewController.xib */; };
+		75BE67F71CCE6C9D002AFF5B /* MineCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BE67F51CCE6C9D002AFF5B /* MineCollectViewController.m */; };
+		75BE67F81CCE6C9D002AFF5B /* MineCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BE67F61CCE6C9D002AFF5B /* MineCollectViewController.xib */; };
+		75BE67FF1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BE67FD1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m */; };
+		75BE68001CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BE67FE1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib */; };
 		9E0CB5236EE33452699E17B6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED34D67C062B50611E9D9154 /* libPods.a */; };
 		F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8BD1CC5CAFB000B8577 /* DDPushList.m */; };
 		F52BB8C01CC5CB0F000B8577 /* DDPushList.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BB8BF1CC5CB0F000B8577 /* DDPushList.xib */; };
@@ -141,9 +143,12 @@
 		75BE67A61CCE1C48002AFF5B /* CollectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectModel.m; sourceTree = "<group>"; };
 		75BE67A71CCE1C48002AFF5B /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
 		75BE67A81CCE1C48002AFF5B /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
-		75BE67B01CCE54D2002AFF5B /* MineCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCollectViewController.h; sourceTree = "<group>"; };
-		75BE67B11CCE54D2002AFF5B /* MineCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCollectViewController.m; sourceTree = "<group>"; };
-		75BE67B21CCE54D2002AFF5B /* MineCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineCollectViewController.xib; sourceTree = "<group>"; };
+		75BE67F41CCE6C9D002AFF5B /* MineCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCollectViewController.h; sourceTree = "<group>"; };
+		75BE67F51CCE6C9D002AFF5B /* MineCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCollectViewController.m; sourceTree = "<group>"; };
+		75BE67F61CCE6C9D002AFF5B /* MineCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineCollectViewController.xib; sourceTree = "<group>"; };
+		75BE67FC1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCollextCollectionViewCell.h; sourceTree = "<group>"; };
+		75BE67FD1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCollextCollectionViewCell.m; sourceTree = "<group>"; };
+		75BE67FE1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineCollextCollectionViewCell.xib; sourceTree = "<group>"; };
 		9333AF356A4D342A18C9BA64 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ED34D67C062B50611E9D9154 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F52BB8BC1CC5CAFB000B8577 /* DDPushList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushList.h; sourceTree = "<group>"; };
@@ -825,9 +830,12 @@
 				F5559D001CC8ABB200379BF0 /* MineViewController.h */,
 				F5559D011CC8ABB200379BF0 /* MineViewController.m */,
 				F5559D021CC8ABB200379BF0 /* MineViewController.xib */,
-				75BE67B01CCE54D2002AFF5B /* MineCollectViewController.h */,
-				75BE67B11CCE54D2002AFF5B /* MineCollectViewController.m */,
-				75BE67B21CCE54D2002AFF5B /* MineCollectViewController.xib */,
+				75BE67F41CCE6C9D002AFF5B /* MineCollectViewController.h */,
+				75BE67F51CCE6C9D002AFF5B /* MineCollectViewController.m */,
+				75BE67F61CCE6C9D002AFF5B /* MineCollectViewController.xib */,
+				75BE67FC1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.h */,
+				75BE67FD1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m */,
+				75BE67FE1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -955,9 +963,10 @@
 				F5559D041CC8ABB200379BF0 /* MineViewController.xib in Resources */,
 				3FA6C48C1CCB0B8D002D46F9 /* StepOneCell.xib in Resources */,
 				F5559CFF1CC8AB9D00379BF0 /* BreakFastViewController.xib in Resources */,
+				75BE68001CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib in Resources */,
 				3FA6C4831CCB0B8D002D46F9 /* DetailsPageController.xib in Resources */,
-				75BE67B41CCE54D2002AFF5B /* MineCollectViewController.xib in Resources */,
 				F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */,
+				75BE67F81CCE6C9D002AFF5B /* MineCollectViewController.xib in Resources */,
 				F5B28A2D1CC525BB00ECF016 /* DDCollectCell.xib in Resources */,
 				7590480A1CCB495A00559B74 /* 暂停.png in Resources */,
 				F5B28A271CC5253E00ECF016 /* Images.xcassets in Resources */,
@@ -1055,7 +1064,6 @@
 				7513E4161CC8BA8A00E0DC97 /* PointView.m in Sources */,
 				3FB103F71CCB523700F94F65 /* carouselCell.m in Sources */,
 				F5B28A1F1CC5004F00ECF016 /* WHC_NavigationController.m in Sources */,
-				75BE67B31CCE54D2002AFF5B /* MineCollectViewController.m in Sources */,
 				F52BB8D01CC61C03000B8577 /* DaydayCookData.m in Sources */,
 				F5D97C531CC7ACAB0034099A /* SearchViewController.m in Sources */,
 				F5559D0A1CC8B4E300379BF0 /* CustomSearchBar.m in Sources */,
@@ -1078,8 +1086,10 @@
 				F5559CF91CC8AB8E00379BF0 /* TimerViewController.m in Sources */,
 				F52BB8DE1CC65797000B8577 /* DayDescriptionData.m in Sources */,
 				F54BE8BA1CCA4F9A00C3FF67 /* Timer.m in Sources */,
+				75BE67FF1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m in Sources */,
 				F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */,
 				3FA6C4871CCB0B8D002D46F9 /* HeadViewCell.m in Sources */,
+				75BE67F71CCE6C9D002AFF5B /* MineCollectViewController.m in Sources */,
 				3FA6C4841CCB0B8D002D46F9 /* HeadViewModel.m in Sources */,
 				F52BB8C81CC6115A000B8577 /* NETManager.m in Sources */,
 				F5B9166F1CCB5CD7006BF7D3 /* FilmManager.m in Sources */,

@@ -37,7 +37,7 @@
     //3.打开数据库
     if ([self.db open]) {
         //4.创表
-        BOOL result=[self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,url text,makeTitle text );"];
+        BOOL result=[self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text );"];
         
         
         if (result) {
@@ -53,7 +53,7 @@
 
 -(void)insertInfo:(CollectModel *)model
 {
-    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,url,makeTitle) VALUES(?,?,?);",model.imgUrl,model.url,model.makeTitle];
+    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
     
 }
 - (NSMutableArray *)queryMakeTitle
@@ -77,6 +77,34 @@
     NSLog(@"array===%@",array);
     
     return array;
+}
+- (NSMutableArray *)queryCollectModel{
+    
+    // 1.执行查询语句
+    FMResultSet *resultSet = [self.db executeQuery:@"SELECT * FROM t_collect"];
+    // 2.遍历结果
+    NSMutableArray *array = [[NSMutableArray alloc ]init];
+    
+    
+    
+    while ([resultSet next]) {
+        
+        NSString *makeTitle = [resultSet stringForColumn:@"makeTitle"];
+        NSString *imgUrl = [resultSet stringForColumn:@"imgUrl"];
+        NSInteger bookId = [resultSet intForColumn:@"bookId"];
+        CollectModel *model = [[CollectModel alloc]init];
+        model.imgUrl = imgUrl;
+        model.bookId = bookId;
+        model.makeTitle = makeTitle;
+            [array addObject:model];
+            
+        
+    }
+    
+    NSLog(@"array===%@",array);
+    
+    return array;
+    
 }
 
 - (void) deleteInfo:(id)makeTitle
