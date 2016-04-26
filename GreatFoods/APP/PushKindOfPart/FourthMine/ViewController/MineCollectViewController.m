@@ -54,11 +54,10 @@ static NSString *cellid = @"MineCollectcell";
     
     for (NSString *str in self.deleteArr) {
         [[DataBase shareData]deleteInfo:str];
-        [self.deleteArr removeObject:str];
     }
-    if (self.deleteArr.count == 0) {
+    [self.deleteArr removeAllObjects];
         self.deleteBtn.enabled = NO;
-    }
+
     
     self.collectArr = [[DataBase shareData]queryCollectModel];
     [self.collectionView reloadData];
