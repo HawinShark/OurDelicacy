@@ -59,9 +59,6 @@
     [super viewDidLoad];
     //
     
-    
-    
-    
     /* 数据源 */
     [self showHudInViewhint:@"努力加载中.."];
     

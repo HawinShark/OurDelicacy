@@ -18,6 +18,7 @@
 #import <UIView+SDAutoLayout.h>
 #import <UIScrollView+JElasticPullToRefresh.h>
 #import <MJRefreshNormalHeader.h>
+#import <MJRefreshGifHeader.h>
 #import "FilmManager.h"
 
 @interface DaydayHome () <UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
@@ -46,8 +47,8 @@
 {
     
     if (firstTime == 0) {
-        [self.DaydayCollecionView.mj_header beginRefreshing];
-        [UIView setAnimationsEnabled:NO];
+        [self uptodownRefresh];
+//        [UIView setAnimationsEnabled:NO];
         firstTime = 1;
     }
 
@@ -117,15 +118,17 @@
     [self backToTop];
     
     #pragma mark- 添加下拉刷新
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    
+    
+    MJRefreshNormalHeader *head = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self uptodownRefresh];
     }];
-    self.DaydayCollecionView.mj_header = header;
+    self.DaydayCollecionView.mj_header = head;
     
     //color
-    header.stateLabel.textColor = [UIColor whiteColor];
+    head.stateLabel.textColor = [UIColor whiteColor];
     
-    header.lastUpdatedTimeLabel.textColor = [UIColor whiteColor];
+    head.lastUpdatedTimeLabel.textColor = [UIColor whiteColor];
 }
 
   
@@ -268,22 +271,19 @@
         if (model.indexUrl.length > 0) {
             
             NSLog(@"有种子");
-            filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
             
             //延迟执行
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.DaydayCollecionView.mj_header endRefreshing];
                 
+                filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
                 //  执行的代码
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                [currentTopCell.contentView addSubview:filmmanager];
+                [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
                     //
-                    [currentTopCell.contentView addSubview:filmmanager];
-                    [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
-                    
-                    currentTopCell.isPlay = YES;
-                    
-                });
                 
+                    currentTopCell.isPlay = YES;
+                                    
                 
                 //----->>>>>>>
             });
@@ -475,7 +475,7 @@
                     //  执行的代码
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //
-                        [UIView setAnimationsEnabled:YES];
+//                        [UIView setAnimationsEnabled:YES];
                         
                         [self.DaydayCollecionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
                         [self.navigationController setNavigationBarHidden:NO animated:YES];

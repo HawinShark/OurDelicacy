@@ -35,20 +35,21 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
-    if (section == 0) {
-        return @"Good";
-    }
-    else{
-        return @"Bad";
-    }
+//    if (section == 0) {
+//        return @"Good";
+//    }
+//    else{
+//        return @"Bad";
+//    }
+    return @" ";
 }
-
--(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    if (section == 0) {
-        return @"good";
-    }
-    return @"bad";
-}
+//
+//-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+//    if (section == 0) {
+//        return @"good";
+//    }
+//    return @"bad";
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -58,7 +59,19 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
     
-    cell.textLabel.text = @"New York";
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        cell.textLabel.text = @"我的收藏";
+    }
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        cell.textLabel.text = @"我的足迹";
+    }
+    
+    
+    
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        cell.textLabel.text = @"设置";
+    }
+    
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;

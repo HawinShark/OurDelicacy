@@ -10,8 +10,6 @@
 #import "DaydayCookData.h"
 @interface SearchListViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *ZanButton;
-
 -(void)GetModel:(DaydayCookData *)model;
 
 @end

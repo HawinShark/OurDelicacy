@@ -118,8 +118,22 @@
         model.imgUrl = self.imgUrl;
 
         [[DataBase shareData]insertInfo:model];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"收藏成功" message:@"已加入收藏\n快进入我的收藏里查看吧~" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        [self presentViewController:alert animated:YES completion:^{
+           
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            });
+        }];
     }else{
         [[DataBase shareData]deleteInfo:self.makeTitle];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"你这个笨蛋!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
     }
         btn.selected = !btn.selected;
 }
@@ -254,7 +268,7 @@
                 self.makeTitle = model.title;
                 self.imgUrl = model.imageUrl;
                 
-                self.makelabel.text  = model.maketime;
+                self.makelabel.text  = [NSString stringWithFormat:@"烹饪时间 : %@",model.maketime];
                 self.watchlabel.text = [NSString stringWithFormat:@"%.0f",model.clickCount];
                 
                 
@@ -348,7 +362,7 @@
     _makeImage.sd_layout.bottomSpaceToView(whiteBack,10).leftEqualToView(_titleName).heightIs(16).widthEqualToHeight();
     [_makeImage setImage:[UIImage imageNamed:@"clock"]];
     
-    _makelabel.sd_layout.bottomEqualToView(_makeImage).leftSpaceToView(_makeImage,8).widthIs(60).heightIs(16);
+    _makelabel.sd_layout.bottomEqualToView(_makeImage).leftSpaceToView(_makeImage,8).widthIs(135).heightIs(16);
     _makelabel.textColor = RGB(79,79,79);
     _makelabel.font = [UIFont systemFontOfSize:16];
     
@@ -386,6 +400,9 @@
 
 
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.hidesBarsOnSwipe = NO;
+}
 
 
 

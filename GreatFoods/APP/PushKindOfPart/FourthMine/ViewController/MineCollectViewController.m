@@ -54,13 +54,12 @@ static NSString *cellid = @"MineCollectcell";
     
     for (NSString *str in self.deleteArr) {
         [[DataBase shareData]deleteInfo:str];
+        [self.deleteArr removeObject:str];
     }
-    [self.deleteArr removeAllObjects];
+    if (self.deleteArr.count == 0) {
         self.deleteBtn.enabled = NO;
-
+    }
     
-    self.collectArr = [[DataBase shareData]queryCollectModel];
-    [self.collectionView reloadData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -138,8 +137,6 @@ static NSString *cellid = @"MineCollectcell";
         DaydayCookDescription *VC = [DaydayCookDescription new];
         
         VC.BookID = model.bookId;
-        VC.isNavigation = YES;
-        
         [self.navigationController pushViewController:VC animated:YES];
         return NO;
     }
