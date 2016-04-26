@@ -9,6 +9,7 @@
 #import "carouselCell.h"
 #import <BHInfiniteScrollView.h>
 #import <UIImage+MultiFormat.h>
+#import <UIImageView+WebCache.h>
 @interface carouselCell ()<BHInfiniteScrollViewDelegate>
 
 @end
@@ -29,20 +30,17 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         for (int i = 0; i < 5; i++) {
-            
+        
             NSString *str = [NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",carouselArray[i]] ;
-            
-            
             UIImage *image = [UIImage sd_imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:str]]];
-
+            
             
             [carouselImages addObject:image];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            BHInfiniteScrollView *infinr = [BHInfiniteScrollView infiniteScrollViewWithFrame:self.contentView.frame Delegate:self ImagesArray:carouselImages];
-            
+            BHInfiniteScrollView *infinr = [BHInfiniteScrollView infiniteScrollViewWithFrame:self.contentView.frame Delegate:self ImagesArray:carouselImages PlageHolderImage:[UIImage imageNamed:@"占位图"]];
             
             //加标题
             infinr.titlesArray = tts;
@@ -56,14 +54,13 @@
             infinr.pageViewContentMode = UIViewContentModeRedraw;
             
             infinr.dotColor = [UIColor whiteColor];
-            infinr.selectedDotColor = RGB(255, 159, 169);
+            infinr.selectedDotColor = RGB(159, 169, 171);
             infinr.dotSpacing = 3;
             infinr.dotSize = 7;
             infinr.selectedDotSize = 8;
             infinr.dotShadowBlur = 2;
             
             infinr.pageControlAlignmentOffset = CGSizeMake(0, 3);
-            
             
             //文字
             infinr.titleView.backgroundColor = [UIColor colorWithWhite:0 alpha:.5];

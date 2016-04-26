@@ -38,21 +38,23 @@
 
 #pragma mark - Init Method
 
-+ (instancetype)infiniteScrollViewWithFrame:(CGRect)frame Delegate:(id<BHInfiniteScrollViewDelegate>)delegate ImagesArray:(NSArray *)images {
++ (instancetype)infiniteScrollViewWithFrame:(CGRect)frame Delegate:(id<BHInfiniteScrollViewDelegate>)delegate ImagesArray:(NSArray *)images
+{
     BHInfiniteScrollView *infiniteScrollView = [[self alloc] initWithFrame:frame];
     infiniteScrollView.delegate = delegate;
     infiniteScrollView.imagesArray = [NSMutableArray arrayWithArray:images];
     return infiniteScrollView;
 }
 
-+ (instancetype)infiniteScrollViewWithFrame:(CGRect)frame Delegate:(id<BHInfiniteScrollViewDelegate>)delegate
-                                ImagesArray:(NSArray *)images PlageHolderImage:(UIImage*)placeHolderImage {
++ (instancetype)infiniteScrollViewWithFrame:(CGRect)frame Delegate:(id<BHInfiniteScrollViewDelegate>)delegate ImagesArray:(NSArray *)images PlageHolderImage:(UIImage*)placeHolderImage
+{
     BHInfiniteScrollView *infiniteScrollView = [BHInfiniteScrollView infiniteScrollViewWithFrame:frame Delegate:delegate ImagesArray:images];
     infiniteScrollView.placeholderImage = placeHolderImage;
     return infiniteScrollView;
 }
 
-+ (instancetype)infiniteScrollViewWithFrame:(CGRect)frame Delegate:(id<BHInfiniteScrollViewDelegate>)delegate ImagesArray:(NSArray *)images PlageHolderImage:(UIImage*)placeHolderImage InfiniteLoop:(BOOL)loop {
++ (instancetype)infiniteScrollViewWithFrame:(CGRect)frame Delegate:(id<BHInfiniteScrollViewDelegate>)delegate ImagesArray:(NSArray *)images PlageHolderImage:(UIImage*)placeHolderImage InfiniteLoop:(BOOL)loop
+{
     BHInfiniteScrollView *infiniteScrollView = [BHInfiniteScrollView infiniteScrollViewWithFrame:frame Delegate:delegate ImagesArray:images PlageHolderImage:placeHolderImage];
     infiniteScrollView.infiniteLoop = loop;
     return infiniteScrollView;

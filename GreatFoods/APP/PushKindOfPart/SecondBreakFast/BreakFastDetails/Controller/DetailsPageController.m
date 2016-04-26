@@ -202,7 +202,7 @@
             StepOneModel *model = [stepArray objectAtIndex:indexPath.row - 2];
             NSString *string = [NSString stringWithFormat:@"%ld",model.ordernum];
             cell.stepLabel.text = string;
-            [cell.stepImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
+            [cell.stepImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]] placeholderImage:[UIImage imageNamed:@"占位图"]];
             cell.explainLabel.text = model.details;
         }
         
@@ -217,6 +217,16 @@
 -(void)ChuanZhi{
     [self.delegate getArray:materialArray];
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = YES;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = NO;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

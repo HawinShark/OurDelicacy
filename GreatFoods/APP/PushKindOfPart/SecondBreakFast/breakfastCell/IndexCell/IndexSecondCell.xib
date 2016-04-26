@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="367" height="199"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xRf-Fh-2NB">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="占位图" translatesAutoresizingMaskIntoConstraints="NO" id="xRf-Fh-2NB">
                         <rect key="frame" x="0.0" y="0.0" width="367" height="199"/>
                         <animations/>
                     </imageView>
@@ -34,4 +34,7 @@
             <point key="canvasLocation" x="154.5" y="454"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="占位图" width="1080" height="576"/>
+    </resources>
 </document>

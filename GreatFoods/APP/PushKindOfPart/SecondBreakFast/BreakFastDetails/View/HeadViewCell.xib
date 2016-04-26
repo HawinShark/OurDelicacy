@@ -21,7 +21,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LPN-0K-lq2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="占位图" translatesAutoresizingMaskIntoConstraints="NO" id="LPN-0K-lq2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                         <animations/>
                         <constraints>
@@ -45,7 +45,10 @@
                 <outlet property="headLabel" destination="vAh-sn-hRN" id="wCw-V1-1eH"/>
                 <outlet property="headViewImage" destination="LPN-0K-lq2" id="1gk-M5-u60"/>
             </connections>
-            <point key="canvasLocation" x="324" y="369.5"/>
+            <point key="canvasLocation" x="427" y="342.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="占位图" width="1080" height="576"/>
+    </resources>
 </document>
