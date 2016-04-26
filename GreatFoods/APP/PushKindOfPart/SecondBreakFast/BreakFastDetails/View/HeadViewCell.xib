@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9046" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
     </dependencies>
     <objects>
@@ -29,11 +30,11 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="vAh-sn-hRN" secondAttribute="bottom" id="3Hh-Gl-hXQ"/>
                     <constraint firstAttribute="trailing" secondItem="vAh-sn-hRN" secondAttribute="trailing" id="DPL-sz-ThU"/>
-                    <constraint firstItem="LPN-0K-lq2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FO3-tO-Mzu"/>
-                    <constraint firstItem="vAh-sn-hRN" firstAttribute="top" secondItem="LPN-0K-lq2" secondAttribute="bottom" constant="10" id="U3X-l8-Has"/>
-                    <constraint firstAttribute="trailing" secondItem="LPN-0K-lq2" secondAttribute="trailing" id="Ufe-na-5jl"/>
+                    <constraint firstItem="LPN-0K-lq2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HBC-fA-BkO"/>
+                    <constraint firstItem="LPN-0K-lq2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="g7k-xv-s6G"/>
                     <constraint firstItem="vAh-sn-hRN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gF0-ar-OHm"/>
-                    <constraint firstItem="LPN-0K-lq2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uHf-vU-Hnf"/>
+                    <constraint firstAttribute="trailing" secondItem="LPN-0K-lq2" secondAttribute="trailing" id="lZ4-jk-Ub7"/>
+                    <constraint firstItem="vAh-sn-hRN" firstAttribute="top" secondItem="LPN-0K-lq2" secondAttribute="bottom" constant="10" id="mUn-JA-w5C"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>
@@ -41,7 +42,7 @@
                 <outlet property="headLabel" destination="vAh-sn-hRN" id="wCw-V1-1eH"/>
                 <outlet property="headViewImage" destination="LPN-0K-lq2" id="1gk-M5-u60"/>
             </connections>
-            <point key="canvasLocation" x="247" y="435.5"/>
+            <point key="canvasLocation" x="265" y="423.5"/>
         </tableViewCell>
     </objects>
 </document>

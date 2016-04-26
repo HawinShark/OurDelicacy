@@ -8,8 +8,8 @@
 
 #import "HeadViewCell.h"
 #import "HeadViewModel.h"
-#import "UIImageView+WebCache.h"
 
+#import "UIImageView+WebCache.h"
 @implementation HeadViewCell
 
 -(void)setAbc:(NSArray *)abc
@@ -20,6 +20,8 @@
         _headLabel.text = model.name;
     }
 }
+
+
 
 - (void)awakeFromNib {
     

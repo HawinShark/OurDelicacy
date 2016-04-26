@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>BHInfiniteScrollView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>JElasticPullToRefresh.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -52,12 +57,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>03F1F001871672045C7A21B697A2CA5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1921DCCDC26E89C25105F3ACF4FCAA18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>412AC2833BB8B0B5C2BAD22EF66A43B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44D7F7C689E7B58517129CB5C1BF845F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4928295525F26C863B8B6C02FA3AF2B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6F1669E98A11A7BFF1518EDDE546A29F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -98,6 +123,11 @@
 			<true/>
 		</dict>
 		<key>E55BD2A7D679D0B0A7412924CFB4B8E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6728108ECF461E9E4257641D132C2AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

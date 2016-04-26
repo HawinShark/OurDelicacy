@@ -8,8 +8,8 @@
 
 #import "IndexSecondCell.h"
 
-#import <UIImageView+WebCache.h>
 #import "UIImage+Extended.h"
+#import <UIImageView+WebCache.h>
 @interface IndexSecondCell ()
 
     // your IB
@@ -26,39 +26,23 @@
 
 -(void)Get:(List *)model{
 
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         [self.image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
        
     });
     
-    
     //裁剪
     self.image = [self MASK:self.image];
-
     
 }
 
 - (void)awakeFromNib {
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
-
-
-
-
-
-
-
 
 
 - (UIImageView *)MASK:(UIImageView *)image{

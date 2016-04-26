@@ -91,6 +91,7 @@
             
             Progre.frame = CGRectMake(-screen_width + screen_width * (1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount), 0, screen_width, H(self));
         });
+
         
     }
  destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
