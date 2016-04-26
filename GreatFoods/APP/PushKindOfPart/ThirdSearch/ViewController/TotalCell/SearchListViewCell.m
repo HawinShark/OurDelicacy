@@ -8,6 +8,8 @@
 
 #import "SearchListViewCell.h"
 #import <UIImageView+WebCache.h>
+#import <OpinionzAlertView.h>
+
 #import "DataBase.h"
 #import "CollectModel.h"
 @interface SearchListViewCell ()
@@ -33,10 +35,28 @@
     
     if (sender.selected == NO) {
         [[DataBase shareData]insertInfo:self.model];
-
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"收藏成功" message:@"已加入收藏\n快进入我的收藏里查看吧~" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        [[self viewController] presentViewController:alert animated:YES completion:^{
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            });
+        }];
     }
     else{
         [[DataBase shareData]deleteInfo:self.model.makeTitle];
+        
+        OpinionzAlertView *alert = [[OpinionzAlertView alloc]initWithTitle:@"笨蛋!" message:nil cancelButtonTitle:nil otherButtonTitles:nil];
+        alert.iconType = OpinionzAlertIconInfo;
+        [alert show];
+        
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [alert dismiss];
+            });
         
     }
     
@@ -81,6 +101,19 @@
     _Image.center = self.contentView.center;
     _Image.contentMode = UIViewContentModeScaleAspectFill;
     _Image.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+}
+
+
+//从uiview中找到navigation
+- (UIViewController*)viewController {
+    
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
 }
 
 @end

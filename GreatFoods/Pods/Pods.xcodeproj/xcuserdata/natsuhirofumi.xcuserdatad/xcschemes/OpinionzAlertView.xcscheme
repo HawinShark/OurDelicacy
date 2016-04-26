@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'ED46BF7EAB5751675475FBF9'
-               BlueprintName = 'MJRefresh'
+               BlueprintIdentifier = 'BA4B84416852FDA110D85B9C'
+               BlueprintName = 'OpinionzAlertView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libMJRefresh.a'>
+               BuildableName = 'libOpinionzAlertView.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

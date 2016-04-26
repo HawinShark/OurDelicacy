@@ -18,7 +18,7 @@
 #import <UIView+SDAutoLayout.h>
 #import <UIScrollView+JElasticPullToRefresh.h>
 #import <MJRefreshNormalHeader.h>
-#import <MJRefreshGifHeader.h>
+//#import <MJRefreshGifHeader.h>
 #import "FilmManager.h"
 
 @interface DaydayHome () <UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>

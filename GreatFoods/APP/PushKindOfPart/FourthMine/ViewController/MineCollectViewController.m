@@ -10,6 +10,7 @@
 #import "DataBase.h"
 #import "MineCollextCollectionViewCell.h"
 #import <UIImageView+WebCache.h>
+#import <OpinionzAlertView.h>
 #import "CollectModel.h"
 #import "DaydayCookDescription.h"
 @interface MineCollectViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
@@ -60,7 +61,22 @@ static NSString *cellid = @"MineCollectcell";
 
     
     self.collectArr = [[DataBase shareData]queryCollectModel];
+    
+    //删除成功alert
+    
+    OpinionzAlertView *alert = [[OpinionzAlertView alloc]initWithTitle:@"删除成功" message:@"要添加更多菜谱哦~" cancelButtonTitle:@"okay" otherButtonTitles:nil];
+    alert.iconType = OpinionzAlertIconSuccess;
+    [alert show];
+    
     [self.collectionView reloadData];
+    
+    //且返回上级页面
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    });
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -98,6 +114,7 @@ static NSString *cellid = @"MineCollectcell";
     self.navigationItem.rightBarButtonItem = seleteItem;
     
 }
+
 -(void) selectAction:(UIButton *)btn{
     if (btn.selected == NO) {
         self.collectionView.allowsMultipleSelection = YES;
@@ -129,6 +146,7 @@ static NSString *cellid = @"MineCollectcell";
     
     btn.selected = !btn.selected;
 }
+
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectModel *model = self.collectArr[indexPath.item];
 

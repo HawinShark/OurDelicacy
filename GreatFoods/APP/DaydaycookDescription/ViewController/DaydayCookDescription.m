@@ -15,6 +15,8 @@
 #import <UIImageView+WebCache.h>
 #import "DataBase.h"
 #import "CollectModel.h"
+
+#import <OpinionzAlertView.h>
 @interface DaydayCookDescription () <UIWebViewDelegate>
 {
     Loading *load;
@@ -75,6 +77,9 @@
     [self.upfont addTarget:self action:@selector(fontBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.share addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self showhide];
+
 }
 
 
@@ -130,10 +135,16 @@
         }];
     }else{
         [[DataBase shareData]deleteInfo:self.makeTitle];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"你这个笨蛋!" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [self presentViewController:alert animated:YES completion:^{
-            [alert dismissViewControllerAnimated:YES completion:nil];
-        }];
+        
+        //取消收藏
+        OpinionzAlertView *alert = [[OpinionzAlertView alloc]initWithTitle:@"你这个笨蛋!" message:nil cancelButtonTitle:nil otherButtonTitles:nil];
+        alert.iconType = OpinionzAlertIconQuestion;
+        [alert show];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [alert dismiss];
+        });
     }
         btn.selected = !btn.selected;
 }
@@ -278,8 +289,6 @@
                 //是否自动适应屏幕大小
                 [self.webView setScalesPageToFit:YES];
                 
-                
-                [self showhide];
                 
                 [self.player setScalesPageToFit:YES];
                 
