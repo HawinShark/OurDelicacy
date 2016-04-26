@@ -13,3 +13,6 @@
 
 #import "SearchData.h"
 #import "SearchBase.h"
+
+#import "ICarousellData.h"
+#import "ICarousellBaseClass.h"

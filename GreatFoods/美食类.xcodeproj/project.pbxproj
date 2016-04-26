@@ -53,6 +53,11 @@
 		F5559D041CC8ABB200379BF0 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5559D021CC8ABB200379BF0 /* MineViewController.xib */; };
 		F5559D0A1CC8B4E300379BF0 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F5559D071CC8B4E300379BF0 /* CustomSearchBar.m */; };
 		F5559D0B1CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F5559D091CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m */; };
+		F58ED2101CCE5F9400E2139B /* ICarousellBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED20D1CCE5F9400E2139B /* ICarousellBaseClass.m */; };
+		F58ED2111CCE5F9400E2139B /* ICarousellData.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED20F1CCE5F9400E2139B /* ICarousellData.m */; };
+		F58ED2151CCE5FB900E2139B /* ICarouselImages.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED2141CCE5FB900E2139B /* ICarouselImages.m */; };
+		F58ED2201CCE6F4C00E2139B /* SearchListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED21E1CCE6F4C00E2139B /* SearchListViewCell.m */; };
+		F58ED2211CCE6F4C00E2139B /* SearchListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */; };
 		F5B289D71CC4F7B400ECF016 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B289D61CC4F7B400ECF016 /* main.m */; };
 		F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B289D91CC4F7B400ECF016 /* AppDelegate.m */; };
 		F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B289E11CC4F7B400ECF016 /* Assets.xcassets */; };
@@ -172,6 +177,15 @@
 		F5559D071CC8B4E300379BF0 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		F5559D081CC8B4E300379BF0 /* UIView+ModifyAttributeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ModifyAttributeValue.h"; sourceTree = "<group>"; };
 		F5559D091CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ModifyAttributeValue.m"; sourceTree = "<group>"; };
+		F58ED20C1CCE5F9400E2139B /* ICarousellBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICarousellBaseClass.h; sourceTree = "<group>"; };
+		F58ED20D1CCE5F9400E2139B /* ICarousellBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICarousellBaseClass.m; sourceTree = "<group>"; };
+		F58ED20E1CCE5F9400E2139B /* ICarousellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICarousellData.h; sourceTree = "<group>"; };
+		F58ED20F1CCE5F9400E2139B /* ICarousellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICarousellData.m; sourceTree = "<group>"; };
+		F58ED2131CCE5FB900E2139B /* ICarouselImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICarouselImages.h; sourceTree = "<group>"; };
+		F58ED2141CCE5FB900E2139B /* ICarouselImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICarouselImages.m; sourceTree = "<group>"; };
+		F58ED21D1CCE6F4C00E2139B /* SearchListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchListViewCell.h; sourceTree = "<group>"; };
+		F58ED21E1CCE6F4C00E2139B /* SearchListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListViewCell.m; sourceTree = "<group>"; };
+		F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchListViewCell.xib; sourceTree = "<group>"; };
 		F5B289D21CC4F7B400ECF016 /* 美食类.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "美食类.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B289D61CC4F7B400ECF016 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5B289D81CC4F7B400ECF016 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -203,9 +217,9 @@
 		F5B28A321CC53B9300ECF016 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5B9166D1CCB5CD7006BF7D3 /* FilmManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmManager.h; sourceTree = "<group>"; };
 		F5B9166E1CCB5CD7006BF7D3 /* FilmManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmManager.m; sourceTree = "<group>"; };
-		F5D97C501CC7ACAB0034099A /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		F5D97C511CC7ACAB0034099A /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		F5D97C521CC7ACAB0034099A /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		F5D97C501CC7ACAB0034099A /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ../SearchViewController.h; sourceTree = "<group>"; };
+		F5D97C511CC7ACAB0034099A /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ../SearchViewController.m; sourceTree = "<group>"; };
+		F5D97C521CC7ACAB0034099A /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchViewController.xib; path = ../SearchViewController.xib; sourceTree = "<group>"; };
 		F5D97C561CC7B3830034099A /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		F5D97C571CC7B3830034099A /* Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loading.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -448,6 +462,56 @@
 			path = CustomSearchBar;
 			sourceTree = "<group>";
 		};
+		F58ED20A1CCE5F6000E2139B /* ICarouselImage */ = {
+			isa = PBXGroup;
+			children = (
+				F58ED2121CCE5F9800E2139B /* ImagesView */,
+				F58ED20B1CCE5F8500E2139B /* Model */,
+			);
+			path = ICarouselImage;
+			sourceTree = "<group>";
+		};
+		F58ED20B1CCE5F8500E2139B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F58ED20C1CCE5F9400E2139B /* ICarousellBaseClass.h */,
+				F58ED20D1CCE5F9400E2139B /* ICarousellBaseClass.m */,
+				F58ED20E1CCE5F9400E2139B /* ICarousellData.h */,
+				F58ED20F1CCE5F9400E2139B /* ICarousellData.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F58ED2121CCE5F9800E2139B /* ImagesView */ = {
+			isa = PBXGroup;
+			children = (
+				F58ED2131CCE5FB900E2139B /* ICarouselImages.h */,
+				F58ED2141CCE5FB900E2139B /* ICarouselImages.m */,
+			);
+			path = ImagesView;
+			sourceTree = "<group>";
+		};
+		F58ED2181CCE6E2B00E2139B /* SearchTotalController */ = {
+			isa = PBXGroup;
+			children = (
+				F5D97C501CC7ACAB0034099A /* SearchViewController.h */,
+				F5D97C511CC7ACAB0034099A /* SearchViewController.m */,
+				F5D97C521CC7ACAB0034099A /* SearchViewController.xib */,
+			);
+			name = SearchTotalController;
+			path = searchCell;
+			sourceTree = "<group>";
+		};
+		F58ED2191CCE6E6100E2139B /* TotalCell */ = {
+			isa = PBXGroup;
+			children = (
+				F58ED21D1CCE6F4C00E2139B /* SearchListViewCell.h */,
+				F58ED21E1CCE6F4C00E2139B /* SearchListViewCell.m */,
+				F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */,
+			);
+			path = TotalCell;
+			sourceTree = "<group>";
+		};
 		F5B289C91CC4F7B400ECF016 = {
 			isa = PBXGroup;
 			children = (
@@ -688,6 +752,7 @@
 		F5D97C4C1CC7AC060034099A /* ThirdSearch */ = {
 			isa = PBXGroup;
 			children = (
+				F58ED20A1CCE5F6000E2139B /* ICarouselImage */,
 				F5559D051CC8B4C200379BF0 /* CustomSearchBar */,
 				F5D97C4D1CC7AC2B0034099A /* ViewController */,
 			);
@@ -698,11 +763,10 @@
 			isa = PBXGroup;
 			children = (
 				F54BE8D11CCA701900C3FF67 /* Model */,
-				F54BE8A01CC9D12C00C3FF67 /* searchCell */,
 				F54BE8CB1CCA670000C3FF67 /* SearchNext */,
-				F5D97C501CC7ACAB0034099A /* SearchViewController.h */,
-				F5D97C511CC7ACAB0034099A /* SearchViewController.m */,
-				F5D97C521CC7ACAB0034099A /* SearchViewController.xib */,
+				F54BE8A01CC9D12C00C3FF67 /* searchCell */,
+				F58ED2191CCE6E6100E2139B /* TotalCell */,
+				F58ED2181CCE6E2B00E2139B /* SearchTotalController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -804,7 +868,7 @@
 				TargetAttributes = {
 					F5B289D11CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 364PR47FE6;
+						DevelopmentTeam = 5AWV6U89AL;
 					};
 					F5B289EA1CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -857,6 +921,7 @@
 				F54BE89A1CC9B64F00C3FF67 /* IndexSecondCell.xib in Resources */,
 				F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */,
 				F52BB8C01CC5CB0F000B8577 /* DDPushList.xib in Resources */,
+				F58ED2211CCE6F4C00E2139B /* SearchListViewCell.xib in Resources */,
 				F5B28A331CC53B9300ECF016 /* Main.storyboard in Resources */,
 				3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */,
 				F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */,
@@ -948,6 +1013,7 @@
 				F52BB8D01CC61C03000B8577 /* DaydayCookData.m in Sources */,
 				F5D97C531CC7ACAB0034099A /* SearchViewController.m in Sources */,
 				F5559D0A1CC8B4E300379BF0 /* CustomSearchBar.m in Sources */,
+				F58ED2101CCE5F9400E2139B /* ICarousellBaseClass.m in Sources */,
 				F5559D031CC8ABB200379BF0 /* MineViewController.m in Sources */,
 				3FA6C4851CCB0B8D002D46F9 /* MaterialModel.m in Sources */,
 				F5B28A171CC4FED100ECF016 /* DaydayHome.m in Sources */,
@@ -972,8 +1038,11 @@
 				F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */,
 				F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */,
 				F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */,
+				F58ED2111CCE5F9400E2139B /* ICarousellData.m in Sources */,
 				3FA6C4821CCB0B8D002D46F9 /* DetailsPageController.m in Sources */,
+				F58ED2201CCE6F4C00E2139B /* SearchListViewCell.m in Sources */,
 				F5B289D71CC4F7B400ECF016 /* main.m in Sources */,
+				F58ED2151CCE5FB900E2139B /* ICarouselImages.m in Sources */,
 				F54BE8CA1CCA5F3C00C3FF67 /* NetandHUB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1111,7 +1180,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-
 				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1131,7 +1199,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-
 				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

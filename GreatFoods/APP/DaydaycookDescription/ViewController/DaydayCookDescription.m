@@ -40,6 +40,11 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
+/* 播放器 */
+@property (nonatomic, retain) UIWebView *player;
+/* 播放按钮 */
+@property (nonatomic, retain) UIButton *playButton;
+
 @end
 
 @implementation DaydayCookDescription
@@ -83,12 +88,11 @@
     
 }
 -(void)fontBtnAction:(UIButton *)btn
--(void)viewWillAppear:(BOOL)animated
 {
     if (btn.selected == NO) {
         
         //改变wedView字体大小
-        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '150%'"];
+        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '130%'"];
     }
     
     else{
@@ -96,6 +100,7 @@
         [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '100%'"];
         
     }
+    
     btn.selected = !btn.selected;
 
     
@@ -104,7 +109,7 @@
     
     
     btn.selected = !btn.selected;
-   }
+}
 
 
     
@@ -181,7 +186,9 @@
 
 - (IBAction)Back:(UIButton *)sender {
     
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 
@@ -218,6 +225,8 @@
                     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:model.loadContent]];
                     [self.webView loadRequest:request];
                     
+                    NSURLRequest * PlayRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:model.detailsUrl]];
+                    [self.player loadRequest:PlayRequest];
                 });
                 
                 self.titleName.text  = model.title;
@@ -236,6 +245,8 @@
                 
                 
                 [self showhide];
+                
+                [self.player setScalesPageToFit:YES];
                 
             });
         }
@@ -278,6 +289,9 @@
     self.watchImage   = [UIImageView new];
     self.watchlabel   = [UILabel new];
     UIView *whiteBack = [UIView new];
+    //
+    self.player = [UIWebView new];
+    self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [self.webView.scrollView sd_addSubviews:@[self.image,whiteBack]];
     
@@ -287,6 +301,19 @@
     whiteBack.sd_layout.topSpaceToView(_image,10).leftSpaceToView(self.webView.scrollView,10).rightSpaceToView(self.webView.scrollView,10)
     .heightIs(80);
 
+    _image.userInteractionEnabled = YES;
+    
+    //视频播放器
+    [_image sd_addSubviews:@[ _player,_playButton]];
+    _player.alpha = 0;
+    _player.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+    _player.scrollView.bounces = NO;
+    //控制播放
+    _playButton.alpha = 1;
+    _playButton.sd_layout.centerXEqualToView(_image).centerYEqualToView(_image).widthIs(80).heightEqualToWidth();
+    [_playButton setImage:[UIImage imageNamed:@"Play"] forState:UIControlStateNormal];
+    [_playButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+//    _playButton.userInteractionEnabled = YES;
     
     [whiteBack sd_addSubviews:@[self.titleName,self.makeImage,self.makelabel,self.watchImage,self.watchlabel]];
     [whiteBack setBackgroundColor:[UIColor whiteColor]];
@@ -315,6 +342,16 @@
     
     
 }
+
+
+
+-(void)play{
+    
+    self.playButton.alpha = 0;
+    self.player.alpha = 1;
+    
+}
+
 
 
 -(void)viewWillDisappear:(BOOL)animated{

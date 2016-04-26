@@ -10,7 +10,9 @@
 
 #import <AFNetworking.h>
 @interface FilmManager ()
-
+{
+    UIView *Progre;
+}
 
 @end
 
@@ -64,6 +66,12 @@
 
 - (void)downloadRequestWithUrl:(NSString *)urlStr{
     
+    Progre = [[UIView alloc]initWithFrame:CGRectMake(-screen_width, 0, screen_width, H(self))];
+    Progre.alpha           = 0.6;
+    Progre.backgroundColor = [UIColor orangeColor];
+    [self addSubview:Progre];
+    [self bringSubviewToFront:Progre];//下载进度颜色
+    
     NSString *fileUrl = urlStr;
     //
     fileUrl = [fileUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -79,16 +87,16 @@
     NSURLSessionDownloadTask * task = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         
         NSLog(@"进度 = %lf",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            Progre.frame = CGRectMake(-screen_width + screen_width * (1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount), 0, screen_width, H(self));
+        });
         
     }
  destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         
         //下载地址
         //        NSLog(@"默认下载地址 = %@",targetPath);
-        
-        //设置下载路径，通过沙盒获取缓存地址，最后返回NSURL对象
-//        NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject];
-//        return [NSURL URLWithString:filePath];
         
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
         return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
@@ -97,7 +105,15 @@
         
         NSLog(@"%@",filePath.absoluteString);
         
-        [self itemWithUrl:filePath.absoluteString];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [UIView animateWithDuration:.3 animations:^{
+                Progre.alpha = 0;
+                Progre = nil;
+            }];
+            
+            [self itemWithUrl:filePath.absoluteString];
+        });
         
         [[NSUserDefaults standardUserDefaults]setObject:response.suggestedFilename forKey:urlStr];
         
@@ -163,8 +179,14 @@
 
 
 -(void)dealloc{
-    [_player pause];
     NSLog(@"销毁");
+    [_player pause];
+    [self.player.currentItem cancelPendingSeeks];
+    [self.player.currentItem.asset cancelLoading];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:AVPlayerItemDidPlayToEndTimeNotification
+                                                  object:self.player.currentItem];
+    
 }
 
 @end

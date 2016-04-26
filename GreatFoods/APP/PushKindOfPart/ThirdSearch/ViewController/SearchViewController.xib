@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
+                <outlet property="searchCollectionView" destination="qen-ZV-X1q" id="jjO-cr-aKF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +14,51 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qen-ZV-X1q">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JAh-7S-NOy">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="pfk-BA-FOr"/>
+                        <outlet property="delegate" destination="-1" id="I01-g5-K53"/>
+                    </connections>
+                </collectionView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qen-ZV-X1q" secondAttribute="bottom" id="5au-Ux-d5d"/>
+                <constraint firstItem="qen-ZV-X1q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pxl-HQ-dMi"/>
+                <constraint firstAttribute="trailing" secondItem="qen-ZV-X1q" secondAttribute="trailing" id="rqd-Gg-n8b"/>
+                <constraint firstItem="qen-ZV-X1q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vab-r4-rgl"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="qen-ZV-X1q"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="5au-Ux-d5d"/>
+                    <exclude reference="Pxl-HQ-dMi"/>
+                    <exclude reference="rqd-Gg-n8b"/>
+                    <exclude reference="vab-r4-rgl"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="qen-ZV-X1q"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="5au-Ux-d5d"/>
+                    <include reference="Pxl-HQ-dMi"/>
+                    <include reference="rqd-Gg-n8b"/>
+                    <include reference="vab-r4-rgl"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

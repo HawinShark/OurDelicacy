@@ -17,10 +17,10 @@
 #import <AFNetworking.h>
 #import <UIView+SDAutoLayout.h>
 #import <UIScrollView+JElasticPullToRefresh.h>
-
+#import <MJRefreshNormalHeader.h>
 #import "FilmManager.h"
 
-@interface DaydayHome () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface DaydayHome () <UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 {
     DDPushList *PushListView;//导航菜单
     
@@ -31,6 +31,8 @@
     
     FilmManager *filmmanager;
     NSInteger currentIndex;
+    
+    NSInteger firstTime;
 }
 @property (retain, nonatomic) UICollectionView *DaydayCollecionView;
 @property (weak, nonatomic) IBOutlet UIButton *ListButton;//推出按钮
@@ -39,29 +41,26 @@
 
 @implementation DaydayHome
 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     
-#pragma mark- 刷新条 JELasticRefresh
-    
-    JElasticPullToRefreshLoadingViewCircle *loadCircle = [JElasticPullToRefreshLoadingViewCircle new];
-    loadCircle.tintColor = selectColor;//圈圈颜色
-    
-    __weak __typeof(self)weakSelf = self;
-    [self.DaydayCollecionView addJElasticPullToRefreshViewWithActionHandler:^{
-        //延迟1.5s
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakSelf.DaydayCollecionView stopLoading];
-        });
-    } LoadingView:loadCircle];
-    //fill颜色
-    [self.DaydayCollecionView setJElasticPullToRefreshFillColor:BabyPinkColor];
-    //背景颜色
-    [self.DaydayCollecionView setJElasticPullToRefreshBackgroundColor:self.DaydayCollecionView.backgroundColor];
+    if (firstTime == 0) {
+        [self.DaydayCollecionView.mj_header beginRefreshing];
+        [UIView setAnimationsEnabled:NO];
+        firstTime = 1;
+    }
+
     
     /* 去除该死的bar发际线 (背景navbar合一)perfect */
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    
+    
+    if (self.navigationController.navigationBarHidden == YES) {
+        self.navigationController.navigationBarHidden = NO;
+    }
     
     /**
      *  @author 夏浩文
@@ -74,8 +73,10 @@
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     
     
@@ -100,8 +101,6 @@
     }
     
 #pragma mark- 获取数据源
-    [self showHudInViewhint:@"Loadding.."];
-    [self DayDayCookHomeDataIFRefresh:NO];
     
     self.DaydayCollecionView.delegate = self;
     self.DaydayCollecionView.dataSource = self;
@@ -116,8 +115,20 @@
     
     #pragma mark- 回顶部按钮创建
     [self backToTop];
+    
+    #pragma mark- 添加下拉刷新
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self uptodownRefresh];
+    }];
+    self.DaydayCollecionView.mj_header = header;
+    
+    //color
+    header.stateLabel.textColor = [UIColor whiteColor];
+    
+    header.lastUpdatedTimeLabel.textColor = [UIColor whiteColor];
 }
 
+  
 
 
 
@@ -131,6 +142,7 @@
 //
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    
     return self.DDdataArray.count;
 }
 
@@ -141,12 +153,10 @@
     static NSString *cellid = @"daydayhome";
     DDCollectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellid forIndexPath:indexPath];
     
-    
     DaydayCookData *model = self.DDdataArray[indexPath.item];
     [cell getModel:model];
     return cell;
 }
-
 
 
 
@@ -163,7 +173,10 @@
     DaydayCookData *model = self.DDdataArray[indexPath.item];
     VC.BookID = model.dataIdentifier;
     
-    
+    if (filmmanager) {
+        [filmmanager removeFromSuperview];
+        filmmanager = nil;
+    }
     [self.navigationController pushViewController:VC animated:YES];
 }
 
@@ -177,38 +190,21 @@
 
 #pragma mark- scrolldelegate
 
--(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-    /*  */
-//    NSLog(@"%f = %lu",scrollView.contentOffset.y / 180,self.DDdataArray.count - 5 );
-    
-    if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 10 ) {
-        
-        [self showHudInViewhint:@"正在加载.."];
-        #pragma mark- 异步请求数据
-        dispatch_async(dispatch_queue_create("new", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
-            
-            [self DayDayCookHomeDataIFRefresh:YES];
-        });
-    }//减速判定是否刷新页面
-    
-    
-}
 
 //按钮出现
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (decelerate) {
+    
+        if (decelerate) {
         
         if (scrollView.contentOffset.y > screen_height / 2 && scrollView.contentOffset.y < screen_height * 1.8) {
             [UIView animateWithDuration:.5 animations:^{
                 backtoTop.alpha = 1;
-                backtoTop.tag = 1;//有动画
             }];
         }
         if (scrollView.contentOffset.y > screen_height * 1.8) {
             backtoTop.alpha = 1;
-            backtoTop.tag = 0;//无动画
         }
         
         //按钮消失
@@ -217,19 +213,39 @@
                 backtoTop.alpha = 0;
             }];
         }
+        
     }
+    
+    //刷新时隐藏导航栏(如果刷新状态了)
+    if (self.DaydayCollecionView.mj_header.state == MJRefreshStatePulling) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
+    
+    //刷新数据
+    if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 15 ) {
+        
+#pragma mark- 上拉加载请求数据
+        dispatch_async(dispatch_queue_create("new", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+            
+            [self DayDayCookHomeDataIFRefresh:YES];
+        });
+    }//减速判定是否刷新页面
+    
     
     
     //中断视频播放
     if (scrollView.contentOffset.y / 180 > currentIndex) {
         if (currentTopCell.isPlay == YES) {
-            [filmmanager.player.currentItem cancelPendingSeeks];
-            [filmmanager.player.currentItem.asset cancelLoading];
-            [[NSNotificationCenter defaultCenter] removeObserver:filmmanager
-                                                            name:AVPlayerItemDidPlayToEndTimeNotification
-                                                          object:filmmanager.player.currentItem];
+            [filmmanager removeFromSuperview];
+            filmmanager = nil;//执行dealloc
+        }
+    }
+    
+    if (self.DaydayCollecionView.mj_header.state != MJRefreshStateIdle) {
+        if (currentTopCell.isPlay == YES) {
             
             [filmmanager removeFromSuperview];
+            filmmanager = nil;
         }
     }
 }
@@ -246,6 +262,10 @@
     
 //    NSLog(@"num = %ld", (long)topCell);
     
+    
+    if (self.DaydayCollecionView.mj_header.state == MJRefreshStateIdle) {
+    
+    
     if (currentIndex == topCell) {
         
         currentTopCell = (DDCollectCell *)[self.DaydayCollecionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:topCell inSection:0]];
@@ -260,7 +280,7 @@
         }
         
     }
-    
+  }
 }
 
 
@@ -377,10 +397,27 @@
                 [self.DDdataArray addObject:model];
             }
             /* 刷新*/
+            
+                
+            
+            
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.DaydayCollecionView reloadData];
-                [self showhide];//隐藏菊花
+                //  执行的代码
+                if (RefreshCurrentPage > 0) {
+                    
+                    [self.DaydayCollecionView performBatchUpdates:^{
+                        NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
+                        [UIView performWithoutAnimation:^{
+                            [self.DaydayCollecionView reloadSections:set];
+                        }];
+                    } completion:^(BOOL finished) {
+                        NSLog(@"上拉加载完毕");
+                    }];
+                    
+                }
             });
+            
+            
         }
     } failure:nil];
         
@@ -389,6 +426,61 @@
     }
 }
 
+
+- (void)uptodownRefresh
+{
+    if ([self isNetWork]) {
+        
+        self.DDdataArray = [NSMutableArray array];//初始化
+        
+        NSString *url;
+        
+        if (RefreshCurrentPage > 0) {
+            url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=0&pageSize=%ld",RefreshCurrentPage * 20];
+        }else{
+            url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=0&pageSize=%ld",(RefreshCurrentPage + 1) * 20];
+        }//第一进页面刷新数据
+        
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
+                
+                
+                NSArray *dataArray = responseObject[@"data"];
+                for (NSDictionary *dic in dataArray) {
+                    DaydayCookData *model = [DaydayCookData modelObjectWithDictionary:dic];
+                    [self.DDdataArray addObject:model];
+                }
+                /* 刷新*/
+                
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.DaydayCollecionView.mj_header endRefreshing];
+                    //  执行的代码
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+                        [UIView setAnimationsEnabled:YES];
+                        
+                        [self.DaydayCollecionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+                        [self.navigationController setNavigationBarHidden:NO animated:YES];
+                    });
+                    
+                    
+                        //----->>>>>>>
+                });
+                
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self showHint:@"加载失败"];
+        }];
+        //加载内..
+    }
+}
 
 
 
@@ -423,7 +515,6 @@
 #pragma mark- 释放动画
 -(void)dealloc
 {
-    [self.DaydayCollecionView removeJElasticPullToRefreshView];
     NSLog(@"释放~");
 }
 
@@ -465,6 +556,12 @@
     [UIView animateWithDuration:.5 animations:^{
         backtoTop.alpha = 0;
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationController.navigationBar.alpha = 1;
+    self.navigationController.navigationBar.transform = CGAffineTransformIdentity;
 }
 
 /*

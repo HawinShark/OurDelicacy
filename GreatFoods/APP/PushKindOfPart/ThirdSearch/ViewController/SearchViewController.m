@@ -10,15 +10,28 @@
 #import "CustomSearchBar.h"
 #import "SearchNextViewController.h"
 #import "WHC_NavigationController.h"
-@interface SearchViewController ()
+#import "ICarouselImages.h"
+
+#import "SearchListViewCell.h"
+@interface SearchViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     WHC_NavigationController *SearchNav;
 }
 @property(nonatomic,retain) SearchNextViewController *controller;
+@property (weak, nonatomic) IBOutlet UINavigationBar *Navc;
+@property (weak, nonatomic) IBOutlet UICollectionView *searchCollectionView;
 
 @end
 
 @implementation SearchViewController
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.title = @"搜索菜谱";
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = YES;
+}
 
 
 - (void)viewDidLoad {
@@ -26,14 +39,129 @@
     //
     
     
-    [self buildCustomSearch];
-    
+    [self modal];
+
+//    [self buildCustomSearch];
+    [self buildCollect];
 }
 
 
 
 
+#pragma mark- 自定义collection
 
+-(void)buildCollect{
+    
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    
+    self.searchCollectionView.collectionViewLayout = layout;
+    
+    self.searchCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    
+    [self.searchCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"listcell"];//cell1
+    
+    [self.searchCollectionView registerNib:[UINib nibWithNibName:@"SearchListViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"listcell2"];
+}
+
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return CGSizeMake(screen_width, screen_width * (3.0/5.0));
+    }
+    
+    return CGSizeMake(screen_width * 0.455, screen_width * 0.7);
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    if (section == 0) {
+        return 0;
+    }
+    return 10;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    if (section == 0) {
+        return 0;
+    }
+    return 10;
+}
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    if (section == 0) {
+        return UIEdgeInsetsZero;
+    }
+    return UIEdgeInsetsMake(0, 10, 10, 10);
+}
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 2;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        return 1;
+    }
+    return 10;
+}
+
+
+
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"listcell" forIndexPath:indexPath];
+        
+        //image
+        ICarouselImages *image = [[ICarouselImages alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_width * (3.0/5.0))];
+        
+        [cell.contentView addSubview:image];
+        
+        //search
+        CustomSearchBar *search = [[CustomSearchBar alloc]initWithFrame:CGRectMake(40, screen_width * (3.0/5.0) - 60, screen_width - 80, 40)];
+        [search getBlockFromOutSpace:^(NSString *str) {
+            NSLog(@"%@",str);
+        }];
+        
+        
+        
+        
+        //当按下return
+        [search getClickFromReturn:^(NSString *str) {
+            
+            //
+            
+            str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+            self.controller.name = str;
+            
+            //跳转
+            [self ModelToNext];
+            
+            
+        }];
+        
+        [cell.contentView addSubview:search];
+        
+        
+        
+        return cell;
+    }//cell1
+    
+    
+    SearchListViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"listcell2" forIndexPath:indexPath];
+    
+    
+    
+    
+    return cell;
+}
 
 
 
@@ -42,40 +170,6 @@
 
 #pragma mark- 创建自定义search
 
-- (void) buildCustomSearch
-{
-    //image
-    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_width * (3.0/4.0))];
-    image.contentMode  = UIViewContentModeScaleAspectFill;
-    [image setImage:[UIImage imageNamed:@"background-6"]];
-    [self.view addSubview:image];
-    
-    //search
-    CustomSearchBar *search = [[CustomSearchBar alloc]initWithFrame:CGRectMake(40, screen_width * 0.55, screen_width - 80, 40)];
-    [search getBlockFromOutSpace:^(NSString *str) {
-        NSLog(@"%@",str);
-    }];
-    
-    
-    
-    
-    //当按下return
-    [search getClickFromReturn:^(NSString *str) {
-        
-        //
-        [self modal];
-        
-        str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-        self.controller.name = str;
-        
-        //跳转
-        [self ModelToNext];
-        
-        
-    }];
-    
-    [self.view addSubview:search];
-}
 
 
 

@@ -23,21 +23,15 @@
     [super viewDidLoad];
     //
 //    self.edgesForExtendedLayout = 0;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UIImage *img = [UIImage imageNamed:@"background-1"];
-    UIImageView *image = [[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    [image setImage:img];
-    image.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:image];
-    [self.view sendSubviewToBack:image];
     
     //毛玻璃
-    UIBlurEffect *effct = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *effctView = [[UIVisualEffectView alloc]initWithEffect:effct];
-    effctView.frame = image.bounds;
-    
-    [image addSubview:effctView];
+//    UIBlurEffect *effct = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    UIVisualEffectView *effctView = [[UIVisualEffectView alloc]initWithEffect:effct];
+//    effctView.frame = image.bounds;
+//    
+//    [image addSubview:effctView];
     
     self.DDdataArray = [NSMutableArray new];
     RefreshCurrentPage = 0;
