@@ -60,6 +60,8 @@ static NSString *cellid = @"MineCollectcell";
         self.deleteBtn.enabled = NO;
     }
     
+    self.collectArr = [[DataBase shareData]queryCollectModel];
+    [self.collectionView reloadData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -137,6 +139,8 @@ static NSString *cellid = @"MineCollectcell";
         DaydayCookDescription *VC = [DaydayCookDescription new];
         
         VC.BookID = model.bookId;
+        VC.isNavigation = YES;
+        
         [self.navigationController pushViewController:VC animated:YES];
         return NO;
     }

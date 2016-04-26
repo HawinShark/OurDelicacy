@@ -101,7 +101,6 @@
         
     }
     
-    NSLog(@"array===%@",array);
     
     return array;
     
