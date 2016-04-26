@@ -12,13 +12,15 @@
 #import "WHC_NavigationController.h"
 #import "ICarouselImages.h"
 
+#import "DaydayCookData.h"//model
 #import "SearchListViewCell.h"
 @interface SearchViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     WHC_NavigationController *SearchNav;
+    ICarouselImages *image;//轮播图控制
+    CustomSearchBar *search;//自定义搜索
 }
 @property(nonatomic,retain) SearchNextViewController *controller;
-@property (weak, nonatomic) IBOutlet UINavigationBar *Navc;
 @property (weak, nonatomic) IBOutlet UICollectionView *searchCollectionView;
 
 @end
@@ -28,6 +30,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.title = @"搜索菜谱";
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.hidesBarsOnSwipe = YES;
 }
 -(void)viewWillDisappear:(BOOL)animated{
     self.navigationController.navigationBarHidden = YES;
@@ -38,10 +42,9 @@
     [super viewDidLoad];
     //
     
+    [self LunBo];
     
-    [self modal];
 
-//    [self buildCustomSearch];
     [self buildCollect];
 }
 
@@ -51,10 +54,6 @@
 #pragma mark- 自定义collection
 
 -(void)buildCollect{
-    
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    
-    self.searchCollectionView.collectionViewLayout = layout;
     
     self.searchCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
@@ -69,7 +68,7 @@
         return CGSizeMake(screen_width, screen_width * (3.0/5.0));
     }
     
-    return CGSizeMake(screen_width * 0.455, screen_width * 0.7);
+    return CGSizeMake(screen_width * 0.42, 275);
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
@@ -86,13 +85,17 @@
     }
     return 10;
 }
+
+
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     if (section == 0) {
         return UIEdgeInsetsZero;
     }
-    return UIEdgeInsetsMake(0, 10, 10, 10);
+    return UIEdgeInsetsMake(0, 20, 10, 20);
 }
 
+
+#pragma mark- collection delegate
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -107,11 +110,37 @@
     if (section == 0) {
         return 1;
     }
-    return 10;
+    return self.dataModels.count;
 }
 
 
 
+
+-(void)LunBo
+{
+    image = [[ICarouselImages alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_width * (3.0/5.4))];
+    
+    //search
+    search = [[CustomSearchBar alloc]initWithFrame:CGRectMake(40, H(image) - 45, screen_width - 80, 40)];
+    [search getBlockFromOutSpace:^(NSString *str) {
+        NSLog(@"%@",str);
+    }];
+    
+    //当按下return
+    [search getClickFromReturn:^(NSString *str) {
+        //
+        
+        [self modal];
+        
+        str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+        self.controller.name = str;
+        
+        //跳转
+        [self ModelToNext];
+        
+        
+    }];
+}
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -120,36 +149,13 @@
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"listcell" forIndexPath:indexPath];
         
         //image
-        ICarouselImages *image = [[ICarouselImages alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_width * (3.0/5.0))];
+        
         
         [cell.contentView addSubview:image];
         
-        //search
-        CustomSearchBar *search = [[CustomSearchBar alloc]initWithFrame:CGRectMake(40, screen_width * (3.0/5.0) - 60, screen_width - 80, 40)];
-        [search getBlockFromOutSpace:^(NSString *str) {
-            NSLog(@"%@",str);
-        }];
-        
-        
-        
-        
-        //当按下return
-        [search getClickFromReturn:^(NSString *str) {
-            
-            //
-            
-            str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-            self.controller.name = str;
-            
-            //跳转
-            [self ModelToNext];
-            
-            
-        }];
-        
         [cell.contentView addSubview:search];
         
-        
+        cell.contentView.backgroundColor = BabyPinkColor;
         
         return cell;
     }//cell1
@@ -157,13 +163,24 @@
     
     SearchListViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"listcell2" forIndexPath:indexPath];
     
-    
-    
+    DaydayCookData *model = _dataModels[indexPath.row];
+    [cell GetModel:model];
     
     return cell;
 }
 
 
+
+
+#pragma mark- 滑动停止轮播图
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [image.ica stopAutoScrollPage];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [image.ica startAutoScrollPage];
+}
 
 
 
@@ -211,7 +228,9 @@
 
 
 
-
+- (void)GetData{
+    
+}
 
 
 

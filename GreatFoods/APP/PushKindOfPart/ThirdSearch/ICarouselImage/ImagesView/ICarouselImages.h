@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <BHInfiniteScrollView.h>
 @interface ICarouselImages : UIView
+
+/* 轮播图*/
+@property (nonatomic, retain) BHInfiniteScrollView *ica;
 
 @end

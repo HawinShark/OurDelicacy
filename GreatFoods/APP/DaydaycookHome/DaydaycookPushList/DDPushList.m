@@ -6,6 +6,7 @@
 //  Copyright © 2016年 夏浩文. All rights reserved.
 //
 
+#import "DaydayHome.h"
 #import "DDPushList.h"
 #import "SearchViewController.h"
 #import "BreakFastViewController.h"
@@ -32,7 +33,9 @@
 }
 - (IBAction)search:(UIButton *)sender {
     SearchViewController *search = [SearchViewController new];
-    [[self viewController].navigationController pushViewController:search animated:YES];
+    DaydayHome *view = (DaydayHome *)[self viewController];
+    search.dataModels = view.DDdataArray;
+    [view.navigationController pushViewController:search animated:YES];
 }
 - (IBAction)mine:(UIButton *)sender {
     MineViewController *mine = [MineViewController new];

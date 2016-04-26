@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "NetandHUB.h"
-
 @interface SearchViewController :NetandHUB
+
+
+/* collectioncell数据 */
+@property (nonatomic, retain) NSArray *dataModels;
 
 @end

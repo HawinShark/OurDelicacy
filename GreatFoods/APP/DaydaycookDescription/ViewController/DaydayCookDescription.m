@@ -50,6 +50,8 @@
 /* 播放按钮 */
 @property (nonatomic, retain) UIButton *playButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+
 @end
 
 @implementation DaydayCookDescription
@@ -177,7 +179,14 @@
     self.webView.scrollView.backgroundColor = RGB(245, 245, 245);
     
     [self buildImageAndLabel];
-
+    
+    
+    #pragma mark- 判断是否出现导航栏 (收藏或搜索)
+    
+    if (_isNavigation == YES) {
+        [self appearNav];//显示
+    }
+    
 }
 
 
@@ -407,6 +416,26 @@
     [super didReceiveMemoryWarning];
     //
 }
+
+
+
+
+
+
+#pragma mark- 隐藏按钮 显示导航栏
+
+-(void)appearNav
+{
+    self.backButton.hidden = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.navigationBarHidden = NO;
+}
+
+
+
+
+
+
 
 /*
 #pragma mark - Navigation

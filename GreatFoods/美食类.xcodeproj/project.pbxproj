@@ -66,6 +66,7 @@
 		F58ED2151CCE5FB900E2139B /* ICarouselImages.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED2141CCE5FB900E2139B /* ICarouselImages.m */; };
 		F58ED2201CCE6F4C00E2139B /* SearchListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED21E1CCE6F4C00E2139B /* SearchListViewCell.m */; };
 		F58ED2211CCE6F4C00E2139B /* SearchListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */; };
+		F5A779991CCF39DE005385AC /* LunboCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A779981CCF39DE005385AC /* LunboCollectionViewCell.m */; };
 		F5B289D71CC4F7B400ECF016 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B289D61CC4F7B400ECF016 /* main.m */; };
 		F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B289D91CC4F7B400ECF016 /* AppDelegate.m */; };
 		F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B289E11CC4F7B400ECF016 /* Assets.xcassets */; };
@@ -207,6 +208,8 @@
 		F58ED21D1CCE6F4C00E2139B /* SearchListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchListViewCell.h; sourceTree = "<group>"; };
 		F58ED21E1CCE6F4C00E2139B /* SearchListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListViewCell.m; sourceTree = "<group>"; };
 		F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchListViewCell.xib; sourceTree = "<group>"; };
+		F5A779971CCF39DE005385AC /* LunboCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunboCollectionViewCell.h; path = ../searchCell/LunboCollectionViewCell.h; sourceTree = "<group>"; };
+		F5A779981CCF39DE005385AC /* LunboCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunboCollectionViewCell.m; path = ../searchCell/LunboCollectionViewCell.m; sourceTree = "<group>"; };
 		F5B289D21CC4F7B400ECF016 /* 美食类.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "美食类.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B289D61CC4F7B400ECF016 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5B289D81CC4F7B400ECF016 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 				F58ED21D1CCE6F4C00E2139B /* SearchListViewCell.h */,
 				F58ED21E1CCE6F4C00E2139B /* SearchListViewCell.m */,
 				F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */,
+				F5A779971CCF39DE005385AC /* LunboCollectionViewCell.h */,
+				F5A779981CCF39DE005385AC /* LunboCollectionViewCell.m */,
 			);
 			path = TotalCell;
 			sourceTree = "<group>";
@@ -1086,6 +1091,7 @@
 				F5559CF91CC8AB8E00379BF0 /* TimerViewController.m in Sources */,
 				F52BB8DE1CC65797000B8577 /* DayDescriptionData.m in Sources */,
 				F54BE8BA1CCA4F9A00C3FF67 /* Timer.m in Sources */,
+				F5A779991CCF39DE005385AC /* LunboCollectionViewCell.m in Sources */,
 				75BE67FF1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m in Sources */,
 				F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */,
 				3FA6C4871CCB0B8D002D46F9 /* HeadViewCell.m in Sources */,

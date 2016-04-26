@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DaydayCookData.h"
 @interface SearchListViewCell : UICollectionViewCell
+
+-(void)GetModel:(DaydayCookData *)model;
 
 @end

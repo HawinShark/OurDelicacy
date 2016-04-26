@@ -10,6 +10,11 @@
 
 @interface DaydayCookDescription : ViewController
 
+
+/* 不返回主页 出现导航栏 */
+@property (nonatomic, assign) BOOL isNavigation;
+
+
 /* 文章id */
 @property (nonatomic, assign) NSInteger BookID;
 

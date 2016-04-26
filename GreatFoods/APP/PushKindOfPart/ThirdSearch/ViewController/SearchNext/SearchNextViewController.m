@@ -37,7 +37,7 @@
 {
     self.title = self.name;
     
-    [self buildTransluent]; //半透明
+//    [self buildTransluent]; //半透明
     
     self.tableView.backgroundColor = [UIColor whiteColor];
     
@@ -71,6 +71,8 @@
     if (IOS_VERSION >= 7) {
         
         self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        self.automaticallyAdjustsScrollViewInsets = NO;
+
     }
     
     

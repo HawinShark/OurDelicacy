@@ -8,7 +8,6 @@
 
 #import "ICarouselImages.h"
 #import "ICarousellData.h"
-#import <BHInfiniteScrollView.h>
 #import <AFNetworking.h>
 @interface ICarouselImages () <BHInfiniteScrollViewDelegate>
 {
@@ -60,10 +59,10 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                
-                BHInfiniteScrollView *ica = [BHInfiniteScrollView infiniteScrollViewWithFrame:frame Delegate:self ImagesArray:imagesArray];
+                _ica = [BHInfiniteScrollView infiniteScrollViewWithFrame:frame Delegate:self ImagesArray:imagesArray];
                 
-                ica.pageViewContentMode = UIViewContentModeScaleAspectFit;
-                [self addSubview:ica];
+//                ica.pageViewContentMode = UIViewContentModeScaleAspectFit;
+                [self addSubview:_ica];
                 
             });
         }
