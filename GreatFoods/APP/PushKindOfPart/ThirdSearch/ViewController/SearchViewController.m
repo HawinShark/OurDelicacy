@@ -11,6 +11,7 @@
 #import "SearchNextViewController.h"
 #import "WHC_NavigationController.h"
 #import "ICarouselImages.h"
+#import "DataBase.h"
 
 #import "DaydayCookData.h"//model
 #import "SearchListViewCell.h"
@@ -43,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //
+    //打开数据库
+    [[DataBase shareData]openFmdb];
     
     [self LunBo];
     
