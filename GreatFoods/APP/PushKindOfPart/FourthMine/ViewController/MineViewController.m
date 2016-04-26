@@ -17,7 +17,10 @@
 @end
 
 @implementation MineViewController
-
+-(void)viewWillAppear:(BOOL)animated{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     //

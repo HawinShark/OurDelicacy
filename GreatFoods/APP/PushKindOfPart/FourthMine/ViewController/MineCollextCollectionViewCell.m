@@ -11,6 +11,15 @@
 #import <UIImageView+WebCache.h>
 
 @implementation MineCollextCollectionViewCell
+
+-(void)setSelected:(BOOL)selected{
+    
+    [super setSelected:selected];
+    self.selectView.hidden = !selected;
+    
+    
+    
+}
 -(void)getModel:(CollectModel *)model
 {
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"background-1"]];

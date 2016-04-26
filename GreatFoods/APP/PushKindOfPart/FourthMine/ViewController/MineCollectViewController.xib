@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineCollectViewController">
             <connections>
+                <outlet property="allSelectBtn" destination="Vdb-uT-seC" id="HSL-Yt-lH8"/>
                 <outlet property="collectionView" destination="3CW-x6-BUE" id="h6k-zi-lHN"/>
+                <outlet property="deleteBtn" destination="AUE-VW-RJd" id="2UW-cP-tpC"/>
+                <outlet property="selectView" destination="U42-Ll-pXi" id="KTB-VQ-56F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,17 +28,119 @@
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
-                    </variation>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="NOQ-fY-BXP"/>
                         <outlet property="delegate" destination="-1" id="6fX-5L-D2S"/>
                     </connections>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U42-Ll-pXi">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdb-uT-seC">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="Pwm-ch-gt3"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="全选">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected" title="取消">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Pwm-ch-gt3"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="Pwm-ch-gt3"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="allSelectAction:" destination="-1" eventType="touchUpInside" id="7Pv-hh-iHZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUE-VW-RJd">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="WM8-Ys-sFy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="删除">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="disabled" title="删除">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="WM8-Ys-sFy"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=compact">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <mask key="constraints">
+                                    <include reference="WM8-Ys-sFy"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="deleteAction:" destination="-1" eventType="touchUpInside" id="2U5-F8-X5A"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.41723140279999998" blue="0.070092302309999993" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="AUE-VW-RJd" firstAttribute="top" secondItem="U42-Ll-pXi" secondAttribute="top" id="EOU-bW-YcL"/>
+                        <constraint firstAttribute="trailing" secondItem="AUE-VW-RJd" secondAttribute="trailing" id="Fa9-qX-xB5"/>
+                        <constraint firstAttribute="height" constant="40" id="NcF-qB-Kwl">
+                            <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                        </constraint>
+                        <constraint firstAttribute="bottom" secondItem="Vdb-uT-seC" secondAttribute="bottom" id="TMQ-O5-g0h"/>
+                        <constraint firstItem="Vdb-uT-seC" firstAttribute="leading" secondItem="U42-Ll-pXi" secondAttribute="leading" id="W3v-lB-NNp"/>
+                        <constraint firstItem="Vdb-uT-seC" firstAttribute="top" secondItem="U42-Ll-pXi" secondAttribute="top" id="oB9-2L-Kzb"/>
+                        <constraint firstAttribute="bottom" secondItem="AUE-VW-RJd" secondAttribute="bottom" id="xHt-Dj-YSj"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="Vdb-uT-seC"/>
+                            <exclude reference="AUE-VW-RJd"/>
+                        </mask>
+                        <mask key="constraints">
+                            <exclude reference="NcF-qB-Kwl"/>
+                            <exclude reference="TMQ-O5-g0h"/>
+                            <exclude reference="W3v-lB-NNp"/>
+                            <exclude reference="oB9-2L-Kzb"/>
+                            <exclude reference="EOU-bW-YcL"/>
+                            <exclude reference="Fa9-qX-xB5"/>
+                            <exclude reference="xHt-Dj-YSj"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="Vdb-uT-seC"/>
+                            <include reference="AUE-VW-RJd"/>
+                        </mask>
+                        <mask key="constraints">
+                            <include reference="NcF-qB-Kwl"/>
+                            <include reference="TMQ-O5-g0h"/>
+                            <include reference="W3v-lB-NNp"/>
+                            <include reference="oB9-2L-Kzb"/>
+                            <include reference="EOU-bW-YcL"/>
+                            <include reference="Fa9-qX-xB5"/>
+                            <include reference="xHt-Dj-YSj"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="U42-Ll-pXi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5jA-Kw-eex"/>
+                <constraint firstAttribute="bottom" secondItem="U42-Ll-pXi" secondAttribute="bottom" id="jBa-dy-0Dd">
+                    <variation key="heightClass=regular-widthClass=compact" constant="-40"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="U42-Ll-pXi" secondAttribute="trailing" id="lsG-Yy-abS"/>
                 <constraint firstItem="3CW-x6-BUE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oob-OU-xAT"/>
                 <constraint firstAttribute="trailing" secondItem="3CW-x6-BUE" secondAttribute="trailing" id="tFa-hu-KO6"/>
                 <constraint firstItem="3CW-x6-BUE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="tzL-zh-BKa"/>
@@ -44,23 +149,31 @@
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="3CW-x6-BUE"/>
+                    <exclude reference="U42-Ll-pXi"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="oob-OU-xAT"/>
                     <exclude reference="tFa-hu-KO6"/>
                     <exclude reference="tzL-zh-BKa"/>
                     <exclude reference="xHj-7T-Hmx"/>
+                    <exclude reference="5jA-Kw-eex"/>
+                    <exclude reference="jBa-dy-0Dd"/>
+                    <exclude reference="lsG-Yy-abS"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
                     <include reference="3CW-x6-BUE"/>
+                    <include reference="U42-Ll-pXi"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="oob-OU-xAT"/>
                     <include reference="tFa-hu-KO6"/>
                     <include reference="tzL-zh-BKa"/>
                     <include reference="xHj-7T-Hmx"/>
+                    <include reference="5jA-Kw-eex"/>
+                    <include reference="jBa-dy-0Dd"/>
+                    <include reference="lsG-Yy-abS"/>
                 </mask>
             </variation>
         </view>

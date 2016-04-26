@@ -11,5 +11,6 @@
 @interface MineCollextCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIView *selectView;
 -(void)getModel:(CollectModel *)model;
 @end

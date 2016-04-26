@@ -25,6 +25,23 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYF-Vo-E1f">
+                        <rect key="frame" x="0.0" y="0.0" width="262" height="179"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="选中" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-Qf-Rg0">
+                                <rect key="frame" x="106" y="64.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1FT-dO-pyq"/>
+                                    <constraint firstAttribute="width" constant="50" id="Qjr-RK-cZj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1gO-Qf-Rg0" firstAttribute="centerX" secondItem="BYF-Vo-E1f" secondAttribute="centerX" id="DTJ-aY-Nml"/>
+                            <constraint firstItem="1gO-Qf-Rg0" firstAttribute="centerY" secondItem="BYF-Vo-E1f" secondAttribute="centerY" id="Oex-aa-qd5"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -32,17 +49,25 @@
                 <constraint firstAttribute="trailing" secondItem="Oq9-Wi-bJt" secondAttribute="trailing" id="3BU-98-Bsl"/>
                 <constraint firstItem="URE-h0-NJv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3ev-wE-j9K"/>
                 <constraint firstAttribute="bottom" secondItem="URE-h0-NJv" secondAttribute="bottom" id="CVl-hP-oOM"/>
+                <constraint firstItem="BYF-Vo-E1f" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MhP-4D-Ecj"/>
+                <constraint firstAttribute="trailing" secondItem="BYF-Vo-E1f" secondAttribute="trailing" id="Xuz-uv-VlE"/>
                 <constraint firstAttribute="trailing" secondItem="URE-h0-NJv" secondAttribute="trailing" id="XyV-bK-3Z8"/>
                 <constraint firstItem="Oq9-Wi-bJt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Z98-dl-zoa"/>
                 <constraint firstAttribute="bottom" secondItem="Oq9-Wi-bJt" secondAttribute="bottom" id="kc1-Dk-H7M"/>
                 <constraint firstItem="URE-h0-NJv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="n9o-3q-hk7"/>
+                <constraint firstAttribute="bottom" secondItem="BYF-Vo-E1f" secondAttribute="bottom" id="oJS-b0-78i"/>
+                <constraint firstItem="BYF-Vo-E1f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yrz-Dx-sIu"/>
             </constraints>
             <size key="customSize" width="262" height="179"/>
             <connections>
                 <outlet property="imgView" destination="URE-h0-NJv" id="OpZ-hy-BEh"/>
+                <outlet property="selectView" destination="BYF-Vo-E1f" id="D1T-Nm-YSi"/>
                 <outlet property="titleLabel" destination="Oq9-Wi-bJt" id="Yka-u7-RrO"/>
             </connections>
             <point key="canvasLocation" x="277" y="255.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="选中" width="64" height="64"/>
+    </resources>
 </document>
