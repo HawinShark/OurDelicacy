@@ -9,6 +9,7 @@
 #import "HeadViewCell.h"
 #import "HeadViewModel.h"
 
+#import "UIImage+Extended.h"
 #import "UIImageView+WebCache.h"
 @implementation HeadViewCell
 
@@ -19,6 +20,9 @@
         [_headViewImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
         _headLabel.text = model.name;
     }
+    
+    _headViewImage.contentMode = UIViewContentModeScaleAspectFill;
+    _headViewImage.clipsToBounds = YES;
 }
 
 

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BreakFastViewController">
             <connections>
+                <outlet property="returnTop" destination="OT8-JH-aRN" id="i1j-N6-vGv"/>
                 <outlet property="tableView" destination="zFV-BL-YFc" id="PfG-an-Qfk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,6 +29,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rf0-LJ-2fD">
                     <rect key="frame" x="8" y="20" width="30" height="30"/>
                     <animations/>
+                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2EE-FD-v6G"/>
                         <constraint firstAttribute="width" constant="30" id="HN5-eB-bAk"/>
@@ -43,6 +45,18 @@
                         <action selector="returnButton:" destination="-1" eventType="touchUpInside" id="CMW-Qn-sxM"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OT8-JH-aRN">
+                    <rect key="frame" x="545" y="530" width="35" height="40"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="eH4-Jy-wFJ"/>
+                        <constraint firstAttribute="width" constant="35" id="tBi-l1-UDF"/>
+                    </constraints>
+                    <state key="normal" image="返回顶部2"/>
+                    <connections>
+                        <action selector="returnTop:" destination="-1" eventType="touchUpInside" id="Lyf-6e-iuV"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -50,9 +64,11 @@
                 <constraint firstItem="Rf0-LJ-2fD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="0Dj-Ig-qSR"/>
                 <constraint firstAttribute="bottom" secondItem="zFV-BL-YFc" secondAttribute="bottom" id="3lF-ai-XeP"/>
                 <constraint firstAttribute="trailing" secondItem="zFV-BL-YFc" secondAttribute="trailing" id="OFX-JH-aC0"/>
+                <constraint firstAttribute="bottom" secondItem="OT8-JH-aRN" secondAttribute="bottom" constant="30" id="Voy-9B-245"/>
                 <constraint firstItem="Rf0-LJ-2fD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="dwS-Jr-XEr">
                     <variation key="widthClass=compact" constant="30"/>
                 </constraint>
+                <constraint firstAttribute="trailing" secondItem="OT8-JH-aRN" secondAttribute="trailing" constant="20" id="vzq-qP-bWn"/>
                 <constraint firstItem="zFV-BL-YFc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="w0A-lQ-X2I"/>
                 <constraint firstItem="zFV-BL-YFc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zVw-1W-VCf"/>
             </constraints>
@@ -83,5 +99,6 @@
     </objects>
     <resources>
         <image name="返回" width="200" height="200"/>
+        <image name="返回顶部2" width="128" height="128"/>
     </resources>
 </document>

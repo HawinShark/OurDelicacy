@@ -106,10 +106,15 @@
     
     
 }
+<<<<<<< Updated upstream
 
 -(void)fontBtnAction:(UIButton *)btn{
     
     
+=======
+-(void)fontBtnAction:(UIButton *)btn
+{
+>>>>>>> Stashed changes
     if (btn.selected == NO) {
         
         //改变wedView字体大小

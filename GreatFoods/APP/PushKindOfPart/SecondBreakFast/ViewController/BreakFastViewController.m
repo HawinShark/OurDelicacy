@@ -31,6 +31,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *returnTop;
 
 
 @end
@@ -311,6 +312,11 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+#pragma mark- 返回顶部按钮
+- (IBAction)returnTop:(id)sender {
+    NSLog(@"返回顶部");
+    [self.tableView setContentOffset:CGPointZero animated:YES];
+}
 
 
 

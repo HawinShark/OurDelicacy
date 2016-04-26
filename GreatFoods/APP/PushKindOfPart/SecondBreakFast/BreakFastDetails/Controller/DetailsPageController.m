@@ -174,10 +174,6 @@
                 [materislName addObject:model.name];
                 [materislName addObject:@" "];
                 [materislName addObject:model.dosage];
-                
-                NSLog(@"materislName.count1 = %ld",materialArray.count);
-                NSLog(@"i1 = %d",i);
-                
                 if (i+1 == materialArray.count)
                 {
                     [materislName addObject:@" 。"];
@@ -185,8 +181,6 @@
                 {
                     [materislName addObject:@" ,"];
                 }
-                NSLog(@"materislName.count2 = %ld",materialArray.count);
-                NSLog(@"i2 = %d",i);
             }
             NSString *str = [materislName componentsJoinedByString:@""];
             [cell MaterialString:str];
