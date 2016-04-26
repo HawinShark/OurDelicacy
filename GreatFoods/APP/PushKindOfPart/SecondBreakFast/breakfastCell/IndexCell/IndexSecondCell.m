@@ -32,8 +32,11 @@
        
     });
     
-    //裁剪
-    self.image = [self MASK:self.image];
+    _image.contentMode = UIViewContentModeScaleAspectFill;
+    _image.clipsToBounds = YES;
+    
+//    //裁剪
+//    self.image = [self MASK:self.image];
     
 }
 
@@ -45,13 +48,13 @@
 }
 
 
-- (UIImageView *)MASK:(UIImageView *)image{
-    image.clipsToBounds    = YES;
-    image.center           = self.contentView.center;
-    image.contentMode      = UIViewContentModeScaleAspectFill;
-    image.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    return image;
-}
+//- (UIImageView *)MASK:(UIImageView *)image{
+//    image.clipsToBounds    = YES;
+//    image.center           = self.contentView.center;
+//    image.contentMode      = UIViewContentModeScaleAspectFill;
+//    image.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+//    return image;
+//}
 
 
 @end

@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>JElasticPullToRefresh.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -52,6 +57,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0222D3D921EAAC30C8C5972F56236B7E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>033FB651969F6F40431D7C0E00195391</key>
 		<dict>
 			<key>primary</key>
@@ -78,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>4928295525F26C863B8B6C02FA3AF2B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4B3F564DCFFD038515CC985100F67719</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,12 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A3CB674BCE5816334EEDC5F0A6015924</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B3EC70350258EA13F5A0A9BD721F3B04</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3B8BF0B1EDEA2CF792944BF8EDD906C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -17,9 +17,9 @@
 		3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C47B1CCB0B8D002D46F9 /* HeadViewCell.xib */; };
 		3FA6C4891CCB0B8D002D46F9 /* MaterialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C47D1CCB0B8D002D46F9 /* MaterialCell.m */; };
 		3FA6C48B1CCB0B8D002D46F9 /* StepOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */; };
-		3FA6C48C1CCB0B8D002D46F9 /* StepOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C4811CCB0B8D002D46F9 /* StepOneCell.xib */; };
 		3FB103F71CCB523700F94F65 /* carouselCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB103F61CCB523700F94F65 /* carouselCell.m */; };
 		3FB117451CC9CFB600CA4AD4 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB117441CC9CFB600CA4AD4 /* List.m */; };
+		3FBD87AD1CCF42ED0024AAC2 /* StepOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBD87AC1CCF42ED0024AAC2 /* StepOneCell.xib */; };
 		7513E4101CC8BA1500E0DC97 /* BigRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E40F1CC8BA1500E0DC97 /* BigRoundView.m */; };
 		7513E4131CC8BA3A00E0DC97 /* SmRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E4121CC8BA3A00E0DC97 /* SmRoundView.m */; };
 		7513E4161CC8BA8A00E0DC97 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E4151CC8BA8A00E0DC97 /* PointView.m */; };
@@ -122,11 +122,11 @@
 		3FA6C47D1CCB0B8D002D46F9 /* MaterialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialCell.m; sourceTree = "<group>"; };
 		3FA6C47F1CCB0B8D002D46F9 /* StepOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepOneCell.h; sourceTree = "<group>"; };
 		3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepOneCell.m; sourceTree = "<group>"; };
-		3FA6C4811CCB0B8D002D46F9 /* StepOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepOneCell.xib; sourceTree = "<group>"; };
 		3FB103F51CCB523700F94F65 /* carouselCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = carouselCell.h; sourceTree = "<group>"; };
 		3FB103F61CCB523700F94F65 /* carouselCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = carouselCell.m; sourceTree = "<group>"; };
 		3FB117431CC9CFB600CA4AD4 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		3FB117441CC9CFB600CA4AD4 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		3FBD87AC1CCF42ED0024AAC2 /* StepOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepOneCell.xib; sourceTree = "<group>"; };
 		62FA1D13F8A65EDB1A6DC6B0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7513E40E1CC8BA1500E0DC97 /* BigRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigRoundView.h; sourceTree = "<group>"; };
 		7513E40F1CC8BA1500E0DC97 /* BigRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigRoundView.m; sourceTree = "<group>"; };
@@ -316,7 +316,7 @@
 				3FA2D1751CCE3AD800A27EFF /* MaterialCell.xib */,
 				3FA6C47F1CCB0B8D002D46F9 /* StepOneCell.h */,
 				3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */,
-				3FA6C4811CCB0B8D002D46F9 /* StepOneCell.xib */,
+				3FBD87AC1CCF42ED0024AAC2 /* StepOneCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -961,7 +961,6 @@
 				F5B289E51CC4F7B400ECF016 /* LaunchScreen.storyboard in Resources */,
 				7590480B1CCB495A00559B74 /* 暂停1.png in Resources */,
 				F5559D041CC8ABB200379BF0 /* MineViewController.xib in Resources */,
-				3FA6C48C1CCB0B8D002D46F9 /* StepOneCell.xib in Resources */,
 				F5559CFF1CC8AB9D00379BF0 /* BreakFastViewController.xib in Resources */,
 				75BE68001CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib in Resources */,
 				3FA6C4831CCB0B8D002D46F9 /* DetailsPageController.xib in Resources */,
@@ -977,6 +976,7 @@
 				F58ED2211CCE6F4C00E2139B /* SearchListViewCell.xib in Resources */,
 				F5B28A331CC53B9300ECF016 /* Main.storyboard in Resources */,
 				3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */,
+				3FBD87AD1CCF42ED0024AAC2 /* StepOneCell.xib in Resources */,
 				F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */,
 				F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */,
 			);

@@ -11,7 +11,9 @@
 @implementation StepOneCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
+    _stepImage.contentMode = UIViewContentModeScaleAspectFill;
+    _stepImage.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

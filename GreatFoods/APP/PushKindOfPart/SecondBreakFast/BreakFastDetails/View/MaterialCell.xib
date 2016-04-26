@@ -55,7 +55,7 @@
             <connections>
                 <outlet property="materialLabel" destination="INT-aw-FZX" id="vUO-Mi-lPe"/>
             </connections>
-            <point key="canvasLocation" x="368" y="395"/>
+            <point key="canvasLocation" x="6" y="388"/>
         </tableViewCell>
     </objects>
 </document>
