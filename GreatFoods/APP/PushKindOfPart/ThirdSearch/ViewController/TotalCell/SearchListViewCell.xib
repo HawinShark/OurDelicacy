@@ -21,7 +21,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="烤猪头" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhy-70-AbC">
-                        <rect key="frame" x="10" y="189" width="164" height="27.5"/>
+                        <rect key="frame" x="10" y="189" width="164" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="kHt-sx-4gQ"/>
                         </constraints>
@@ -35,7 +35,7 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我也是醉了" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZ2-zJ-mxp">
-                        <rect key="frame" x="10" y="226" width="164" height="16"/>
+                        <rect key="frame" x="10" y="219" width="164" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="35" id="RjL-rh-TvF"/>
                         </constraints>
@@ -43,75 +43,61 @@
                         <color key="textColor" red="0.68924278846153841" green="0.46563608803687612" blue="0.1101435757689037" alpha="0.72195581896551719" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eyes" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-7L-seS">
-                        <rect key="frame" x="15" y="250.5" width="15" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="HxO-YX-Tbx"/>
-                            <constraint firstAttribute="width" constant="15" id="hdx-6B-QTf"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1780" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kK3-K7-a79">
-                        <rect key="frame" x="35" y="250.5" width="27.5" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.44509214740000003" green="0.44509214740000003" blue="0.44509214740000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11350" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tax-Rj-peA">
-                        <rect key="frame" x="102" y="251" width="34" height="14.5"/>
+                        <rect key="frame" x="70" y="250.5" width="34" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.44509214740000003" green="0.44509214740000003" blue="0.44509214740000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="yjc-v4-Vxb">
-                        <rect key="frame" x="82" y="250.5" width="15" height="15"/>
+                        <rect key="frame" x="50" y="250" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="OE6-FM-qEz"/>
                             <constraint firstAttribute="height" constant="15" id="OGu-TX-6AT"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWg-6a-fVV">
+                        <rect key="frame" x="20" y="250" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="hoO-Uh-RPh"/>
+                            <constraint firstAttribute="width" constant="15" id="wQU-zd-vd1"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="收藏"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="yjc-v4-Vxb" firstAttribute="leading" secondItem="IWg-6a-fVV" secondAttribute="trailing" constant="15" id="1FI-4X-ZMP"/>
                 <constraint firstItem="Lrh-hy-xox" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3jO-Qg-F2v"/>
+                <constraint firstItem="IWg-6a-fVV" firstAttribute="leading" secondItem="RZ2-zJ-mxp" secondAttribute="leading" constant="10" id="4Mc-37-CDe"/>
                 <constraint firstAttribute="trailing" secondItem="Lrh-hy-xox" secondAttribute="trailing" id="5ej-20-y4d"/>
-                <constraint firstAttribute="bottom" secondItem="kK3-K7-a79" secondAttribute="bottom" constant="10" id="7uu-Vt-wpb"/>
                 <constraint firstItem="RZ2-zJ-mxp" firstAttribute="leading" secondItem="Jhy-70-AbC" secondAttribute="leading" id="8pZ-FC-pZA"/>
-                <constraint firstItem="kK3-K7-a79" firstAttribute="bottom" secondItem="x4B-7L-seS" secondAttribute="bottom" id="F5z-Dc-wu8"/>
                 <constraint firstAttribute="trailing" secondItem="Jhy-70-AbC" secondAttribute="trailing" constant="5" id="Ffi-A6-4hg"/>
-                <constraint firstItem="yjc-v4-Vxb" firstAttribute="bottom" secondItem="x4B-7L-seS" secondAttribute="bottom" id="FoX-me-Q6i"/>
-                <constraint firstItem="yjc-v4-Vxb" firstAttribute="leading" secondItem="kK3-K7-a79" secondAttribute="trailing" constant="20" id="JeB-6c-NZG"/>
                 <constraint firstItem="tax-Rj-peA" firstAttribute="bottom" secondItem="yjc-v4-Vxb" secondAttribute="bottom" id="OIc-ts-jBX"/>
                 <constraint firstItem="Lrh-hy-xox" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Qhs-xE-JGb"/>
                 <constraint firstItem="Jhy-70-AbC" firstAttribute="top" secondItem="Lrh-hy-xox" secondAttribute="bottom" constant="10" id="WRl-Ho-ZNM"/>
-                <constraint firstItem="kK3-K7-a79" firstAttribute="top" secondItem="RZ2-zJ-mxp" secondAttribute="bottom" constant="8" id="Wiv-Fm-yQX"/>
-                <constraint firstItem="x4B-7L-seS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="XnM-Y8-vo1"/>
+                <constraint firstAttribute="bottom" secondItem="IWg-6a-fVV" secondAttribute="bottom" constant="10" id="WiI-E4-5QL"/>
                 <constraint firstItem="RZ2-zJ-mxp" firstAttribute="trailing" secondItem="Jhy-70-AbC" secondAttribute="trailing" id="baQ-iR-Kfg"/>
-                <constraint firstItem="kK3-K7-a79" firstAttribute="leading" secondItem="x4B-7L-seS" secondAttribute="trailing" constant="5" id="bx6-hz-0KG"/>
+                <constraint firstItem="yjc-v4-Vxb" firstAttribute="bottom" secondItem="IWg-6a-fVV" secondAttribute="bottom" id="eGD-jO-B0t"/>
                 <constraint firstItem="RZ2-zJ-mxp" firstAttribute="top" secondItem="Jhy-70-AbC" secondAttribute="bottom" constant="10" id="hFp-Ir-bKk"/>
-                <constraint firstItem="kK3-K7-a79" firstAttribute="top" secondItem="x4B-7L-seS" secondAttribute="top" id="nbP-pB-Cbx"/>
                 <constraint firstItem="Jhy-70-AbC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="rNp-I4-A39"/>
                 <constraint firstItem="tax-Rj-peA" firstAttribute="leading" secondItem="yjc-v4-Vxb" secondAttribute="trailing" constant="5" id="sQQ-KF-GCt"/>
             </constraints>
             <size key="customSize" width="179" height="275"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="nbP-pB-Cbx"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="Image" destination="Lrh-hy-xox" id="O4s-Fk-va5"/>
+                <outlet property="ZanButton" destination="IWg-6a-fVV" id="aVR-AN-SC5"/>
                 <outlet property="message" destination="RZ2-zJ-mxp" id="ME4-Rf-yAh"/>
                 <outlet property="share" destination="tax-Rj-peA" id="hoF-HP-mY6"/>
                 <outlet property="title" destination="Jhy-70-AbC" id="fVp-0U-60o"/>
-                <outlet property="watch" destination="kK3-K7-a79" id="zIc-Vc-DQG"/>
             </connections>
             <point key="canvasLocation" x="395.5" y="402.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="eyes" width="32" height="32"/>
         <image name="share" width="32" height="32"/>
+        <image name="收藏" width="32" height="32"/>
     </resources>
 </document>

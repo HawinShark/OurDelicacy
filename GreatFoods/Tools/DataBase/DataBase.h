@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <FMDatabase.h>
 #import <FMDatabaseAdditions.h>
+
 @class CollectModel;
+
 @interface DataBase : NSObject
-+(DataBase *)shareData;
--(void) openFmdb;
--(void) insertInfo:(CollectModel *)model;
+
+
++ (DataBase *)shareData;
+
+
+- (void) openFmdb;
+- (void) insertInfo:(CollectModel *)model;
 - (void) deleteInfo:(id)makeTitle;
 - (NSMutableArray *)queryMakeTitle;
 - (NSMutableArray *)queryCollectModel;

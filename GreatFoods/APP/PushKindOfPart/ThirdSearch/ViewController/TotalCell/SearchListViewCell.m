@@ -13,10 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *Image;
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *watch;
 @property (weak, nonatomic) IBOutlet UILabel *share;
 @property (weak, nonatomic) IBOutlet UILabel *message;
 
+@property (weak, nonatomic) IBOutlet UIButton *ZanButton;
 @end
 
 @implementation SearchListViewCell
@@ -33,7 +33,6 @@
     
     
     _title.text = model.title;
-    _watch.text = [NSString stringWithFormat:@"%0.f" ,model.clickCount];
     _share.text = [NSString stringWithFormat:@"%0.f" ,model.shareCount];
     _message.text = model.dataDescription;
 }

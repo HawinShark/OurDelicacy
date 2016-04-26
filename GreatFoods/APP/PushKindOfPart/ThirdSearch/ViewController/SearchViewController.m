@@ -14,6 +14,8 @@
 
 #import "DaydayCookData.h"//model
 #import "SearchListViewCell.h"
+
+#import "DaydayCookDescription.h"
 @interface SearchViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     WHC_NavigationController *SearchNav;
@@ -97,9 +99,6 @@
 
 #pragma mark- collection delegate
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 2;
@@ -111,6 +110,20 @@
         return 1;
     }
     return self.dataModels.count;
+}
+
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    DaydayCookData *model = _dataModels[indexPath.item];
+    
+    DaydayCookDescription *description = [[DaydayCookDescription alloc]init];
+    description.BookID = model.dataIdentifier;
+    description.isNavigation = YES;
+    
+    [self.navigationController pushViewController:description animated:YES];
 }
 
 

@@ -21,11 +21,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //
-
+    
+    
     
     [self buildTableViewHead];
     
     
+}
+
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        return @"Good";
+    }
+    else{
+        return @"Bad";
+    }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    if (section == 0) {
+        return @"good";
+    }
+    return @"bad";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -38,6 +57,7 @@
     
     cell.textLabel.text = @"New York";
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 

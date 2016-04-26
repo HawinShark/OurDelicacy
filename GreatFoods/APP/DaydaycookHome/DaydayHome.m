@@ -232,22 +232,17 @@
     }//减速判定是否刷新页面
     
     
-    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        
+        
+    });
     //中断视频播放
-    if (scrollView.contentOffset.y / 180 > currentIndex) {
-        if (currentTopCell.isPlay == YES) {
-            [filmmanager removeFromSuperview];
-            filmmanager = nil;//执行dealloc
-        }
+    if (currentTopCell.isPlay == YES) {
+        [filmmanager removeFromSuperview];
+        filmmanager = nil;//执行dealloc
     }
     
-    if (self.DaydayCollecionView.mj_header.state != MJRefreshStateIdle) {
-        if (currentTopCell.isPlay == YES) {
-            
-            [filmmanager removeFromSuperview];
-            filmmanager = nil;
-        }
-    }
 }
 
 
@@ -271,12 +266,28 @@
         currentTopCell = (DDCollectCell *)[self.DaydayCollecionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:topCell inSection:0]];
         DaydayCookData *model = self.DDdataArray[currentIndex];
         if (model.indexUrl.length > 0) {
+            
             NSLog(@"有种子");
             filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
-            [currentTopCell.contentView addSubview:filmmanager];
-            [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
             
-            currentTopCell.isPlay = YES;
+            //延迟执行
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.DaydayCollecionView.mj_header endRefreshing];
+                
+                //  执行的代码
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //
+                    [currentTopCell.contentView addSubview:filmmanager];
+                    [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
+                    
+                    currentTopCell.isPlay = YES;
+                    
+                });
+                
+                
+                //----->>>>>>>
+            });
+            
         }
         
     }
@@ -545,6 +556,12 @@
     
     backtoTop.alpha = 0;
     [backtoTop addTarget:self action:@selector(totop:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //销毁播放器
+    if (currentTopCell.isPlay == YES) {
+        [filmmanager removeFromSuperview];
+        filmmanager = nil;//执行dealloc
+    }
 }
 
 -(void) totop:(UIButton *)sender

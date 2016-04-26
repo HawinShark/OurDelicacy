@@ -52,6 +52,12 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *mark;
+@property (weak, nonatomic) IBOutlet UIButton *upfont;
+@property (weak, nonatomic) IBOutlet UIButton *share;
+
+
 @end
 
 @implementation DaydayCookDescription
@@ -60,55 +66,27 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
+    if (_isCollect) {
+        self.mark.selected = YES;
+    }
     
-    [self initTollBar];
+    [self.mark addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
     
+    [self.upfont addTarget:self action:@selector(fontBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.share addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-//初始化toolBar
--(void)initTollBar{
-    
-    UIToolbar *tool = [[UIToolbar alloc]initWithFrame:CGRectMake(0, screen_height -40, screen_width, 40)];
-    
-    [tool setBackgroundColor:[UIColor redColor]];
-    //收藏按钮
-    UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [collectBtn setFrame:CGRectMake(0, 0, screen_width/3, 40)];
-    [collectBtn setImage:[UIImage imageNamed:@"收藏.png"] forState:UIControlStateNormal];
-    
-    [collectBtn setImage:[UIImage imageNamed:@"收藏(1).png"] forState:UIControlStateSelected];
-    
-    NSLog(@"iscollect == %d",self.isCollect);
-    if (self.isCollect) {
-        collectBtn.selected =YES;
-    }
-    [collectBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *collectItem = [[UIBarButtonItem alloc]initWithCustomView:collectBtn];
-    //字体改变按钮
-    UIButton *fontBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [fontBtn setFrame:CGRectMake(0, 0, screen_width/3, 40)];
-    [fontBtn setImage:[UIImage imageNamed:@"字体.png"] forState:UIControlStateNormal];
-    [fontBtn setImage:[UIImage imageNamed:@"字体放大.png"] forState:UIControlStateSelected];
-    [fontBtn addTarget:self action:@selector(fontBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *fontItem = [[UIBarButtonItem alloc]initWithCustomView:fontBtn];
-    
-    //分享
-    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareBtn setFrame:CGRectMake(0, 0, screen_width/3, 40)];
-    [shareBtn setImage:[UIImage imageNamed:@"分享.png"] forState:UIControlStateNormal];
-    [shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc]initWithCustomView:shareBtn];
-    NSArray *itemArr =[NSArray arrayWithObjects:collectItem,fontItem,shareItem, nil];
-    [tool setItems:itemArr];
-    
-    [self.view addSubview:tool];
-}
+
+#pragma mark- 分享点击
+
 -(void)shareBtnAction:(UIButton *)btn
 {
     
     
 }
 
+#pragma mark- 字体点击
 
 -(void)fontBtnAction:(UIButton *)btn
 {
@@ -129,6 +107,9 @@
 
 }
 
+
+#pragma mark- 收藏点击
+
 -(void)collectAction:(UIButton *)btn{
     if (btn.selected == NO) {
         CollectModel *model = [CollectModel new];
@@ -137,19 +118,10 @@
         model.imgUrl = self.imgUrl;
 
         [[DataBase shareData]insertInfo:model];
-        
-    }
-    
-    else{
-        
+    }else{
         [[DataBase shareData]deleteInfo:self.makeTitle];
-        
     }
-    
-       btn.selected = !btn.selected;
-       
-    
-
+        btn.selected = !btn.selected;
 }
 
 
@@ -157,7 +129,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //
+    
     self.navigationController.navigationBarHidden = YES;
 
     [self.webView setScalesPageToFit:YES];
@@ -178,6 +150,8 @@
     self.webView.backgroundColor = RGB(245, 245, 245);
     self.webView.scrollView.backgroundColor = RGB(245, 245, 245);
     
+    
+    
     [self buildImageAndLabel];
     
     
@@ -188,17 +162,6 @@
     }
     
 }
-
-
--(void)forward{
-    
-//        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '150%'"];
-}
--(void)back{
-    [self.webView goBack];
-}
-
-
 
 
 
@@ -233,8 +196,12 @@
 
 - (IBAction)Back:(UIButton *)sender {
     
+    if (_isNavigation == YES) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
     
     [self.navigationController popToRootViewControllerAnimated:YES];
+    }
     
 }
 
@@ -426,9 +393,9 @@
 
 -(void)appearNav
 {
-    self.backButton.hidden = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.hidesBarsOnSwipe = NO;
 }
 
 
