@@ -25,7 +25,7 @@
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"background-1"]];
     
     self.titleLabel.text = model.makeTitle;
-    
+
 }
 - (void)awakeFromNib {
     // Initialization code

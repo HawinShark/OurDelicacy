@@ -13,6 +13,7 @@
 #import "ICarouselImages.h"
 #import "DataBase.h"
 
+
 #import "DaydayCookData.h"//model
 #import "SearchListViewCell.h"
 
@@ -205,7 +206,6 @@
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [image.ica startAutoScrollPage];
 }
-
 
 
 

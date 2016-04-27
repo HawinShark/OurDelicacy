@@ -20,8 +20,17 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property(nonatomic,retain)NSMutableArray *collectArr;
+
+//是否在选择状态
 @property(nonatomic,assign)BOOL isSelect;
+
+//是否在全选状态
+@property (nonatomic,assign) BOOL isAllselect;
+
+//要删除的数组
 @property (nonatomic,retain) NSMutableArray *deleteArr;
+
+
 @end
 
 @implementation MineCollectViewController
@@ -33,23 +42,38 @@ static NSString *cellid = @"MineCollectcell";
     {
         _deleteArr = [NSMutableArray array];
     }
-    
-    return _deleteArr;
+      return _deleteArr;
     
 }
+
+#pragma mark - 全选按钮方法
 - (IBAction)allSelectAction:(UIButton *)sender {
     
-    
-    for (int i = 0; i < _collectArr.count; i++){
+    if (sender.selected == NO) {
+        self.deleteBtn.enabled =YES;
+        self.deleteArr = [[DataBase shareData]queryMakeTitle];
+        self.title =[NSString stringWithFormat:@"已选%ld个菜谱",[self.deleteArr count] ];
+
         
-        MineCollextCollectionViewCell *cell = (MineCollextCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
-        
-        cell.selected =! cell.selected;
+    }
+    else{
+        [self.deleteArr removeAllObjects];
+        self.title =[NSString stringWithFormat:@"已选%ld个菜谱",[self.deleteArr count] ];
+
+        self.deleteBtn.enabled = NO;
+    }
+
+    NSArray *cellArr = [self.collectionView visibleCells];
+    for (MineCollextCollectionViewCell *cell in cellArr) {
+                cell.selected =! cell.selected;
+
     }
     
+    self.isAllselect = !self.isAllselect;
     sender.selected = !sender.selected;
 }
 
+#pragma mark - 删除按钮方法
 - (IBAction)deleteAction:(UIButton *)sender {
     [[DataBase shareData]openFmdb];
     
@@ -68,6 +92,8 @@ static NSString *cellid = @"MineCollectcell";
     alert.iconType = OpinionzAlertIconSuccess;
     [alert show];
     
+    self.title =[NSString stringWithFormat:@"已选%ld个菜谱",[self.deleteArr count] ];
+
     [self.collectionView reloadData];
     
     //且返回上级页面
@@ -97,9 +123,12 @@ static NSString *cellid = @"MineCollectcell";
     
     self.collectionView.collectionViewLayout = layout;
     [self.collectionView registerNib:[UINib nibWithNibName:@"MineCollextCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellid];
-
-    self.collectionView.dataSource =self;
-    self.collectionView.delegate =self;
+//    self.navigationController.navigationBar.
+    self.title =[NSString stringWithFormat:@"我的收藏(%ld)",[self.collectArr count] ];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :  [UIColor orangeColor]}];
+//    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+   
     [self setSelectBtn];
 
 }
@@ -116,9 +145,11 @@ static NSString *cellid = @"MineCollectcell";
     self.navigationItem.rightBarButtonItem = seleteItem;
     
 }
-
+#pragma mark - 选择按钮方法
 -(void) selectAction:(UIButton *)btn{
     if (btn.selected == NO) {
+        self.title =[NSString stringWithFormat:@"已选0个菜谱" ];
+
         self.collectionView.allowsMultipleSelection = YES;
         self.isSelect = YES;
         [UIView animateWithDuration:0.1 animations:^{
@@ -137,12 +168,20 @@ static NSString *cellid = @"MineCollectcell";
             
         }];
         
+        self.allSelectBtn.selected = NO;
+        NSArray *cellArr = [self.collectionView visibleCells];
+        for (MineCollextCollectionViewCell *cell in cellArr) {
+            cell.selected =NO;
+            
+        }
+        self.isAllselect = NO;
+        
         
         self.collectionView.allowsMultipleSelection = NO;
-        self.collectionView.allowsSelection = NO;
         self.collectionView.allowsSelection = YES;
         self.isSelect = NO;
         [self.deleteArr removeAllObjects];
+        self.deleteBtn.enabled = NO;
         
     }
     
@@ -168,6 +207,8 @@ static NSString *cellid = @"MineCollectcell";
     {
         
         [self.deleteArr addObject:model.makeTitle];
+        self.title =[NSString stringWithFormat:@"已选%ld个菜谱",[self.deleteArr count] ];
+
         
         if (self.deleteArr.count > 0) {
         
@@ -179,10 +220,13 @@ static NSString *cellid = @"MineCollectcell";
     
 }
 
+
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectModel *model = self.collectArr[indexPath.item];
 
     [self.deleteArr removeObject:model.makeTitle];
+    self.title =[NSString stringWithFormat:@"已选%ld个菜谱",[self.deleteArr count] ];
+
     if (self.deleteArr.count == 0) {
         self.deleteBtn.enabled = NO;
     }
@@ -203,12 +247,17 @@ static NSString *cellid = @"MineCollectcell";
     MineCollextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellid forIndexPath:indexPath];
     CollectModel *model = [self.collectArr objectAtIndex:indexPath.item] ;
     
+    if (self.isAllselect == YES) {
+        cell.selected = YES;
+    }
+
     [cell getModel:model];
     return cell;
     
     
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -223,5 +272,10 @@ static NSString *cellid = @"MineCollectcell";
     // Pass the selected object to the new view controller.
 }
 */
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : RGB(89, 61, 67),NSFontAttributeName : [UIFont fontWithName:@"Zapfino" size:15]}];
+}
 
 @end
