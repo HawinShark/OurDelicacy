@@ -17,8 +17,12 @@
 #import "CollectModel.h"
 #import "WHC_NavigationController.h"
 
+#import "AppDelegate.h"
+#import "UMSocialDataService.h"
+#import "UMSocial.h"
+
 #import <OpinionzAlertView.h>
-@interface DaydayCookDescription () <UIWebViewDelegate>
+@interface DaydayCookDescription () <UIWebViewDelegate,UMSocialUIDelegate>
 {
     Loading *load;
 }
@@ -43,6 +47,12 @@
 
 /* makeTitle*/
 @property (nonatomic, retain) CollectModel *collectmodel;
+
+/* url*/
+@property (nonatomic, retain) NSString *url;
+//详细设置
+@property (nonatomic, retain) NSString *message;
+
 
 //是否已收藏
 @property(nonatomic,assign) BOOL isCollect;
@@ -89,7 +99,35 @@
 -(void)shareBtnAction:(UIButton *)btn
 {
     
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"56d80bbb67e58ededb001b7c"                                    shareText:self.message
+                                     shareImage:self.image.image
+                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite]
+                                       delegate:self];
     
+    
+    NSLog(@"self.title == %@",self.makeTitle);
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = self.url;
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = self.makeTitle;
+    
+    
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = self.url;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = self.makeTitle;
+        [UMSocialData defaultData].extConfig.wxMessageType =  UMSocialWXMessageTypeWeb;
+//
+//    
+    
+}
+//实现回调方法（可选）：
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
 }
 
 #pragma mark- 字体点击
@@ -280,6 +318,10 @@
                 self.titleName.text  = model.title;
                 self.makeTitle = model.title;
                 self.imgUrl = model.imageUrl;
+                
+#pragma mark- 友盟分享参数
+                self.url =model.shareUrl;
+                self.message = model.dataDescription;
                 
                 self.makelabel.text  = [NSString stringWithFormat:@"烹饪时间 : %@",model.maketime];
                 self.watchlabel.text = [NSString stringWithFormat:@"%.0f",model.clickCount];

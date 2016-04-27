@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 #import "DaydayHome.h"
 #import "WHC_NavigationController.h"
 @interface AppDelegate ()
@@ -24,6 +26,19 @@
     UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     //[storyBoard instantiateInitialViewController]
     
+    
+    
+    [UMSocialData setAppKey:@"56d80bbb67e58ededb001b7c"];
+    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+    
+    
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:@"wx5b9f76d942b9408f" appSecret:@"2dd64eecfc9a38e6f7045528c6dbf4b4" url:@"http://baidu.com"];
+    
+    
+    
+    
     WHC_NavigationController *rootNav = [[WHC_NavigationController alloc]initWithRootViewController:[storyBoard instantiateInitialViewController]];
     [rootNav.navigationBar setBackgroundColor:[UIColor clearColor]];
 //
@@ -34,6 +49,14 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        //调用其他SDK，例如支付宝SDK等
+    }
+    return result;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
