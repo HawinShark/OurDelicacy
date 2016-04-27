@@ -28,13 +28,13 @@
     
     
     
-    [UMSocialData setAppKey:@"56d80bbb67e58ededb001b7c"];
+    [UMSocialData setAppKey:@"5720b91867e58efd09002f70"];
     //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     
     
     //设置微信AppId、appSecret，分享url
-    [UMSocialWechatHandler setWXAppId:@"wx5b9f76d942b9408f" appSecret:@"2dd64eecfc9a38e6f7045528c6dbf4b4" url:@"http://baidu.com"];
+    [UMSocialWechatHandler setWXAppId:@"wx5b3ee5b4273bd51f" appSecret:@"8d2832b04d809ccb227b09633507cb0b" url:@"http://baidu.com"];
     
     
     

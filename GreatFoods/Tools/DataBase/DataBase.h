@@ -24,4 +24,19 @@
 - (NSMutableArray *)queryMakeTitle;
 - (NSMutableArray *)queryCollectModel;
 
+
+
+
+#pragma mark- 表2
+
+//创建一个表
+-(BOOL)creatAndOpenTable;
+//添加
+-(void)insertPeople:(CollectModel *)model;
+
+//查询
+-(NSMutableArray *)selectMovie;
+//删除
+-(void)deletePeopleWithMakeTitle:(NSString *)makeTime;
+
 @end

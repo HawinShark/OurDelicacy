@@ -100,7 +100,7 @@
 {
     
     [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"56d80bbb67e58ededb001b7c"                                    shareText:self.message
+                                         appKey:@"5720b91867e58efd09002f70"                                    shareText:self.message
                                      shareImage:self.image.image
                                 shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite]
                                        delegate:self];
@@ -304,6 +304,9 @@
                     }
                 }
                 
+                
+                
+                
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     
                     [self.image sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
@@ -318,6 +321,19 @@
                 self.titleName.text  = model.title;
                 self.makeTitle = model.title;
                 self.imgUrl = model.imageUrl;
+                
+                
+#pragma mark- 足迹浏览过
+                [[DataBase shareData]creatAndOpenTable];//open
+                CollectModel *WatchModel = [CollectModel new];
+                WatchModel.imgUrl = model.imageUrl;
+                WatchModel.makeTitle = model.title;
+                WatchModel.bookId = self.BookID;
+                //先删除后存储
+                [[DataBase shareData]deletePeopleWithMakeTitle:model.title];
+                [[DataBase shareData]insertPeople:WatchModel];//存入数据库
+                
+                
                 
 #pragma mark- 友盟分享参数
                 self.url =model.shareUrl;

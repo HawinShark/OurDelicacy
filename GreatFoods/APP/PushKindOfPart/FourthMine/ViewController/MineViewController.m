@@ -8,6 +8,7 @@
 
 #import "MineViewController.h"
 #import "MineCollectViewController.h"
+#import "MyWatchedObject.h"
 
 @interface MineViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -37,8 +38,15 @@
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    
-    return @" ";
+    switch (section) {
+        case 0:
+            return @"我的记录";
+        case 1:
+            return @"我的设置";
+        default:
+            break;
+    }
+    return @"";
 }
 
 
@@ -71,6 +79,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
+
+
+
+#pragma mark- 点击跳转
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -78,12 +90,20 @@
             MineCollectViewController *mineCollectVc = [[MineCollectViewController alloc]init];
             [self.navigationController pushViewController:mineCollectVc animated:YES];
         }
+        if (indexPath.row == 1) {
+            MyWatchedObject *watch = [[MyWatchedObject alloc]init];
+            [self.navigationController pushViewController:watch animated:YES];
+        }
+    }
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        
     }
     
     
-    
-    
 }
+
+//行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 1) {
@@ -124,8 +144,11 @@
     
     head.contentMode = UIViewContentModeScaleAspectFill;
     
+    UIView *mask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screen_width, 250)];
     
-    self.tableview.tableHeaderView = head;
+    [mask addSubview:head];
+    
+    self.tableview.tableHeaderView = mask;
     
 }
 
@@ -135,13 +158,17 @@
     
     if (scrollView.contentOffset.y < 0) {
         
-        [self.tableview.tableHeaderView setFrame:CGRectMake(0, scrollView.contentOffset.y, screen_width - scrollView.contentOffset.y, 250 - scrollView.contentOffset.y)];
-        [head setFrame:CGRectMake(0, scrollView.contentOffset.y, screen_width - scrollView.contentOffset.y, 250 - scrollView.contentOffset.y)];
+        
+        CGFloat offset = scrollView.contentOffset.y * -1;
+        
+        head.frame =CGRectMake(-offset/2, -offset, screen_width + offset,250  + offset);
+        
     }
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
+    if (decelerate)
     if (scrollView.contentOffset.y < 0) {
         
         [UIView animateWithDuration:0.5 animations:^{

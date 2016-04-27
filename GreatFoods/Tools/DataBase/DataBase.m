@@ -11,10 +11,10 @@
 
 @interface DataBase ()
 @property(nonatomic,strong)FMDatabase *db;
-
+@property(nonatomic,strong)FMDatabase *database;
 @end
-@implementation DataBase
 
+@implementation DataBase
 
 +(DataBase *)shareData
 {
@@ -26,12 +26,15 @@
     });
     return dataBase;
 }
+
+
+
 -(void)openFmdb
 {
     NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"collect.sqlite"];
     //2.获得数据库
-    self.db=[FMDatabase databaseWithPath:fileName];
+    self.db = [FMDatabase databaseWithPath:fileName];
     
     //3.打开数据库
     if ([self.db open]) {
@@ -40,11 +43,13 @@
         
         
         if (result) {
-            NSLog(@"创表成功");
+//            NSLog(@"创表成功");
         }else
         {
-            NSLog(@"创表失败");
+//            NSLog(@"创表失败");
         }
+        [self.db close];
+
     }
     
     
@@ -52,7 +57,10 @@
 
 -(void)insertInfo:(CollectModel *)model
 {
-    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
+    [self.db open];
+    BOOL result = [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
+        NSLog(@"%d",result);
+    [self.db close];
     
 }
 - (NSMutableArray *)queryMakeTitle
@@ -72,6 +80,7 @@
         }
         
     }
+    [self.db close];
 
 //    NSLog(@"array===%@",array);
     
@@ -100,7 +109,8 @@
             
         
     }
-    
+    [self.db close];
+
 //    NSLog(@"array===%@",array);
     
     return array;
@@ -116,11 +126,100 @@
         BOOL result = [self.db executeUpdate:str];
         
         if (result) {
-            NSLog(@"delete成功");
+            [self.db close];
+//            NSLog(@"delete成功");
         }
     }
 
 }
+
+
+
+
+#pragma mark- 表2
+
+-(BOOL)creatAndOpenTable
+{
+    
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSLog(@"%@",docPath);
+    
+    NSString *dbPath = [docPath stringByAppendingPathComponent:@"person.sqlite"];
+    
+    //创建数据库
+    _database = [FMDatabase databaseWithPath:dbPath];
+    
+    //打开数据
+    [_database open];
+    
+    //创建表
+    BOOL result = [self.database executeUpdate:
+                   @"CREATE TABLE IF NOT EXISTS h_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text );"];
+    
+    if (result)
+    {
+//        NSLog(@"创建表成功");
+    }
+    return result;
+}
+
+-(void)insertPeople:(CollectModel *)model
+{
+    [self.database open];
+        //添加用户
+        //执行添加语句
+        BOOL result = [self.database executeUpdate:@"INSERT INTO h_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
+        
+        if (result) {
+            NSLog(@"2表add成功");
+            [self.database close];
+        }
+}
+
+-(void)deletePeopleWithMakeTitle:(NSString *)makeTime
+{
+    if ([self.database open]) {
+        
+        NSString *str = [NSString stringWithFormat:@"delete from h_collect where makeTitle = '%@'",makeTime];
+        BOOL result = [self.database executeUpdate:str];
+        
+        if (result) {
+//            NSLog(@"delete成功");
+        }
+
+    }
+}
+
+
+-(NSMutableArray *)selectMovie
+{
+    [self.database open];
+        
+        // 1.执行查询语句
+        FMResultSet *resultSet = [self.database executeQuery:@"SELECT * FROM h_collect"];
+        NSMutableArray *array = [NSMutableArray new];
+
+        //获取数据
+        if ([resultSet next]) {
+            NSString *makeTitle = [resultSet stringForColumn:@"makeTitle"];
+            NSString *imgUrl = [resultSet stringForColumn:@"imgUrl"];
+            NSInteger bookId = [resultSet intForColumn:@"bookId"];
+            CollectModel *model = [[CollectModel alloc]init];
+            model.imgUrl = imgUrl;
+            model.bookId = bookId;
+            model.makeTitle = makeTitle;
+            [array addObject:model];
+            NSLog(@"%@",makeTitle);
+        }
+        
+        [self.database close];
+    
+    NSMutableArray *reverseArray = [NSMutableArray arrayWithArray:[[array reverseObjectEnumerator]allObjects]];
+    NSLog(@"获取成功 -> %@",reverseArray);
+    
+    return reverseArray;
+}
+
 
 
 @end

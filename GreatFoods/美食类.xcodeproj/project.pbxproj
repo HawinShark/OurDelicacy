@@ -86,6 +86,8 @@
 		F5559D041CC8ABB200379BF0 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5559D021CC8ABB200379BF0 /* MineViewController.xib */; };
 		F5559D0A1CC8B4E300379BF0 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F5559D071CC8B4E300379BF0 /* CustomSearchBar.m */; };
 		F5559D0B1CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F5559D091CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m */; };
+		F567EF181CD0DF5100677007 /* MyWatchedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F567EF161CD0DF5100677007 /* MyWatchedObject.m */; };
+		F567EF191CD0DF5100677007 /* MyWatchedObject.xib in Resources */ = {isa = PBXBuildFile; fileRef = F567EF171CD0DF5100677007 /* MyWatchedObject.xib */; };
 		F58ED2101CCE5F9400E2139B /* ICarousellBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED20D1CCE5F9400E2139B /* ICarousellBaseClass.m */; };
 		F58ED2111CCE5F9400E2139B /* ICarousellData.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED20F1CCE5F9400E2139B /* ICarousellData.m */; };
 		F58ED2151CCE5FB900E2139B /* ICarouselImages.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED2141CCE5FB900E2139B /* ICarouselImages.m */; };
@@ -277,6 +279,9 @@
 		F5559D071CC8B4E300379BF0 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		F5559D081CC8B4E300379BF0 /* UIView+ModifyAttributeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ModifyAttributeValue.h"; sourceTree = "<group>"; };
 		F5559D091CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ModifyAttributeValue.m"; sourceTree = "<group>"; };
+		F567EF151CD0DF5100677007 /* MyWatchedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWatchedObject.h; sourceTree = "<group>"; };
+		F567EF161CD0DF5100677007 /* MyWatchedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWatchedObject.m; sourceTree = "<group>"; };
+		F567EF171CD0DF5100677007 /* MyWatchedObject.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWatchedObject.xib; sourceTree = "<group>"; };
 		F58ED20C1CCE5F9400E2139B /* ICarousellBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICarousellBaseClass.h; sourceTree = "<group>"; };
 		F58ED20D1CCE5F9400E2139B /* ICarousellBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICarousellBaseClass.m; sourceTree = "<group>"; };
 		F58ED20E1CCE5F9400E2139B /* ICarousellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICarousellData.h; sourceTree = "<group>"; };
@@ -715,6 +720,29 @@
 			path = CustomSearchBar;
 			sourceTree = "<group>";
 		};
+		F567EF131CD0DEFD00677007 /* 我的收藏 */ = {
+			isa = PBXGroup;
+			children = (
+				75BE67F41CCE6C9D002AFF5B /* MineCollectViewController.h */,
+				75BE67F51CCE6C9D002AFF5B /* MineCollectViewController.m */,
+				75BE67F61CCE6C9D002AFF5B /* MineCollectViewController.xib */,
+				75BE67FC1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.h */,
+				75BE67FD1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m */,
+				75BE67FE1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib */,
+			);
+			name = "我的收藏";
+			sourceTree = "<group>";
+		};
+		F567EF141CD0DF0700677007 /* 我的足迹 */ = {
+			isa = PBXGroup;
+			children = (
+				F567EF151CD0DF5100677007 /* MyWatchedObject.h */,
+				F567EF161CD0DF5100677007 /* MyWatchedObject.m */,
+				F567EF171CD0DF5100677007 /* MyWatchedObject.xib */,
+			);
+			path = "我的足迹";
+			sourceTree = "<group>";
+		};
 		F58ED20A1CCE5F6000E2139B /* ICarouselImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,12 +1070,8 @@
 				F5559D001CC8ABB200379BF0 /* MineViewController.h */,
 				F5559D011CC8ABB200379BF0 /* MineViewController.m */,
 				F5559D021CC8ABB200379BF0 /* MineViewController.xib */,
-				75BE67F41CCE6C9D002AFF5B /* MineCollectViewController.h */,
-				75BE67F51CCE6C9D002AFF5B /* MineCollectViewController.m */,
-				75BE67F61CCE6C9D002AFF5B /* MineCollectViewController.xib */,
-				75BE67FC1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.h */,
-				75BE67FD1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.m */,
-				75BE67FE1CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib */,
+				F567EF131CD0DEFD00677007 /* 我的收藏 */,
+				F567EF141CD0DF0700677007 /* 我的足迹 */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1198,6 +1222,7 @@
 				F52BB8C01CC5CB0F000B8577 /* DDPushList.xib in Resources */,
 				F58ED2211CCE6F4C00E2139B /* SearchListViewCell.xib in Resources */,
 				F5B28A331CC53B9300ECF016 /* Main.storyboard in Resources */,
+				F567EF191CD0DF5100677007 /* MyWatchedObject.xib in Resources */,
 				3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */,
 				75BE68991CD09D5C002AFF5B /* UMShareEditViewControlleriPad.xib in Resources */,
 				3FBD87AD1CCF42ED0024AAC2 /* StepOneCell.xib in Resources */,
@@ -1324,6 +1349,7 @@
 				F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */,
 				F58ED2111CCE5F9400E2139B /* ICarousellData.m in Sources */,
 				3FA6C4821CCB0B8D002D46F9 /* DetailsPageController.m in Sources */,
+				F567EF181CD0DF5100677007 /* MyWatchedObject.m in Sources */,
 				F58ED2201CCE6F4C00E2139B /* SearchListViewCell.m in Sources */,
 				F5B289D71CC4F7B400ECF016 /* main.m in Sources */,
 				F58ED2151CCE5FB900E2139B /* ICarouselImages.m in Sources */,
@@ -1479,7 +1505,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1509,7 +1535,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Tools/Prefix/PrefixHeader.pch;
 				INFOPLIST_FILE = "美食类/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
