@@ -17,11 +17,16 @@
 #import "SearchListViewCell.h"
 
 #import "DaydayCookDescription.h"
+
+#import <MJRefreshBackNormalFooter.h>
+#import <AFNetworking.h>
 @interface SearchViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     WHC_NavigationController *SearchNav;
     ICarouselImages *image;//轮播图控制
     CustomSearchBar *search;//自定义搜索
+    
+    NSInteger RefreshCurrentPage;
 }
 @property(nonatomic,retain) SearchNextViewController *controller;
 @property (weak, nonatomic) IBOutlet UICollectionView *searchCollectionView;
@@ -51,6 +56,8 @@
     
 
     [self buildCollect];
+    
+    [self buildRefresh];
 }
 
 
@@ -180,6 +187,7 @@
     SearchListViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"listcell2" forIndexPath:indexPath];
     
     DaydayCookData *model = _dataModels[indexPath.row];
+    
     [cell GetModel:model];
     
     return cell;
@@ -244,7 +252,58 @@
 
 
 
+
+#pragma mark- refresh刷新
+
+-(void)buildRefresh{
+    self.searchCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self GetData];
+    }];
+    
+}
+
+
 - (void)GetData{
+    
+    
+        ++RefreshCurrentPage;
+        
+        NSString *url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=%ld&pageSize=20",RefreshCurrentPage];
+    
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        [manager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
+                
+                NSArray *dataArray = responseObject[@"data"];
+                
+                for (NSDictionary *dic in dataArray) {
+                    DaydayCookData *model = [DaydayCookData modelObjectWithDictionary:dic];
+                    [self.dataModels addObject:model];
+                }
+                /* 刷新*/
+                
+                
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //  执行的代码
+                    
+                    [UIView performWithoutAnimation:^{
+                        [self.searchCollectionView reloadData];
+                        [self.searchCollectionView.mj_footer endRefreshing];
+                    }];
+                    
+                        
+                });
+                
+                
+            }
+            
+            
+        } failure:nil];
+    
     
 }
 

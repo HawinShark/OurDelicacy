@@ -15,6 +15,7 @@
 #import <UIImageView+WebCache.h>
 #import "DataBase.h"
 #import "CollectModel.h"
+#import "WHC_NavigationController.h"
 
 #import <OpinionzAlertView.h>
 @interface DaydayCookDescription () <UIWebViewDelegate>
@@ -137,14 +138,15 @@
         [[DataBase shareData]deleteInfo:self.makeTitle];
         
         //取消收藏
-        OpinionzAlertView *alert = [[OpinionzAlertView alloc]initWithTitle:@"你这个笨蛋!" message:nil cancelButtonTitle:nil otherButtonTitles:nil];
-        alert.iconType = OpinionzAlertIconQuestion;
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"取消成功" message:@"已取消收藏" preferredStyle:UIAlertControllerStyleActionSheet];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:^{
             
-            [alert dismiss];
-        });
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            });
+        }];
     }
         btn.selected = !btn.selected;
 }
@@ -222,7 +224,7 @@
 - (IBAction)Back:(UIButton *)sender {
     
     if (_isNavigation == YES) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 2]  animated:YES];
     }else{
     
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -398,9 +400,6 @@
 
 
 
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -414,6 +413,14 @@
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = NO;
+    
+    if (_isNavigation == YES) {
+        
+        self.navigationController.hidesBarsOnSwipe = YES;
+    }
+}
 
 #pragma mark- 隐藏按钮 显示导航栏
 

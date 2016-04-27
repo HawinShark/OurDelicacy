@@ -24,5 +24,6 @@
 -(BOOL)isNetWork;
 
 
+-(BOOL)isWIFI;
 
 @end

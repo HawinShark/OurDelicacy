@@ -34,6 +34,8 @@
     NSInteger currentIndex;
     
     NSInteger firstTime;
+    
+    BOOL isWIFI;
 }
 @property (retain, nonatomic) UICollectionView *DaydayCollecionView;
 @property (weak, nonatomic) IBOutlet UIButton *ListButton;//推出按钮
@@ -129,6 +131,10 @@
     head.stateLabel.textColor = [UIColor whiteColor];
     
     head.lastUpdatedTimeLabel.textColor = [UIColor whiteColor];
+    
+    if ([self isWIFI] == YES) {
+        isWIFI = YES;
+    }
 }
 
   
@@ -176,9 +182,12 @@
     DaydayCookData *model = self.DDdataArray[indexPath.item];
     VC.BookID = model.dataIdentifier;
     
-    if (filmmanager) {
-        [filmmanager removeFromSuperview];
-        filmmanager = nil;
+    if (isWIFI == YES) {
+        
+        if (filmmanager) {
+            [filmmanager removeFromSuperview];
+            filmmanager = nil;
+        }
     }
     [self.navigationController pushViewController:VC animated:YES];
 }
@@ -227,7 +236,7 @@
     //刷新数据
     if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 15 ) {
         
-#pragma mark- 上拉加载请求数据
+    #pragma mark- 上拉加载请求数据
         dispatch_async(dispatch_queue_create("new", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
             
             [self DayDayCookHomeDataIFRefresh:YES];
@@ -240,11 +249,15 @@
         
         
     });
-    //中断视频播放
-    if (currentTopCell.isPlay == YES) {
-        [filmmanager removeFromSuperview];
-        filmmanager = nil;//执行dealloc
+    
+    if (isWIFI == YES) {
+        //中断视频播放
+        if (currentTopCell.isPlay == YES) {
+            [filmmanager removeFromSuperview];
+            filmmanager = nil;//执行dealloc
+        }
     }
+    
     
 }
 
@@ -272,21 +285,25 @@
             
             NSLog(@"有种子");
             
-            //延迟执行
-            dispatch_async(dispatch_get_main_queue(), ^{
+            if (isWIFI == YES) {
                 
-                filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
-                //  执行的代码
+                //延迟执行
+                dispatch_async(dispatch_get_main_queue(), ^{
                     
-                [currentTopCell.contentView addSubview:filmmanager];
-                [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
+                    filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
+                    //  执行的代码
+                    
+                    [currentTopCell.contentView addSubview:filmmanager];
+                    [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
                     //
-                
+                    
                     currentTopCell.isPlay = YES;
-                                    
-                
-                //----->>>>>>>
-            });
+                    
+                    
+                    //----->>>>>>>
+                });
+            }//如果是wifi状态
+            
             
         }
         
@@ -379,6 +396,9 @@
     
 }
 
+-(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"%s",__func__);
+}
 
 
 
@@ -558,9 +578,11 @@
     [backtoTop addTarget:self action:@selector(totop:) forControlEvents:UIControlEventTouchUpInside];
     
     //销毁播放器
-    if (currentTopCell.isPlay == YES) {
-        [filmmanager removeFromSuperview];
-        filmmanager = nil;//执行dealloc
+    if (isWIFI == YES) {
+        if (currentTopCell.isPlay == YES) {
+            [filmmanager removeFromSuperview];
+            filmmanager = nil;//执行dealloc
+        }
     }
 }
 

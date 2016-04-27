@@ -79,6 +79,16 @@
 
 
 
+-(BOOL)isWIFI{
+    BOOL isWWAN = NO;
+    Reachability *reachability = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    if ([reachability currentReachabilityStatus] == ReachableViaWiFi) {
+        isWWAN = YES;
+    }
+    return isWWAN;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

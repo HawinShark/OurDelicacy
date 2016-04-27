@@ -34,6 +34,7 @@
 - (IBAction)search:(UIButton *)sender {
     SearchViewController *search = [SearchViewController new];
     DaydayHome *view = (DaydayHome *)[self viewController];
+    search.dataModels = [NSMutableArray array];
     search.dataModels = view.DDdataArray;
     [view.navigationController pushViewController:search animated:YES];
 }

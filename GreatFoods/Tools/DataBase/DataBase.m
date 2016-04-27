@@ -30,7 +30,6 @@
 {
     NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"collect.sqlite"];
-    NSLog(@"```````%@",doc);
     //2.获得数据库
     self.db=[FMDatabase databaseWithPath:fileName];
     
@@ -74,10 +73,11 @@
         
     }
 
-    NSLog(@"array===%@",array);
+//    NSLog(@"array===%@",array);
     
     return array;
 }
+
 - (NSMutableArray *)queryCollectModel{
     
     // 1.执行查询语句
@@ -101,7 +101,7 @@
         
     }
     
-    NSLog(@"array===%@",array);
+//    NSLog(@"array===%@",array);
     
     return array;
     

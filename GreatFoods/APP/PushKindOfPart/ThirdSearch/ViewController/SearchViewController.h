@@ -12,6 +12,6 @@
 
 
 /* collectioncell数据 */
-@property (nonatomic, retain) NSArray *dataModels;
+@property (nonatomic, retain) NSMutableArray *dataModels;
 
 @end

@@ -47,16 +47,15 @@
         }];
     }
     else{
-        [[DataBase shareData]deleteInfo:self.model.makeTitle];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"取消成功" message:@"已取消收藏" preferredStyle:UIAlertControllerStyleActionSheet];
         
-        OpinionzAlertView *alert = [[OpinionzAlertView alloc]initWithTitle:@"笨蛋!" message:nil cancelButtonTitle:nil otherButtonTitles:nil];
-        alert.iconType = OpinionzAlertIconInfo;
-        [alert show];
-        
+        [[self viewController] presentViewController:alert animated:YES completion:^{
+            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
-                [alert dismiss];
+                [alert dismissViewControllerAnimated:YES completion:nil];
             });
+        }];
         
     }
     
@@ -65,31 +64,40 @@
 
 -(void)GetModel:(DaydayCookData *)model{
 
+    
+    
+        
+        //判断是否已收藏
+    NSMutableArray *titleArr = [[DataBase shareData]queryMakeTitle];
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        [_Image sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [_Image sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
+            
+            _title.text = model.title;
+            _share.text = [NSString stringWithFormat:@"%0.f" ,model.shareCount];
+            _message.text = model.dataDescription;
+            
+            //收藏
+            self.ZanButton.selected = NO;
+            for (NSString *str in titleArr) {
+                if ([model.title isEqualToString:str]) {
+                    self.ZanButton.selected = YES;
+                }
+            }
+            
+            self.model = [[CollectModel alloc]init];
+            self.model.makeTitle = model.title;
+            self.model.bookId = model.dataIdentifier;
+            self.model.imgUrl = model.imageUrl;
+        });
         
     });
     
     
-    _title.text = model.title;
-    _share.text = [NSString stringWithFormat:@"%0.f" ,model.shareCount];
-    _message.text = model.dataDescription;
-    
-    //判断是否已收藏
-    self.ZanButton.selected = NO;
-    [[DataBase shareData]openFmdb];
-    NSMutableArray *titleArr = [[DataBase shareData]queryMakeTitle];
-    for (NSString *str in titleArr) {
-        if ([model.title isEqualToString:str]) {
-            self.ZanButton.selected = YES;
-        }
-    }
-    
-    self.model = [[CollectModel alloc]init];
-    self.model.makeTitle = model.title;
-    self.model.bookId = model.dataIdentifier;
-    self.model.imgUrl = model.imageUrl;
+   
    
     
 }

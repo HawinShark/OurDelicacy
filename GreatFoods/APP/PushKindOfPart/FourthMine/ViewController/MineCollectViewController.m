@@ -71,6 +71,8 @@ static NSString *cellid = @"MineCollectcell";
     [self.collectionView reloadData];
     
     //且返回上级页面
+    
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self.navigationController popViewControllerAnimated:YES];
@@ -176,6 +178,7 @@ static NSString *cellid = @"MineCollectcell";
     }
     
 }
+
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectModel *model = self.collectArr[indexPath.item];
 
