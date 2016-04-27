@@ -42,6 +42,9 @@
     self.title = @"搜索菜谱";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.hidesBarsOnSwipe = YES;
+    if (self.navigationController.navigationBarHidden == YES) {
+        self.navigationController.navigationBarHidden = NO;
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

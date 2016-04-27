@@ -10,7 +10,9 @@
 #import "MineCollectViewController.h"
 
 @interface MineViewController () <UITableViewDataSource,UITableViewDelegate>
-
+{
+    UIImageView *head;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 
@@ -36,21 +38,9 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
-//    if (section == 0) {
-//        return @"Good";
-//    }
-//    else{
-//        return @"Bad";
-//    }
     return @" ";
 }
-//
-//-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-//    if (section == 0) {
-//        return @"good";
-//    }
-//    return @"bad";
-//}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -96,6 +86,9 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if (section == 1) {
+        return 1;
+    }
     return 2;
 }
 
@@ -121,9 +114,9 @@
 
 - (void)buildTableViewHead
 {
-    UIImage *image = [UIImage imageNamed:@"background-1"];
+    UIImage *image = [UIImage imageNamed:@"background-2"];
     
-    UIImageView *head = [UIImageView new];
+    head = [UIImageView new];
     
     head.image = image;
     
@@ -136,6 +129,28 @@
     
 }
 
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    if (scrollView.contentOffset.y < 0) {
+        
+        [self.tableview.tableHeaderView setFrame:CGRectMake(0, scrollView.contentOffset.y, screen_width - scrollView.contentOffset.y, 250 - scrollView.contentOffset.y)];
+        [head setFrame:CGRectMake(0, scrollView.contentOffset.y, screen_width - scrollView.contentOffset.y, 250 - scrollView.contentOffset.y)];
+    }
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    if (scrollView.contentOffset.y < 0) {
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            [head setFrame:CGRectMake(0, 0, screen_width, 250)];
+            [scrollView setContentOffset:CGPointZero animated:YES];
+        }];
+    }
+    
+}
 
 
 
