@@ -409,11 +409,13 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.navigationController.hidesBarsOnSwipe = NO;
 }
 
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
     
     if (_isNavigation == YES) {

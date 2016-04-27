@@ -99,16 +99,17 @@ static NSString *cellid = @"MineCollectcell";
     //且返回上级页面
     
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [self.navigationController popViewControllerAnimated:YES];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//    });
     
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.hidesBarsOnSwipe = NO;
 
 }
 - (void)viewDidLoad {
@@ -275,6 +276,7 @@ static NSString *cellid = @"MineCollectcell";
 
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : RGB(89, 61, 67),NSFontAttributeName : [UIFont fontWithName:@"Zapfino" size:15]}];
 }
 

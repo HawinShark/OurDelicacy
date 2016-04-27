@@ -72,39 +72,50 @@ CGFloat maxAlpha = 0.4;
     //裁图
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
+        
         [self.BackGroundImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"background-1"]];
         
-        self.BackGroundImage.clipsToBounds = YES;
-        self.BackGroundImage.center = self.contentView.center;
-        self.BackGroundImage.contentMode = UIViewContentModeScaleAspectFill;
-        self.BackGroundImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //标题
+            [self.title setText:model.title];
+            [self.message setText:model.dataDescription];
+            
+            //日期
+            NSArray *dateArray = [model.releaseDate componentsSeparatedByString:@"-"];
+            [self.dateLabel setText:[NSString stringWithFormat:@"%@/%@",dateArray[1],dateArray[2]]];
+            
+            
+            //第二轮loop
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //烹饪时间
+                [self.CookTime setText:model.maketime];
+                //点击次数
+                [self.watch setText:[NSString stringWithFormat:@"%.0f",model.clickCount]];
+                //分享
+                [self.share setText:[NSString stringWithFormat:@"%.0f",model.shareCount]];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if (model.indexUrl.length > 0) {
+                        self.TV.alpha = 1;
+                    }else{
+                        self.TV.alpha = 0;
+                    }
+                });
+                
+            });
+            
+        });
         
     });
     
-    if (model.indexUrl.length > 0) {
-        self.TV.alpha = 1;
-    }else{
-        self.TV.alpha = 0;
-    }
+    
     
 //    self.BackGroundImage.image = [UIImage RecompressedImageFromImage:self.BackGroundImage.image];//此方法重绘吃内存,不能大量使用
     
     
-    //标题
-    [self.title setText:model.title];
-    [self.message setText:model.dataDescription];
     
-    //日期
-    NSArray *dateArray = [model.releaseDate componentsSeparatedByString:@"-"];
-    [self.dateLabel setText:[NSString stringWithFormat:@"%@/%@",dateArray[1],dateArray[2]]];
-    
-    //烹饪时间
-    [self.CookTime setText:model.maketime];
-    //点击次数
-    [self.watch setText:[NSString stringWithFormat:@"%.0f",model.clickCount]];
-    //分享
-    [self.share setText:[NSString stringWithFormat:@"%.0f",model.shareCount]];
     
     
     
@@ -119,6 +130,14 @@ CGFloat maxAlpha = 0.4;
     _gradientLayer.startPoint = CGPointMake(0.5, 0.5);
     _gradientLayer.endPoint   = CGPointMake(1, 1);
     [self.BackGroundImage.layer addSublayer:_gradientLayer];
+    
+    
+    
+    self.BackGroundImage.clipsToBounds = YES;
+    self.BackGroundImage.center = self.contentView.center;
+    self.BackGroundImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.BackGroundImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    
 }
 
 

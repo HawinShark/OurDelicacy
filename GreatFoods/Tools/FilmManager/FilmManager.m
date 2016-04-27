@@ -12,6 +12,7 @@
 @interface FilmManager ()
 {
     UIView *Progre;
+    NSURLSessionDownloadTask * task;
 }
 
 @end
@@ -84,7 +85,7 @@
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
 
-    NSURLSessionDownloadTask * task = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+    task = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         
         NSLog(@"进度 = %lf",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -187,7 +188,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:AVPlayerItemDidPlayToEndTimeNotification
                                                   object:self.player.currentItem];
-    
+    [task suspend];//销毁下载
 }
 
 @end

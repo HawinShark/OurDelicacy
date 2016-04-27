@@ -31,6 +31,8 @@
     
     
 }
+
+
 - (IBAction)zanAction:(UIButton *)sender {
     
     if (sender.selected == NO) {

@@ -35,6 +35,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.title = self.name;
     
 //    [self buildTransluent]; //半透明
@@ -107,6 +108,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
 

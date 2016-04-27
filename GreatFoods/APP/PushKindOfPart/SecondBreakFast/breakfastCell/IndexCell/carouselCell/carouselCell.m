@@ -9,9 +9,10 @@
 #import "carouselCell.h"
 #import <BHInfiniteScrollView.h>
 #import <UIImage+MultiFormat.h>
-#import <UIImageView+WebCache.h>
 @interface carouselCell ()<BHInfiniteScrollViewDelegate>
-
+{
+    BHInfiniteScrollView *infinr;
+}
 @end
 
 @implementation carouselCell
@@ -22,49 +23,30 @@
     NSMutableArray *carouselImages = [NSMutableArray array];
     
     NSMutableArray *tts = [NSMutableArray array];
-    for (int i = 0; i < 5; i++) {
-        [tts addObject:self.titles[i]];
-    }
     
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        for (int i = 0; i < 5; i++) {
+            [tts addObject:self.titles[i]];
+        }
         
         for (int i = 0; i < 5; i++) {
         
             NSString *str = [NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",carouselArray[i]] ;
             UIImage *image = [UIImage sd_imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:str]]];
             
-            
             [carouselImages addObject:image];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            BHInfiniteScrollView *infinr = [BHInfiniteScrollView infiniteScrollViewWithFrame:self.contentView.frame Delegate:self ImagesArray:carouselImages PlageHolderImage:[UIImage imageNamed:@"占位图"]];
+            [self buildInfir];
+            
+            [infinr setImagesArray:carouselImages];
             
             //加标题
-            infinr.titlesArray = tts;
-            
-            [self.contentView addSubview:infinr];
-            
-            infinr.contentMode = UIViewContentModeScaleAspectFill;
-            
-            infinr.scrollDirection = BHInfiniteScrollViewScrollDirectionHorizontal;
-            infinr.pageControlAlignmentH = BHInfiniteScrollViewPageControlAlignHorizontalRight;
-            infinr.pageViewContentMode = UIViewContentModeRedraw;
-            
-            infinr.dotColor = [UIColor whiteColor];
-            infinr.selectedDotColor = RGB(159, 169, 171);
-            infinr.dotSpacing = 3;
-            infinr.dotSize = 7;
-            infinr.selectedDotSize = 8;
-            infinr.dotShadowBlur = 2;
-            
-            infinr.pageControlAlignmentOffset = CGSizeMake(0, 3);
-            
-            //文字
-            infinr.titleView.backgroundColor = [UIColor colorWithWhite:0 alpha:.5];
-            infinr.titleView.textColor = [UIColor whiteColor];
+            [infinr setTitlesArray:tts];
             
         });
     });
@@ -81,12 +63,35 @@
 
 
 
-
-
-
-- (void)awakeFromNib {
+- (void)buildInfir{
+    UIImage *place = [UIImage imageNamed:@"background-2"];
+    infinr = [[BHInfiniteScrollView alloc]initWithFrame:self.contentView.bounds];
+    infinr.delegate = self;
+    [infinr setPlaceholderImage:place];
     
+    [self.contentView addSubview:infinr];
+    
+    infinr.contentMode = UIViewContentModeScaleAspectFill;
+    
+    infinr.scrollDirection = BHInfiniteScrollViewScrollDirectionHorizontal;
+    infinr.pageControlAlignmentH = BHInfiniteScrollViewPageControlAlignHorizontalRight;
+    infinr.pageViewContentMode = UIViewContentModeRedraw;
+    
+    infinr.dotColor = [UIColor whiteColor];
+    infinr.selectedDotColor = RGB(159, 169, 171);
+    infinr.dotSpacing = 3;
+    infinr.dotSize = 7;
+    infinr.selectedDotSize = 8;
+    infinr.dotShadowBlur = 2;
+    
+    infinr.pageControlAlignmentOffset = CGSizeMake(0, 3);
+    
+    //文字
+    infinr.titleView.backgroundColor = [UIColor colorWithWhite:0 alpha:.5];
+    infinr.titleView.textColor = [UIColor whiteColor];
 }
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

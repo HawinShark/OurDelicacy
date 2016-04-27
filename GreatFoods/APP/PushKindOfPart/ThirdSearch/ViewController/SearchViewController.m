@@ -38,11 +38,13 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.title = @"搜索菜谱";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.hidesBarsOnSwipe = YES;
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -268,7 +270,7 @@
     
         ++RefreshCurrentPage;
         
-        NSString *url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=%ld&pageSize=20",RefreshCurrentPage];
+        NSString *url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=%ld&pageSize=20",(long)RefreshCurrentPage];
     
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         

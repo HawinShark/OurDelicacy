@@ -47,6 +47,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     
     if (firstTime == 0) {
         [self uptodownRefresh];
@@ -415,7 +416,7 @@
     if (isrefresh == YES) {
         RefreshCurrentPage++;//下拉刷新
     }
-    NSString *url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=%ld&pageSize=20",RefreshCurrentPage];
+    NSString *url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=%ld&pageSize=30",(long)RefreshCurrentPage];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -469,9 +470,9 @@
         NSString *url;
         
         if (RefreshCurrentPage > 0) {
-            url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=0&pageSize=%ld",RefreshCurrentPage * 20];
+            url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=0&pageSize=%ld",RefreshCurrentPage * 30];
         }else{
-            url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=0&pageSize=%ld",(RefreshCurrentPage + 1) * 20];
+            url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=0&pageSize=%ld",(RefreshCurrentPage + 1) * 30];
         }//第一进页面刷新数据
         
         
@@ -601,6 +602,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBar.alpha = 1;
     self.navigationController.navigationBar.transform = CGAffineTransformIdentity;
 }

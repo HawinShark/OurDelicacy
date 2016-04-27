@@ -47,16 +47,20 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     //异步
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    [self showHint:@"正在加载..."];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self GetData];
-//    });
-    
+    });
+
     /* 创建UI*/
     [self buildUI];
     
     __weak typeof(self)mySelf = self;
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [mySelf LoadData];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            [mySelf LoadData];
+        });
     }];
     
     
@@ -83,6 +87,8 @@
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
     view.layer.cornerRadius = 5;
     view.layer.masksToBounds = YES;
+    
+    view.alpha = .7;
     
     UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, -1, screen_width, 31)];
     [image setImage:[UIImage imageNamed:@"section.png"]];
@@ -230,7 +236,7 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=%ld&type=0",++page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=%ld&type=0",(long)++page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSArray *array = [responseObject objectForKey:@"list"];
         
@@ -268,13 +274,11 @@
     
     if ([self isNetWork]) {
         
-        [self showHint:@"正在加载..."];
     
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
         [manager POST:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=0&type=0" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            [self showhide];
             
             NSArray *array = [responseObject objectForKey:@"list"];
             
@@ -293,6 +297,7 @@
             //主线程刷新
             dispatch_async(dispatch_get_main_queue(), ^{
             
+                [self showhide];
                 [self.tableView reloadData];
             });
             
@@ -327,9 +332,12 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    self.navigationController.hidesBarsOnSwipe = NO;
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
 }
 
