@@ -574,13 +574,7 @@
     backtoTop.alpha = 0;
     [backtoTop addTarget:self action:@selector(totop:) forControlEvents:UIControlEventTouchUpInside];
     
-    //销毁播放器
-    if (isWIFI == YES) {
-        if (currentTopCell.isPlay == YES) {
-            [filmmanager removeFromSuperview];
-            filmmanager = nil;//执行dealloc
-        }
-    }
+    
 }
 
 -(void) totop:(UIButton *)sender
@@ -592,6 +586,14 @@
     [UIView animateWithDuration:.5 animations:^{
         backtoTop.alpha = 0;
     }];
+    
+    //销毁播放器
+    if (isWIFI == YES) {
+        if (currentTopCell.isPlay == YES) {
+            [filmmanager removeFromSuperview];
+            filmmanager = nil;//执行dealloc
+        }
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated

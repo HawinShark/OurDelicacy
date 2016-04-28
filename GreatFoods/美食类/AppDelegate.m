@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GuideViewController.h"
 
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
@@ -21,10 +22,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    //[storyBoard instantiateInitialViewController]
+    GuideViewController *guide = [[GuideViewController alloc]init];
+    
+    [_window setRootViewController:guide];
+    
+    [guide setExchangeController:^{
+        
+        UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        //[storyBoard instantiateInitialViewController]
+        
+        
+        WHC_NavigationController *rootNav = [[WHC_NavigationController alloc]initWithRootViewController:[storyBoard instantiateInitialViewController]];
+        [rootNav.navigationBar setBackgroundColor:[UIColor clearColor]];
+        //
+        [rootNav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Zapfino" size:15.0] forKey:NSFontAttributeName]];
+        
+        self.window.rootViewController = rootNav;
+    }];
+    
+    
+    [self.window makeKeyAndVisible];
+    
+    
     
     
     
@@ -39,14 +62,6 @@
     
     
     
-    WHC_NavigationController *rootNav = [[WHC_NavigationController alloc]initWithRootViewController:[storyBoard instantiateInitialViewController]];
-    [rootNav.navigationBar setBackgroundColor:[UIColor clearColor]];
-//
-    [rootNav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Zapfino" size:15.0] forKey:NSFontAttributeName]];
-    
-    self.window.rootViewController = rootNav;
-    
-    [self.window makeKeyAndVisible];
     
     return YES;
 }
