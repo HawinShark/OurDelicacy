@@ -127,10 +127,11 @@ static NSString *cellid = @"MineCollectcell";
     
     self.collectionView.collectionViewLayout = layout;
     [self.collectionView registerNib:[UINib nibWithNibName:@"MineCollextCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellid];
-
-    self.title =[NSString stringWithFormat:@"我的收藏(%ld)",[self.collectArr count]];
+//    self.navigationController.navigationBar.
+    self.title =[NSString stringWithFormat:@"我的收藏(%ld)",[self.collectArr count] ];
     
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :  [UIColor orangeColor]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :  [UIColor orangeColor]}];
+//    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
    
     [self setSelectBtn];
 
@@ -138,7 +139,7 @@ static NSString *cellid = @"MineCollectcell";
 -(void) setSelectBtn{
     
     UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [selectBtn setTitleColor:RGB(92, 58, 64) forState:UIControlStateNormal];
+    [selectBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [selectBtn setTitle:@"选择" forState:UIControlStateNormal];
     [selectBtn setTitle:@"取消" forState:UIControlStateSelected];
     selectBtn.frame = CGRectMake(0, 0, 50, 30);
@@ -168,7 +169,7 @@ static NSString *cellid = @"MineCollectcell";
         [UIView animateWithDuration:0.1 animations:^{
             self.selectView.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
-            self.title =[NSString stringWithFormat:@"我的收藏(%ld)",[self.collectArr count]];
+            
         }];
         
         self.allSelectBtn.selected = NO;

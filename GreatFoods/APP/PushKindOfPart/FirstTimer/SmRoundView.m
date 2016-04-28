@@ -53,10 +53,8 @@ NSInteger count;
         if ([btn pointInside:p withEvent:event]) {
             [self btnaction:btn];
             
-//            WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
-//            nav.panGesture.enabled = NO;
-            
-            
+            WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
+            nav.panGesture.enabled = NO;
             
             return self;
             
@@ -67,12 +65,9 @@ NSInteger count;
     CGPoint p1 = [self convertPoint:p1 toView:self.superview];
     
     if ([self pointInside:p1 withEvent:event]) {
-//        WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
-//
-//        nav.panGesture.enabled = YES;
-//        
-        [[self viewController] dismissViewControllerAnimated:YES completion:nil];
-        
+        WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
+
+        nav.panGesture.enabled = YES;
     }
    
     

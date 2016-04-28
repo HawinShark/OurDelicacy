@@ -226,9 +226,6 @@
         [self appearNav];//显示
     }
     
-    
-    NSLog(@"%ld",(long)self.BookID);
-    
 }
 
 
@@ -317,13 +314,8 @@
                     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:model.loadContent]];
                     [self.webView loadRequest:request];
                     
-                    if (model.detailsUrl.length > 0) {
-                        NSURLRequest * PlayRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:model.detailsUrl]];
-                        [self.player loadRequest:PlayRequest];
-                    }else{
-                        self.player.hidden = YES;
-                        self.playButton.hidden = YES;
-                    }
+                    NSURLRequest * PlayRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:model.detailsUrl]];
+                    [self.player loadRequest:PlayRequest];
                 });
                 
                 self.titleName.text  = model.title;

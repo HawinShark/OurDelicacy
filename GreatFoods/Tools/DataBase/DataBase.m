@@ -123,8 +123,8 @@
         BOOL result = [self.db executeUpdate:str];
         
         if (result) {
-//            [self.db close];
-            NSLog(@"delete成功");
+            [self.db close];
+//            NSLog(@"delete成功");
         }
     }
 
