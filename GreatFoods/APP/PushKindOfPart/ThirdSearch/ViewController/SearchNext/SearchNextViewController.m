@@ -8,6 +8,7 @@
 
 #import "SearchNextViewController.h"
 #import "searchCell.h"
+#import "DaydayCookDescription.h"
 
 #import "SearchData.h"
 #import <AFNetworking.h>
@@ -63,10 +64,8 @@
     /* 数据源 */
     [self showHudInViewhint:@"努力加载中.."];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
+    
         [self getdata];
-    });
     
     
     if (IOS_VERSION >= 7) {
@@ -131,6 +130,17 @@
 {
     //滑到中间
     [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
+    
+    DaydayCookDescription *vc = [DaydayCookDescription new];
+    
+    vc.isNavigation = YES;
+    
+    SearchData *model = self.dataSource[indexPath.row];
+    
+    vc.BookID = model.dataIdentifier;
+    
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -204,40 +214,45 @@
 {
     _dataSource = [NSMutableArray new];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-
     
-    NSString *urlstr = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/search.do?name=%@&pageSize=20&currentPage=0&parentId=",self.name];
-    
-    NSString *utf = [urlstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-
-    [manager POST:utf parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-//        NSLog(@"%@",responseObject);
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
-        if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
+        
+        NSString *urlstr = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/search.do?name=%@&pageSize=20&currentPage=0&parentId=",self.name];
+        
+        NSString *utf = [urlstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        
+        [manager POST:utf parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            NSArray *data = responseObject[@"data"];
+            //        NSLog(@"%@",responseObject);
             
-            for (NSDictionary *dic in data) {
+            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 
-                SearchData *model = [SearchData modelObjectWithDictionary:dic];
-                [_dataSource addObject:model];
+                NSArray *data = responseObject[@"data"];
+                
+                for (NSDictionary *dic in data) {
+                    
+                    SearchData *model = [SearchData modelObjectWithDictionary:dic];
+                    [_dataSource addObject:model];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self.tableView reloadData];
+                    [self showhide];
+                });
+            }
+            else{
+                [self showHint:responseObject[@"msg"]];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self.tableView reloadData];
-                [self showhide];
-            });
-        }
-        else{
-            [self showHint:responseObject[@"msg"]];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-        
-    } failure:nil];
+            
+        } failure:nil];
+    });
+    
     
 }
 
@@ -246,40 +261,44 @@
 {
     refreshCount++;
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    
-    NSString *urlstr = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/search.do?name=%@&pageSize=20&currentPage=%ld&parentId=",self.name,refreshCount];
-    
-    NSString *utf = [urlstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    
-    [manager POST:utf parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        //        NSLog(@"%@",responseObject);
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
-        if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
+        
+        NSString *urlstr = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/search.do?name=%@&pageSize=20&currentPage=%ld&parentId=",self.name,refreshCount];
+        
+        NSString *utf = [urlstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        
+        [manager POST:utf parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            NSArray *data = responseObject[@"data"];
+            //        NSLog(@"%@",responseObject);
             
-            for (NSDictionary *dic in data) {
+            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 
-                SearchData *model = [SearchData modelObjectWithDictionary:dic];
-                [_dataSource addObject:model];
+                NSArray *data = responseObject[@"data"];
+                
+                for (NSDictionary *dic in data) {
+                    
+                    SearchData *model = [SearchData modelObjectWithDictionary:dic];
+                    [_dataSource addObject:model];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+            else{
+                
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self.tableView reloadData];
-                [self.tableView.mj_footer endRefreshing];
-            });
-        }
-        else{
             
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        
-        
-    } failure:nil];
+        } failure:nil];
+    });
+    
 }
 
 

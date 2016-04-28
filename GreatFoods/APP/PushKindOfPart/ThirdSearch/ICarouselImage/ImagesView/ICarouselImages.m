@@ -59,7 +59,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                
-                _ica = [BHInfiniteScrollView infiniteScrollViewWithFrame:frame Delegate:self ImagesArray:imagesArray];
+                _ica = [BHInfiniteScrollView infiniteScrollViewWithFrame:frame Delegate:self ImagesArray:imagesArray PlageHolderImage:[UIImage imageNamed:@"占位图"]];
                 
 //                ica.pageViewContentMode = UIViewContentModeScaleAspectFit;
                 [self addSubview:_ica];

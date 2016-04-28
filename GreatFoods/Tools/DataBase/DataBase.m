@@ -1,3 +1,4 @@
+
 //
 //  DataBase.m
 //  美食类
@@ -39,7 +40,7 @@
     //3.打开数据库
     if ([self.db open]) {
         //4.创表
-        BOOL result=[self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text );"];
+        BOOL result=[self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text)"];
         
         
         if (result) {
@@ -48,7 +49,6 @@
         {
 //            NSLog(@"创表失败");
         }
-        [self.db close];
 
     }
     
@@ -58,9 +58,7 @@
 -(void)insertInfo:(CollectModel *)model
 {
     [self.db open];
-    BOOL result = [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
-        NSLog(@"%d",result);
-    [self.db close];
+    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
     
 }
 - (NSMutableArray *)queryMakeTitle
@@ -80,7 +78,6 @@
         }
         
     }
-    [self.db close];
 
 //    NSLog(@"array===%@",array);
     
@@ -107,9 +104,9 @@
         model.makeTitle = makeTitle;
             [array addObject:model];
             
+        NSLog(@"表1 - > %@ -> %ld",makeTitle,(long)model.bookId);
         
     }
-    [self.db close];
 
 //    NSLog(@"array===%@",array);
     
@@ -172,7 +169,6 @@
         
         if (result) {
             NSLog(@"2表add成功");
-            [self.database close];
         }
 }
 
@@ -185,6 +181,7 @@
         
         if (result) {
 //            NSLog(@"delete成功");
+            [self.database close];
         }
 
     }
@@ -200,19 +197,18 @@
         NSMutableArray *array = [NSMutableArray new];
 
         //获取数据
-        if ([resultSet next]) {
-            NSString *makeTitle = [resultSet stringForColumn:@"makeTitle"];
-            NSString *imgUrl = [resultSet stringForColumn:@"imgUrl"];
-            NSInteger bookId = [resultSet intForColumn:@"bookId"];
-            CollectModel *model = [[CollectModel alloc]init];
-            model.imgUrl = imgUrl;
-            model.bookId = bookId;
-            model.makeTitle = makeTitle;
+        while ([resultSet next]) {
+
+            CollectModel *model = [CollectModel new];
+            
+            model.imgUrl    = [resultSet stringForColumn:@"imgUrl"];
+            model.bookId    = [resultSet intForColumn:@"bookId"];
+            model.makeTitle = [resultSet stringForColumn:@"makeTitle"];
             [array addObject:model];
-            NSLog(@"%@",makeTitle);
+            
+            NSLog(@"%@",model.makeTitle);
         }
         
-        [self.database close];
     
     NSMutableArray *reverseArray = [NSMutableArray arrayWithArray:[[array reverseObjectEnumerator]allObjects]];
     NSLog(@"获取成功 -> %@",reverseArray);
@@ -220,6 +216,17 @@
     return reverseArray;
 }
 
+-(void)delectALL{
+    [self creatAndOpenTable];
+    [self.database executeUpdate:@"delete from h_collect"];
+    [self.database close];
+}
+
+
+-(void)dealloc{
+    [self.db close];
+    [self.database close];
+}
 
 
 @end

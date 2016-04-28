@@ -56,7 +56,11 @@
             
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 
-                [self downloadRequestWithUrl:str];
+                if ([[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"doloading?%@",str]]) {
+                    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"doloading?%@",str]]);//是否有在下载
+                }else{
+                    [self downloadRequestWithUrl:str];
+                };
             });
         }
     }
@@ -66,6 +70,8 @@
 
 
 - (void)downloadRequestWithUrl:(NSString *)urlStr{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:urlStr forKey:[NSString stringWithFormat:@"doloading?%@",urlStr]];
     
     Progre = [[UIView alloc]initWithFrame:CGRectMake(-screen_width, 0, screen_width, H(self))];
     Progre.alpha           = 0.6;
@@ -188,7 +194,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:AVPlayerItemDidPlayToEndTimeNotification
                                                   object:self.player.currentItem];
-    [task suspend];//销毁下载
 }
 
 @end

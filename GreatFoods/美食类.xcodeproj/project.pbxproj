@@ -113,6 +113,10 @@
 		F5D97C531CC7ACAB0034099A /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D97C511CC7ACAB0034099A /* SearchViewController.m */; };
 		F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D97C521CC7ACAB0034099A /* SearchViewController.xib */; };
 		F5D97C581CC7B3840034099A /* Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D97C571CC7B3830034099A /* Loading.m */; };
+		F5F2EB161CD11C50000A4EF0 /* ClearCacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F2EB141CD11C50000A4EF0 /* ClearCacheController.m */; };
+		F5F2EB171CD11C50000A4EF0 /* ClearCacheController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F2EB151CD11C50000A4EF0 /* ClearCacheController.xib */; };
+		F5F2EB1C1CD1B15A000A4EF0 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F2EB1A1CD1B15A000A4EF0 /* GuideViewController.m */; };
+		F5F2EB1D1CD1B15A000A4EF0 /* GuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F2EB1B1CD1B15A000A4EF0 /* GuideViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -329,6 +333,12 @@
 		F5D97C521CC7ACAB0034099A /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchViewController.xib; path = ../SearchViewController.xib; sourceTree = "<group>"; };
 		F5D97C561CC7B3830034099A /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		F5D97C571CC7B3830034099A /* Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loading.m; sourceTree = "<group>"; };
+		F5F2EB131CD11C50000A4EF0 /* ClearCacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearCacheController.h; sourceTree = "<group>"; };
+		F5F2EB141CD11C50000A4EF0 /* ClearCacheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearCacheController.m; sourceTree = "<group>"; };
+		F5F2EB151CD11C50000A4EF0 /* ClearCacheController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClearCacheController.xib; sourceTree = "<group>"; };
+		F5F2EB191CD1B15A000A4EF0 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		F5F2EB1A1CD1B15A000A4EF0 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		F5F2EB1B1CD1B15A000A4EF0 /* GuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuideViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -798,6 +808,7 @@
 		F5B289C91CC4F7B400ECF016 = {
 			isa = PBXGroup;
 			children = (
+				F5F2EB181CD1B13B000A4EF0 /* GuideController */,
 				F5B28A091CC4F83900ECF016 /* APP */,
 				F5B28A0B1CC4F87300ECF016 /* Tools */,
 				F5B289D41CC4F7B400ECF016 /* 美食类 */,
@@ -1072,6 +1083,7 @@
 				F5559D021CC8ABB200379BF0 /* MineViewController.xib */,
 				F567EF131CD0DEFD00677007 /* 我的收藏 */,
 				F567EF141CD0DF0700677007 /* 我的足迹 */,
+				F5F2EB101CD11C06000A4EF0 /* 设置 */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1083,6 +1095,34 @@
 				F5D97C571CC7B3830034099A /* Loading.m */,
 			);
 			path = LoadingAnimation;
+			sourceTree = "<group>";
+		};
+		F5F2EB101CD11C06000A4EF0 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				F5F2EB121CD11C1F000A4EF0 /* 清除缓存 */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		F5F2EB121CD11C1F000A4EF0 /* 清除缓存 */ = {
+			isa = PBXGroup;
+			children = (
+				F5F2EB131CD11C50000A4EF0 /* ClearCacheController.h */,
+				F5F2EB141CD11C50000A4EF0 /* ClearCacheController.m */,
+				F5F2EB151CD11C50000A4EF0 /* ClearCacheController.xib */,
+			);
+			path = "清除缓存";
+			sourceTree = "<group>";
+		};
+		F5F2EB181CD1B13B000A4EF0 /* GuideController */ = {
+			isa = PBXGroup;
+			children = (
+				F5F2EB191CD1B15A000A4EF0 /* GuideViewController.h */,
+				F5F2EB1A1CD1B15A000A4EF0 /* GuideViewController.m */,
+				F5F2EB1B1CD1B15A000A4EF0 /* GuideViewController.xib */,
+			);
+			path = GuideController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1226,9 +1266,11 @@
 				3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */,
 				75BE68991CD09D5C002AFF5B /* UMShareEditViewControlleriPad.xib in Resources */,
 				3FBD87AD1CCF42ED0024AAC2 /* StepOneCell.xib in Resources */,
+				F5F2EB1D1CD1B15A000A4EF0 /* GuideViewController.xib in Resources */,
 				75BE68971CD09D5C002AFF5B /* UMSCommentInputControlleriPad.xib in Resources */,
 				F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */,
 				F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */,
+				F5F2EB171CD11C50000A4EF0 /* ClearCacheController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1303,6 +1345,7 @@
 			files = (
 				7513E4101CC8BA1500E0DC97 /* BigRoundView.m in Sources */,
 				F52BB8DD1CC65797000B8577 /* DayDescriptionBaseClass.m in Sources */,
+				F5F2EB1C1CD1B15A000A4EF0 /* GuideViewController.m in Sources */,
 				F54BE8991CC9B64F00C3FF67 /* IndexSecondCell.m in Sources */,
 				F5B28A2C1CC525BB00ECF016 /* DDCollectCell.m in Sources */,
 				F54BE8D61CCA705A00C3FF67 /* SearchBase.m in Sources */,
@@ -1323,6 +1366,7 @@
 				F5B28A171CC4FED100ECF016 /* DaydayHome.m in Sources */,
 				F5D97C581CC7B3840034099A /* Loading.m in Sources */,
 				3FB117451CC9CFB600CA4AD4 /* List.m in Sources */,
+				F5F2EB161CD11C50000A4EF0 /* ClearCacheController.m in Sources */,
 				3FA6C48B1CCB0B8D002D46F9 /* StepOneCell.m in Sources */,
 				F5559D0B1CC8B4E300379BF0 /* UIView+ModifyAttributeValue.m in Sources */,
 				75BE67AA1CCE1C48002AFF5B /* DataBase.m in Sources */,

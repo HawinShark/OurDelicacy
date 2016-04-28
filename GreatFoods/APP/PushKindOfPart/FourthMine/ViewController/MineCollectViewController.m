@@ -115,8 +115,11 @@ static NSString *cellid = @"MineCollectcell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     [[DataBase shareData]openFmdb];
     self.collectArr = [[DataBase shareData]queryCollectModel];
+    
+    
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.itemSize = CGSizeMake(screen_width/2,screen_width/2 );
     layout.minimumInteritemSpacing = 0;

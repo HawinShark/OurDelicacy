@@ -10,6 +10,8 @@
 #import "MineCollectViewController.h"
 #import "MyWatchedObject.h"
 
+#import "ClearCacheController.h"
+
 @interface MineViewController () <UITableViewDataSource,UITableViewDelegate>
 {
     UIImageView *head;
@@ -47,6 +49,16 @@
             break;
     }
     return @"";
+}
+
+
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    
+    if (section == 1) {
+        return @"这里有可以清除系统缓存,以及查看本app的相关信息";
+    }
+    
+    return nil;
 }
 
 
@@ -96,8 +108,10 @@
         }
     }
     
-    if (indexPath.section == 0 && indexPath.row == 0) {
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        ClearCacheController *clear = [ClearCacheController new];
         
+        [self presentViewController:clear animated:YES completion:nil];
     }
     
     
@@ -150,6 +164,11 @@
     
     self.tableview.tableHeaderView = mask;
     
+    //push风格
+    self.providesPresentationContextTransitionStyle = YES;
+    self.definesPresentationContext = YES;
+    self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    
 }
 
 
@@ -166,9 +185,8 @@
     }
 }
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    
-    if (decelerate)
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     if (scrollView.contentOffset.y < 0) {
         
         [UIView animateWithDuration:0.5 animations:^{
@@ -176,9 +194,7 @@
             [scrollView setContentOffset:CGPointZero animated:YES];
         }];
     }
-    
 }
-
 
 
 - (void)didReceiveMemoryWarning {

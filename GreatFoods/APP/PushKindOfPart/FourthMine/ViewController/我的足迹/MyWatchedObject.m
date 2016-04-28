@@ -9,6 +9,7 @@
 #import "MyWatchedObject.h"
 #import "DataBase.h"//数据
 #import "CollectModel.h"
+#import "DaydayCookDescription.h"
 
 #import "MineCollextCollectionViewCell.h"
 @interface MyWatchedObject () <UICollectionViewDataSource,UICollectionViewDelegate>
@@ -35,6 +36,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"我的足迹";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"清除全部" style:UIBarButtonItemStylePlain target:self action:@selector(Clear:)];
+    [self.navigationItem.rightBarButtonItem setBackButtonTitlePositionAdjustment:UIOffsetMake(2, -1) forBarMetrics:UIBarMetricsDefault];
     
     //打开数据库
     [[DataBase shareData]creatAndOpenTable];
@@ -75,14 +81,51 @@
 
 
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    CollectModel *model = _WatchArray[indexPath.item];
+    
+    DaydayCookDescription *vc = [DaydayCookDescription new];
+    
+    vc.BookID = model.bookId;
+    
+    vc.isNavigation = YES;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    return NO;
+}
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     if (_WatchArray.count > 0) {
         _Foots.hidden = YES;
     }
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
+
+
+- (void)Clear:(UIButton *)sender
+{
+    //1
+    [[DataBase shareData]delectALL];
+    //2
+    [_WatchArray removeAllObjects];
+    //3
+    [self.MyCollectView reloadData];
+    //4
+    _Foots.hidden = NO;
+    //5
+    UIAlertController *great = [UIAlertController alertControllerWithTitle:@"删除成功" message:@"已删除所有浏览记录" preferredStyle:UIAlertControllerStyleActionSheet];
+    [self presentViewController:great animated:YES completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [great dismissViewControllerAnimated:YES completion:nil];
+        });
+    }];
+}
+
 
 
 

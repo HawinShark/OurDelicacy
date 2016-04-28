@@ -39,4 +39,7 @@
 //删除
 -(void)deletePeopleWithMakeTitle:(NSString *)makeTime;
 
+-(void)delectALL;
+
+
 @end

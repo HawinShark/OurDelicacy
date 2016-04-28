@@ -55,12 +55,12 @@
                     <exclude reference="QRE-Zo-Ty6"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="7Ot-I1-rYN"/>
+                    <exclude reference="F05-ig-Cso"/>
                     <exclude reference="NCA-2D-pkH"/>
                     <exclude reference="R9t-MC-juQ"/>
                     <exclude reference="cJz-rP-KhB"/>
                     <exclude reference="uH7-5L-6Dq"/>
-                    <exclude reference="7Ot-I1-rYN"/>
-                    <exclude reference="F05-ig-Cso"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -69,12 +69,12 @@
                     <include reference="QRE-Zo-Ty6"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="7Ot-I1-rYN"/>
+                    <include reference="F05-ig-Cso"/>
                     <include reference="NCA-2D-pkH"/>
                     <include reference="R9t-MC-juQ"/>
                     <include reference="cJz-rP-KhB"/>
                     <include reference="uH7-5L-6Dq"/>
-                    <include reference="7Ot-I1-rYN"/>
-                    <include reference="F05-ig-Cso"/>
                 </mask>
             </variation>
         </view>
