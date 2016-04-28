@@ -42,12 +42,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"清除全部" style:UIBarButtonItemStylePlain target:self action:@selector(Clear:)];
     [self.navigationItem.rightBarButtonItem setBackButtonTitlePositionAdjustment:UIOffsetMake(2, -1) forBarMetrics:UIBarMetricsDefault];
     
-    //打开数据库
-    [[DataBase shareData]creatAndOpenTable];
-    //读取
-    self.WatchArray = [[DataBase shareData]selectMovie];
-    //
-    NSLog(@"%ld",self.WatchArray.count);
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     
@@ -103,6 +97,14 @@
     if (_WatchArray.count > 0) {
         _Foots.hidden = YES;
     }
+    
+    //打开数据库
+    [[DataBase shareData]creatAndOpenTable];
+    //读取
+    self.WatchArray = [[DataBase shareData]selectMovie];
+    
+    [self.MyCollectView reloadData];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.hidesBarsOnSwipe = NO;
 }

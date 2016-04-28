@@ -439,15 +439,11 @@
                 //  执行的代码
                 if (RefreshCurrentPage > 0) {
                     
-                    [self.DaydayCollecionView performBatchUpdates:^{
                         NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
                         [UIView performWithoutAnimation:^{
                             [self.DaydayCollecionView reloadSections:set];
                         }];
-                    } completion:^(BOOL finished) {
-                        NSLog(@"上拉加载完毕");
-                    }];
-                    
+
                 }
             });
             

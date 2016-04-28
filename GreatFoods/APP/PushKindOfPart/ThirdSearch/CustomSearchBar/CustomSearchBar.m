@@ -59,7 +59,7 @@
         _textField.delegate = self;
         _textField.returnKeyType = UIReturnKeySearch;
         //为textField设置属性占位符
-        _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入关键字" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:0.335 alpha:1.000]}];
+        _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@" 食材/菜谱/菜系" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:0.335 alpha:1.000]}];
         [_bgView addSubview:_textField];
         
         //放大镜图标imageView

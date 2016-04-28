@@ -85,7 +85,6 @@
     
     vc.BookID = [bookid[index] integerValue];
     
-    
     vc.isNavigation = YES;
     
     [[self viewController].navigationController pushViewController:vc animated:YES];

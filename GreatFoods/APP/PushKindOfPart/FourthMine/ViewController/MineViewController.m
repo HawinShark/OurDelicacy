@@ -31,7 +31,7 @@
     [super viewDidLoad];
     //
     
-    
+    self.navigationController.hidesBarsOnSwipe = NO;
     
     [self buildTableViewHead];
     
