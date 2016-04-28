@@ -440,9 +440,7 @@
                 if (RefreshCurrentPage > 0) {
                     
                         NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
-                        [UIView performWithoutAnimation:^{
                             [self.DaydayCollecionView reloadSections:set];
-                        }];
 
                 }
             });
