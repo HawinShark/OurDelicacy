@@ -123,7 +123,7 @@
         [self presentViewController:clearImage animated:YES completion:nil];
         
     }
-    else if (indexPath.row == 0){   //删除视频缓存
+    else if (indexPath.section == 0 && indexPath.row == 0){   //删除视频缓存
         
         UIAlertController *clearFilm = [UIAlertController alertControllerWithTitle:@"Clear Film caches and Data" message:@"将清除所有的视频缓存和浏览数据" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -234,7 +234,7 @@
     
     UIButton * backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    backButton.frame = CGRectMake(30, 30, 30, 30);
+    backButton.frame = CGRectMake(30, 70, 30, 30);
     
     [backButton setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
     
@@ -247,11 +247,6 @@
 - (void)backto
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
 }
 
 

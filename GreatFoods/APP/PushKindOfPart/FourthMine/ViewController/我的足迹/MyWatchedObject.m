@@ -104,6 +104,7 @@
         _Foots.hidden = YES;
     }
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.hidesBarsOnSwipe = NO;
 }
 
 
