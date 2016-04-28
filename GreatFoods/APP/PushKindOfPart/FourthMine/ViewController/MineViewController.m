@@ -22,10 +22,11 @@
 @end
 
 @implementation MineViewController
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    [head setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Goodfood%d",arc4random_uniform(29)]]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,9 +67,12 @@
 {
     static NSString *cellid = @"mine";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+    
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
+    
+    cell.textLabel.textColor = RGB(92, 58, 64);
     
     if (indexPath.section == 0 && indexPath.row == 0) {
         cell.textLabel.text = @"我的收藏";
@@ -155,7 +159,7 @@
 
 - (void)buildTableViewHead
 {
-    UIImage *image = [UIImage imageNamed:@"background-2"];
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Goodfood%d",arc4random_uniform(29)]];
     
     head = [UIImageView new];
     

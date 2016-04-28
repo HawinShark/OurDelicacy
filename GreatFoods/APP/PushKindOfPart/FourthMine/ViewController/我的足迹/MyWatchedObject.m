@@ -94,14 +94,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if (_WatchArray.count > 0) {
-        _Foots.hidden = YES;
-    }
-    
     //打开数据库
     [[DataBase shareData]creatAndOpenTable];
     //读取
     self.WatchArray = [[DataBase shareData]selectMovie];
+    
+    if (_WatchArray.count > 0) {
+        _Foots.hidden = YES;
+    }
     
     [self.MyCollectView reloadData];
     

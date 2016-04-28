@@ -59,6 +59,7 @@
 		75BE68AF1CD09DE7002AFF5B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BE68AE1CD09DE7002AFF5B /* libstdc++.tbd */; };
 		75BE68B11CD09DF0002AFF5B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BE68B01CD09DF0002AFF5B /* libz.tbd */; };
 		9E0CB5236EE33452699E17B6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED34D67C062B50611E9D9154 /* libPods.a */; };
+		F52679331CD213D200F37A8D /* GoodFoodImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52679321CD213D200F37A8D /* GoodFoodImages.xcassets */; };
 		F52BB8BE1CC5CAFB000B8577 /* DDPushList.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8BD1CC5CAFB000B8577 /* DDPushList.m */; };
 		F52BB8C01CC5CB0F000B8577 /* DDPushList.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BB8BF1CC5CB0F000B8577 /* DDPushList.xib */; };
 		F52BB8C81CC6115A000B8577 /* NETManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8C71CC6115A000B8577 /* NETManager.m */; };
@@ -236,6 +237,7 @@
 		75BE68B01CD09DF0002AFF5B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9333AF356A4D342A18C9BA64 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ED34D67C062B50611E9D9154 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F52679321CD213D200F37A8D /* GoodFoodImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GoodFoodImages.xcassets; sourceTree = "<group>"; };
 		F52BB8BC1CC5CAFB000B8577 /* DDPushList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushList.h; sourceTree = "<group>"; };
 		F52BB8BD1CC5CAFB000B8577 /* DDPushList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPushList.m; sourceTree = "<group>"; };
 		F52BB8BF1CC5CB0F000B8577 /* DDPushList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDPushList.xib; sourceTree = "<group>"; };
@@ -837,6 +839,7 @@
 				F5B289D81CC4F7B400ECF016 /* AppDelegate.h */,
 				F5B289D91CC4F7B400ECF016 /* AppDelegate.m */,
 				F5B289E11CC4F7B400ECF016 /* Assets.xcassets */,
+				F52679321CD213D200F37A8D /* GoodFoodImages.xcassets */,
 				F5B289E31CC4F7B400ECF016 /* LaunchScreen.storyboard */,
 				F5B289E61CC4F7B400ECF016 /* Info.plist */,
 				F5B289D51CC4F7B400ECF016 /* Supporting Files */,
@@ -1268,6 +1271,7 @@
 				3FBD87AD1CCF42ED0024AAC2 /* StepOneCell.xib in Resources */,
 				F5F2EB1D1CD1B15A000A4EF0 /* GuideViewController.xib in Resources */,
 				75BE68971CD09D5C002AFF5B /* UMSCommentInputControlleriPad.xib in Resources */,
+				F52679331CD213D200F37A8D /* GoodFoodImages.xcassets in Resources */,
 				F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */,
 				F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */,
 				F5F2EB171CD11C50000A4EF0 /* ClearCacheController.xib in Resources */,

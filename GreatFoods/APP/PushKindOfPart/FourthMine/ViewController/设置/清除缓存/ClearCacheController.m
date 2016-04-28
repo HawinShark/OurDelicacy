@@ -89,7 +89,7 @@
     
     // Section 2..
     if (indexPath.section == 1 && indexPath.row == 0) {
-        cell.textLabel.text = @"- 关于真食惠 -";
+        cell.textLabel.text = @"- 关于真食汇 -";
     }
     
     return cell;
