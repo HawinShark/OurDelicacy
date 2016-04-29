@@ -1182,7 +1182,7 @@
 				TargetAttributes = {
 					F5B289D11CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 8RVNLC7K7J;
+						DevelopmentTeam = 5AWV6U89AL;
 					};
 					F5B289EA1CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1546,7 +1546,7 @@
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.--";
+				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1576,7 +1576,7 @@
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.--";
+				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

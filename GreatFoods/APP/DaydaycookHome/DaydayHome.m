@@ -592,15 +592,15 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
 
         
-            //销毁播放器
-            if (isWIFI == YES) {
-                if (currentTopCell.isPlay == YES) {
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        //销毁播放器
+                        if (isWIFI == YES) {
+                            if (currentTopCell.isPlay == YES) {
                         [filmmanager removeFromSuperview];
                         filmmanager = nil;//执行dealloc
+                            }
+                        }
                             });
-                }
-            }
     });
     
 }

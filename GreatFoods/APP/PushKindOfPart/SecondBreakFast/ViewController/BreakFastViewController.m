@@ -43,26 +43,23 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 200;
 
     //异步
     [self showHint:@"正在加载..."];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self RequestData];
-    });
+    [self RequestData];
+    
 
     /* 创建UI*/
     [self buildUI];
     
     __weak typeof(self)mySelf = self;
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
-            [mySelf LoadData];
-        });
+        [mySelf LoadData];
+
     }];
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 300;
     
 }
 
@@ -125,36 +122,39 @@
     
     _DataSource = [NSMutableArray array];
     
-    if ([self isNetWork]) {
-        
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        [manager POST:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=0&type=0" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([self isNetWork]) {
             
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             
-            NSArray *array = [responseObject objectForKey:@"list"];
-            
-            for (NSDictionary *dic in array) {
+            [manager POST:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=0&type=0" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
-                List *model = [[List alloc]initWithDictionary:dic];
                 
-                [_DataSource addObject:model];
+                NSArray *array = [responseObject objectForKey:@"list"];
                 
-            }
-            //主线程刷新
-            dispatch_async(dispatch_get_main_queue(), ^{
+                for (NSDictionary *dic in array) {
+                    
+                    List *model = [[List alloc]initWithDictionary:dic];
+                    
+                    [_DataSource addObject:model];
+                    
+                }
+                //主线程刷新
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self showhide];
+                    [self.tableView reloadData];
+                });
                 
-                [self showhide];
-                [self.tableView reloadData];
-            });
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [self showHint:@"数据异常"];
-        }];
-    }else
-    {
-        [self showHint:@"网络异常请检测网络"];
-    }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [self showHint:@"数据异常"];
+            }];
+        }else
+        {
+            [self showHint:@"网络异常请检测网络"];
+        }
+    });
+    
     
 }
 
@@ -165,35 +165,39 @@
     
     if ([self isNetWork]) {
         
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=%ld&type=0",++page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             
-            NSArray *array = [responseObject objectForKey:@"list"];
-            
-            for (NSDictionary *dic in array) {
+            [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=%ld&type=0",++page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
-                List *model = [[List alloc]initWithDictionary:dic];
                 
-                [_DataSource addObject:model];
+                NSArray *array = [responseObject objectForKey:@"list"];
                 
-            }
-            //主线程刷新
-            dispatch_async(dispatch_get_main_queue(), ^{
+                for (NSDictionary *dic in array) {
+                    
+                    List *model = [[List alloc]initWithDictionary:dic];
+                    
+                    [_DataSource addObject:model];
+                    
+                }
+                //主线程刷新
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self showhide];
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
                 
-                [self showhide];
-                [self.tableView reloadData];
-                [self.tableView.mj_footer endRefreshing];
-            });
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [self showHint:@"数据异常"];
-        }];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [self showHint:@"数据异常"];
+            }];
+        });
     }else
     {
         [self showHint:@"网络异常请检测网络"];
     }
+        
     
 }
 
