@@ -580,20 +580,29 @@
 -(void) totop:(UIButton *)sender
 {
     
+
     [self.DaydayCollecionView setContentOffset:CGPointZero animated:YES]; //1有动画
 
+    
     //置顶后按钮消失
     [UIView animateWithDuration:.5 animations:^{
         backtoTop.alpha = 0;
     }];
     
-    //销毁播放器
-    if (isWIFI == YES) {
-        if (currentTopCell.isPlay == YES) {
-            [filmmanager removeFromSuperview];
-            filmmanager = nil;//执行dealloc
-        }
-    }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+
+        
+            //销毁播放器
+            if (isWIFI == YES) {
+                if (currentTopCell.isPlay == YES) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [filmmanager removeFromSuperview];
+                        filmmanager = nil;//执行dealloc
+                            });
+                }
+            }
+    });
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
