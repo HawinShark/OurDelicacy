@@ -12,6 +12,7 @@
 
 #import "ClearCacheController.h"
 
+
 @interface MineViewController () <UITableViewDataSource,UITableViewDelegate>
 {
     UIImageView *head;
@@ -60,6 +61,7 @@
     }
     
     return nil;
+
 }
 
 
@@ -193,7 +195,9 @@
 }
 
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
     if (scrollView.contentOffset.y < 0) {
         
         [UIView animateWithDuration:0.5 animations:^{
@@ -202,6 +206,7 @@
         }];
     }
 }
+
 
 
 - (void)didReceiveMemoryWarning {

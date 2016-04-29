@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1E5F211CD1A7E100B34732 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E5F201CD1A7E100B34732 /* CarouselView.m */; };
 		3FA2D1761CCE3AD800A27EFF /* MaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA2D1751CCE3AD800A27EFF /* MaterialCell.xib */; };
 		3FA6C4821CCB0B8D002D46F9 /* DetailsPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C46F1CCB0B8D002D46F9 /* DetailsPageController.m */; };
 		3FA6C4831CCB0B8D002D46F9 /* DetailsPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C4701CCB0B8D002D46F9 /* DetailsPageController.xib */; };
@@ -17,8 +18,9 @@
 		3FA6C4881CCB0B8D002D46F9 /* HeadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6C47B1CCB0B8D002D46F9 /* HeadViewCell.xib */; };
 		3FA6C4891CCB0B8D002D46F9 /* MaterialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C47D1CCB0B8D002D46F9 /* MaterialCell.m */; };
 		3FA6C48B1CCB0B8D002D46F9 /* StepOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */; };
-		3FB103F71CCB523700F94F65 /* carouselCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB103F61CCB523700F94F65 /* carouselCell.m */; };
 		3FB117451CC9CFB600CA4AD4 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB117441CC9CFB600CA4AD4 /* List.m */; };
+		3FB665FC1CD2082E009A8AE5 /* BreakfastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB665FA1CD2082E009A8AE5 /* BreakfastCell.m */; };
+		3FB665FD1CD2082E009A8AE5 /* BreakfastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FB665FB1CD2082E009A8AE5 /* BreakfastCell.xib */; };
 		3FBD87AD1CCF42ED0024AAC2 /* StepOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBD87AC1CCF42ED0024AAC2 /* StepOneCell.xib */; };
 		7513E4101CC8BA1500E0DC97 /* BigRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E40F1CC8BA1500E0DC97 /* BigRoundView.m */; };
 		7513E4131CC8BA3A00E0DC97 /* SmRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7513E4121CC8BA3A00E0DC97 /* SmRoundView.m */; };
@@ -69,8 +71,6 @@
 		F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BB8D51CC6564A000B8577 /* DaydayCookDescription.xib */; };
 		F52BB8DD1CC65797000B8577 /* DayDescriptionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8DA1CC65797000B8577 /* DayDescriptionBaseClass.m */; };
 		F52BB8DE1CC65797000B8577 /* DayDescriptionData.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8DC1CC65797000B8577 /* DayDescriptionData.m */; };
-		F54BE8991CC9B64F00C3FF67 /* IndexSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8971CC9B64F00C3FF67 /* IndexSecondCell.m */; };
-		F54BE89A1CC9B64F00C3FF67 /* IndexSecondCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8981CC9B64F00C3FF67 /* IndexSecondCell.xib */; };
 		F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8A21CC9D14900C3FF67 /* searchCell.m */; };
 		F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8A31CC9D14900C3FF67 /* searchCell.xib */; };
 		F54BE8BA1CCA4F9A00C3FF67 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8B91CCA4F9A00C3FF67 /* Timer.m */; };
@@ -138,6 +138,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F1E5F1F1CD1A7E100B34732 /* CarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
+		3F1E5F201CD1A7E100B34732 /* CarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
 		3FA2D1751CCE3AD800A27EFF /* MaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialCell.xib; sourceTree = "<group>"; };
 		3FA6C46E1CCB0B8D002D46F9 /* DetailsPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsPageController.h; sourceTree = "<group>"; };
 		3FA6C46F1CCB0B8D002D46F9 /* DetailsPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsPageController.m; sourceTree = "<group>"; };
@@ -155,10 +157,11 @@
 		3FA6C47D1CCB0B8D002D46F9 /* MaterialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialCell.m; sourceTree = "<group>"; };
 		3FA6C47F1CCB0B8D002D46F9 /* StepOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepOneCell.h; sourceTree = "<group>"; };
 		3FA6C4801CCB0B8D002D46F9 /* StepOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepOneCell.m; sourceTree = "<group>"; };
-		3FB103F51CCB523700F94F65 /* carouselCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = carouselCell.h; sourceTree = "<group>"; };
-		3FB103F61CCB523700F94F65 /* carouselCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = carouselCell.m; sourceTree = "<group>"; };
 		3FB117431CC9CFB600CA4AD4 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		3FB117441CC9CFB600CA4AD4 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		3FB665F91CD2082E009A8AE5 /* BreakfastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreakfastCell.h; sourceTree = "<group>"; };
+		3FB665FA1CD2082E009A8AE5 /* BreakfastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BreakfastCell.m; sourceTree = "<group>"; };
+		3FB665FB1CD2082E009A8AE5 /* BreakfastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakfastCell.xib; sourceTree = "<group>"; };
 		3FBD87AC1CCF42ED0024AAC2 /* StepOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepOneCell.xib; sourceTree = "<group>"; };
 		62FA1D13F8A65EDB1A6DC6B0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7513E40E1CC8BA1500E0DC97 /* BigRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigRoundView.h; sourceTree = "<group>"; };
@@ -255,9 +258,6 @@
 		F52BB8DA1CC65797000B8577 /* DayDescriptionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayDescriptionBaseClass.m; sourceTree = "<group>"; };
 		F52BB8DB1CC65797000B8577 /* DayDescriptionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayDescriptionData.h; sourceTree = "<group>"; };
 		F52BB8DC1CC65797000B8577 /* DayDescriptionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayDescriptionData.m; sourceTree = "<group>"; };
-		F54BE8961CC9B64F00C3FF67 /* IndexSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexSecondCell.h; sourceTree = "<group>"; };
-		F54BE8971CC9B64F00C3FF67 /* IndexSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexSecondCell.m; sourceTree = "<group>"; };
-		F54BE8981CC9B64F00C3FF67 /* IndexSecondCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexSecondCell.xib; sourceTree = "<group>"; };
 		F54BE8A11CC9D14900C3FF67 /* searchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchCell.h; sourceTree = "<group>"; };
 		F54BE8A21CC9D14900C3FF67 /* searchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchCell.m; sourceTree = "<group>"; };
 		F54BE8A31CC9D14900C3FF67 /* searchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchCell.xib; sourceTree = "<group>"; };
@@ -383,6 +383,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F1E5F1E1CD1A7C800B34732 /* CarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				3F1E5F1F1CD1A7E100B34732 /* CarouselView.h */,
+				3F1E5F201CD1A7E100B34732 /* CarouselView.m */,
+			);
+			path = CarouselView;
+			sourceTree = "<group>";
+		};
 		3FA6C46B1CCB0B00002D46F9 /* BreakFastDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,15 +439,6 @@
 				3FBD87AC1CCF42ED0024AAC2 /* StepOneCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3FB103F41CCB51FE00F94F65 /* carouselCell */ = {
-			isa = PBXGroup;
-			children = (
-				3FB103F51CCB523700F94F65 /* carouselCell.h */,
-				3FB103F61CCB523700F94F65 /* carouselCell.m */,
-			);
-			path = carouselCell;
 			sourceTree = "<group>";
 		};
 		3FD9F55F1CC9C29A0064990D /* BreakfastModel */ = {
@@ -657,28 +657,11 @@
 		F54BE88C1CC9B07F00C3FF67 /* breakfastCell */ = {
 			isa = PBXGroup;
 			children = (
-				F54BE88E1CC9B0D600C3FF67 /* IndexCell */,
+				3FB665F91CD2082E009A8AE5 /* BreakfastCell.h */,
+				3FB665FA1CD2082E009A8AE5 /* BreakfastCell.m */,
+				3FB665FB1CD2082E009A8AE5 /* BreakfastCell.xib */,
 			);
 			path = breakfastCell;
-			sourceTree = "<group>";
-		};
-		F54BE88E1CC9B0D600C3FF67 /* IndexCell */ = {
-			isa = PBXGroup;
-			children = (
-				3FB103F41CCB51FE00F94F65 /* carouselCell */,
-				F54BE88F1CC9B0ED00C3FF67 /* IndexSecondCell */,
-			);
-			path = IndexCell;
-			sourceTree = "<group>";
-		};
-		F54BE88F1CC9B0ED00C3FF67 /* IndexSecondCell */ = {
-			isa = PBXGroup;
-			children = (
-				F54BE8961CC9B64F00C3FF67 /* IndexSecondCell.h */,
-				F54BE8971CC9B64F00C3FF67 /* IndexSecondCell.m */,
-				F54BE8981CC9B64F00C3FF67 /* IndexSecondCell.xib */,
-			);
-			name = IndexSecondCell;
 			sourceTree = "<group>";
 		};
 		F54BE8A01CC9D12C00C3FF67 /* searchCell */ = {
@@ -897,6 +880,7 @@
 		F5B28A0B1CC4F87300ECF016 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3F1E5F1E1CD1A7C800B34732 /* CarouselView */,
 				75BE685B1CD09D27002AFF5B /* youmeng */,
 				75BE679E1CCE1C0D002AFF5B /* DataBase */,
 				F5B9166C1CCB5C18006BF7D3 /* FilmManager */,
@@ -1198,7 +1182,7 @@
 				TargetAttributes = {
 					F5B289D11CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 5AWV6U89AL;
+						DevelopmentTeam = 8RVNLC7K7J;
 					};
 					F5B289EA1CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1253,6 +1237,7 @@
 				F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */,
 				75BE67F81CCE6C9D002AFF5B /* MineCollectViewController.xib in Resources */,
 				75BE689A1CD09D5C002AFF5B /* UMSLoginViewController.xib in Resources */,
+				3FB665FD1CD2082E009A8AE5 /* BreakfastCell.xib in Resources */,
 				F5B28A2D1CC525BB00ECF016 /* DDCollectCell.xib in Resources */,
 				75BE68A31CD09D5C002AFF5B /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				7590480A1CCB495A00559B74 /* 暂停.png in Resources */,
@@ -1260,7 +1245,6 @@
 				F5B28A271CC5253E00ECF016 /* Images.xcassets in Resources */,
 				75BE689C1CD09D5C002AFF5B /* UMSShareListController.xib in Resources */,
 				3FA2D1761CCE3AD800A27EFF /* MaterialCell.xib in Resources */,
-				F54BE89A1CC9B64F00C3FF67 /* IndexSecondCell.xib in Resources */,
 				F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */,
 				F52BB8C01CC5CB0F000B8577 /* DDPushList.xib in Resources */,
 				F58ED2211CCE6F4C00E2139B /* SearchListViewCell.xib in Resources */,
@@ -1350,7 +1334,6 @@
 				7513E4101CC8BA1500E0DC97 /* BigRoundView.m in Sources */,
 				F52BB8DD1CC65797000B8577 /* DayDescriptionBaseClass.m in Sources */,
 				F5F2EB1C1CD1B15A000A4EF0 /* GuideViewController.m in Sources */,
-				F54BE8991CC9B64F00C3FF67 /* IndexSecondCell.m in Sources */,
 				F5B28A2C1CC525BB00ECF016 /* DDCollectCell.m in Sources */,
 				F54BE8D61CCA705A00C3FF67 /* SearchBase.m in Sources */,
 				F5B28A311CC52A9200ECF016 /* UIImage+Extended.m in Sources */,
@@ -1359,12 +1342,12 @@
 				F52BB8D61CC6564A000B8577 /* DaydayCookDescription.m in Sources */,
 				F54BE8D71CCA705A00C3FF67 /* SearchData.m in Sources */,
 				7513E4161CC8BA8A00E0DC97 /* PointView.m in Sources */,
-				3FB103F71CCB523700F94F65 /* carouselCell.m in Sources */,
 				F5B28A1F1CC5004F00ECF016 /* WHC_NavigationController.m in Sources */,
 				F52BB8D01CC61C03000B8577 /* DaydayCookData.m in Sources */,
 				F5D97C531CC7ACAB0034099A /* SearchViewController.m in Sources */,
 				F5559D0A1CC8B4E300379BF0 /* CustomSearchBar.m in Sources */,
 				F58ED2101CCE5F9400E2139B /* ICarousellBaseClass.m in Sources */,
+				3F1E5F211CD1A7E100B34732 /* CarouselView.m in Sources */,
 				F5559D031CC8ABB200379BF0 /* MineViewController.m in Sources */,
 				3FA6C4851CCB0B8D002D46F9 /* MaterialModel.m in Sources */,
 				F5B28A171CC4FED100ECF016 /* DaydayHome.m in Sources */,
@@ -1397,6 +1380,7 @@
 				F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */,
 				F58ED2111CCE5F9400E2139B /* ICarousellData.m in Sources */,
 				3FA6C4821CCB0B8D002D46F9 /* DetailsPageController.m in Sources */,
+				3FB665FC1CD2082E009A8AE5 /* BreakfastCell.m in Sources */,
 				F567EF181CD0DF5100677007 /* MyWatchedObject.m in Sources */,
 				F58ED2201CCE6F4C00E2139B /* SearchListViewCell.m in Sources */,
 				F5B289D71CC4F7B400ECF016 /* main.m in Sources */,
@@ -1562,7 +1546,7 @@
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
+				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1592,7 +1576,7 @@
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
+				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

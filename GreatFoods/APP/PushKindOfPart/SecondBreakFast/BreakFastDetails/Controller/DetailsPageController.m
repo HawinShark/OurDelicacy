@@ -228,6 +228,10 @@
     self.navigationController.navigationBarHidden = NO;
 }
 
+//隐藏电池栏
+-(BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 
 - (void)didReceiveMemoryWarning {

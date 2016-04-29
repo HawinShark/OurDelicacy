@@ -12,4 +12,5 @@
 @property (nonatomic,copy) NSString *imgUrl;
 @property (nonatomic,copy) NSString *makeTitle;
 @property (nonatomic,assign) NSInteger bookId;
+@property (nonatomic,copy) NSString *VcName;
 @end
