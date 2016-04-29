@@ -16,7 +16,7 @@
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
 #import <MJRefreshBackNormalFooter.h>
-
+#import <MJRefresh.h>
 @interface BreakFastViewController () <UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *carouselArray;
@@ -58,14 +58,21 @@
     /* 创建UI*/
     [self buildUI];
     
-    __weak typeof(self)mySelf = self;
+    __weak typeof(self)loadSelf = self;
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [mySelf LoadData];
+        [loadSelf LoadData];
 
     }];
     
+    
+    __weak typeof(self)refreshSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [refreshSelf RequestData];
+    }];
+    
+    self.tableView.separatorStyle = NO;//隐藏tableView分割线
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 300;
+    self.tableView.estimatedRowHeight = 240;
     
 }
 
@@ -103,6 +110,12 @@
         [cell AcquireModel:model];
     }
     
+    if (indexPath.row % 2 == 0) {
+        [cell.contentView setBackgroundColor:[UIColor colorWithRed:108/255. green:90/255. blue:70/255. alpha:1]];
+    }else{
+        [cell.contentView setBackgroundColor:[UIColor colorWithRed:93/255. green:58/255. blue:64/255. alpha:1]];
+    }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -130,7 +143,7 @@
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         if ([self isNetWork]) {
-            
+                        
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             
             [manager POST:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=0&type=0" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -150,6 +163,7 @@
                     
                     [self showhide];
                     [self.tableView reloadData];
+                    [self.tableView.mj_header endRefreshing];
                 });
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

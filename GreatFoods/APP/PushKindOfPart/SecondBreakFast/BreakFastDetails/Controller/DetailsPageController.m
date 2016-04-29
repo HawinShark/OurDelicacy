@@ -58,6 +58,9 @@
     
     _detailsPageTableView.delegate = self;
     _detailsPageTableView.dataSource = self;
+    
+    //让底下的tabbar不会挡住tableView的内容
+    [self.detailsPageTableView setContentInset:UIEdgeInsetsMake(0, 0, 44, 0)];
 }
 
 
@@ -152,12 +155,11 @@
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        
         return cell;
         
     }
     
-    ////
     if (indexPath.row == 1) {
     
         MaterialCell *cell = [tableView dequeueReusableCellWithIdentifier:string2];
@@ -210,6 +212,7 @@
         
         return cell;
     }
+    
     return nil;
 }
 
