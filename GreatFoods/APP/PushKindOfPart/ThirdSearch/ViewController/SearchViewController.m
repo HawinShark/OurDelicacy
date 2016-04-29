@@ -50,7 +50,7 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = YES;
     
-    [search handleButton:nil];
+    search = [[CustomSearchBar alloc]initWithFrame:CGRectMake(40, H(image) - 45, screen_width - 80, 40)];
 }
 
 

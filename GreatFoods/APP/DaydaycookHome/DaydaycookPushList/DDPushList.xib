@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -101,20 +102,20 @@
                 <constraint firstAttribute="trailing" secondItem="im7-kx-K1k" secondAttribute="trailing" multiplier="10:6.3" id="3UA-Tb-eHS"/>
                 <constraint firstAttribute="bottom" secondItem="2qE-R8-Ohh" secondAttribute="bottom" multiplier="10:5" id="3Y9-pc-odv"/>
                 <constraint firstAttribute="trailing" secondItem="GHr-93-TKI" secondAttribute="trailing" constant="35" id="6ua-Py-pfS">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstAttribute="bottom" secondItem="im7-kx-K1k" secondAttribute="bottom" id="Czd-dq-mQU"/>
                 <constraint firstItem="bVF-Dt-hM7" firstAttribute="leading" secondItem="xav-W8-u3R" secondAttribute="trailing" constant="50" id="D9m-Ke-U7U">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="ZQ7-A7-B5i" firstAttribute="leading" secondItem="2qE-R8-Ohh" secondAttribute="trailing" constant="50" id="GnO-iq-a9q">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="im7-kx-K1k" firstAttribute="top" secondItem="2qE-R8-Ohh" secondAttribute="bottom" id="J0L-g9-BZN"/>
                 <constraint firstAttribute="trailing" secondItem="Qan-a8-Ecg" secondAttribute="trailing" id="K0g-Ss-2Nx"/>
                 <constraint firstItem="2qE-R8-Ohh" firstAttribute="leading" secondItem="g4T-xQ-Toj" secondAttribute="leading" id="Mbo-Gw-jEE"/>
                 <constraint firstItem="Qan-a8-Ecg" firstAttribute="leading" secondItem="5Yq-9m-xxh" secondAttribute="trailing" constant="50" id="NXn-WC-6GI">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="bVF-Dt-hM7" firstAttribute="height" secondItem="2qE-R8-Ohh" secondAttribute="height" id="Nuh-LR-LKt"/>
                 <constraint firstAttribute="trailing" secondItem="2qE-R8-Ohh" secondAttribute="trailing" multiplier="10:4.2" id="TPC-sG-yLD"/>
@@ -122,21 +123,21 @@
                 <constraint firstItem="2qE-R8-Ohh" firstAttribute="top" secondItem="g4T-xQ-Toj" secondAttribute="top" id="VT0-fX-xTA"/>
                 <constraint firstItem="im7-kx-K1k" firstAttribute="leading" secondItem="g4T-xQ-Toj" secondAttribute="leading" id="WZj-nz-9LS"/>
                 <constraint firstItem="5Yq-9m-xxh" firstAttribute="leading" secondItem="g4T-xQ-Toj" secondAttribute="leading" constant="50" id="Yei-XR-IbC">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="GHr-93-TKI" firstAttribute="leading" secondItem="im7-kx-K1k" secondAttribute="trailing" constant="35" id="ZTU-1q-qBO">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="Qan-a8-Ecg" firstAttribute="leading" secondItem="im7-kx-K1k" secondAttribute="trailing" id="aHC-mf-bS8"/>
                 <constraint firstAttribute="trailing" secondItem="ZQ7-A7-B5i" secondAttribute="trailing" constant="50" id="bJV-Sn-MTs">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="ZQ7-A7-B5i" firstAttribute="baseline" secondItem="bVF-Dt-hM7" secondAttribute="baseline" id="hZN-M7-AHK">
                     <variation key="widthClass=compact" constant="25"/>
                 </constraint>
                 <constraint firstAttribute="bottom" secondItem="Qan-a8-Ecg" secondAttribute="bottom" id="hpp-zR-fDF"/>
                 <constraint firstItem="xav-W8-u3R" firstAttribute="leading" secondItem="g4T-xQ-Toj" secondAttribute="leading" constant="50" id="ieb-Oc-YmV">
-                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="xav-W8-u3R" firstAttribute="baseline" secondItem="2qE-R8-Ohh" secondAttribute="baseline" id="jId-PH-mjc">
                     <variation key="widthClass=compact" constant="25"/>

@@ -12,6 +12,7 @@
                 <outlet property="ICON" destination="5gS-1c-hYP" id="x8L-sX-nXH"/>
                 <outlet property="PageControl" destination="WAE-dJ-ATN" id="yV1-W1-Pc9"/>
                 <outlet property="ScrollView" destination="FT8-hQ-qXg" id="wff-LG-Fdl"/>
+                <outlet property="Welcome" destination="C9t-Jo-HQc" id="pcX-T5-TMf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -52,7 +53,7 @@
                         </mask>
                     </variation>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wecome to the COOKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-Jo-HQc">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to COOKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-Jo-HQc">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                     <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                     <color key="textColor" red="0.61893028848717946" green="0.36160292000225236" blue="0.24486923417686748" alpha="1" colorSpace="calibratedRGB"/>
@@ -106,17 +107,17 @@
                     <exclude reference="FT8-hQ-qXg"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="n1g-F9-APi"/>
+                    <exclude reference="pjs-31-3dt"/>
+                    <exclude reference="nwl-Ad-Iar"/>
+                    <exclude reference="tuN-PN-1Ze"/>
+                    <exclude reference="2TY-O0-TLY"/>
+                    <exclude reference="9zG-3a-aPv"/>
+                    <exclude reference="W5i-lk-Nbv"/>
                     <exclude reference="Cz1-lK-rgF"/>
                     <exclude reference="VGO-Ny-l0U"/>
                     <exclude reference="Vfy-Av-dlt"/>
                     <exclude reference="lxQ-JB-7gx"/>
-                    <exclude reference="2TY-O0-TLY"/>
-                    <exclude reference="9zG-3a-aPv"/>
-                    <exclude reference="W5i-lk-Nbv"/>
-                    <exclude reference="nwl-Ad-Iar"/>
-                    <exclude reference="tuN-PN-1Ze"/>
-                    <exclude reference="n1g-F9-APi"/>
-                    <exclude reference="pjs-31-3dt"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -127,19 +128,20 @@
                     <include reference="FT8-hQ-qXg"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="n1g-F9-APi"/>
+                    <include reference="pjs-31-3dt"/>
+                    <include reference="nwl-Ad-Iar"/>
+                    <include reference="tuN-PN-1Ze"/>
+                    <exclude reference="2TY-O0-TLY"/>
+                    <include reference="9zG-3a-aPv"/>
+                    <include reference="W5i-lk-Nbv"/>
                     <include reference="Cz1-lK-rgF"/>
                     <include reference="VGO-Ny-l0U"/>
                     <include reference="Vfy-Av-dlt"/>
                     <include reference="lxQ-JB-7gx"/>
-                    <exclude reference="2TY-O0-TLY"/>
-                    <include reference="9zG-3a-aPv"/>
-                    <include reference="W5i-lk-Nbv"/>
-                    <include reference="nwl-Ad-Iar"/>
-                    <include reference="tuN-PN-1Ze"/>
-                    <include reference="n1g-F9-APi"/>
-                    <include reference="pjs-31-3dt"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="95" y="221"/>
         </view>
     </objects>
 </document>

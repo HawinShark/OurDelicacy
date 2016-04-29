@@ -154,8 +154,9 @@
 //
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    
+    if (self.DDdataArray.count > 0)
     return self.DDdataArray.count;
+    return 0;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -165,8 +166,10 @@
     static NSString *cellid = @"daydayhome";
     DDCollectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellid forIndexPath:indexPath];
     
+    if (self.DDdataArray.count > 0){
     DaydayCookData *model = self.DDdataArray[indexPath.item];
     [cell getModel:model];
+    }
     return cell;
 }
 
@@ -232,9 +235,9 @@
     //刷新数据
     if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 20 ) {
         
+        [self showHudInViewhint: @"正在请求数据.."];
     #pragma mark- 上拉加载请求数据
         dispatch_async(dispatch_queue_create("new", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
-            
             [self DayDayCookHomeDataIFRefresh:YES];
         });
     }//减速判定是否刷新页面
@@ -291,20 +294,23 @@
             
             if (isWIFI == YES) {
                 
-                //延迟执行
-                dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     
-                    filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
-                    //  执行的代码
-                    
-                    [currentTopCell.contentView addSubview:filmmanager];
-                    [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
-                    //
-                    
-                    currentTopCell.isPlay = YES;
-                    
-                    
-                    //----->>>>>>>
+                    //延迟执行
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        filmmanager = [[FilmManager alloc]initWithFrame:currentTopCell.contentView.bounds WithUrl:model.indexUrl];
+                        //  执行的代码
+                        
+                        [currentTopCell.contentView addSubview:filmmanager];
+                        [currentTopCell.contentView insertSubview:filmmanager aboveSubview:currentTopCell.BackGroundImage];
+                        //
+                        
+                        currentTopCell.isPlay = YES;
+                        
+                        
+                        //----->>>>>>>
+                    });
                 });
             }//如果是wifi状态
             
@@ -400,9 +406,6 @@
     
 }
 
--(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"%s",__func__);
-}
 
 
 
@@ -419,6 +422,7 @@
     }
     NSString *url = [NSString stringWithFormat:@"http://218.244.151.213/daydaycook/server/recipe/index.do?currentPage=%ld&pageSize=30",(long)RefreshCurrentPage];
     
+        
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
@@ -442,7 +446,7 @@
                     
                         NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
                             [self.DaydayCollecionView reloadSections:set];
-
+                    [self showhide];
                 }
             });
             
@@ -491,7 +495,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.DaydayCollecionView.mj_header endRefreshing];
                     //  执行的代码
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //
 //                        [UIView setAnimationsEnabled:YES];
                         
@@ -604,8 +608,8 @@
         
     });
 
-
-
+    
+    
     
     //置顶后按钮消失
     [UIView animateWithDuration:.5 animations:^{
