@@ -22,7 +22,8 @@
 }
 -(void)getModel:(CollectModel *)model
 {
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"background-1"]];
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"GGIcon"]];
+    NSLog(@"%@",model.imgUrl);
     
     self.titleLabel.text = model.makeTitle;
 

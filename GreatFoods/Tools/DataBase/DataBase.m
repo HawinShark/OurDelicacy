@@ -103,7 +103,7 @@
         
    
         CollectModel *model = [[CollectModel alloc]init];
-        model.imgUrl = [resultSet stringForColumn:@"makeTitle"];
+        model.imgUrl = [resultSet stringForColumn:@"imgUrl"];
         model.bookId = [resultSet intForColumn:@"bookId"];
         model.makeTitle =[resultSet stringForColumn:@"makeTitle"];
         model.VcName = [resultSet stringForColumn:@"VcName"];
