@@ -77,8 +77,10 @@
     //    [self action];
     __weak TimerViewController *weakSelf = self;
     
+#pragma mark- 计时完成的时候->> 要长要醒目
     if (  [Timer shareTimer].timeCount <= 0 ) {
         [[Timer shareTimer]cancelTimer];
+        
         
     }else{
         NSInteger minutes =   [Timer shareTimer].timeCount  / 60 ;

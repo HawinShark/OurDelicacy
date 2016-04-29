@@ -25,7 +25,7 @@
     
     [self.tableView setContentInset:UIEdgeInsetsMake(-20, 0, 0, 0)];
     
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -181,22 +181,9 @@
     self.tableView.tableHeaderView = back;
     
     
-    UIButton * backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    backButton.frame = CGRectMake(30, 70, 40, 40);
-    
-    [backButton setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-    
-    [backButton addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
-    
-    [back addSubview:backButton];
-    
 }
 
-- (void)backto
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 
 
 

@@ -127,14 +127,7 @@
     if (indexPath.section == 1 && indexPath.row == 0) {
         ClearCacheController *clear = [ClearCacheController new];
         
-        //push风格
-        clear.providesPresentationContextTransitionStyle = YES;
-        clear.definesPresentationContext = YES;
-        clear.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        
-        clear.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        
-        [self presentViewController:clear animated:YES completion:nil];
+        [self.navigationController pushViewController:clear animated:YES];
     }
     
     
