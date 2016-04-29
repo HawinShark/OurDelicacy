@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+//回传image到VC
+typedef void (^HeadViewCellBlock)(UIImage *image);
 @interface HeadViewCell : UITableViewCell
 
+
+
+
+@property (nonatomic,copy) HeadViewCellBlock imageBlock;
 @property (weak, nonatomic) IBOutlet UIImageView *headViewImage;
 @property (weak, nonatomic) IBOutlet UILabel *headLabel;
 

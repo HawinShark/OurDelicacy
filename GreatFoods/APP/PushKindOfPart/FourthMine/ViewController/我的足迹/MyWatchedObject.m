@@ -10,6 +10,7 @@
 #import "DataBase.h"//数据
 #import "CollectModel.h"
 #import "DaydayCookDescription.h"
+#import "DetailsPageController.h"
 
 #import "MineCollextCollectionViewCell.h"
 @interface MyWatchedObject () <UICollectionViewDataSource,UICollectionViewDelegate>
@@ -79,13 +80,25 @@
     
     CollectModel *model = _WatchArray[indexPath.item];
     
-    DaydayCookDescription *vc = [DaydayCookDescription new];
-    
-    vc.BookID = model.bookId;
-    
-    vc.isNavigation = YES;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([model.VcName isEqualToString:@"DayDayCook"]) {
+        
+        DaydayCookDescription *VC = [DaydayCookDescription new];
+        
+        VC.BookID = model.bookId;
+        VC.isNavigation = YES;
+        
+        [self.navigationController pushViewController:VC animated:YES];
+        return NO;
+    }
+    else{
+        DetailsPageController *detailVc = [DetailsPageController new];
+        detailVc.DetailsId = [NSString stringWithFormat:@"%ld",model.bookId];
+        
+        
+        [self.navigationController pushViewController:detailVc animated:YES];
+        return NO;
+    }
+
     
     return NO;
 }

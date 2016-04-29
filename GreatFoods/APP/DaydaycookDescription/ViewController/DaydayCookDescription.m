@@ -160,7 +160,7 @@
         model.makeTitle = self.makeTitle;
         model.bookId = self.BookID;
         model.imgUrl = self.imgUrl;
-
+        model.VcName = @"DayDayCook";
         [[DataBase shareData]insertInfo:model];
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"收藏成功" message:@"已加入收藏\n快进入我的收藏里查看吧~" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -338,6 +338,7 @@
                 WatchModel.imgUrl = model.imageUrl;
                 WatchModel.makeTitle = model.title;
                 WatchModel.bookId = self.BookID;
+                WatchModel.VcName = @"DayDayCook";
                 //先删除后存储
                 [[DataBase shareData]deletePeopleWithMakeTitle:model.title];
                 [[DataBase shareData]insertPeople:WatchModel];//存入数据库

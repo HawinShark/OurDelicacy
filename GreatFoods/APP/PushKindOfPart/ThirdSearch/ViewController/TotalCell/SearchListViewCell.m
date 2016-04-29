@@ -94,6 +94,7 @@
             self.model.makeTitle = model.title;
             self.model.bookId = model.dataIdentifier;
             self.model.imgUrl = model.imageUrl;
+            self.model.VcName =@"DayDayCook";
         });
         
     });

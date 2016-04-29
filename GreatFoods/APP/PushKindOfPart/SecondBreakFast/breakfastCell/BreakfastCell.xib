@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="218"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="217.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KJL-ep-MmD">
@@ -46,9 +46,10 @@
                             <constraint firstAttribute="width" constant="25" id="C22-mH-WVB"/>
                             <constraint firstAttribute="height" constant="25" id="a3q-yN-yiT"/>
                         </constraints>
-                        <state key="normal" image="Star"/>
+                        <state key="normal" image="UnMark"/>
+                        <state key="selected" image="Mark"/>
                         <connections>
-                            <action selector="collect:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kwN-UL-gdf"/>
+                            <action selector="collect:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HaQ-Dx-MP3"/>
                         </connections>
                     </button>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7N-G5-tRh">
@@ -87,6 +88,7 @@
             <connections>
                 <outlet property="authorimageid" destination="aOj-EZ-FUC" id="aqg-9H-qot"/>
                 <outlet property="authorname" destination="rbz-9i-RBe" id="3yn-zz-qsq"/>
+                <outlet property="collectBtn" destination="4zW-zF-CWp" id="87X-Ha-lwK"/>
                 <outlet property="imageid" destination="KJL-ep-MmD" id="fY0-ho-QqI"/>
                 <outlet property="name" destination="cyZ-27-6h5" id="8b1-uQ-26O"/>
             </connections>
@@ -94,6 +96,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Star" width="200" height="200"/>
+        <image name="Mark" width="150" height="150"/>
+        <image name="UnMark" width="150" height="150"/>
     </resources>
 </document>

@@ -13,6 +13,7 @@
 #import <OpinionzAlertView.h>
 #import "CollectModel.h"
 #import "DaydayCookDescription.h"
+#import "DetailsPageController.h"
 @interface MineCollectViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *allSelectBtn;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -190,20 +191,30 @@ static NSString *cellid = @"MineCollectcell";
     
     btn.selected = !btn.selected;
 }
-
+#pragma mark - Cell点击方法
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectModel *model = self.collectArr[indexPath.item];
 
 
     if (self.isSelect == NO) {
-       
-        DaydayCookDescription *VC = [DaydayCookDescription new];
-        
-        VC.BookID = model.bookId;
-        VC.isNavigation = YES;
-        
-        [self.navigationController pushViewController:VC animated:YES];
-        return NO;
+        if ([model.VcName isEqualToString:@"DayDayCook"]) {
+            
+            DaydayCookDescription *VC = [DaydayCookDescription new];
+            
+            VC.BookID = model.bookId;
+            VC.isNavigation = YES;
+            
+            [self.navigationController pushViewController:VC animated:YES];
+            return NO;
+        }
+        else{
+            DetailsPageController *detailVc = [DetailsPageController new];
+            detailVc.DetailsId = [NSString stringWithFormat:@"%ld",model.bookId];
+            
+            
+            [self.navigationController pushViewController:detailVc animated:YES];
+            return NO;
+        }
     }
     else
         

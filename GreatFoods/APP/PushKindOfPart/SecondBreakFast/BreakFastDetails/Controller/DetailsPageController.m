@@ -19,7 +19,13 @@
 #import "UIImageView+WebCache.h"
 #import <AFNetworking.h>
 #import <UITableView+SDAutoTableViewCellHeight.h>
-@interface DetailsPageController ()<UITableViewDataSource,UITableViewDelegate>
+
+#import "DataBase.h"
+#import "CollectModel.h"
+#import "UMSocialDataService.h"
+#import "UMSocial.h"
+
+@interface DetailsPageController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
 {
     NSMutableArray *array;
     NSMutableArray *array1;
@@ -29,8 +35,19 @@
     NSMutableArray *materislNum;
     NSMutableArray *stepArray;
     NSMutableDictionary *dic;
+    
+    
+  //收藏数据
+    NSString *_imgUrl;
+    NSString *_bookId;
+    NSString *_title;
+    UIImage *_image;
+    
+    BOOL isCollect;
+    
 }
 @property (weak, nonatomic) IBOutlet UITableView *detailsPageTableView;
+@property (weak, nonatomic) IBOutlet UIButton *collectBtn;
 @end
 
 @implementation DetailsPageController
@@ -39,7 +56,6 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor orangeColor]];
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     array = [NSMutableArray new];
@@ -58,6 +74,20 @@
     
     _detailsPageTableView.delegate = self;
     _detailsPageTableView.dataSource = self;
+    
+    
+    if (headViewArray.count > 0) {
+        
+        HeadViewCell *cell = [self.detailsPageTableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0 ]];
+        cell.imageBlock = ^(UIImage *image){
+            
+            _image = image;
+        };
+        
+
+    }
+    
+    
 }
 
 
@@ -69,13 +99,33 @@
         
         [self showHudInViewhint:@"正在加载..."];
         
+        
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
         [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getRecipeListByIds.shtml?ids=%@",_DetailsId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             [self showhide];
-            
             dic = [responseObject objectForKey:@"list"];
+            //获取收藏的数据
+            NSDictionary *collectDic = [[responseObject objectForKey:@"list"]objectAtIndex:0];
+            _title = [collectDic objectForKey:@"name"];
+            NSLog(@"%@",_title);
+            _imgUrl = [NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",[collectDic objectForKey:@"imageid"]];
+            
+            NSLog(@"imgUrl = %@",_imgUrl);
+            _bookId = _DetailsId;
+            
+            
+            [[DataBase shareData]openFmdb];
+            NSMutableArray *infoArr  = [[DataBase shareData]queryMakeTitle];
+            for (NSString *title in infoArr) {
+                if ([_title isEqualToString:title]) {
+                    isCollect= YES;
+                    self.collectBtn.selected = YES;
+                }
+            }
+            
+            
             
             //获取头视图数据
             for (NSDictionary *dic2 in dic) {
@@ -103,6 +153,19 @@
                     [stepArray addObject:model];
                 }
             }
+            
+        
+            
+#pragma mark- 足迹浏览过
+            [[DataBase shareData]creatAndOpenTable];//open
+            CollectModel *WatchModel = [CollectModel new];
+            WatchModel.makeTitle = _title;
+            WatchModel.bookId = [_DetailsId integerValue];
+            WatchModel.imgUrl = _imgUrl;
+            WatchModel.VcName = @"BreakFast";            //先删除后存储
+            [[DataBase shareData]deletePeopleWithMakeTitle:_title];
+            [[DataBase shareData]insertPeople:WatchModel];//存入数据库
+            
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -150,6 +213,7 @@
         if (headViewArray.count != 0) {
             [cell setAbc:headViewArray];
         }
+        
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -248,7 +312,39 @@
 
 - (IBAction)mark:(UIButton *)sender {
     
-    
+    if (sender.selected == NO) {
+        CollectModel *model = [CollectModel new];
+       model.makeTitle = _title;
+        model.bookId = [_DetailsId integerValue];
+        model.imgUrl = _imgUrl;
+        model.VcName = @"BreakFast";
+//
+        [[DataBase shareData]insertInfo:model];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"收藏成功" message:@"已加入收藏\n快进入我的收藏里查看吧~" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            });
+        }];
+    }else{
+//        [[DataBase shareData]deleteInfo:self.makeTitle];
+        
+        //取消收藏
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"取消成功" message:@"已取消收藏" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            });
+        }];
+    }
+    sender.selected = !sender.selected;
     
 }
 
@@ -272,10 +368,27 @@
 
 
 - (IBAction)share:(UIButton *)sender {
+//    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"5720b91867e58efd09002f70"                                    shareText:self.title
+                                     shareImage:_image
+                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite]
+                                       delegate:self];
     
     
+//    NSLog(@"self.title == %@",self.makeTitle);
+    
+    NSString *url = [NSString stringWithFormat:@"http://m.ecook.cn/recipeDetail/%@?from=timeline&isappinstalled=1",self.DetailsId];
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = url;
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = self.title;
     
     
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = url;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = _title;
+    [UMSocialData defaultData].extConfig.wxMessageType =  UMSocialWXMessageTypeWeb;
+    //
+//
+//    
     
 }
 

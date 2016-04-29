@@ -58,13 +58,13 @@
 -(void)insertInfo:(CollectModel *)model
 {
     [self.db open];
-    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle,VcName) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle,model.VcName];
+    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle,VcName) VALUES(?,?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle,model.VcName];
     
 }
 -(void)insertBreakFastInfo:(CollectModel *)model{
     
     [self.db open];
-    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle,VcName) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle,model.VcName];
+    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle,VcName) VALUES(?,?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle,model.VcName];
     
 }
 - (NSMutableArray *)queryMakeTitle
@@ -156,7 +156,7 @@
     
     //创建表
     BOOL result = [self.database executeUpdate:
-                   @"CREATE TABLE IF NOT EXISTS h_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text );"];
+                   @"CREATE TABLE IF NOT EXISTS h_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text,VcName text);"];
     
     if (result)
     {
@@ -170,7 +170,7 @@
     [self.database open];
         //添加用户
         //执行添加语句
-        BOOL result = [self.database executeUpdate:@"INSERT INTO h_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
+        BOOL result = [self.database executeUpdate:@"INSERT INTO h_collect (imgUrl,bookId,makeTitle,VcName) VALUES(?,?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle,model.VcName];
         
         if (result) {
             NSLog(@"2表add成功");
@@ -209,6 +209,7 @@
             model.imgUrl    = [resultSet stringForColumn:@"imgUrl"];
             model.bookId    = [resultSet intForColumn:@"bookId"];
             model.makeTitle = [resultSet stringForColumn:@"makeTitle"];
+            model.VcName = [resultSet stringForColumn:@"VcName"];
             [array addObject:model];
             
             NSLog(@"%@",model.makeTitle);

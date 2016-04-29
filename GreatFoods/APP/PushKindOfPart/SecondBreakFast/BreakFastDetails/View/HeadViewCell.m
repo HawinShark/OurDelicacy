@@ -17,7 +17,10 @@
 {
     for (int i = 0; i < abc.count; i++) {
         HeadViewModel *model = abc[i];
-        [_headViewImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
+//        [_headViewImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]]];
+        [_headViewImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//            self.imageBlock(image);
+        }];
         _headLabel.text = model.name;
     }
     
