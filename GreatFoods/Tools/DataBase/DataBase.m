@@ -40,7 +40,7 @@
     //3.打开数据库
     if ([self.db open]) {
         //4.创表
-        BOOL result=[self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text)"];
+        BOOL result=[self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_collect (id integer PRIMARY KEY AUTOINCREMENT,  imgUrl text,bookId integer,makeTitle text,VcName text)"];
         
         
         if (result) {
@@ -58,7 +58,13 @@
 -(void)insertInfo:(CollectModel *)model
 {
     [self.db open];
-    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle];
+    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle,VcName) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle,model.VcName];
+    
+}
+-(void)insertBreakFastInfo:(CollectModel *)model{
+    
+    [self.db open];
+    [self.db executeUpdate:@"INSERT INTO t_collect (imgUrl,bookId,makeTitle,VcName) VALUES(?,?,?);",model.imgUrl,@(model.bookId),model.makeTitle,model.VcName];
     
 }
 - (NSMutableArray *)queryMakeTitle
@@ -95,16 +101,15 @@
     
     while ([resultSet next]) {
         
-        NSString *makeTitle = [resultSet stringForColumn:@"makeTitle"];
-        NSString *imgUrl = [resultSet stringForColumn:@"imgUrl"];
-        NSInteger bookId = [resultSet intForColumn:@"bookId"];
+   
         CollectModel *model = [[CollectModel alloc]init];
-        model.imgUrl = imgUrl;
-        model.bookId = bookId;
-        model.makeTitle = makeTitle;
+        model.imgUrl = [resultSet stringForColumn:@"makeTitle"];
+        model.bookId = [resultSet intForColumn:@"bookId"];
+        model.makeTitle =[resultSet stringForColumn:@"makeTitle"];
+        model.VcName = [resultSet stringForColumn:@"VcName"];
             [array addObject:model];
             
-        NSLog(@"表1 - > %@ -> %ld",makeTitle,(long)model.bookId);
+//        NSLog(@"表1 - > %@ -> %ld",makeTitle,(long)model.bookId);
         
     }
 

@@ -21,7 +21,7 @@
     
     
     CAReplicatorLayer *replicator = [CAReplicatorLayer layer];
-    replicator.frame = CGRectMake(0, 0, 200, 200);
+    replicator.frame = CGRectMake(0, -5, 200, 230);
     
     replicator.backgroundColor = [UIColor clearColor].CGColor;
     
@@ -65,7 +65,7 @@
     
     
     CAReplicatorLayer *replicator1 = [CAReplicatorLayer layer];
-    replicator1.frame = CGRectMake(0, 0, 200, 200);
+    replicator1.frame = CGRectMake(0, -5, 200, 230);
     
     replicator1.backgroundColor = [UIColor clearColor].CGColor;
     
@@ -103,7 +103,7 @@
     
     
     CAReplicatorLayer *replicator2 = [CAReplicatorLayer layer];
-    replicator2.frame = CGRectMake(0, 0, 200, 200);
+    replicator2.frame = CGRectMake(0, -5, 200, 230);
     
     replicator2.backgroundColor = [UIColor clearColor].CGColor;
     

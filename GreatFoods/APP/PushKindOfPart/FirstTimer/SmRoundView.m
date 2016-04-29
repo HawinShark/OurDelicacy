@@ -97,8 +97,9 @@ NSInteger count;
 -(void)drawRect:(CGRect)rect{
     
     
-    CGPoint center = CGPointMake(150, 150);
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:100 startAngle:-M_PI_2 endAngle:-M_PI_2 + _minProgress * M_PI * 2 clockwise:YES];
+    CGPoint center = CGPointMake(150, 160);
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:115
+startAngle:-M_PI_2 endAngle:-M_PI_2 + _minProgress * M_PI * 2 clockwise:YES];
     path.lineWidth = 5;
     
     if (_changeColor) {
