@@ -26,8 +26,8 @@
     // clockwise:YES:顺时针 NO：逆时针
     
     // 扇形
-    CGPoint center = CGPointMake(150, 150);
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:100 startAngle:-M_PI endAngle:M_PI clockwise:YES];
+    CGPoint center = CGPointMake(150, 160);
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:115 startAngle:-M_PI endAngle:M_PI clockwise:YES];
     UIBezierPath *path1 = [UIBezierPath bezierPathWithArcCenter:center radius:125 startAngle:-M_PI endAngle:M_PI clockwise:YES];//     添加一根线到圆心
     //    [path addLineToPoint:center];
     path.lineWidth = 5;

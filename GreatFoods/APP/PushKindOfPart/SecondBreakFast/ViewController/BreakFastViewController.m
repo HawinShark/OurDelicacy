@@ -28,6 +28,12 @@
     //轮播图的标题
     NSMutableArray *title;
     NSInteger page;
+    
+    //数据库
+    NSString *makeTitle;
+    NSString *imgUrl;
+    NSString *VcName;
+    NSInteger bookId;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

@@ -62,7 +62,7 @@
     self.navigationController.navigationBar.tintColor = RGB(56, 13, 49);
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : RGB(89, 61, 67),NSFontAttributeName : [UIFont fontWithName:@"Zapfino" size:15]}];
 
-    
+    self.DaydayCollecionView.backgroundColor = RGB(251, 246, 243);
     
     if (self.navigationController.navigationBarHidden == YES) {
         self.navigationController.navigationBarHidden = NO;
@@ -237,7 +237,7 @@
     }
     
     //刷新数据
-    if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 15 ) {
+    if (scrollView.contentOffset.y / 180  > self.DDdataArray.count - 20 ) {
         
     #pragma mark- 上拉加载请求数据
         dispatch_async(dispatch_queue_create("new", DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
@@ -439,15 +439,11 @@
                 //  执行的代码
                 if (RefreshCurrentPage > 0) {
                     
-                    [self.DaydayCollecionView performBatchUpdates:^{
                         NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
                         [UIView performWithoutAnimation:^{
                             [self.DaydayCollecionView reloadSections:set];
                         }];
-                    } completion:^(BOOL finished) {
-                        NSLog(@"上拉加载完毕");
-                    }];
-                    
+
                 }
             });
             

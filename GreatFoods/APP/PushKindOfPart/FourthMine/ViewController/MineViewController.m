@@ -22,16 +22,17 @@
 @end
 
 @implementation MineViewController
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    [head setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Goodfood%d",arc4random_uniform(29)]]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     //
     
-    
+    self.navigationController.hidesBarsOnSwipe = NO;
     
     [self buildTableViewHead];
     
@@ -66,9 +67,12 @@
 {
     static NSString *cellid = @"mine";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+    
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
+    
+    cell.textLabel.textColor = RGB(92, 58, 64);
     
     if (indexPath.section == 0 && indexPath.row == 0) {
         cell.textLabel.text = @"我的收藏";
@@ -111,6 +115,13 @@
     if (indexPath.section == 1 && indexPath.row == 0) {
         ClearCacheController *clear = [ClearCacheController new];
         
+        //push风格
+        clear.providesPresentationContextTransitionStyle = YES;
+        clear.definesPresentationContext = YES;
+        clear.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        
+        clear.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
         [self presentViewController:clear animated:YES completion:nil];
     }
     
@@ -148,7 +159,7 @@
 
 - (void)buildTableViewHead
 {
-    UIImage *image = [UIImage imageNamed:@"background-2"];
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Goodfood%d",arc4random_uniform(29)]];
     
     head = [UIImageView new];
     
@@ -164,10 +175,6 @@
     
     self.tableview.tableHeaderView = mask;
     
-    //push风格
-    self.providesPresentationContextTransitionStyle = YES;
-    self.definesPresentationContext = YES;
-    self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     
 }
 

@@ -11,6 +11,9 @@
 #import "SmRoundView.h"
 #import "PointView.h"
 #import "Timer.h"
+#import <UIImageView+WebCache.h>
+#import <UIImage+AFNetworking.h>
+#import "TimerModel.h"
 @interface TimerViewController () <TimerDelegate>
 @property (weak, nonatomic) IBOutlet SmRoundView *smRoundView;
 @property (weak, nonatomic) IBOutlet BigRoundView *bigRoundView;
@@ -22,12 +25,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 @property (weak, nonatomic) IBOutlet UIButton *stopBtn;
+
+@property (weak, nonatomic) IBOutlet UIImageView *foodImgView;
 @property(nonatomic,strong)dispatch_source_t time;
 @property(nonatomic,strong)dispatch_source_t time1;
 @property(nonatomic,assign)NSInteger timeout;
 @property(nonatomic,assign)CGFloat progressCount;
 @property(nonatomic,retain) UIColor *color;
 @property(nonatomic,retain) UIButton *addMinBtn;
+@property(nonatomic,retain)NSMutableArray *imageArr;
+
 
 @end
 
@@ -61,6 +68,9 @@
     
     
 }
+
+
+
 #pragma mark - Time代理实现
 -(void)TimerActionWithRefreshUI{
     
@@ -79,8 +89,15 @@
             weakSelf.minutesLabel.text = [NSString stringWithFormat:@"%ld",minutes];
             
             if (seconds % 5 == 0) {
-                UIColor *color = [UIColor colorWithRed:(arc4random()%255)/255. green:(arc4random()%255)/255. blue:(arc4random()%255)/255. alpha:1];
+                 NSInteger count = [weakSelf.imageArr count];
+               
+                TimerModel *model = [weakSelf.imageArr objectAtIndex:arc4random()%count];
+               
+                UIColor *color = model.timerColor;
+                
+//                UIColor *color = [UIColor colorWithRed:(arc4random()%255)/255. green:(arc4random()%255)/255. blue:(arc4random()%255)/255. alpha:1];
                 weakSelf.color = color;
+                weakSelf.foodImgView.image = model.timerImg;
                 weakSelf.bigRoundView.changeColor =  weakSelf.color;
                 [weakSelf.bigRoundView setNeedsDisplay];
                 weakSelf.smRoundView.changeColor =  weakSelf.color;
@@ -202,7 +219,8 @@
                 weakSelf.minutesLabel.text = [NSString stringWithFormat:@"%ld",(long)minutes];
                 
                 if (seconds % 5 == 0) {
-                    UIColor *color = [UIColor colorWithRed:(arc4random()%255)/255. green:(arc4random()%255)/255. blue:(arc4random()%255)/255. alpha:1];
+                    UIColor *color = [UIColor redColor];
+//                    UIColor *color = [UIColor colorWithRed:(arc4random()%255)/255. green:(arc4random()%255)/255. blue:(arc4random()%255)/255. alpha:1];
                     weakSelf.color = color;
                     weakSelf.bigRoundView.changeColor =  weakSelf.color;
                     [weakSelf.bigRoundView setNeedsDisplay];
@@ -263,8 +281,8 @@
     [self addMinBtn];
 
 
-
-    
+    [self.foodImgView sd_setImageWithURL:[NSURL URLWithString:@"http://recipe.uniqlo.com/Recipe/Steps_Brian_Squash_Soup_03_320x504@2x.jpg"]];
+    [self.foodImgView setContentMode:UIViewContentModeScaleAspectFit];
  
     
     
@@ -293,6 +311,114 @@
         
         self.countLabel.text = [NSString stringWithFormat:@"%ld",min];
     };
+    
+    self.imageArr = [NSMutableArray new];
+    
+    
+    UIColor *color = RGBA(204, 106, 0, 1);
+    
+    NSString *food = [NSString stringWithFormat:@"Josef_Cabbage_Salad_"];
+    
+    UIColor *color1 = RGBA(197, 200, 84, 1);
+    NSString *food1 = [NSString stringWithFormat:@"Kim_Broken_Pasta_"];
+    
+    
+    UIColor *color2 = RGBA(92, 56, 98, 1);
+    NSString *food2 = [NSString stringWithFormat:@"Josef_Greek_Yogurt_"];
+    
+    UIColor *color3 = RGBA(227, 181, 141, 1);
+    NSString *food3 = [NSString stringWithFormat:@"Kuniko_Granita_"];
+    
+    UIColor *color4 = RGBA(225,138, 62, 1);
+    NSString *food4 = [NSString stringWithFormat:@"Thomas_Posset_"];
+    
+    UIColor *color5 = RGBA(227, 164, 87, 1);
+    NSString *food5 = [NSString stringWithFormat:@"Kuniko_Buckwheat_Soup_"];
+    
+    
+    UIColor *color6 = RGBA(94, 120, 85, 1);
+    NSString *food6 = [NSString stringWithFormat:@"Kim_Frisee_Salad_"];
+    
+    UIColor *color7 = RGBA(195, 210, 179, 1);
+    NSString *food7 = [NSString stringWithFormat:@"Thomas_Bagna_Cauda_"];
+    
+    UIColor *color8 = RGBA(229, 177, 82, 1);
+    NSString *food8 = [NSString stringWithFormat:@"Jamie_Halibut_"];
+    
+    
+    UIColor *color9 = RGBA(86, 51, 60, 1);
+    NSString *food9 = [NSString stringWithFormat:@"Kuniko_Miso_Steak_"];
+    
+    UIColor *color10 = RGBA(179, 200, 129, 1);
+    NSString *food10 = [NSString stringWithFormat:@"Josef_Risotto_"];
+    
+
+    
+    
+    NSArray *colorArr = [NSArray arrayWithObjects:color,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10, nil];
+    NSArray *foodArr = [NSArray arrayWithObjects:food,food1,food2,food3,food4,food5,food6,food7,food8,food9,food10, nil];
+    
+//    
+//    for (int i = 0 ; i < 11; i++) {
+////                NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[[foodArr objectAtIndex:i],[colorArr objectAtIndex:i] ]forKeys:@[@"food",@"color"]];
+//        UIImageView *imgeView = [UIImageView new];
+//        [self.view addSubview:imgeView];
+//        NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Chef_%@320x504@2x.jpg",[foodArr objectAtIndex:i]];
+//        
+//        [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//            if (image) {
+//                TimerModel *model = [TimerModel new];
+//                model.timerImg = image;
+//                model.timerColor = [colorArr objectAtIndex:i];
+//                [self.imageArr addObject:model];
+//                NSLog(@"%ld",self.imageArr.count);
+//            }
+//            [imgeView removeFromSuperview];
+//        }];
+//
+//    }
+    for (int i = 0 ; i < 11; i++) {
+        //                NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[[foodArr objectAtIndex:i],[colorArr objectAtIndex:i] ]forKeys:@[@"food",@"color"]];
+        UIImageView *imgeView = [UIImageView new];
+        [self.view addSubview:imgeView];
+        NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Dish_%@320x504@2x.jpg",[foodArr objectAtIndex:i]];
+        
+        [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (image) {
+                TimerModel *model = [TimerModel new];
+                model.timerImg = image;
+                model.timerColor = [colorArr objectAtIndex:i];
+                [self.imageArr addObject:model];
+                NSLog(@"%ld",self.imageArr.count);
+            }
+            [imgeView removeFromSuperview];
+        }];
+        
+    }
+    for (int i = 0 ; i < 11; i++) {
+        //                NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[[foodArr objectAtIndex:i],[colorArr objectAtIndex:i] ]forKeys:@[@"food",@"color"]];
+        for (int j = 0;  j < 5; j ++) {
+            UIImageView *imgeView = [UIImageView new];
+            [self.view addSubview:imgeView];
+            NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Steps_%@0%d_320x504@2x.jpg",[foodArr objectAtIndex:i],j];
+            
+            [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                if (image) {
+                    TimerModel *model = [TimerModel new];
+                    model.timerImg = image;
+                    model.timerColor = [colorArr objectAtIndex:i];
+                    [self.imageArr addObject:model];
+                    NSLog(@"%ld",self.imageArr.count);
+                }
+                [imgeView removeFromSuperview];
+            }];
+        }
+  
+        
+    }
+
+    
+    
 
 }
 
@@ -311,6 +437,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 /*
 #pragma mark - Navigation

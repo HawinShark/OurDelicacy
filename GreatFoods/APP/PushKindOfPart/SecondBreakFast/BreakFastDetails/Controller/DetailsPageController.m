@@ -235,4 +235,47 @@
 }
 
 
+
+#pragma mark- tool bar 三个按钮方法
+
+
+
+#pragma mark- 收藏
+
+- (IBAction)mark:(UIButton *)sender {
+    
+    
+    
+}
+
+
+
+#pragma mark- 字体放大
+
+
+- (IBAction)font:(UIButton *)sender {
+    
+    
+    
+    
+}
+
+
+
+
+
+#pragma mark- 分享
+
+
+- (IBAction)share:(UIButton *)sender {
+    
+    
+    
+    
+    
+}
+
+
+
+
 @end

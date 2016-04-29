@@ -53,8 +53,10 @@ NSInteger count;
         if ([btn pointInside:p withEvent:event]) {
             [self btnaction:btn];
             
-            WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
-            nav.panGesture.enabled = NO;
+//            WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
+//            nav.panGesture.enabled = NO;
+            
+            
             
             return self;
             
@@ -65,9 +67,12 @@ NSInteger count;
     CGPoint p1 = [self convertPoint:p1 toView:self.superview];
     
     if ([self pointInside:p1 withEvent:event]) {
-        WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
-
-        nav.panGesture.enabled = YES;
+//        WHC_NavigationController *nav = (WHC_NavigationController*)[self viewController].navigationController;
+//
+//        nav.panGesture.enabled = YES;
+//        
+        [[self viewController] dismissViewControllerAnimated:YES completion:nil];
+        
     }
    
     
@@ -92,8 +97,9 @@ NSInteger count;
 -(void)drawRect:(CGRect)rect{
     
     
-    CGPoint center = CGPointMake(150, 150);
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:100 startAngle:-M_PI_2 endAngle:-M_PI_2 + _minProgress * M_PI * 2 clockwise:YES];
+    CGPoint center = CGPointMake(150, 160);
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:115
+startAngle:-M_PI_2 endAngle:-M_PI_2 + _minProgress * M_PI * 2 clockwise:YES];
     path.lineWidth = 5;
     
     if (_changeColor) {

@@ -8,11 +8,13 @@
 
 #import "ICarouselImages.h"
 #import "ICarousellData.h"
+#import "DaydayCookDescription.h"
 #import <AFNetworking.h>
 @interface ICarouselImages () <BHInfiniteScrollViewDelegate>
 {
     NSMutableArray *imagesArray;
     NSMutableArray *titlesArray;
+    NSMutableArray *bookid;
 }
 @end
 
@@ -44,6 +46,7 @@
     
     imagesArray = [NSMutableArray array];
     titlesArray = [NSMutableArray array];
+    bookid      = [NSMutableArray array];
     
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     
@@ -55,6 +58,8 @@
                 ICarousellData *model = [ICarousellData modelObjectWithDictionary:dic];
                 [imagesArray addObject:model.path];
                 [titlesArray addObject:model.title];
+                [bookid addObject:model.url];
+                NSLog(@"%@",model.url);
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -73,6 +78,29 @@
 }
 
 
+-(void)infiniteScrollView:(BHInfiniteScrollView *)infiniteScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    
+    DaydayCookDescription *vc = [[DaydayCookDescription alloc]init];
+    
+    vc.BookID = [bookid[index] integerValue];
+    
+    vc.isNavigation = YES;
+    
+    [[self viewController].navigationController pushViewController:vc animated:YES];
+}
+
+//从uiview中找到navigation
+- (UIViewController*)viewController {
+    
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
 
 
 

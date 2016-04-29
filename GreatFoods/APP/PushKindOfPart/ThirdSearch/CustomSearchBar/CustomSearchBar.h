@@ -17,6 +17,8 @@ typedef void (^ReturnClick)(NSString *str);
 @property (nonatomic, strong) ReturnBlock block;
 @property (nonatomic, strong) ReturnClick click;
 
+- (void)handleButton:(UIButton *)button;
+
 - (void)getBlockFromOutSpace:(ReturnBlock)block;
 
 - (void)getClickFromReturn:(ReturnClick)click;
