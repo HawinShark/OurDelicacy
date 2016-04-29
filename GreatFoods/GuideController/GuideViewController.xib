@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GuideViewController">
             <connections>
                 <outlet property="ICON" destination="5gS-1c-hYP" id="x8L-sX-nXH"/>
+                <outlet property="ICONcenterY" destination="W5i-lk-Nbv" id="HaX-L4-da8"/>
                 <outlet property="PageControl" destination="WAE-dJ-ATN" id="yV1-W1-Pc9"/>
                 <outlet property="ScrollView" destination="FT8-hQ-qXg" id="wff-LG-Fdl"/>
                 <outlet property="Welcome" destination="C9t-Jo-HQc" id="pcX-T5-TMf"/>

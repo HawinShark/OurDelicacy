@@ -19,6 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *ICON;//头像
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ICONcenterY;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *Welcome;
 
 
@@ -51,36 +54,16 @@
     //添加我们仨 ->头像
     [self Iconscroll];
 
-    
-    if (screen_width < 321) {   //6以下
-//        [_Welcome setFont:[UIFont systemFontOfSize:17]];
-    }
+
     
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-(void)viewDidAppear:(BOOL)animated{
+    if (screen_height < 491) {  //5以下
+        _ICONcenterY.constant = - 0.05 * self.view.centerY;
+    }
+}
 
 
 

@@ -23,18 +23,21 @@
 
 
 - (IBAction)Time:(UIButton *)sender {
-
+    
     //push风格
-    _timerVc.providesPresentationContextTransitionStyle = YES;
-    _timerVc.definesPresentationContext = YES;
-    _timerVc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//    _timerVc.providesPresentationContextTransitionStyle = YES;
+//    _timerVc.definesPresentationContext = YES;
+//    _timerVc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//    
+//    _timerVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
-    _timerVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    [[self viewController] presentViewController:_timerVc animated:YES completion:nil];
+    [[self viewController].navigationController pushViewController:_timerVc animated:YES];
 }
 - (IBAction)breakfast:(UIButton *)sender {
+    
+    
     BreakFastViewController *breakFast = [BreakFastViewController new];
+    
     [[self viewController].navigationController pushViewController:breakFast animated:YES];
 }
 - (IBAction)search:(UIButton *)sender {

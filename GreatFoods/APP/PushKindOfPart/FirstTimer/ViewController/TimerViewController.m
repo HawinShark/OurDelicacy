@@ -14,7 +14,13 @@
 #import <UIImageView+WebCache.h>
 #import <UIImage+AFNetworking.h>
 #import "TimerModel.h"
+
+#import "MusicManager.h"//音乐
 @interface TimerViewController () <TimerDelegate>
+
+/* 音乐播放器*/
+@property (nonatomic, retain) MusicManager *Player;
+
 @property (weak, nonatomic) IBOutlet SmRoundView *smRoundView;
 @property (weak, nonatomic) IBOutlet BigRoundView *bigRoundView;
 @property (weak, nonatomic) IBOutlet PointView *pointView;
@@ -51,6 +57,9 @@
         [Timer shareTimer].timeCount = [self.countLabel.text integerValue] * 60;
         [[Timer shareTimer]startTimer];
         [self action];
+        
+        //初始化播放
+        self.Player = [[MusicManager alloc]initWithMP3NAME];
     }
 }
 //暂停按钮
@@ -58,14 +67,14 @@
     UIButton *btn = sender;
     if (btn.selected == 0) {
         [[Timer shareTimer]cancelTimer];
+        [self.Player pause];//暂停
     }
     else{
         
         [[Timer shareTimer]startTimer];
-        
+        [self.Player play];//继续播放
     }
     btn.selected = !btn.selected;
-    
     
 }
 
@@ -82,6 +91,7 @@
         [[Timer shareTimer]cancelTimer];
         
         
+        
     }else{
         NSInteger minutes =   [Timer shareTimer].timeCount  / 60 ;
         NSInteger seconds =  [Timer shareTimer].timeCount % 60;
@@ -90,16 +100,22 @@
             weakSelf.smRoundView.minProgress = minutes / 60.0;
             weakSelf.minutesLabel.text = [NSString stringWithFormat:@"%ld",minutes];
             
+            
             if (seconds % 5 == 0) {
+                if (weakSelf.imageArr == 0) {
+                    
+                }else{
                  NSInteger count = [weakSelf.imageArr count];
                
                 TimerModel *model = [weakSelf.imageArr objectAtIndex:arc4random()%count];
                
                 UIColor *color = model.timerColor;
                 
-//                UIColor *color = [UIColor colorWithRed:(arc4random()%255)/255. green:(arc4random()%255)/255. blue:(arc4random()%255)/255. alpha:1];
+
                 weakSelf.color = color;
                 weakSelf.foodImgView.image = model.timerImg;
+                }
+                
                 weakSelf.bigRoundView.changeColor =  weakSelf.color;
                 [weakSelf.bigRoundView setNeedsDisplay];
                 weakSelf.smRoundView.changeColor =  weakSelf.color;
@@ -152,7 +168,7 @@
     }
     [self cancelTimer];
 
-   
+    [_Player stop];
 }
 //取消倒计时
 -(void)cancelTimer{
@@ -320,107 +336,108 @@
     self.imageArr = [NSMutableArray new];
     
     
-    UIColor *color = RGBA(204, 106, 0, 1);
-    
-    NSString *food = [NSString stringWithFormat:@"Josef_Cabbage_Salad_"];
-    
-    UIColor *color1 = RGBA(197, 200, 84, 1);
-    NSString *food1 = [NSString stringWithFormat:@"Kim_Broken_Pasta_"];
-    
-    
-    UIColor *color2 = RGBA(92, 56, 98, 1);
-    NSString *food2 = [NSString stringWithFormat:@"Josef_Greek_Yogurt_"];
-    
-    UIColor *color3 = RGBA(227, 181, 141, 1);
-    NSString *food3 = [NSString stringWithFormat:@"Kuniko_Granita_"];
-    
-    UIColor *color4 = RGBA(225,138, 62, 1);
-    NSString *food4 = [NSString stringWithFormat:@"Thomas_Posset_"];
-    
-    UIColor *color5 = RGBA(227, 164, 87, 1);
-    NSString *food5 = [NSString stringWithFormat:@"Kuniko_Buckwheat_Soup_"];
-    
-    
-    UIColor *color6 = RGBA(125, 46, 51, 1);
-    NSString *food6 = [NSString stringWithFormat:@"Jamie_Panna_Cotta_"];
-    
-    UIColor *color7 = RGBA(195, 210, 179, 1);
-    NSString *food7 = [NSString stringWithFormat:@"Thomas_Bagna_Cauda_"];
-    
-    UIColor *color8 = RGBA(229, 177, 82, 1);
-    NSString *food8 = [NSString stringWithFormat:@"Jamie_Halibut_"];
-    
-    
-    UIColor *color9 = RGBA(86, 51, 60, 1);
-    NSString *food9 = [NSString stringWithFormat:@"Kuniko_Miso_Steak_"];
-    
-    UIColor *color10 = RGBA(179, 200, 129, 1);
-    NSString *food10 = [NSString stringWithFormat:@"Josef_Risotto_"];
-    
-
-    
-    
-    NSArray *colorArr = [NSArray arrayWithObjects:color,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10, nil];
-    NSArray *foodArr = [NSArray arrayWithObjects:food,food1,food2,food3,food4,food5,food6,food7,food8,food9,food10, nil];
-    
-//    
-//    for (int i = 0 ; i < 11; i++) {
-////                NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[[foodArr objectAtIndex:i],[colorArr objectAtIndex:i] ]forKeys:@[@"food",@"color"]];
-//        UIImageView *imgeView = [UIImageView new];
-//        [self.view addSubview:imgeView];
-//        NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Chef_%@320x504@2x.jpg",[foodArr objectAtIndex:i]];
-//        
-//        [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//            if (image) {
-//                TimerModel *model = [TimerModel new];
-//                model.timerImg = image;
-//                model.timerColor = [colorArr objectAtIndex:i];
-//                [self.imageArr addObject:model];
-//                NSLog(@"%ld",self.imageArr.count);
-//            }
-//            [imgeView removeFromSuperview];
-//        }];
-//
-//    }
-    for (int i = 0 ; i < 11; i++) {
-        //                NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[[foodArr objectAtIndex:i],[colorArr objectAtIndex:i] ]forKeys:@[@"food",@"color"]];
-        UIImageView *imgeView = [UIImageView new];
-        [self.view addSubview:imgeView];
-        NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Dish_%@320x504@2x.jpg",[foodArr objectAtIndex:i]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            if (image) {
-                TimerModel *model = [TimerModel new];
-                model.timerImg = image;
-                model.timerColor = [colorArr objectAtIndex:i];
-                [self.imageArr addObject:model];
-                NSLog(@"%ld",self.imageArr.count);
-            }
-            [imgeView removeFromSuperview];
-        }];
+        UIColor *color = RGBA(204, 106, 0, 1);
         
-    }
-    for (int i = 0 ; i < 11; i++) {
-        //                NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[[foodArr objectAtIndex:i],[colorArr objectAtIndex:i] ]forKeys:@[@"food",@"color"]];
-        for (int j = 0;  j < 5; j ++) {
-            UIImageView *imgeView = [UIImageView new];
-            [self.view addSubview:imgeView];
-            NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Steps_%@0%d_320x504@2x.jpg",[foodArr objectAtIndex:i],j];
+        NSString *food = [NSString stringWithFormat:@"Josef_Cabbage_Salad_"];
+        
+        UIColor *color1 = RGBA(197, 200, 84, 1);
+        NSString *food1 = [NSString stringWithFormat:@"Kim_Broken_Pasta_"];
+        
+        
+        UIColor *color2 = RGBA(92, 56, 98, 1);
+        NSString *food2 = [NSString stringWithFormat:@"Josef_Greek_Yogurt_"];
+        
+        UIColor *color3 = RGBA(227, 181, 141, 1);
+        NSString *food3 = [NSString stringWithFormat:@"Kuniko_Granita_"];
+        
+        UIColor *color4 = RGBA(225,138, 62, 1);
+        NSString *food4 = [NSString stringWithFormat:@"Thomas_Posset_"];
+        
+        UIColor *color5 = RGBA(227, 164, 87, 1);
+        NSString *food5 = [NSString stringWithFormat:@"Kuniko_Buckwheat_Soup_"];
+        
+        
+        UIColor *color6 = RGBA(125, 46, 51, 1);
+        NSString *food6 = [NSString stringWithFormat:@"Jamie_Panna_Cotta_"];
+        
+        UIColor *color7 = RGBA(195, 210, 179, 1);
+        NSString *food7 = [NSString stringWithFormat:@"Thomas_Bagna_Cauda_"];
+        
+        UIColor *color8 = RGBA(229, 177, 82, 1);
+        NSString *food8 = [NSString stringWithFormat:@"Jamie_Halibut_"];
+        
+        
+        UIColor *color9 = RGBA(86, 51, 60, 1);
+        NSString *food9 = [NSString stringWithFormat:@"Kuniko_Miso_Steak_"];
+        
+        UIColor *color10 = RGBA(179, 200, 129, 1);
+        NSString *food10 = [NSString stringWithFormat:@"Josef_Risotto_"];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
             
-            [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                if (image) {
-                    TimerModel *model = [TimerModel new];
-                    model.timerImg = image;
-                    model.timerColor = [colorArr objectAtIndex:i];
-                    [self.imageArr addObject:model];
-                    NSLog(@"%ld",self.imageArr.count);
-                }
-                [imgeView removeFromSuperview];
-            }];
-        }
-  
+            NSArray *colorArr = [NSArray arrayWithObjects:color,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10, nil];
+            NSArray *foodArr = [NSArray arrayWithObjects:food,food1,food2,food3,food4,food5,food6,food7,food8,food9,food10, nil];
+            
+            //
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    for (int i = 0 ; i < 11; i++) {
+                        
+                        UIImageView *imgeView = [UIImageView new];
+                        [self.view addSubview:imgeView];
+                        NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Dish_%@320x504@2x.jpg",[foodArr objectAtIndex:i]];
+                        
+                        [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                            if (image) {
+                                TimerModel *model = [TimerModel new];
+                                model.timerImg = image;
+                                model.timerColor = [colorArr objectAtIndex:i];
+                                [self.imageArr addObject:model];
+                                NSLog(@"%ld",self.imageArr.count);
+                            }
+                            [imgeView removeFromSuperview];
+                        }];
+                        
+                    }
+                    
+                    for (int i = 0 ; i < 11; i++) {
+                        
+                        for (int j = 0;  j < 5; j ++) {
+                            UIImageView *imgeView = [UIImageView new];
+                            [self.view addSubview:imgeView];
+                            NSString *url = [NSString stringWithFormat:@"http://recipe.uniqlo.com/Recipe/Steps_%@0%d_320x504@2x.jpg",[foodArr objectAtIndex:i],j];
+                            
+                            [imgeView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                if (image) {
+                                    TimerModel *model = [TimerModel new];
+                                    model.timerImg = image;
+                                    model.timerColor = [colorArr objectAtIndex:i];
+                                    [self.imageArr addObject:model];
+                                    NSLog(@"%ld",self.imageArr.count);
+                                }
+                                [imgeView removeFromSuperview];
+                            }];
+                        }
+                        
+                        
+                    }
+                });
+                   //loop
+                
+                });
+            
+            });
         
-    }
+        
+        
+        
+    });
+    
 
     
     
@@ -449,6 +466,19 @@
     return UIStatusBarStyleLightContent;
 }
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    if (_Player) {
+        [_Player play];
+    }
+    self.navigationController.navigationBarHidden = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    if (_Player) {
+        [_Player pause];
+    }
+}
 
 /*
 #pragma mark - Navigation

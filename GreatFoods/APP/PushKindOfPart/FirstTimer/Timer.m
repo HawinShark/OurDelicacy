@@ -7,10 +7,13 @@
 //
 
 #import "Timer.h"
+
 #import <AVFoundation/AVFoundation.h>
 @interface Timer ()
-@property(nonatomic,retain)AVPlayer *audioPlayer;
+
 @end
+
+
 @implementation Timer
 +(instancetype)shareTimer
 {

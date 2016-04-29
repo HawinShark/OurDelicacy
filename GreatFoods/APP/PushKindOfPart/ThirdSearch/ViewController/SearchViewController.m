@@ -45,12 +45,16 @@
     if (self.navigationController.navigationBarHidden == YES) {
         self.navigationController.navigationBarHidden = NO;
     }
+    
 }
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = YES;
     
-    search = [[CustomSearchBar alloc]initWithFrame:CGRectMake(40, H(image) - 45, screen_width - 80, 40)];
+//    [search handleButton:nil];
+    
 }
 
 
@@ -66,6 +70,8 @@
     [self buildCollect];
     
     [self buildRefresh];
+    
+    
 }
 
 

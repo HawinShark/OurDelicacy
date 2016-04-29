@@ -86,7 +86,7 @@
     _cancleButton.hidden = YES;
     _searchImageView.hidden = NO;
     //隐藏“取消”按钮伴随的动画效果
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         //方法setSize:和setOrigin:是UIView分类UIView+ModifyAttributeValue中的方法
         [_bgView setSize:CGSizeMake(CGRectGetWidth(_bgView.frame) + CancleButtonWidth, CGRectGetHeight(_bgView.frame))];
         [_textField setSize:CGSizeMake(CGRectGetWidth(_textField.frame) + CancleButtonWidth, CGRectGetHeight(_textField.frame))];
@@ -107,12 +107,12 @@
 //输入框开始编辑
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     //显示“取消”按钮伴随的动画效果
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         [_bgView setSize:CGSizeMake(CGRectGetWidth(_bgView.frame) - CancleButtonWidth, CGRectGetHeight(_bgView.frame))];
         [_textField setSize:CGSizeMake(CGRectGetWidth(_textField.frame) - CancleButtonWidth, CGRectGetHeight(_textField.frame))];
         [_searchImageView setOrigin:CGPointMake(_searchImageView.frame.origin.x - CancleButtonWidth, _searchImageView.frame.origin.y)];
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _cancleButton.hidden = NO;
     });
     
@@ -127,7 +127,7 @@
     [_textField resignFirstResponder];
     _cancleButton.hidden = YES;
     _searchImageView.hidden = NO;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         //方法setSize:和setOrigin:是UIView分类UIView+ModifyAttributeValue中的方法
         [_bgView setSize:CGSizeMake(CGRectGetWidth(_bgView.frame) + CancleButtonWidth, CGRectGetHeight(_bgView.frame))];
         [_textField setSize:CGSizeMake(CGRectGetWidth(_textField.frame) + CancleButtonWidth, CGRectGetHeight(_textField.frame))];

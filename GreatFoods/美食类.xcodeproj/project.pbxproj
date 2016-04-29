@@ -96,6 +96,17 @@
 		F58ED2201CCE6F4C00E2139B /* SearchListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F58ED21E1CCE6F4C00E2139B /* SearchListViewCell.m */; };
 		F58ED2211CCE6F4C00E2139B /* SearchListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */; };
 		F5A779991CCF39DE005385AC /* LunboCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A779981CCF39DE005385AC /* LunboCollectionViewCell.m */; };
+		F5B0A8741CD37B1000742142 /* MusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B0A8731CD37B1000742142 /* MusicManager.m */; };
+		F5B0A8801CD381F800742142 /* UNI0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A8761CD381F800742142 /* UNI0.mp3 */; };
+		F5B0A8811CD381F800742142 /* UNI1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A8771CD381F800742142 /* UNI1.mp3 */; };
+		F5B0A8821CD381F800742142 /* UNI2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A8781CD381F800742142 /* UNI2.mp3 */; };
+		F5B0A8831CD381F800742142 /* UNI3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A8791CD381F800742142 /* UNI3.mp3 */; };
+		F5B0A8841CD381F800742142 /* UNI4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A87A1CD381F800742142 /* UNI4.mp3 */; };
+		F5B0A8851CD381F800742142 /* UNI5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A87B1CD381F800742142 /* UNI5.mp3 */; };
+		F5B0A8861CD381F800742142 /* UNI6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A87C1CD381F800742142 /* UNI6.mp3 */; };
+		F5B0A8871CD381F800742142 /* UNI7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A87D1CD381F800742142 /* UNI7.mp3 */; };
+		F5B0A8881CD381F800742142 /* UNI8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A87E1CD381F800742142 /* UNI8.mp3 */; };
+		F5B0A8891CD381F800742142 /* UNI9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5B0A87F1CD381F800742142 /* UNI9.mp3 */; };
 		F5B289D71CC4F7B400ECF016 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B289D61CC4F7B400ECF016 /* main.m */; };
 		F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B289D91CC4F7B400ECF016 /* AppDelegate.m */; };
 		F5B289E21CC4F7B400ECF016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B289E11CC4F7B400ECF016 /* Assets.xcassets */; };
@@ -302,6 +313,18 @@
 		F58ED21F1CCE6F4C00E2139B /* SearchListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchListViewCell.xib; sourceTree = "<group>"; };
 		F5A779971CCF39DE005385AC /* LunboCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunboCollectionViewCell.h; path = ../searchCell/LunboCollectionViewCell.h; sourceTree = "<group>"; };
 		F5A779981CCF39DE005385AC /* LunboCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunboCollectionViewCell.m; path = ../searchCell/LunboCollectionViewCell.m; sourceTree = "<group>"; };
+		F5B0A8721CD37B1000742142 /* MusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicManager.h; sourceTree = "<group>"; };
+		F5B0A8731CD37B1000742142 /* MusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicManager.m; sourceTree = "<group>"; };
+		F5B0A8761CD381F800742142 /* UNI0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI0.mp3; sourceTree = "<group>"; };
+		F5B0A8771CD381F800742142 /* UNI1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI1.mp3; sourceTree = "<group>"; };
+		F5B0A8781CD381F800742142 /* UNI2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI2.mp3; sourceTree = "<group>"; };
+		F5B0A8791CD381F800742142 /* UNI3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI3.mp3; sourceTree = "<group>"; };
+		F5B0A87A1CD381F800742142 /* UNI4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI4.mp3; sourceTree = "<group>"; };
+		F5B0A87B1CD381F800742142 /* UNI5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI5.mp3; sourceTree = "<group>"; };
+		F5B0A87C1CD381F800742142 /* UNI6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI6.mp3; sourceTree = "<group>"; };
+		F5B0A87D1CD381F800742142 /* UNI7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI7.mp3; sourceTree = "<group>"; };
+		F5B0A87E1CD381F800742142 /* UNI8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI8.mp3; sourceTree = "<group>"; };
+		F5B0A87F1CD381F800742142 /* UNI9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UNI9.mp3; sourceTree = "<group>"; };
 		F5B289D21CC4F7B400ECF016 /* 美食类.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "美食类.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B289D61CC4F7B400ECF016 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5B289D81CC4F7B400ECF016 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -793,6 +816,32 @@
 			path = TotalCell;
 			sourceTree = "<group>";
 		};
+		F5B0A8711CD37AEA00742142 /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				F5B0A8721CD37B1000742142 /* MusicManager.h */,
+				F5B0A8731CD37B1000742142 /* MusicManager.m */,
+			);
+			path = MusicPlayer;
+			sourceTree = "<group>";
+		};
+		F5B0A8751CD381E400742142 /* MP3S */ = {
+			isa = PBXGroup;
+			children = (
+				F5B0A8761CD381F800742142 /* UNI0.mp3 */,
+				F5B0A8771CD381F800742142 /* UNI1.mp3 */,
+				F5B0A8781CD381F800742142 /* UNI2.mp3 */,
+				F5B0A8791CD381F800742142 /* UNI3.mp3 */,
+				F5B0A87A1CD381F800742142 /* UNI4.mp3 */,
+				F5B0A87B1CD381F800742142 /* UNI5.mp3 */,
+				F5B0A87C1CD381F800742142 /* UNI6.mp3 */,
+				F5B0A87D1CD381F800742142 /* UNI7.mp3 */,
+				F5B0A87E1CD381F800742142 /* UNI8.mp3 */,
+				F5B0A87F1CD381F800742142 /* UNI9.mp3 */,
+			);
+			path = MP3S;
+			sourceTree = "<group>";
+		};
 		F5B289C91CC4F7B400ECF016 = {
 			isa = PBXGroup;
 			children = (
@@ -883,6 +932,8 @@
 		F5B28A0B1CC4F87300ECF016 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F5B0A8751CD381E400742142 /* MP3S */,
+				F5B0A8711CD37AEA00742142 /* MusicPlayer */,
 				3F1E5F1E1CD1A7C800B34732 /* CarouselView */,
 				75BE685B1CD09D27002AFF5B /* youmeng */,
 				75BE679E1CCE1C0D002AFF5B /* DataBase */,
@@ -1226,9 +1277,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				75BE68981CD09D5C002AFF5B /* UMShareEditViewController.xib in Resources */,
+				F5B0A8831CD381F800742142 /* UNI3.mp3 in Resources */,
 				F54BE8D01CCA673000C3FF67 /* SearchNextViewController.xib in Resources */,
+				F5B0A8871CD381F800742142 /* UNI7.mp3 in Resources */,
+				F5B0A8801CD381F800742142 /* UNI0.mp3 in Resources */,
 				75BE68951CD09D5C002AFF5B /* UMSCommentDetailController.xib in Resources */,
 				F5559CFA1CC8AB8E00379BF0 /* TimerViewController.xib in Resources */,
+				F5B0A8841CD381F800742142 /* UNI4.mp3 in Resources */,
 				75BE68931CD09D5B002AFF5B /* UMSocialLocalizable.strings in Resources */,
 				F5B289E51CC4F7B400ECF016 /* LaunchScreen.storyboard in Resources */,
 				7590480B1CCB495A00559B74 /* 暂停1.png in Resources */,
@@ -1238,8 +1293,11 @@
 				75BE68001CCEFC4F002AFF5B /* MineCollextCollectionViewCell.xib in Resources */,
 				75BE689B1CD09D5C002AFF5B /* UMSnsAccountViewController.xib in Resources */,
 				3FA6C4831CCB0B8D002D46F9 /* DetailsPageController.xib in Resources */,
+				F5B0A8891CD381F800742142 /* UNI9.mp3 in Resources */,
 				75BE68A01CD09D5C002AFF5B /* WeiboSDK.bundle in Resources */,
 				F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */,
+				F5B0A8861CD381F800742142 /* UNI6.mp3 in Resources */,
+				F5B0A8811CD381F800742142 /* UNI1.mp3 in Resources */,
 				75BE67F81CCE6C9D002AFF5B /* MineCollectViewController.xib in Resources */,
 				75BE689A1CD09D5C002AFF5B /* UMSLoginViewController.xib in Resources */,
 				3FB665FD1CD2082E009A8AE5 /* BreakfastCell.xib in Resources */,
@@ -1247,6 +1305,8 @@
 				75BE68A31CD09D5C002AFF5B /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				7590480A1CCB495A00559B74 /* 暂停.png in Resources */,
 				75BE689D1CD09D5C002AFF5B /* UMSocialSDKResourcesNew.bundle in Resources */,
+				F5B0A8821CD381F800742142 /* UNI2.mp3 in Resources */,
+				F5B0A8851CD381F800742142 /* UNI5.mp3 in Resources */,
 				F5B28A271CC5253E00ECF016 /* Images.xcassets in Resources */,
 				75BE689C1CD09D5C002AFF5B /* UMSShareListController.xib in Resources */,
 				3FA2D1761CCE3AD800A27EFF /* MaterialCell.xib in Resources */,
@@ -1259,6 +1319,7 @@
 				75BE68991CD09D5C002AFF5B /* UMShareEditViewControlleriPad.xib in Resources */,
 				3FBD87AD1CCF42ED0024AAC2 /* StepOneCell.xib in Resources */,
 				F5F2EB1D1CD1B15A000A4EF0 /* GuideViewController.xib in Resources */,
+				F5B0A8881CD381F800742142 /* UNI8.mp3 in Resources */,
 				75BE68971CD09D5C002AFF5B /* UMSCommentInputControlleriPad.xib in Resources */,
 				F52679331CD213D200F37A8D /* GoodFoodImages.xcassets in Resources */,
 				F5D97C541CC7ACAB0034099A /* SearchViewController.xib in Resources */,
@@ -1385,6 +1446,7 @@
 				F5B289DA1CC4F7B400ECF016 /* AppDelegate.m in Sources */,
 				F54BE8CF1CCA673000C3FF67 /* SearchNextViewController.m in Sources */,
 				F58ED2111CCE5F9400E2139B /* ICarousellData.m in Sources */,
+				F5B0A8741CD37B1000742142 /* MusicManager.m in Sources */,
 				3FA6C4821CCB0B8D002D46F9 /* DetailsPageController.m in Sources */,
 				3FB665FC1CD2082E009A8AE5 /* BreakfastCell.m in Sources */,
 				F567EF181CD0DF5100677007 /* MyWatchedObject.m in Sources */,
