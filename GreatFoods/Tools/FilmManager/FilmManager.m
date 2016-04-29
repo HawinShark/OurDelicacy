@@ -186,6 +186,11 @@
 }
 
 
+
+-(void)suspend{
+    [_player pause];
+}
+
 -(void)dealloc{
     NSLog(@"销毁");
     [self.player.currentItem cancelPendingSeeks];
