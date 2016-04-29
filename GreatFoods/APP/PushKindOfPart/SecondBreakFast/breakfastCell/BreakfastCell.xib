@@ -21,23 +21,10 @@
                             <constraint firstAttribute="width" secondItem="KJL-ep-MmD" secondAttribute="height" multiplier="15:8" id="o02-uE-017"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOj-EZ-FUC">
-                        <rect key="frame" x="8" y="179" width="30" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="Okz-UR-OPn"/>
-                            <constraint firstAttribute="height" constant="30" id="U7B-Ml-bjg"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                        </userDefinedRuntimeAttributes>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbz-9i-RBe">
                         <rect key="frame" x="43" y="179" width="0.0" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="1" green="0.99880883949999999" blue="0.99323430150000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zW-zF-CWp">
@@ -62,6 +49,20 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOj-EZ-FUC">
+                        <rect key="frame" x="8" y="179" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="aOj-EZ-FUC" secondAttribute="height" multiplier="1:1" id="Lzx-la-PKx"/>
+                            <constraint firstAttribute="width" constant="30" id="Okz-UR-OPn"/>
+                            <constraint firstAttribute="height" constant="30" id="U7B-Ml-bjg"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="S7N-G5-tRh" firstAttribute="leading" secondItem="KJL-ep-MmD" secondAttribute="leading" id="4Tc-Fn-cGV"/>
@@ -92,7 +93,7 @@
                 <outlet property="imageid" destination="KJL-ep-MmD" id="fY0-ho-QqI"/>
                 <outlet property="name" destination="cyZ-27-6h5" id="8b1-uQ-26O"/>
             </connections>
-            <point key="canvasLocation" x="206" y="298"/>
+            <point key="canvasLocation" x="240" y="296"/>
         </tableViewCell>
     </objects>
     <resources>

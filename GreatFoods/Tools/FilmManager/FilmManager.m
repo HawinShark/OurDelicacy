@@ -54,14 +54,15 @@
             }
         }else{
             
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                
+            
                 if ([[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"doloading?%@",str]]) {
+                    
                     NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"doloading?%@",str]]);//是否有在下载
                 }else{
+
                     [self downloadRequestWithUrl:str];
                 };
-            });
+
         }
     }
     return self;

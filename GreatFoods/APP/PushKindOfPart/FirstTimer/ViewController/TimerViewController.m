@@ -77,8 +77,10 @@
     //    [self action];
     __weak TimerViewController *weakSelf = self;
     
+#pragma mark- 计时完成的时候->> 要长要醒目
     if (  [Timer shareTimer].timeCount <= 0 ) {
         [[Timer shareTimer]cancelTimer];
+        
         
     }else{
         NSInteger minutes =   [Timer shareTimer].timeCount  / 60 ;
@@ -101,6 +103,7 @@
                 weakSelf.bigRoundView.changeColor =  weakSelf.color;
                 [weakSelf.bigRoundView setNeedsDisplay];
                 weakSelf.smRoundView.changeColor =  weakSelf.color;
+                weakSelf.view.backgroundColor=weakSelf.color;
                 weakSelf.pointView.changeColor =  weakSelf.color;
                 [weakSelf.pointView setNeedsDisplay];
                 weakSelf.minutesLabel.textColor = weakSelf.color;
@@ -169,6 +172,7 @@
     self.smRoundView.minProgress = 0.0;
     self.progressCount = 0,0;
     self.smRoundView.progress = 0.0;
+    self.foodImgView.image = nil;
     
 }
 
@@ -180,7 +184,7 @@
 
 -(UIButton *)addMinBtn{
     if (_addMinBtn == nil) {
-        _addMinBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.countLabel.bounds.size.width, self.countLabel.bounds.size.height)];
+        _addMinBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.countLabel.bounds.size.width, self.countLabel.bounds.size.height * 2)];
         _addMinBtn.center = self.view.center;
         [_addMinBtn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_addMinBtn];
@@ -223,6 +227,7 @@
 //                    UIColor *color = [UIColor colorWithRed:(arc4random()%255)/255. green:(arc4random()%255)/255. blue:(arc4random()%255)/255. alpha:1];
                     weakSelf.color = color;
                     weakSelf.bigRoundView.changeColor =  weakSelf.color;
+                    weakSelf.view.backgroundColor = weakSelf.color;
                     [weakSelf.bigRoundView setNeedsDisplay];
                     weakSelf.smRoundView.changeColor =  weakSelf.color;
                     weakSelf.pointView.changeColor =  weakSelf.color;
@@ -281,8 +286,8 @@
     [self addMinBtn];
 
 
-    [self.foodImgView sd_setImageWithURL:[NSURL URLWithString:@"http://recipe.uniqlo.com/Recipe/Steps_Brian_Squash_Soup_03_320x504@2x.jpg"]];
-    [self.foodImgView setContentMode:UIViewContentModeScaleAspectFit];
+//    [self.foodImgView sd_setImageWithURL:[NSURL URLWithString:@"http://recipe.uniqlo.com/Recipe/Steps_Brian_Squash_Soup_03_320x504@2x.jpg"]];
+//    [self.foodImgView setContentMode:UIViewContentModeScaleAspectFit];
  
     
     
@@ -336,8 +341,8 @@
     NSString *food5 = [NSString stringWithFormat:@"Kuniko_Buckwheat_Soup_"];
     
     
-    UIColor *color6 = RGBA(94, 120, 85, 1);
-    NSString *food6 = [NSString stringWithFormat:@"Kim_Frisee_Salad_"];
+    UIColor *color6 = RGBA(125, 46, 51, 1);
+    NSString *food6 = [NSString stringWithFormat:@"Jamie_Panna_Cotta_"];
     
     UIColor *color7 = RGBA(195, 210, 179, 1);
     NSString *food7 = [NSString stringWithFormat:@"Thomas_Bagna_Cauda_"];
@@ -439,6 +444,10 @@
 }
 
 
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 
 /*

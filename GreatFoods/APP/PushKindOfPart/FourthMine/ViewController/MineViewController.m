@@ -10,6 +10,7 @@
 #import "MineCollectViewController.h"
 #import "MyWatchedObject.h"
 
+#import "GuideViewController.h"
 #import "ClearCacheController.h"
 
 
@@ -47,6 +48,8 @@
             return @"我的记录";
         case 1:
             return @"我的设置";
+        case 2:
+            return @"我的引导";
         default:
             break;
     }
@@ -58,6 +61,10 @@
     
     if (section == 1) {
         return @"这里有可以清除系统缓存,以及查看本app的相关信息";
+    }
+    
+    if (section == 2) {
+        return @"The Shows of Guides";
     }
     
     return nil;
@@ -89,13 +96,16 @@
         cell.textLabel.text = @"设置";
     }
     
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        cell.textLabel.text = @"引导页面";
+    }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 
@@ -117,25 +127,26 @@
     if (indexPath.section == 1 && indexPath.row == 0) {
         ClearCacheController *clear = [ClearCacheController new];
         
-        //push风格
-        clear.providesPresentationContextTransitionStyle = YES;
-        clear.definesPresentationContext = YES;
-        clear.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        
-        clear.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        
-        [self presentViewController:clear animated:YES completion:nil];
+        [self.navigationController pushViewController:clear animated:YES];
     }
     
+    
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        
+        GuideViewController *guide = [GuideViewController new];
+        guide.isMajor = YES;
+        [self.navigationController pushViewController:guide animated:YES];
+    }
     
 }
 
 //行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (section == 1) {
+    if (section == 1 | section == 2) {
         return 1;
     }
+
     return 2;
 }
 
@@ -196,18 +207,9 @@
 
 
 
-//-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-//    
-//    if (scrollView.contentOffset.y < 0) {
-//        
-//        [UIView animateWithDuration:0.5 animations:^{
-//            [head setFrame:CGRectMake(0, 0, screen_width, 250)];
-//            [scrollView setContentOffset:CGPointZero animated:YES];
-//        }];
-//    }
-//}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    if (!decelerate)
     if (scrollView.contentOffset.y < 0) {
         
         [UIView animateWithDuration:0.5 animations:^{
@@ -216,6 +218,10 @@
         }];
     }
 }
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning {

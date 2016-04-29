@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -26,8 +26,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFy-YQ-FNS">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="490"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mFy-YQ-FNS">
+                    <rect key="frame" x="0.0" y="25" width="600" height="550"/>
                 </imageView>
                 <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9H-39-srb" customClass="BigRoundView">
                     <rect key="frame" x="150" y="150" width="300" height="300"/>
@@ -41,7 +41,7 @@
                     <rect key="frame" x="200" y="200" width="200" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKe-PA-Jy9">
-                            <rect key="frame" x="75" y="70" width="50" height="60"/>
+                            <rect key="frame" x="75" y="80" width="50" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YE-cF-Rgx">
                                     <rect key="frame" x="0.0" y="30" width="50" height="30"/>
@@ -78,7 +78,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="Guh-r3-N4G"/>
-                        <constraint firstItem="uKe-PA-Jy9" firstAttribute="centerY" secondItem="cDj-oh-2KV" secondAttribute="centerY" id="Kr9-dD-QrE"/>
+                        <constraint firstItem="uKe-PA-Jy9" firstAttribute="centerY" secondItem="cDj-oh-2KV" secondAttribute="centerY" constant="10" id="Kr9-dD-QrE"/>
                         <constraint firstItem="uKe-PA-Jy9" firstAttribute="centerX" secondItem="cDj-oh-2KV" secondAttribute="centerX" id="Lo9-2G-gRT"/>
                         <constraint firstItem="uKe-PA-Jy9" firstAttribute="centerX" secondItem="cDj-oh-2KV" secondAttribute="centerX" id="RTJ-QC-Tzz"/>
                         <constraint firstItem="uKe-PA-Jy9" firstAttribute="leading" secondItem="cDj-oh-2KV" secondAttribute="leading" constant="125" id="TO4-gs-u0k"/>
@@ -182,18 +182,18 @@
                     </variation>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.86464407310000002" blue="0.31794703200000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.6705882352941176" green="0.76078431372549016" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="ty2-u2-nfe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1U9-mx-hy0"/>
                 <constraint firstItem="2Go-67-arl" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="1gB-62-v4d"/>
-                <constraint firstItem="mFy-YQ-FNS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3Vg-JO-pxo"/>
+                <constraint firstItem="mFy-YQ-FNS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="3Vg-JO-pxo"/>
                 <constraint firstAttribute="trailing" secondItem="mFy-YQ-FNS" secondAttribute="trailing" id="8LU-3U-Nmp"/>
                 <constraint firstItem="cDj-oh-2KV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Giu-F9-uPN"/>
                 <constraint firstItem="cDj-oh-2KV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="QoP-jP-6TV"/>
                 <constraint firstItem="z9H-39-srb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="VkI-w9-6MB"/>
                 <constraint firstItem="mFy-YQ-FNS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hM2-fS-aUb"/>
                 <constraint firstItem="2Go-67-arl" firstAttribute="height" secondItem="z9H-39-srb" secondAttribute="height" id="hZO-2r-aZa"/>
-                <constraint firstAttribute="bottom" secondItem="mFy-YQ-FNS" secondAttribute="bottom" id="kV2-7r-lM4"/>
+                <constraint firstAttribute="bottom" secondItem="mFy-YQ-FNS" secondAttribute="bottom" constant="25" id="kV2-7r-lM4"/>
                 <constraint firstAttribute="bottom" secondItem="ty2-u2-nfe" secondAttribute="bottom" constant="50" id="opS-a4-OUr"/>
                 <constraint firstItem="z9H-39-srb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sqJ-vD-I2o"/>
                 <constraint firstItem="3Hp-IB-U6u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="t08-xd-7zg"/>

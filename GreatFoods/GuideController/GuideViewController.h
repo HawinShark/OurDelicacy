@@ -11,6 +11,8 @@
 @interface GuideViewController : UIViewController
 
 
+/* 是否不是第一次*/
+@property (nonatomic, assign) BOOL isMajor;
 
 /* 切换root controller */
 @property (nonatomic, copy)  void (^ExchangeController)();

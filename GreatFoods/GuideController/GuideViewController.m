@@ -19,6 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *ICON;//头像
 
+@property (weak, nonatomic) IBOutlet UILabel *Welcome;
+
+
 /* 头像里轮播图*/
 @property (nonatomic, retain) UIScrollView *iconScroll;
 
@@ -48,6 +51,10 @@
     //添加我们仨 ->头像
     [self Iconscroll];
 
+    
+    if (screen_width < 321) {   //6以下
+//        [_Welcome setFont:[UIFont systemFontOfSize:17]];
+    }
     
 }
 
@@ -93,7 +100,12 @@
     
     _Yehao = [[UIView alloc]initWithFrame:CGRectMake(screen_width * 2, 0, screen_width, screen_height)];
     
-    [self addButton]; //添加切换button
+    if (_isMajor == YES) {
+        //不创建
+    }else{
+        [self addButton]; //添加切换button
+    }
+    
     [self addImagesForUs];
     
     self.ScrollView.contentSize = CGSizeMake(screen_width * 3, screen_height);
@@ -167,14 +179,14 @@
     [imageThird setImage:[UIImage imageNamed:@"Goodfood11"]];
     [imageThird setContentMode:UIViewContentModeScaleAspectFill];
     
-    [self addDescription];//添加人物描述
+    [self addDescriptionAndThird:imageThird];//添加人物描述
 }
 
 
 #pragma mark- 添加个人描述
 
 
-- (void) addDescription {
+- (void) addDescriptionAndThird:(UIImageView *)third {
     
     
     UILabel *HW = [UILabel new];
@@ -198,7 +210,6 @@
     
     
     
-    
     // person two..
     LX.textColor = RGB(89, 61, 67);
     
@@ -215,8 +226,9 @@
     // person 3..
     YH.textColor = RGB(89, 61, 67);
     
+    
     YH.sd_layout.
-    topSpaceToView([_Yehao.subviews objectAtIndex:1],15).
+    topSpaceToView(third,15).
     centerYEqualToView(_Yehao).widthIs(screen_width);
     
     YH.textAlignment = NSTextAlignmentRight;

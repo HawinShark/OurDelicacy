@@ -72,39 +72,50 @@ CGFloat maxAlpha = 0.4;
     //裁图
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        
-        [self.BackGroundImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"background-1"]];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
-            //标题
-            [self.title setText:model.title];
-            [self.message setText:model.dataDescription];
             
-            //日期
-            NSArray *dateArray = [model.releaseDate componentsSeparatedByString:@"-"];
-            [self.dateLabel setText:[NSString stringWithFormat:@"%@/%@",dateArray[1],dateArray[2]]];
+            [self.BackGroundImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"GGIcon"]];
             
             
-            //第二轮loop
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                //烹饪时间
-                [self.CookTime setText:model.maketime];
-                //点击次数
-                [self.watch setText:[NSString stringWithFormat:@"%.0f",model.clickCount]];
-                //分享
-                [self.share setText:[NSString stringWithFormat:@"%.0f",model.shareCount]];
-                
+       #pragma mark- 第二轮
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    if (model.indexUrl.length > 0) {
-                        self.TV.alpha = 1;
-                    }else{
-                        self.TV.alpha = 0;
-                    }
+                    
+                    //日期
+                    NSArray *dateArray = [model.releaseDate componentsSeparatedByString:@"-"];
+                    [self.dateLabel setText:[NSString stringWithFormat:@"%@/%@",dateArray[1],dateArray[2]]];
+                    
+               #pragma mark- //第三轮loop
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        
+                        //烹饪时间
+                        [self.CookTime setText:model.maketime];
+                        //点击次数
+                        [self.watch setText:[NSString stringWithFormat:@"%.0f",model.clickCount]];
+                        //分享
+                        [self.share setText:[NSString stringWithFormat:@"%.0f",model.shareCount]];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            if (model.indexUrl.length > 0) {
+                                self.TV.alpha = 1;
+                            }else{
+                                self.TV.alpha = 0;
+                            }
+                        });
+                        
+                    });
+                    
+                    //标题
+                    [self.title setText:model.title];
+                    [self.message setText:model.dataDescription];
+                    
                 });
-                
             });
+            
+//
+            
             
         });
         
