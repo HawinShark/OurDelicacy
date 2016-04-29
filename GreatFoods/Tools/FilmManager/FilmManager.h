@@ -22,4 +22,6 @@
 
 -(instancetype)initWithFrame:(CGRect)frame WithUrl:(NSString *)str;
 
+-(void)suspend;
+
 @end

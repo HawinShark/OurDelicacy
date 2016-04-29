@@ -30,7 +30,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="I38-HT-zre" firstAttribute="top" secondItem="1Hi-6b-rLA" secondAttribute="bottom" constant="35" id="IGi-Bx-S5d"/>
+                            <constraint firstItem="I38-HT-zre" firstAttribute="top" secondItem="1Hi-6b-rLA" secondAttribute="bottom" constant="35" id="Svj-LD-nRk"/>
                             <constraint firstItem="1Hi-6b-rLA" firstAttribute="leading" secondItem="FUE-GV-itZ" secondAttribute="leading" constant="20" id="wrn-v8-Npa"/>
                         </constraints>
                         <variation key="default">
@@ -38,7 +38,6 @@
                                 <exclude reference="1Hi-6b-rLA"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="IGi-Bx-S5d"/>
                                 <exclude reference="wrn-v8-Npa"/>
                             </mask>
                         </variation>
@@ -47,7 +46,6 @@
                                 <include reference="1Hi-6b-rLA"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="IGi-Bx-S5d"/>
                                 <include reference="wrn-v8-Npa"/>
                             </mask>
                         </variation>

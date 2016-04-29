@@ -186,9 +186,13 @@
 }
 
 
+
+-(void)suspend{
+    [_player pause];
+}
+
 -(void)dealloc{
     NSLog(@"销毁");
-    [_player pause];
     [self.player.currentItem cancelPendingSeeks];
     [self.player.currentItem.asset cancelLoading];
     [[NSNotificationCenter defaultCenter] removeObserver:self

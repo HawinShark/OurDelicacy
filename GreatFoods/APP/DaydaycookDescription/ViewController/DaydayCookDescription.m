@@ -321,6 +321,7 @@
                         NSURLRequest * PlayRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:model.detailsUrl]];
                         [self.player loadRequest:PlayRequest];
                     }else{
+                        //隐藏播放按钮
                         self.player.hidden = YES;
                         self.playButton.hidden = YES;
                     }

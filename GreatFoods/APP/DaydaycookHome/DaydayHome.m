@@ -185,13 +185,6 @@
     DaydayCookData *model = self.DDdataArray[indexPath.item];
     VC.BookID = model.dataIdentifier;
     
-    if (isWIFI == YES) {
-        
-        if (filmmanager) {
-            [filmmanager removeFromSuperview];
-            filmmanager = nil;
-        }
-    }
     [self.navigationController pushViewController:VC animated:YES];
 }
 
@@ -249,17 +242,25 @@
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (isWIFI == YES) {
+                //中断视频播放
+                if (currentTopCell.isPlay == YES) {
+                    
+                    [filmmanager suspend];
+                    filmmanager.hidden = YES;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        
+                        [filmmanager removeFromSuperview];
+                        filmmanager = nil;//执行dealloc
+                    });
+                }
+            }
+        });
         
     });
     
-    if (isWIFI == YES) {
-        //中断视频播放
-        if (currentTopCell.isPlay == YES) {
-            [filmmanager removeFromSuperview];
-            filmmanager = nil;//执行dealloc
-        }
-    }
     
     
 }
@@ -279,7 +280,7 @@
     
     if (self.DaydayCollecionView.mj_header.state == MJRefreshStateIdle) {
     
-    
+    if (self.DDdataArray.count > 0)
     if (currentIndex == topCell) {
         
         currentTopCell = (DDCollectCell *)[self.DaydayCollecionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:topCell inSection:0]];
@@ -440,9 +441,7 @@
                 if (RefreshCurrentPage > 0) {
                     
                         NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
-                        [UIView performWithoutAnimation:^{
                             [self.DaydayCollecionView reloadSections:set];
-                        }];
 
                 }
             });
@@ -576,24 +575,44 @@
     backtoTop.alpha = 0;
     [backtoTop addTarget:self action:@selector(totop:) forControlEvents:UIControlEventTouchUpInside];
     
-    //销毁播放器
-    if (isWIFI == YES) {
-        if (currentTopCell.isPlay == YES) {
-            [filmmanager removeFromSuperview];
-            filmmanager = nil;//执行dealloc
-        }
-    }
+    
 }
 
 -(void) totop:(UIButton *)sender
 {
-    
     [self.DaydayCollecionView setContentOffset:CGPointZero animated:YES]; //1有动画
 
+            //销毁播放器
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (isWIFI == YES) {
+                //中断视频播放
+                if (currentTopCell.isPlay == YES) {
+                    
+                    [filmmanager suspend];
+                    filmmanager.hidden = YES;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        
+                        [filmmanager removeFromSuperview];
+                        filmmanager = nil;//执行dealloc
+                    });
+                }
+            }
+        });
+        
+    });
+
+
+
+    
     //置顶后按钮消失
     [UIView animateWithDuration:.5 animations:^{
         backtoTop.alpha = 0;
     }];
+    
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -601,6 +620,27 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.alpha = 1;
     self.navigationController.navigationBar.transform = CGAffineTransformIdentity;
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (isWIFI == YES) {
+                //中断视频播放
+                if (currentTopCell.isPlay == YES) {
+                    
+                    [filmmanager suspend];
+                    filmmanager.hidden = YES;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        
+                        [filmmanager removeFromSuperview];
+                        filmmanager = nil;//执行dealloc
+                    });
+                }
+            }
+        });
+        
+    });
 }
 
 /*

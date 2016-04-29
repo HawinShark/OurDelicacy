@@ -136,6 +136,18 @@
         [clearFilm addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
             // your code..
+            [self clearDocumentCache];
+            
+            //..
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            
+            UIAlertView *clear = [[UIAlertView alloc]initWithTitle:nil message:@"清理成功" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+            [clear show];
+            [clear dismissWithClickedButtonIndex:0 animated:YES];
+            
+            //删除nsuser保存的视频路径
+            NSString *appDomain = [[NSBundle mainBundle]bundleIdentifier];
+            [[NSUserDefaults standardUserDefaults]removePersistentDomainForName:appDomain];
             
         }]];
         
@@ -248,6 +260,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 #pragma mark- 缓存方法

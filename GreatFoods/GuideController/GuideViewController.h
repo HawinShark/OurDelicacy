@@ -10,4 +10,9 @@
 
 @interface GuideViewController : UIViewController
 
+
+
+/* 切换root controller */
+@property (nonatomic, copy)  void (^ExchangeController)();
+
 @end

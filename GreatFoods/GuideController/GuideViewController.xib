@@ -3,10 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GuideViewController">
             <connections>
+                <outlet property="ICON" destination="5gS-1c-hYP" id="x8L-sX-nXH"/>
+                <outlet property="PageControl" destination="WAE-dJ-ATN" id="yV1-W1-Pc9"/>
                 <outlet property="ScrollView" destination="FT8-hQ-qXg" id="wff-LG-Fdl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,7 +20,45 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FT8-hQ-qXg">
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="WAE-dJ-ATN">
+                    <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                    <color key="pageIndicatorTintColor" red="0.68924278849999998" green="0.465636088" blue="0.1101435758" alpha="0.32933728451724142" colorSpace="calibratedRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.68924278849999998" green="0.465636088" blue="0.1101435758" alpha="0.75385237072413791" colorSpace="calibratedRGB"/>
+                </pageControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gS-1c-hYP">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="5gS-1c-hYP" secondAttribute="height" multiplier="1:1" id="ObU-X8-v3A"/>
+                        <constraint firstAttribute="height" constant="40" id="R6k-3b-J4Y">
+                            <variation key="widthClass=compact" constant="90"/>
+                        </constraint>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="45"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ObU-X8-v3A"/>
+                            <exclude reference="R6k-3b-J4Y"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="ObU-X8-v3A"/>
+                            <include reference="R6k-3b-J4Y"/>
+                        </mask>
+                    </variation>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wecome to the COOKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-Jo-HQc">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
+                    <color key="textColor" red="0.61893028848717946" green="0.36160292000225236" blue="0.24486923417686748" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT8-hQ-qXg">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <constraints>
                         <constraint firstAttribute="width" id="taY-vJ-w94"/>
@@ -31,17 +73,36 @@
                             <exclude reference="taY-vJ-w94"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="aB3-fR-ZFq"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="5gS-1c-hYP" secondAttribute="trailing" constant="40" id="2TY-O0-TLY">
+                    <variation key="widthClass=compact" constant="33"/>
+                </constraint>
+                <constraint firstItem="5gS-1c-hYP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.35" id="9zG-3a-aPv"/>
                 <constraint firstItem="FT8-hQ-qXg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Cz1-lK-rgF"/>
                 <constraint firstAttribute="bottom" secondItem="FT8-hQ-qXg" secondAttribute="bottom" id="VGO-Ny-l0U"/>
                 <constraint firstAttribute="trailing" secondItem="FT8-hQ-qXg" secondAttribute="trailing" id="Vfy-Av-dlt"/>
+                <constraint firstItem="5gS-1c-hYP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.42" id="W5i-lk-Nbv"/>
                 <constraint firstItem="FT8-hQ-qXg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lxQ-JB-7gx"/>
+                <constraint firstItem="WAE-dJ-ATN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="n1g-F9-APi"/>
+                <constraint firstItem="C9t-Jo-HQc" firstAttribute="leading" secondItem="5gS-1c-hYP" secondAttribute="trailing" constant="30" id="nwl-Ad-Iar">
+                    <variation key="widthClass=compact" constant="18"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="WAE-dJ-ATN" secondAttribute="bottom" id="pjs-31-3dt"/>
+                <constraint firstItem="C9t-Jo-HQc" firstAttribute="bottom" secondItem="5gS-1c-hYP" secondAttribute="bottom" id="tuN-PN-1Ze">
+                    <variation key="widthClass=compact" constant="-10"/>
+                </constraint>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
+                    <exclude reference="WAE-dJ-ATN"/>
+                    <exclude reference="5gS-1c-hYP"/>
+                    <exclude reference="C9t-Jo-HQc"/>
                     <exclude reference="FT8-hQ-qXg"/>
                 </mask>
                 <mask key="constraints">
@@ -49,10 +110,20 @@
                     <exclude reference="VGO-Ny-l0U"/>
                     <exclude reference="Vfy-Av-dlt"/>
                     <exclude reference="lxQ-JB-7gx"/>
+                    <exclude reference="2TY-O0-TLY"/>
+                    <exclude reference="9zG-3a-aPv"/>
+                    <exclude reference="W5i-lk-Nbv"/>
+                    <exclude reference="nwl-Ad-Iar"/>
+                    <exclude reference="tuN-PN-1Ze"/>
+                    <exclude reference="n1g-F9-APi"/>
+                    <exclude reference="pjs-31-3dt"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
+                    <include reference="WAE-dJ-ATN"/>
+                    <include reference="5gS-1c-hYP"/>
+                    <include reference="C9t-Jo-HQc"/>
                     <include reference="FT8-hQ-qXg"/>
                 </mask>
                 <mask key="constraints">
@@ -60,6 +131,13 @@
                     <include reference="VGO-Ny-l0U"/>
                     <include reference="Vfy-Av-dlt"/>
                     <include reference="lxQ-JB-7gx"/>
+                    <exclude reference="2TY-O0-TLY"/>
+                    <include reference="9zG-3a-aPv"/>
+                    <include reference="W5i-lk-Nbv"/>
+                    <include reference="nwl-Ad-Iar"/>
+                    <include reference="tuN-PN-1Ze"/>
+                    <include reference="n1g-F9-APi"/>
+                    <include reference="pjs-31-3dt"/>
                 </mask>
             </variation>
         </view>

@@ -9,8 +9,7 @@
 #import "BreakFastViewController.h"
 #import "DetailsPageController.h"
 
-#import "carouselCell.h"
-#import "IndexSecondCell.h"
+#import "BreakfastCell.h"
 
 #import "List.h"
 
@@ -18,7 +17,7 @@
 #import <UIImageView+WebCache.h>
 #import <MJRefreshBackNormalFooter.h>
 
-@interface BreakFastViewController () <UITableViewDataSource,UITableViewDelegate,LunBo>
+@interface BreakFastViewController () <UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *carouselArray;
     NSMutableArray *cellArray;
@@ -48,36 +47,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+
     //异步
     [self showHint:@"正在加载..."];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self GetData];
-    });
+    [self RequestData];
+    
 
     /* 创建UI*/
     [self buildUI];
     
     __weak typeof(self)mySelf = self;
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
-            [mySelf LoadData];
-        });
+        [mySelf LoadData];
+
     }];
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 300;
     
 }
-
-
-//隐藏电池栏
--(BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
 
 #pragma mark- 创建UI
 
@@ -88,147 +78,44 @@
 }
 
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
-    view.layer.cornerRadius = 5;
-    view.layer.masksToBounds = YES;
+#pragma mark- UITableViewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    view.alpha = .7;
-    
-    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, -1, screen_width, 31)];
-    [image setImage:[UIImage imageNamed:@"section.png"]];
-    [view addSubview:image];
-    
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, screen_width, 31)];
-    
-    if (titles.count != 0) {
-        [label setText:titles[section + 4]];
-    }
-    
-    [label setTextColor:[UIColor whiteColor]];
-    
-    [image addSubview:label];
-    
-    return view;
+    return _DataSource.count;
 }
 
 
-#pragma mark- section的高度
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 0;
-    }
-    else
-        return 30;
-}
 
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section == 0) {
-        return 250;
-    }
+    static NSString *string = @"cell";
     
-    return 200;
-}
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    if (_DataSource.count != 0) {
+    BreakfastCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"BreakfastCell" owner:nil options:nil]lastObject];
+    
+    if (cell == nil) {
         
-        return _DataSource.count - 4;
-    }
-    return 10;
-}
-
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        
+        cell = [[BreakfastCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string];
     }
     
     if (_DataSource.count != 0) {
         
-        return titles[section + 4];
+        List *model = [_DataSource objectAtIndex:indexPath.row];
+        [cell AcquireModel:model];
     }
-    return NULL;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellId = @"carousel";
-
-    if (indexPath.section == 0) {
-        carouselCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        
-        if (cell == nil) {
-            cell = [[carouselCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
-        }
-        
-        if (title.count != 0) {
-            cell.titles = title;
-        }
-        
-        if (carouselArray.count != 0) {
-            
-            [cell setCarouselArray:carouselArray];
-        }
-        
-        
-        cell.delegate = self;
-        
-        
-        return cell;
-    }
-    else
-    {
-        IndexSecondCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"IndexSecondCell" owner:nil options:nil] lastObject];
-        
-        if (cell == nil) {
-            cell = [[IndexSecondCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"breakSecond"];
-        }
-        
-        if (_DataSource.count != 0) {
     
-            List *model = [_DataSource objectAtIndex:indexPath.section + 4];
-            
-            [cell Get:model];
-            
-        }
-        
-        return cell;
-    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
 }
 
--(void)infiniteScrollViewdidSelectItemAtIndex:(NSInteger)index
-{
-    DetailsPageController *DetailsPage = [[DetailsPageController alloc]init];
-    
-    List *model = _DataSource[index];
-    DetailsPage.DetailsId = model.listIdentifier;
-    
-    NSLog(@"model.listIdentifier = %@",model.listIdentifier);
-    [self.navigationController pushViewController:DetailsPage animated:YES];
 
-}
 
 #pragma mark- tableViewCell点击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailsPageController *DetailsPage = [[DetailsPageController alloc]init];
     
-    List *model = _DataSource[indexPath.section + 4];
+    List *model = _DataSource[indexPath.row];
     DetailsPage.DetailsId = model.listIdentifier;
     
     NSLog(@"model.listIdentifier = %@",model.listIdentifier);
@@ -236,86 +123,90 @@
 }
 
 
-#pragma mark- 下拉加载数据
-- (void)LoadData
-{
+#pragma mark- 请求数据
+-(void)RequestData{
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    _DataSource = [NSMutableArray array];
     
-    [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=%ld&type=0",(long)++page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        NSArray *array = [responseObject objectForKey:@"list"];
-        
-        for (NSDictionary *dic in array) {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([self isNetWork]) {
             
-            List *model = [[List alloc]initWithDictionary:dic];
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             
-            [titles addObject:model.name];
-            
-            
-            [_DataSource addObject:model];
+            [manager POST:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=0&type=0" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                
+                
+                NSArray *array = [responseObject objectForKey:@"list"];
+                
+                for (NSDictionary *dic in array) {
+                    
+                    List *model = [[List alloc]initWithDictionary:dic];
+                    
+                    [_DataSource addObject:model];
+                    
+                }
+                //主线程刷新
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self showhide];
+                    [self.tableView reloadData];
+                });
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [self showHint:@"数据异常"];
+            }];
+        }else
+        {
+            [self showHint:@"网络异常请检测网络"];
         }
-        
-        
-        //主线程刷新
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [self.tableView reloadData];
-            [self.tableView.mj_footer endRefreshing];
-        });
-        
-    } failure:nil];
+    });
+    
     
 }
 
 
 
-#pragma mark- 异步获取数据
-- (void)GetData{
-
-    _DataSource = [NSMutableArray array];
-    carouselArray = [NSMutableArray array];
-    titles = [NSMutableArray array];
-    title = [NSMutableArray array];
+#pragma mark- 加载数据
+-(void)LoadData{
     
     if ([self isNetWork]) {
         
-    
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        [manager POST:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=0&type=0" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             
-            NSArray *array = [responseObject objectForKey:@"list"];
-            
-            for (NSDictionary *dic in array) {
+            [manager POST:[NSString stringWithFormat:@"http://42.121.253.143/public/getContentsBySubClassid.shtml?id=7136465&page=%ld&type=0",++page] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
-                List *model = [[List alloc]initWithDictionary:dic];
                 
-                [titles addObject:model.name];
+                NSArray *array = [responseObject objectForKey:@"list"];
                 
-                [carouselArray addObject:model.imageid];
+                for (NSDictionary *dic in array) {
+                    
+                    List *model = [[List alloc]initWithDictionary:dic];
+                    
+                    [_DataSource addObject:model];
+                    
+                }
+                //主线程刷新
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self showhide];
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
                 
-                [_DataSource addObject:model];
-                
-                [title addObject:model.name];
-            }
-            //主线程刷新
-            dispatch_async(dispatch_get_main_queue(), ^{
-            
-                [self showhide];
-                [self.tableView reloadData];
-            });
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [self showHint:@"数据异常"];
-        }];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [self showHint:@"数据异常"];
+            }];
+        });
     }else
     {
         [self showHint:@"网络异常请检测网络"];
     }
+        
     
 }
+
 
 
 #pragma mark- 返回按钮
@@ -335,7 +226,10 @@
     [super didReceiveMemoryWarning];
 }
 
-
+//隐藏电池栏
+-(BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
