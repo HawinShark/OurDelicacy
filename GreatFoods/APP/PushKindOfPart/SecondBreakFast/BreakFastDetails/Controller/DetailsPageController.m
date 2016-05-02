@@ -109,6 +109,7 @@
             [self showhide];
             dic = [responseObject objectForKey:@"list"];
             //获取收藏的数据
+            
             NSDictionary *collectDic = [[responseObject objectForKey:@"list"]objectAtIndex:0];
             _title = [collectDic objectForKey:@"name"];
             NSLog(@"%@",_title);

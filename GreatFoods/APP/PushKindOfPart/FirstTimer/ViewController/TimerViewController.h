@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MusicManager.h"//音乐
 
 @interface TimerViewController : UIViewController
+
+
+/* 音乐播放器*/
+@property (nonatomic, retain) MusicManager *Player;
 
 @end

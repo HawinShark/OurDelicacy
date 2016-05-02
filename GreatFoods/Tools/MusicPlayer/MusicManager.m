@@ -41,7 +41,7 @@
         }
         
         arcNum = arc4random_uniform(9);
-        [self playerWithPath:_musicArray[arcNum]];
+        [self playerWithPath:_musicArray[arcNum] andType:@"mp3"];
     }
     return self;
 }
@@ -53,10 +53,10 @@
     return _player;
 }
 
-- (void)playerWithPath:(NSString *)path
+- (void)playerWithPath:(NSString *)path andType:(NSString *)type
 {
-    NSURL *mp3Url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@.mp3",path] withExtension:nil];
-    
+    NSURL *mp3Url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@.%@",path,type] withExtension:nil];
+    NSLog(@"%@",mp3Url.absoluteString);
     
     AVPlayerItem *item = [[AVPlayerItem alloc]initWithURL:mp3Url];
     
@@ -74,7 +74,7 @@
     
     NSLog(@"%ld",arcNum);
     
-    [self playerWithPath:_musicArray[arcNum]];
+    [self playerWithPath:_musicArray[arcNum] andType:@"mp3"];
 }
 
 

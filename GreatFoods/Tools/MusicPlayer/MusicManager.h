@@ -17,6 +17,9 @@
 
 -(instancetype)initWithMP3NAME;
 
+//播放结束音乐
+- (void)playerWithPath:(NSString *)path andType:(NSString *)type;
+
 - (void)play;
 
 - (void)pause;

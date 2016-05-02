@@ -63,9 +63,9 @@
 
 
 
-
-
-
+#define kNotificationCategoryIdentifile @"kNotificationCategoryIdentifile"
+#define kNotificationActionIdentifileClose @"kNotificationActionIdentifileStar"
+#define kNotificationActionIdentifileBack @"kNotificationActionIdentifileComment"
 
 
 

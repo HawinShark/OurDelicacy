@@ -117,7 +117,6 @@
 		F5B28A171CC4FED100ECF016 /* DaydayHome.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28A161CC4FED100ECF016 /* DaydayHome.m */; };
 		F5B28A1B1CC4FF2B00ECF016 /* DDCLoopLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28A1A1CC4FF2B00ECF016 /* DDCLoopLayout.m */; };
 		F5B28A1F1CC5004F00ECF016 /* WHC_NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28A1E1CC5004F00ECF016 /* WHC_NavigationController.m */; };
-		F5B28A271CC5253E00ECF016 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B28A261CC5253E00ECF016 /* Images.xcassets */; };
 		F5B28A2C1CC525BB00ECF016 /* DDCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28A2A1CC525BB00ECF016 /* DDCollectCell.m */; };
 		F5B28A2D1CC525BB00ECF016 /* DDCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B28A2B1CC525BB00ECF016 /* DDCollectCell.xib */; };
 		F5B28A311CC52A9200ECF016 /* UIImage+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B28A301CC52A9200ECF016 /* UIImage+Extended.m */; };
@@ -347,7 +346,6 @@
 		F5B28A1A1CC4FF2B00ECF016 /* DDCLoopLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCLoopLayout.m; sourceTree = "<group>"; };
 		F5B28A1D1CC5004F00ECF016 /* WHC_NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_NavigationController.h; sourceTree = "<group>"; };
 		F5B28A1E1CC5004F00ECF016 /* WHC_NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_NavigationController.m; sourceTree = "<group>"; };
-		F5B28A261CC5253E00ECF016 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F5B28A291CC525BB00ECF016 /* DDCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectCell.h; sourceTree = "<group>"; };
 		F5B28A2A1CC525BB00ECF016 /* DDCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectCell.m; sourceTree = "<group>"; };
 		F5B28A2B1CC525BB00ECF016 /* DDCollectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDCollectCell.xib; sourceTree = "<group>"; };
@@ -356,6 +354,7 @@
 		F5B28A321CC53B9300ECF016 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5B9166D1CCB5CD7006BF7D3 /* FilmManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmManager.h; sourceTree = "<group>"; };
 		F5B9166E1CCB5CD7006BF7D3 /* FilmManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmManager.m; sourceTree = "<group>"; };
+		F5D71BCE1CD4967600E955A2 /* Alarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alarm.m4a; sourceTree = "<group>"; };
 		F5D97C501CC7ACAB0034099A /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ../SearchViewController.h; sourceTree = "<group>"; };
 		F5D97C511CC7ACAB0034099A /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ../SearchViewController.m; sourceTree = "<group>"; };
 		F5D97C521CC7ACAB0034099A /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchViewController.xib; path = ../SearchViewController.xib; sourceTree = "<group>"; };
@@ -838,6 +837,7 @@
 				F5B0A87D1CD381F800742142 /* UNI7.mp3 */,
 				F5B0A87E1CD381F800742142 /* UNI8.mp3 */,
 				F5B0A87F1CD381F800742142 /* UNI9.mp3 */,
+				F5D71BCE1CD4967600E955A2 /* Alarm.m4a */,
 			);
 			path = MP3S;
 			sourceTree = "<group>";
@@ -939,7 +939,6 @@
 				75BE679E1CCE1C0D002AFF5B /* DataBase */,
 				F5B9166C1CCB5C18006BF7D3 /* FilmManager */,
 				F54BE8C71CCA5F0700C3FF67 /* NetCheckAndHUB */,
-				F5B28A261CC5253E00ECF016 /* Images.xcassets */,
 				F5D97C551CC7B3090034099A /* LoadingAnimation */,
 				F5B28A2E1CC52A6C00ECF016 /* ImageExtended */,
 				F5B28A1C1CC5004F00ECF016 /* WHC_NavigationControllerKit */,
@@ -1238,7 +1237,6 @@
 				TargetAttributes = {
 					F5B289D11CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 5AWV6U89AL;
 					};
 					F5B289EA1CC4F7B400ECF016 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1307,7 +1305,6 @@
 				75BE689D1CD09D5C002AFF5B /* UMSocialSDKResourcesNew.bundle in Resources */,
 				F5B0A8821CD381F800742142 /* UNI2.mp3 in Resources */,
 				F5B0A8851CD381F800742142 /* UNI5.mp3 in Resources */,
-				F5B28A271CC5253E00ECF016 /* Images.xcassets in Resources */,
 				75BE689C1CD09D5C002AFF5B /* UMSShareListController.xib in Resources */,
 				3FA2D1761CCE3AD800A27EFF /* MaterialCell.xib in Resources */,
 				F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */,

@@ -13,7 +13,11 @@
 #import "UMSocialWechatHandler.h"
 #import "DaydayHome.h"
 #import "WHC_NavigationController.h"
+#import "TimerViewController.h"
 @interface AppDelegate ()
+
+/* timer */
+@property (nonatomic, retain) TimerViewController *timer;
 
 @end
 
@@ -41,30 +45,34 @@
         //
         [rootNav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Zapfino" size:15.0] forKey:NSFontAttributeName]];
         
+//        rootNav.navigationItem
+        
         self.window.rootViewController = rootNav;
+        
+        
+        [UMSocialData setAppKey:@"5720b91867e58efd09002f70"];
+        //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
+        [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+        
+        
+        //设置微信AppId、appSecret，分享url
+        [UMSocialWechatHandler setWXAppId:@"wx5b3ee5b4273bd51f" appSecret:@"8d2832b04d809ccb227b09633507cb0b" url:@"http://baidu.com"];
+        
+        
+        //注册本地通知
+        [self registerLocalNotification];
+        
     }];
     
     
     [self.window makeKeyAndVisible];
     
     
-    
-    
-    
-    [UMSocialData setAppKey:@"5720b91867e58efd09002f70"];
-    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
-    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
-    
-    
-    //设置微信AppId、appSecret，分享url
-    [UMSocialWechatHandler setWXAppId:@"wx5b3ee5b4273bd51f" appSecret:@"8d2832b04d809ccb227b09633507cb0b" url:@"http://baidu.com"];
-    
-    
-    
-    
-    
     return YES;
 }
+
+#pragma mark- 分享
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     BOOL result = [UMSocialSnsService handleOpenURL:url];
@@ -73,6 +81,119 @@
     }
     return result;
 }
+
+
+
+#pragma mark- 本地推送
+
+- (void)registerLocalNotification
+{
+    //@"知道了" -- > 创建消息上面要添加的动作
+    UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc]init];
+    
+    action.identifier = kNotificationActionIdentifileClose;
+    action.title = @"Close";
+    
+    //当点击的时候不启动程序，在后台处理
+    action.activationMode = UIUserNotificationActivationModeBackground;
+    
+    //需要解锁才能处理(意思就是如果在锁屏界面收到通知，并且用户设置了屏幕锁，用户点击了赞不会直接进入我们的回调进行处理，而是需要用户输入屏幕锁密码之后才进入我们的回调)，如果action.activationMode = UIUserNotificationActivationModeForeground;则这个属性被忽略；
+    action.authenticationRequired = NO;
+    
+    
+    /*
+     destructive属性设置后，在通知栏或锁屏界面左划，按钮颜色会变为红色
+     如果两个按钮均设置为YES，则均为红色（略难看）
+     如果两个按钮均设置为NO，即默认值，则第一个为蓝色，第二个为浅灰色
+     如果一个YES一个NO，则都显示对应的颜色，即红蓝双色 (CP色)。
+     */
+    action.destructive = NO;
+    
+    
+    //按钮2
+    
+    UIMutableUserNotificationAction *actionTwo = [[UIMutableUserNotificationAction alloc]init];
+    
+    actionTwo.identifier = kNotificationActionIdentifileBack;
+    
+    actionTwo.title = @"back2";
+    
+    actionTwo.activationMode = UIUserNotificationActivationModeBackground;//后台模式
+    
+    actionTwo.authenticationRequired = YES;
+    
+    actionTwo.destructive = NO;
+    
+    //创建动作(按钮)的类别集合
+    
+    UIMutableUserNotificationCategory *category = [[UIMutableUserNotificationCategory alloc]init];
+    
+    category.identifier = kNotificationCategoryIdentifile;
+    
+    //最多支持两个，如果添加更多的话，后面的将被忽略
+    [category setActions:@[action,actionTwo] forContext:UIUserNotificationActionContextMinimal];
+    
+    //创建UIUserNotificationSettings，并设置消息的显示类类型
+    UIUserNotificationSettings *uns = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound) categories:[NSSet setWithObject:category]];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:uns];
+    
+}
+
+// 本地通知回调函数，当应用程序在前台时调用
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"%@", notification.userInfo);
+    [self showAlertView:@"计时完成~"];
+    NSInteger badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    badge -= notification.applicationIconBadgeNumber;
+    badge = badge >= 0 ? badge : 0;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+}
+
+
+
+//在非本App界面时收到本地消息，下拉消息会有快捷回复的按钮，点击按钮后调用的方法，根据identifier来判断点击的哪个按钮，notification为消息内容
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler
+{
+    if ([identifier isEqualToString:kNotificationActionIdentifileClose]) {
+        
+        //关闭计时器
+        [_timer.Player stop];
+        
+        
+    }else if ([identifier isEqualToString:kNotificationActionIdentifileBack]){
+        
+        //回应用程序
+        
+    }
+    
+    completionHandler();
+}
+
+
+
+
+
+
+
+//通知按钮
+- (void)showAlertView:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
+    [self.window.rootViewController showDetailViewController:alert sender:nil];
+}
+
+
+
+
+
+
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -90,6 +211,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

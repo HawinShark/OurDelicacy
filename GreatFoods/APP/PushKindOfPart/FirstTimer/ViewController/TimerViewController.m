@@ -15,11 +15,9 @@
 #import <UIImage+AFNetworking.h>
 #import "TimerModel.h"
 
-#import "MusicManager.h"//音乐
+#define kLocalNotificationKey @"kLocalNotificationKey"
 @interface TimerViewController () <TimerDelegate>
 
-/* 音乐播放器*/
-@property (nonatomic, retain) MusicManager *Player;
 
 @property (weak, nonatomic) IBOutlet SmRoundView *smRoundView;
 @property (weak, nonatomic) IBOutlet BigRoundView *bigRoundView;
@@ -91,6 +89,38 @@
         [[Timer shareTimer]cancelTimer];
         
         
+        //播放闹铃音乐
+        [self cancelAction:nil];
+        [_Player playerWithPath:@"Alarm" andType:@"m4a"];
+        
+        
+        
+        //本地推送消息
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        //触发通知时间
+        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+        
+        //重复间隔
+            localNotification.repeatInterval = 0;
+        //时区
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        
+        //通知内容
+        localNotification.alertBody = @"Hi~ Cooker timer已完成计时啦";
+        localNotification.alertAction = @"右滑回到真食汇";
+        localNotification.applicationIconBadgeNumber = 1;
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        
+        //通知参数
+        localNotification.userInfo = @{kLocalNotificationKey: @"上菜啦!"};//标示移除通知
+        
+        localNotification.category = kNotificationCategoryIdentifile;
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        
+        
+        //直接取消全部本地通知
+//        [[UIApplication sharedApplication] cancelAllLocalNotifications];
         
     }else{
         NSInteger minutes =   [Timer shareTimer].timeCount  / 60 ;
