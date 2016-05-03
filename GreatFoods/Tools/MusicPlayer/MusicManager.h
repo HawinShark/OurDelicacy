@@ -15,10 +15,16 @@
 /* player*/
 @property (nonatomic, retain) AVPlayer *player;
 
+/* avaudio*/
+@property (nonatomic, retain) AVAudioPlayer *Aplayer;
+
 -(instancetype)initWithMP3NAME;
 
 //播放结束音乐
 - (void)playerWithPath:(NSString *)path andType:(NSString *)type;
+
+//播放m4a
+- (void)playM4a:(NSString *)name;
 
 - (void)play;
 

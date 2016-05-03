@@ -7,6 +7,7 @@
 //
 
 #import "ClearCacheController.h"
+#import "aboutThisViewController.h"
 
 #import <SDImageCache.h>
 @interface ClearCacheController ()
@@ -45,7 +46,7 @@
     if (section == 0) {
         return @"视频缓存清除包含浏览与收藏记录";
     }
-    return @"这是一款🐔的软件,又名DayDayFuck!";
+    return @"关于真食汇的版权声明";
 }
 
 #pragma mark - Table view data source
@@ -153,7 +154,12 @@
     
     // Section 2...
     
-    
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        
+        aboutThisViewController *about = [aboutThisViewController new];
+        [self.navigationController pushViewController:about animated:YES];
+        
+    }
     
 }
 

@@ -52,7 +52,7 @@ CGFloat maxAlpha = 0.4;
 {
     [super applyLayoutAttributes:layoutAttributes];
     
-    CGFloat delta = 1- (featuredHeight - CGRectGetHeight(self.frame)) / (featuredHeight - standardHegiht);
+    CGFloat delta = 1- (featuredHeight - CGRectGetHeight(self.frame)) / (featuredHeight - standardHegiht) - 0.1;
     
     CGFloat alpha = maxAlpha - (delta * (maxAlpha - minAlpha));
     
@@ -134,7 +134,7 @@ CGFloat maxAlpha = 0.4;
 
 - (void)jianbian{
     _gradientLayer            = [CAGradientLayer layer];
-     _gradientLayer.frame  = CGRectMake(0, H(self.contentView)-50, W(self.contentView), 60);
+    _gradientLayer.frame      = CGRectMake(0, 240, W(self.contentView), 70);
     _gradientLayer.colors     = [NSArray arrayWithObjects:
                                  (id)[[UIColor clearColor] CGColor],
                                  (id)[[UIColor blackColor] CGColor], nil,nil];

@@ -108,7 +108,7 @@
         model.makeTitle =[resultSet stringForColumn:@"makeTitle"];
         model.VcName = [resultSet stringForColumn:@"VcName"];
             [array addObject:model];
-            
+        
 //        NSLog(@"表1 - > %@ -> %ld",makeTitle,(long)model.bookId);
         
     }

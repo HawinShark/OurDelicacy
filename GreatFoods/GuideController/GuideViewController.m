@@ -54,7 +54,7 @@
     //添加我们仨 ->头像
     [self Iconscroll];
 
-
+    [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"Guide"];
     
 }
 

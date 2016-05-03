@@ -91,9 +91,8 @@
         
         //播放闹铃音乐
         [self cancelAction:nil];
-        [_Player playerWithPath:@"Alarm" andType:@"m4a"];
-        
-        
+        [_Player playM4a:@"Alarm"];
+
         
         //本地推送消息
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
@@ -132,7 +131,7 @@
             
             
             if (seconds % 5 == 0) {
-                if (weakSelf.imageArr == 0) {
+                if (weakSelf.imageArr.count == 0) {
                     
                 }else{
                  NSInteger count = [weakSelf.imageArr count];
@@ -144,19 +143,20 @@
 
                 weakSelf.color = color;
                 weakSelf.foodImgView.image = model.timerImg;
+                    weakSelf.bigRoundView.changeColor =  weakSelf.color;
+                    [weakSelf.bigRoundView setNeedsDisplay];
+                    weakSelf.smRoundView.changeColor =  weakSelf.color;
+                    weakSelf.view.backgroundColor=weakSelf.color;
+                    weakSelf.pointView.changeColor =  weakSelf.color;
+                    [weakSelf.pointView setNeedsDisplay];
+                    weakSelf.minutesLabel.textColor = weakSelf.color;
+                    weakSelf.secondsLabel.textColor = weakSelf.color;
+                    [weakSelf.stopBtn setTitleColor:weakSelf.color forState:UIControlStateNormal];
+                    
+                    [weakSelf.cancelBtn setTitleColor:weakSelf.color forState:UIControlStateNormal];
                 }
                 
-                weakSelf.bigRoundView.changeColor =  weakSelf.color;
-                [weakSelf.bigRoundView setNeedsDisplay];
-                weakSelf.smRoundView.changeColor =  weakSelf.color;
-                weakSelf.view.backgroundColor=weakSelf.color;
-                weakSelf.pointView.changeColor =  weakSelf.color;
-                [weakSelf.pointView setNeedsDisplay];
-                weakSelf.minutesLabel.textColor = weakSelf.color;
-                weakSelf.secondsLabel.textColor = weakSelf.color;
-                [weakSelf.stopBtn setTitleColor:weakSelf.color forState:UIControlStateNormal];
-                
-                [weakSelf.cancelBtn setTitleColor:weakSelf.color forState:UIControlStateNormal];
+               
                 
             }
             if ([weakSelf.minutesLabel.text integerValue] < 10) {

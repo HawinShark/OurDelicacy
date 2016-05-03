@@ -9,7 +9,7 @@
 #import "DDCLoopLayout.h"
 
 static CGFloat const DDCViewLayoutStandardHeight = 100.0f;
-static CGFloat const DDCViewLayoutFocusHeight = 280.0f;
+static CGFloat const DDCViewLayoutFocusHeight = 310.0f;
 static CGFloat const DDCViewLayoutDragHeight = 180.0f;
 
 @interface DDCLoopLayout ()

@@ -52,7 +52,7 @@
     
     //接收model
     self.collectModel = [CollectModel new];
-    self.collectModel.imgUrl = [NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.authorimageid];
+    self.collectModel.imgUrl = [NSString stringWithFormat:@"http://pic.ecook.cn/web/%@.jpg!m720",model.imageid];
     self.collectModel.makeTitle = model.name;
     self.collectModel.bookId = [model.listIdentifier integerValue];
     self.collectModel.VcName = @"BreakFast";

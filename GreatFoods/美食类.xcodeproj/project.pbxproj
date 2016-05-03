@@ -72,6 +72,8 @@
 		F52BB8D71CC6564A000B8577 /* DaydayCookDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BB8D51CC6564A000B8577 /* DaydayCookDescription.xib */; };
 		F52BB8DD1CC65797000B8577 /* DayDescriptionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8DA1CC65797000B8577 /* DayDescriptionBaseClass.m */; };
 		F52BB8DE1CC65797000B8577 /* DayDescriptionData.m in Sources */ = {isa = PBXBuildFile; fileRef = F52BB8DC1CC65797000B8577 /* DayDescriptionData.m */; };
+		F548CAB51CD847F10033CE7D /* aboutThisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F548CAB31CD847F10033CE7D /* aboutThisViewController.m */; };
+		F548CAB61CD847F10033CE7D /* aboutThisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F548CAB41CD847F10033CE7D /* aboutThisViewController.xib */; };
 		F54BE8A41CC9D14900C3FF67 /* searchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8A21CC9D14900C3FF67 /* searchCell.m */; };
 		F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54BE8A31CC9D14900C3FF67 /* searchCell.xib */; };
 		F54BE8BA1CCA4F9A00C3FF67 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = F54BE8B91CCA4F9A00C3FF67 /* Timer.m */; };
@@ -271,6 +273,9 @@
 		F52BB8DA1CC65797000B8577 /* DayDescriptionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayDescriptionBaseClass.m; sourceTree = "<group>"; };
 		F52BB8DB1CC65797000B8577 /* DayDescriptionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayDescriptionData.h; sourceTree = "<group>"; };
 		F52BB8DC1CC65797000B8577 /* DayDescriptionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayDescriptionData.m; sourceTree = "<group>"; };
+		F548CAB21CD847F10033CE7D /* aboutThisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutThisViewController.h; sourceTree = "<group>"; };
+		F548CAB31CD847F10033CE7D /* aboutThisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutThisViewController.m; sourceTree = "<group>"; };
+		F548CAB41CD847F10033CE7D /* aboutThisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = aboutThisViewController.xib; sourceTree = "<group>"; };
 		F54BE8A11CC9D14900C3FF67 /* searchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchCell.h; sourceTree = "<group>"; };
 		F54BE8A21CC9D14900C3FF67 /* searchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchCell.m; sourceTree = "<group>"; };
 		F54BE8A31CC9D14900C3FF67 /* searchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchCell.xib; sourceTree = "<group>"; };
@@ -677,6 +682,16 @@
 				F52BB8DC1CC65797000B8577 /* DayDescriptionData.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F548CAB11CD8477C0033CE7D /* aboutThis */ = {
+			isa = PBXGroup;
+			children = (
+				F548CAB21CD847F10033CE7D /* aboutThisViewController.h */,
+				F548CAB31CD847F10033CE7D /* aboutThisViewController.m */,
+				F548CAB41CD847F10033CE7D /* aboutThisViewController.xib */,
+			);
+			path = aboutThis;
 			sourceTree = "<group>";
 		};
 		F54BE88C1CC9B07F00C3FF67 /* breakfastCell */ = {
@@ -1123,6 +1138,7 @@
 				F5559D001CC8ABB200379BF0 /* MineViewController.h */,
 				F5559D011CC8ABB200379BF0 /* MineViewController.m */,
 				F5559D021CC8ABB200379BF0 /* MineViewController.xib */,
+				F548CAB11CD8477C0033CE7D /* aboutThis */,
 				F567EF131CD0DEFD00677007 /* 我的收藏 */,
 				F567EF141CD0DF0700677007 /* 我的足迹 */,
 				F5F2EB101CD11C06000A4EF0 /* 设置 */,
@@ -1296,6 +1312,7 @@
 				F54BE8A51CC9D14900C3FF67 /* searchCell.xib in Resources */,
 				F5B0A8861CD381F800742142 /* UNI6.mp3 in Resources */,
 				F5B0A8811CD381F800742142 /* UNI1.mp3 in Resources */,
+				F548CAB61CD847F10033CE7D /* aboutThisViewController.xib in Resources */,
 				75BE67F81CCE6C9D002AFF5B /* MineCollectViewController.xib in Resources */,
 				75BE689A1CD09D5C002AFF5B /* UMSLoginViewController.xib in Resources */,
 				3FB665FD1CD2082E009A8AE5 /* BreakfastCell.xib in Resources */,
@@ -1448,6 +1465,7 @@
 				3FB665FC1CD2082E009A8AE5 /* BreakfastCell.m in Sources */,
 				F567EF181CD0DF5100677007 /* MyWatchedObject.m in Sources */,
 				F58ED2201CCE6F4C00E2139B /* SearchListViewCell.m in Sources */,
+				F548CAB51CD847F10033CE7D /* aboutThisViewController.m in Sources */,
 				F5B289D71CC4F7B400ECF016 /* main.m in Sources */,
 				F58ED2151CCE5FB900E2139B /* ICarouselImages.m in Sources */,
 				F54BE8CA1CCA5F3C00C3FF67 /* NetandHUB.m in Sources */,
@@ -1611,7 +1629,7 @@
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
+				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1641,7 +1659,7 @@
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Tools/youmeng/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.---";
+				PRODUCT_BUNDLE_IDENTIFIER = "Hawin.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

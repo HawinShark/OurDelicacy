@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="aboutThisViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GGIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9g5-ha-l4h">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="bJt-aT-ssk">
+                            <variation key="heightClass=compact-widthClass=compact" constant="88"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="120" id="fcd-6Z-yVP">
+                            <variation key="heightClass=compact-widthClass=compact" constant="88"/>
+                        </constraint>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="bJt-aT-ssk"/>
+                            <exclude reference="fcd-6Z-yVP"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="bJt-aT-ssk"/>
+                            <include reference="fcd-6Z-yVP"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版权声明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuJ-2e-0tP">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <color key="textColor" red="0.55038060899999997" green="0.28439527889999999" blue="0.18796852010000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbN-7y-NPt">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <string key="text">        本app所有内容,包括文字、图片、音频、视频、软件、程序、以及版式设计等均在网上搜集。
+        访问者可将本app提供的内容或服务用于个人学习、研究或欣赏,以及其他非商业性或非盈利性用途,但同时应遵守著作权法及其他相关法律的规定,不得侵犯本app及相关权利的合法权利。除此以外,将本app任何内容或服务 用于其他用途时,须征得本app及相关权利的书面许可,并支付报酬。
+        本app内容原作者如不愿意在本app刊登内容,请及时通知本app,予以删除。 </string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.61893028849999998" green="0.36160291999999999" blue="0.24486923420000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5A-yY-5Eg">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <string key="text">电话: 18826240006
+邮箱: 835913166@qq.com</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.61893028849999998" green="0.36160291999999999" blue="0.24486923420000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="highlightedColor" red="0.61893028849999998" green="0.36160291999999999" blue="0.24486923420000001" alpha="1" colorSpace="calibratedRGB"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.98431372549999996" green="0.96470588239999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="9g5-ha-l4h" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6Sg-aN-fG3"/>
+                <constraint firstItem="wuJ-2e-0tP" firstAttribute="centerX" secondItem="9g5-ha-l4h" secondAttribute="centerX" id="AyW-Ms-F4A"/>
+                <constraint firstItem="JbN-7y-NPt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="BOn-9U-ep8"/>
+                <constraint firstItem="9g5-ha-l4h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="Rth-Q0-aFQ">
+                    <variation key="widthClass=compact" constant="73"/>
+                    <variation key="heightClass=compact-widthClass=compact" constant="70"/>
+                </constraint>
+                <constraint firstItem="Z5A-yY-5Eg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="YHq-s3-JxS"/>
+                <constraint firstAttribute="trailing" secondItem="JbN-7y-NPt" secondAttribute="trailing" constant="25" id="Ym9-jg-HmI"/>
+                <constraint firstItem="wuJ-2e-0tP" firstAttribute="top" secondItem="9g5-ha-l4h" secondAttribute="bottom" constant="40" id="aSP-U5-Bbf">
+                    <variation key="widthClass=compact" constant="25"/>
+                </constraint>
+                <constraint firstItem="JbN-7y-NPt" firstAttribute="top" secondItem="wuJ-2e-0tP" secondAttribute="bottom" constant="25" id="f8F-5c-jd2">
+                    <variation key="widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstItem="JbN-7y-NPt" firstAttribute="centerX" secondItem="wuJ-2e-0tP" secondAttribute="centerX" id="kLO-z4-1J9"/>
+                <constraint firstItem="Z5A-yY-5Eg" firstAttribute="top" secondItem="JbN-7y-NPt" secondAttribute="bottom" constant="7.5" id="wqp-99-K0y">
+                    <variation key="widthClass=compact" constant="20"/>
+                    <variation key="heightClass=compact-widthClass=compact" constant="10"/>
+                </constraint>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="9g5-ha-l4h"/>
+                    <exclude reference="wuJ-2e-0tP"/>
+                    <exclude reference="JbN-7y-NPt"/>
+                    <exclude reference="Z5A-yY-5Eg"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="BOn-9U-ep8"/>
+                    <exclude reference="Ym9-jg-HmI"/>
+                    <exclude reference="f8F-5c-jd2"/>
+                    <exclude reference="kLO-z4-1J9"/>
+                    <exclude reference="YHq-s3-JxS"/>
+                    <exclude reference="wqp-99-K0y"/>
+                    <exclude reference="AyW-Ms-F4A"/>
+                    <exclude reference="aSP-U5-Bbf"/>
+                    <exclude reference="6Sg-aN-fG3"/>
+                    <exclude reference="Rth-Q0-aFQ"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="9g5-ha-l4h"/>
+                    <include reference="wuJ-2e-0tP"/>
+                    <include reference="JbN-7y-NPt"/>
+                    <include reference="Z5A-yY-5Eg"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="BOn-9U-ep8"/>
+                    <include reference="Ym9-jg-HmI"/>
+                    <include reference="f8F-5c-jd2"/>
+                    <include reference="kLO-z4-1J9"/>
+                    <include reference="YHq-s3-JxS"/>
+                    <include reference="wqp-99-K0y"/>
+                    <include reference="AyW-Ms-F4A"/>
+                    <include reference="aSP-U5-Bbf"/>
+                    <include reference="6Sg-aN-fG3"/>
+                    <include reference="Rth-Q0-aFQ"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="GGIcon" width="1024" height="1019"/>
+    </resources>
+</document>

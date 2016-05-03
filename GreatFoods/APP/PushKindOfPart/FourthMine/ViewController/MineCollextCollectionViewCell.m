@@ -30,6 +30,10 @@
 }
 - (void)awakeFromNib {
     // Initialization code
+    
+    _imgView.contentMode = UIViewContentModeScaleAspectFill;
+    _imgView.clipsToBounds = YES;
+    
 }
 
 @end

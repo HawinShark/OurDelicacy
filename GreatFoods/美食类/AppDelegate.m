@@ -30,26 +30,46 @@
     
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    GuideViewController *guide = [[GuideViewController alloc]init];
-    
-    [_window setRootViewController:guide];
-    
-    [guide setExchangeController:^{
+    //如果第一次运行
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"Guide"]) {
         
+        GuideViewController *guide = [[GuideViewController alloc]init];
+        
+        [_window setRootViewController:guide];
+        
+        [guide setExchangeController:^{
+            
+            UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            //[storyBoard instantiateInitialViewController]
+            
+            
+            WHC_NavigationController *rootNav = [[WHC_NavigationController alloc]initWithRootViewController:[storyBoard instantiateInitialViewController]];
+            [rootNav.navigationBar setBackgroundColor:[UIColor clearColor]];
+            //
+            [rootNav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Zapfino" size:15.0] forKey:NSFontAttributeName]];
+            
+            //        rootNav.navigationItem
+            
+            self.window.rootViewController = rootNav;
+            
+        }];
+    }else //不出引导图了
+    {
         UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-        //[storyBoard instantiateInitialViewController]
-        
         
         WHC_NavigationController *rootNav = [[WHC_NavigationController alloc]initWithRootViewController:[storyBoard instantiateInitialViewController]];
         [rootNav.navigationBar setBackgroundColor:[UIColor clearColor]];
         //
         [rootNav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Zapfino" size:15.0] forKey:NSFontAttributeName]];
         
-//        rootNav.navigationItem
+        //        rootNav.navigationItem
         
         self.window.rootViewController = rootNav;
-        
-        
+    }
+    
+    
+    
+    
         [UMSocialData setAppKey:@"5720b91867e58efd09002f70"];
         //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
         [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
@@ -62,7 +82,6 @@
         //注册本地通知
         [self registerLocalNotification];
         
-    }];
     
     
     [self.window makeKeyAndVisible];

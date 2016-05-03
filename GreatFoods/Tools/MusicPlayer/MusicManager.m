@@ -78,6 +78,20 @@
 }
 
 
+- (void)playM4a:(NSString *)name{
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"m4a"];
+    
+    self.Aplayer = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
+    
+    self.Aplayer.numberOfLoops = 1;
+    
+    self.Aplayer.volume = 1.0;
+    
+    [self.Aplayer play];
+}
+
+
 - (void)play{
     [_player play];
 }
@@ -88,6 +102,14 @@
 
 - (void)stop{
     _player.rate = 0.0;
+    if (_Aplayer) {
+        [_Aplayer stop];
+    }
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
