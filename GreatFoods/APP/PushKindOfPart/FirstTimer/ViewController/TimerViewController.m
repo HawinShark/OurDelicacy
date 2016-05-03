@@ -46,6 +46,7 @@
 
 
 
+
 //开始计时
 - (IBAction)startAction:(id)sender {
     if ([self.countLabel.text integerValue] ==0) {
@@ -90,9 +91,9 @@
         
         
         //播放闹铃音乐
-        [self cancelAction:nil];
-        [_Player playM4a:@"Alarm"];
+//        [self cancelAction:nil];
 
+        [_Player playM4a];
         
         //本地推送消息
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
@@ -199,6 +200,7 @@
     [self cancelTimer];
 
     [_Player stop];
+    
 }
 //取消倒计时
 -(void)cancelTimer{
@@ -501,6 +503,7 @@
     if (_Player) {
         [_Player play];
     }
+    
     self.navigationController.navigationBarHidden = YES;
 }
 

@@ -24,7 +24,7 @@
 - (void)playerWithPath:(NSString *)path andType:(NSString *)type;
 
 //播放m4a
-- (void)playM4a:(NSString *)name;
+- (void)playM4a;
 
 - (void)play;
 

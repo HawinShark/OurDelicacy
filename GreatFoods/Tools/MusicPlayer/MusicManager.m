@@ -78,9 +78,12 @@
 }
 
 
-- (void)playM4a:(NSString *)name{
+- (void)playM4a{
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"m4a"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"APP" ofType:@"m4a"];
+    
+    NSLog(@"%@",path);
+    
     
     self.Aplayer = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
     

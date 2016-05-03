@@ -30,7 +30,7 @@
 
 @end
 
-CGFloat featuredHeight = 280.0;
+CGFloat featuredHeight = 310.0;
 CGFloat standardHegiht = 100.0;
 CGFloat minAlpha = 0.05;
 CGFloat maxAlpha = 0.4;
@@ -52,14 +52,17 @@ CGFloat maxAlpha = 0.4;
 {
     [super applyLayoutAttributes:layoutAttributes];
     
-    CGFloat delta = 1- (featuredHeight - CGRectGetHeight(self.frame)) / (featuredHeight - standardHegiht) - 0.1;
+    CGFloat delta = 1- (featuredHeight - CGRectGetHeight(self.frame)) / (featuredHeight - standardHegiht);
     
     CGFloat alpha = maxAlpha - (delta * (maxAlpha - minAlpha));
+    
+    
+    NSLog(@"delta = %f -->> alpha = %f",delta,alpha);
     
     self.overView.alpha = alpha;
 
     
-    CGFloat scale = MAX(delta, 0.5);
+    CGFloat scale = MAX(delta - 0.1, 0.5);
     _title.transform = CGAffineTransformMakeScale(scale, scale);
     
     self.message.alpha = delta;

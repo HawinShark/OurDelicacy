@@ -52,6 +52,9 @@
             
             self.window.rootViewController = rootNav;
             
+            //注册本地通知
+            [self registerLocalNotification];
+            
         }];
     }else //不出引导图了
     {
@@ -65,6 +68,9 @@
         //        rootNav.navigationItem
         
         self.window.rootViewController = rootNav;
+        
+        //注册本地通知
+        [self registerLocalNotification];
     }
     
     
@@ -77,10 +83,7 @@
         
         //设置微信AppId、appSecret，分享url
         [UMSocialWechatHandler setWXAppId:@"wx5b3ee5b4273bd51f" appSecret:@"8d2832b04d809ccb227b09633507cb0b" url:@"http://baidu.com"];
-        
-        
-        //注册本地通知
-        [self registerLocalNotification];
+    
         
     
     
@@ -222,6 +225,11 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    //让音频后台可播放
+    
+     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
